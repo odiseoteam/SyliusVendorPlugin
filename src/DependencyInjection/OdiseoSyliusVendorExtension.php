@@ -19,7 +19,7 @@ final class OdiseoSyliusVendorExtension extends AbstractResourceExtension
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        $this->registerResources('odiseo_sylius_vendor_plugin', $config['driver'], $config['resources'], $container);
+        $this->registerResources('odiseo_sylius_vendor', $config['driver'], $config['resources'], $container);
 
         $configFiles = [
             'services.yml',
