@@ -4,7 +4,16 @@ declare(strict_types=1);
 
 namespace Odiseo\SyliusVendorPlugin\DependencyInjection;
 
+use Odiseo\SyliusVendorPlugin\Form\Type\VendorTranslationType;
+use Odiseo\SyliusVendorPlugin\Form\Type\VendorType;
+use Odiseo\SyliusVendorPlugin\Model\Vendor;
+use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
+use Odiseo\SyliusVendorPlugin\Model\VendorTranslation;
+use Odiseo\SyliusVendorPlugin\Model\VendorTranslationInterface;
+use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Sylius\Component\Resource\Factory\Factory;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -16,7 +25,7 @@ final class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('odiseo_sylius_vendor_plugin');
+        $rootNode = $treeBuilder->root('odiseo_sylius_vendor');
 
         $rootNode
             ->addDefaultsIfNotSet()
