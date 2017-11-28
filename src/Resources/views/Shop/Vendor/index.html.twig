@@ -1,0 +1,24 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}{{ 'Vendors' }} - {{ parent() }}{% endblock %}
+
+{% block content %}
+<div class="ui breadcrumb">
+    <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
+    <div class="divider"> / </div>
+    <div class="active section">
+        Vendors
+    </div>
+</div>
+
+<div class="two mobile five column ui stretched grid">
+    {% for vendor in vendors %}
+    <div class="column center aligned brand">
+        <a href="{{ path('odiseo_sylius_vendor_shop_vendor_show',{'slug': vendor.slug } ) }}">
+            <img src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_logo') }}" alt="{{ vendor.name }}">
+            <p><strong>{{ vendor.name }}</strong></p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

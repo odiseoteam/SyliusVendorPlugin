@@ -1,0 +1,13 @@
+odiseo_sylius_admin_vendor:
+    resource: |
+        alias: odiseo_sylius_vendor.vendor
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        except: ['show']
+        redirect: index
+        grid: odiseo_sylius_vendor
+        permission: true
+        vars:
+            index:
+                icon: trademark
+    type: sylius.resource

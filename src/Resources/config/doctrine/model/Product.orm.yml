@@ -9,3 +9,4 @@ Odiseo\SyliusVendorPlugin\Model\Product:
                 name: vendor_id
                 referenceColumnName: id
                 nullable: false
+                onDelete: 'SET NULL'

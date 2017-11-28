@@ -9,3 +9,14 @@ sylius_product:
         product:
             classes:
                 model: Odiseo\SyliusVendorPlugin\Model\Product
+
+liip_imagine:
+    loaders:
+        vendor_logo:
+            filesystem:
+                data_root: "%kernel.root_dir%/../web/media/vendor-logo"
+    filter_sets:
+        odiseo_sylius_vendor_logo:
+            data_loader: vendor_logo
+            filters:
+                thumbnail: { size: [300, 300], mode: outbound }
