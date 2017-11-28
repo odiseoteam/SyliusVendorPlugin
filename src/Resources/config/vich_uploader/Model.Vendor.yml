@@ -1,0 +1,4 @@
+Odiseo\SyliusVendorPlugin\Model\Vendor:
+    logoFile:
+        mapping:           vendor_logo
+        filename_property: logo_name

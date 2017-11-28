@@ -1,0 +1,11 @@
+Odiseo\SyliusVendorPlugin\Model\Product:
+    type: mappedSuperclass
+    table: odiseo_product
+    manyToOne:
+        vendor:
+            targetEntity: Odiseo\SyliusVendorPlugin\Model\VendorInterface
+            inversedBy: products
+            joinColumn:
+                name: vendor_id
+                referenceColumnName: id
+                nullable: false

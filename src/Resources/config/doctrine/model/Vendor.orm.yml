@@ -1,0 +1,52 @@
+Odiseo\SyliusVendorPlugin\Model\Vendor:
+    type: mappedSuperclass
+    table: odiseo_vendor
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+        slug:
+            type: string
+            unique: true
+            gedmo:
+               slug:
+                   fields: [name]
+                   unique: true
+        email:
+            type: string
+        logoName:
+            column: logo_name
+            type: string
+            length: 255
+        enabled:
+            type: boolean
+        createdAt:
+            type: datetime
+            column: created_at
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            column: updated_at
+            nullable: true
+            gedmo:
+                timestampable:
+                    on: update
+    oneToMany:
+        products:
+            targetEntity: Sylius\Component\Product\Model\ProductInterface
+            mappedBy: vendor
+    manyToOne:
+        channel:
+            targetEntity: Sylius\Component\Channel\Model\ChannelInterface
+            inversedBy: vendors
+            joinColumn:
+                name: channel_id
+                referenceColumnName: id
+                onDelete: 'CASCADE'
