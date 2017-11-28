@@ -8,5 +8,4 @@ Odiseo\SyliusVendorPlugin\Model\Product:
             joinColumn:
                 name: vendor_id
                 referenceColumnName: id
-                nullable: false
                 onDelete: 'SET NULL'
