@@ -57,13 +57,10 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
     public function findOneBySlug(string $slug): ?VendorInterface
     {
         $vendor = $this->createQueryBuilder('o')
-            ->innerJoin('o.products', 'p')
             ->andWhere('o.slug = :slug')
             ->andWhere('o.enabled = :enabled')
-            ->andWhere('p.enabled = :productEnabled')
             ->setParameter('slug', $slug)
             ->setParameter('enabled', true)
-            ->setParameter('productEnabled', true)
             ->getQuery()
             ->getOneOrNullResult()
         ;
