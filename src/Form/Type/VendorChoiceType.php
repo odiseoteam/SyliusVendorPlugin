@@ -41,7 +41,7 @@ final class VendorChoiceType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $criteria = ['enabled' => true];
+        $criteria = [];
         $orderBy = ['name' => 'ASC'];
 
         $resolver->setDefaults(array(
