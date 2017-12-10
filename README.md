@@ -1,4 +1,10 @@
-<h1 align="center">Odiseo Sylius Vendor Plugin</h1>
+<h1 align="center">
+    <a href="https://odiseo.com.ar/" target="_blank" title="Odiseo">
+        <img src="https://odiseo.com.ar/bundles/odiseoapp/images/logoodiseo.png" alt="Odiseo" />
+    </a>
+    <br />
+    Odiseo Sylius Vendor Plugin
+</h1>
 
 ## Installation
 
