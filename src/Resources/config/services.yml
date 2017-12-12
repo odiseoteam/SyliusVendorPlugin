@@ -24,3 +24,9 @@ services:
         arguments: ['%odiseo_sylius_vendor.model.vendor_translation.class%', []]
         tags:
             - { name: form.type, alias: odiseo_sylius_vendor_translation }
+
+    #LISTENERS
+    odiseo_sylius_vendor.listener.admin.menu_builder:
+        class: Odiseo\SyliusVendorPlugin\Menu\AdminMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }

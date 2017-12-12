@@ -1,0 +1,15 @@
+odiseo_sylius_vendor:
+    ui:
+        vendors: Vendedores
+        edit_vendor: Editar vendedor
+        new_vendor: Nuevo vendedor
+        select_vendor: Selecciona un vendedor
+    form:
+        product:
+            select_vendor: Selecciona un vendedor
+        vendor:
+            email: Email
+            translations: Traducciones
+            description: Descripción
+            logo: Logo
+            channel: Tienda
