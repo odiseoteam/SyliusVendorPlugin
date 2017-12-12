@@ -21,35 +21,37 @@ public function registerBundles(): array
 
     $bundles = [
         ...
+        //This plugin use the vich uploader bundle
+        new \Vich\UploaderBundle\VichUploaderBundle(),
     ];
 
     return array_merge($preResourceBundles, parent::registerBundles(), $bundles);
 }
 ```
  
-3. Import the config.yml:
+3. Import the configurations on your config.yml:
  
 ```yml
     - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/app/config.yml" }
-```
-
-4. Import the vendor grid:
- 
-```yml
     - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/grids/vendor.yml" }
 ```
 
-5. Add the admin routes:
+5. Add the shop and admin routes:
 
 ```yml
 odiseo_sylius_admin_vendor:
-   resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/admin_vendor.yml"
-```
+    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/admin_vendor.yml"
+    prefix: /admin
 
-6. Add the shop routes:
-
-```yml
 odiseo_sylius_shop_vendor:
     resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/shop_vendor.yml"
-    prefix: /vendors
+    prefix: /{_locale}/vendors
+    requirements:
+        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
+```
+
+6. Add the vendor form attribute to the admin. So, you need to create "app/Resources/SyliusAdminBundle/views/Product/Tab/_details.html.twig"
+
+```twig
+{{ form_row(form.vendor) }}
 ```
