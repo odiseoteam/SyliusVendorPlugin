@@ -1,10 +1,16 @@
 <h1 align="center">
     <a href="https://odiseo.com.ar/" target="_blank" title="Odiseo">
-        <img src="https://odiseo.com.ar/bundles/odiseoapp/images/logoodiseo.png" alt="Odiseo" />
+        <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/logo_odiseo.png" alt="Odiseo" width="200px" />
     </a>
     <br />
     Odiseo Sylius Vendor Plugin
 </h1>
+
+## Description
+
+This plugin add vendors to the Sylius products. The vendors are fully customizable by the admin.
+
+<img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_1.png" alt="Vendors admin">
 
 ## Installation
 
@@ -55,3 +61,7 @@ odiseo_sylius_shop_vendor:
 ```twig
 {{ form_row(form.vendor) }}
 ```
+
+## Credits
+
+This plugins is maintained by <a href="https://odiseo.com.ar">Odiseo</a>, a team of senior developers. Contact us: <a href="mailto:team@odiseo.com.ar">team@odiseo.com.ar</a>.
