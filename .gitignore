@@ -2,27 +2,14 @@
 .idea
 .DS_Store
 
-/app/config/parameters.yml
-/app/config/*.local.yml
-/var/*
-!/var/.gitkeep
-
-/web/assets
-/web/bundles
-/web/css
-/web/js
-/web/media
-
 /bin/*
-!/bin/console
-!/bin/symfony_requirements
+!/bin/.gitkeep
 
-/vendor
-/node_modules
+/vendor/
+/node_modules/
+/composer.lock
 
 /etc/build/*
 !/etc/build/.gitkeep
 
-/behat.yml
-/phpunit.xml
-/phpspec.yml
+/tests/Application/yarn.lock

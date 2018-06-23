@@ -2,44 +2,41 @@ language: php
 
 dist: trusty
 
-sudo: required
+sudo: false
 
 php:
     - 7.1
+    - 7.2
 
 cache:
+    yarn: true
     directories:
         - ~/.composer/cache/files
         - $SYLIUS_CACHE_DIR
-    yarn: true
 
 env:
     global:
         - SYLIUS_CACHE_DIR=$HOME/.sylius-cache
         - SYLIUS_BUILD_DIR=etc/build
-        - TRAVIS_NODE_VERSION="7.5"
+    matrix:
+        - SYMFONY_VERSION="3.4.*"
+        - SYMFONY_VERSION="4.1.*"
 
 before_install:
-    - phpenv config-rm xdebug.ini || true
+    - phpenv config-rm xdebug.ini
     - echo "memory_limit=4096M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-
-    # Install Node Version Manager to install newer node version
-    - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout $(git describe --abbrev=0 --tags)) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
-
-    # Install Yarn globally
-    - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-    - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    - sudo apt-get update -qq
-    - sudo apt-get install -y -qq yarn=0.21.3-1
+    - mkdir -p "${SYLIUS_CACHE_DIR}"
 
 install:
-    - composer update --prefer-dist
+    - composer require "symfony/symfony:${SYMFONY_VERSION}" --no-interaction --no-update
+    - composer install --no-interaction --prefer-dist
     - (cd tests/Application && yarn install)
 
 before_script:
-    - (cd tests/Application && bin/console doctrine:schema:create --env=test)
-    - (cd tests/Application && bin/console assets:install web --env=test)
-    - (cd tests/Application && yarn run gulp)
+    - (cd tests/Application && bin/console doctrine:database:create --env=test -vvv)
+    - (cd tests/Application && bin/console doctrine:schema:create --env=test -vvv)
+    - (cd tests/Application && bin/console assets:install web --env=test -vvv)
+    - (cd tests/Application && yarn build)
 
     # Configure display
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1680x1050x16
@@ -47,8 +44,8 @@ before_script:
 
     # Download and configure ChromeDriver
     - |
-        if [ ! -f $SYLIUS_CACHE_DIR/chromedriver ]; then
-            curl http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip > chromedriver.zip
+        if [ ! -f $SYLIUS_CACHE_DIR/chromedriver ] || [ "$($SYLIUS_CACHE_DIR/chromedriver --version | grep -c 2.34)" = "0" ]; then
+            curl http://chromedriver.storage.googleapis.com/2.34/chromedriver_linux64.zip > chromedriver.zip
             unzip chromedriver.zip
             chmod +x chromedriver
             mv chromedriver $SYLIUS_CACHE_DIR
@@ -59,7 +56,7 @@ before_script:
 
     # Download and configure Selenium
     - |
-        if [ ! -f $SYLIUS_CACHE_DIR/selenium.jar ]; then
+        if [ ! -f $SYLIUS_CACHE_DIR/selenium.jar ] || [ "$(java -jar $SYLIUS_CACHE_DIR/selenium.jar --version | grep -c 3.4.0)" = "0" ]; then
             curl http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar > selenium.jar
             mv selenium.jar $SYLIUS_CACHE_DIR
         fi
@@ -72,7 +69,10 @@ before_script:
 
 script:
     - composer validate --strict
+    - bin/phpstan.phar analyse -c phpstan.neon -l max src/
 
+    - bin/phpunit
+    - bin/phpspec run
     - bin/behat --strict -vvv --no-interaction || bin/behat --strict -vvv --no-interaction --rerun
 
 after_failure:

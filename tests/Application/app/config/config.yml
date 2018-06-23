@@ -12,19 +12,28 @@ imports:
 
 framework:
     translator: { fallbacks: ["%locale%", "en"] }
-    secret: "%secret"
+    secret: "%secret%"
     router:
-        resource: "%kernel.root_dir%/config/routing.yml"
+        resource: "%kernel.project_dir%/app/config/routing.yml"
         strict_requirements: "%kernel.debug%"
     form: true
     csrf_protection: true
     validation: { enable_annotations: true }
     templating: { engines: ["twig"] }
     default_locale: "%locale%"
-    trusted_proxies: ~
     session:
         storage_id: session.storage.mock_file
     test: ~
+
+monolog:
+    handlers:
+        main:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        firephp:
+            type: firephp
+            level: info
 
 swiftmailer:
     disable_delivery: true
@@ -36,7 +45,7 @@ swiftmailer:
 doctrine:
     dbal:
         driver: "pdo_sqlite"
-        path: "%kernel.root_dir%/../var/db.sql"
+        path: "%kernel.project_dir%/var/db.sql"
         charset: UTF8
 
 fos_rest:
@@ -54,3 +63,10 @@ fos_rest:
 sylius_theme:
     sources:
         test: ~
+
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+                web_root: "%kernel.project_dir%/web"
+                cache_prefix: "media/cache"
