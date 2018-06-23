@@ -1,11 +1,7 @@
 Odiseo\SyliusVendorPlugin\Model\Product:
     type: mappedSuperclass
-    table: odiseo_product
-    manyToOne:
-        vendor:
+    table: sylius_product
+    manyToMany:
+        vendors:
             targetEntity: Odiseo\SyliusVendorPlugin\Model\VendorInterface
-            inversedBy: products
-            joinColumn:
-                name: vendor_id
-                referenceColumnName: id
-                onDelete: 'SET NULL'
+            mappedBy: products

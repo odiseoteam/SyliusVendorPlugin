@@ -33,7 +33,7 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
     public function findByChannelQuery(ChannelInterface $channel)
     {
         $queryBuilder = $this->createQueryBuilder('v')
-            ->innerJoin('v.channel', 'channel')
+            ->innerJoin('v.channels', 'channel')
             ->andWhere('v.enabled = :enabled')
             ->andWhere('channel = :channel')
             ->setParameter('channel', $channel)

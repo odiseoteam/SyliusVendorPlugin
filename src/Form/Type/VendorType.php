@@ -37,8 +37,9 @@ class VendorType extends AbstractResourceType
             ->add('logoFile',  FileType::class, [
                  'label' => 'odiseo_sylius_vendor.form.vendor.logo',
             ])
-            ->add('channel', ChannelChoiceType::class, [
-                'multiple' => false,
+            ->add('channels', ChannelChoiceType::class, [
+                'multiple' => true,
+                'expanded' => true,
                 'label' => 'odiseo_sylius_vendor.form.vendor.channel',
             ])
         ;

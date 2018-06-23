@@ -6,6 +6,7 @@ odiseo_sylius_vendor:
     form:
         product:
             select_vendor: Select a Vendor
+            select_vendors: Select vendors
         vendor:
             email: Email
             translations: Translations

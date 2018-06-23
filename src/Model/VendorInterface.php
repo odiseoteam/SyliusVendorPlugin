@@ -32,24 +32,44 @@ interface VendorInterface extends SlugAwareInterface, VendorTranslationInterface
     public function setEmail($email);
 
     /**
-     * @return ChannelInterface
+     * @return ArrayCollection|ChannelInterface[]
      */
-    public function getChannel();
+    public function getChannels();
+
+    /**
+     * @param ArrayCollection $channel
+     */
+    public function setChannels(ArrayCollection $channel);
 
     /**
      * @param ChannelInterface $channel
      */
-    public function setChannel(ChannelInterface $channel);
+    public function addChannel(ChannelInterface $channel);
 
     /**
-     * @return ArrayCollection
+     * @param ChannelInterface $channel
+     */
+    public function removeChannel(ChannelInterface $channel);
+
+    /**
+     * @return ArrayCollection|ProductInterface[]
      */
     public function getProducts();
 
     /**
      * @param ArrayCollection $products
      */
-    public function setProducts($products);
+    public function setProducts(ArrayCollection $products);
+
+    /**
+     * @param ProductInterface $product
+     */
+    public function addProduct(ProductInterface $product);
+
+    /**
+     * @param ProductInterface $product
+     */
+    public function removeProduct(ProductInterface $product);
 
     /**
      * @param File $file

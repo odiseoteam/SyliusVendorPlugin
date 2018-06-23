@@ -2,26 +2,56 @@
 
 namespace Odiseo\SyliusVendorPlugin\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
 class Product extends BaseProduct implements ProductInterface
 {
-    /** @var VendorInterface */
-    protected $vendor;
+    /** @var ArrayCollection|VendorInterface[] */
+    protected $vendors;
 
-    /**
-     * @return VendorInterface
-     */
-    public function getVendor()
+    public function __construct()
     {
-        return $this->vendor;
+        parent::__construct();
+
+        $this->vendors = new ArrayCollection();
     }
 
     /**
-     * @param VendorInterface $vendor
+     * @inheritdoc
      */
-    public function setVendor(VendorInterface $vendor)
+    public function getVendors()
     {
-        $this->vendor = $vendor;
+        return $this->vendors;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setVendors(ArrayCollection $vendors)
+    {
+        $this->vendors = $vendors;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function addVendor(VendorInterface $vendor)
+    {
+        if(!$this->vendors->contains($vendor)) {
+            $this->vendors->add($vendor);
+            $vendor->addProduct($this);
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function removeVendor(VendorInterface $vendor)
+    {
+        if($this->vendors->contains($vendor)) {
+            $this->vendors->removeElement($vendor);
+            $vendor->removeProduct($this);
+        }
     }
 }

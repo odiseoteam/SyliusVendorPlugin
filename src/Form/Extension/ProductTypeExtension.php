@@ -11,10 +11,13 @@ class ProductTypeExtension extends AbstractTypeExtension
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('vendor', VendorChoiceType::class, [
-            'multiple' => false,
+        $builder->add('vendors', VendorChoiceType::class, [
+            'multiple' => true,
             'expanded' => false,
-            'label' => 'odiseo_sylius_vendor.form.product.select_vendor',
+            'attr' => [
+                'class' => 'fluid search selection'
+            ],
+            'label' => 'odiseo_sylius_vendor.form.product.select_vendors',
         ]);
     }
 

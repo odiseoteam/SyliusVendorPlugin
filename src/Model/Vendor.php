@@ -28,10 +28,10 @@ class Vendor implements VendorInterface
     /** @var string */
     protected $email;
 
-    /** @var ChannelInterface */
-    protected $channel;
+    /** @var ArrayCollection|ChannelInterface[] */
+    protected $channels;
 
-    /** @var ArrayCollection */
+    /** @var ArrayCollection|ProductInterface[] */
     protected $products;
 
     /** @var File */
@@ -44,6 +44,7 @@ class Vendor implements VendorInterface
     {
         $this->initializeTranslationsCollection();
 
+        $this->channels = new ArrayCollection();
         $this->products = new ArrayCollection();
         $this->createdAt = new \DateTime();
     }
@@ -131,17 +132,35 @@ class Vendor implements VendorInterface
     /**
      * {@inheritdoc}
      */
-    public function getChannel()
+    public function getChannels()
     {
-        return $this->channel;
+        return $this->channels;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setChannel(ChannelInterface $channel)
+    public function setChannels(ArrayCollection $channels)
     {
-        $this->channel = $channel;
+        $this->channels = $channels;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addChannel(ChannelInterface $channel)
+    {
+        if(!$this->channels->contains($channel))
+            $this->channels->add($channel);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeChannel(ChannelInterface $channel)
+    {
+        if($this->channels->contains($channel))
+            $this->channels->removeElement($channel);
     }
 
     /**
@@ -155,9 +174,27 @@ class Vendor implements VendorInterface
     /**
      * {@inheritdoc}
      */
-    public function setProducts($products)
+    public function setProducts(ArrayCollection $products)
     {
         $this->products = $products;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addProduct(ProductInterface $product)
+    {
+        if(!$this->products->contains($product))
+            $this->products->add($product);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeProduct(ProductInterface $product)
+    {
+        if($this->products->contains($product))
+            $this->products->removeElement($product);
     }
 
     /**

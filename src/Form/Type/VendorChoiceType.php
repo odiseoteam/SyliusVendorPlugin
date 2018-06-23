@@ -44,7 +44,7 @@ final class VendorChoiceType extends AbstractType
         $criteria = [];
         $orderBy = ['name' => 'ASC'];
 
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'choices' => function (Options $options) use ($criteria, $orderBy): array {
                 $vendors = $this->vendorRepository->findBy($criteria, $orderBy);
 
@@ -57,7 +57,7 @@ final class VendorChoiceType extends AbstractType
 
                 return $choices;
             },
-        ));
+        ]);
     }
 
     /**

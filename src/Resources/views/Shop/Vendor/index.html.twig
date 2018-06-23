@@ -7,16 +7,24 @@
     <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
     <div class="divider"> / </div>
     <div class="active section">
-        Vendors
+        {{ 'odiseo_sylius_vendor.ui.vendors'|trans }}
     </div>
 </div>
+
+<h1 class="ui monster section dividing header">
+    {{ 'odiseo_sylius_vendor.ui.vendors'|trans }}
+</h1>
 
 <div class="two mobile five column ui stretched grid">
     {% for vendor in vendors %}
     <div class="column center aligned brand">
-        <a href="{{ path('odiseo_sylius_vendor_shop_vendor_show',{'slug': vendor.slug } ) }}">
-            <img src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_logo') }}" alt="{{ vendor.name }}">
-            <p><strong>{{ vendor.name }}</strong></p>
+        <a href="{{ path('odiseo_sylius_vendor_shop_vendor_show',{'slug': vendor.slug } ) }}" class="ui card">
+            <div class="image">
+                <img src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_logo') }}" alt="{{ vendor.name }}">
+            </div>
+            <div class="content">
+                <div class="header">{{ vendor.name }}</div>
+            </div>
         </a>
     </div>
     {% endfor %}

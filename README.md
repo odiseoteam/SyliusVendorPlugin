@@ -59,7 +59,9 @@ odiseo_sylius_shop_vendor:
 6. Add the vendor form attribute to the admin. So, you need to create "app/Resources/SyliusAdminBundle/views/Product/Tab/_details.html.twig"
 
 ```twig
-{{ form_row(form.vendor) }}
+{# ... #}
+{{ form_row(form.vendors) }}
+{# ... #}
 ```
 
 ## Credits
