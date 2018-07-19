@@ -4,6 +4,22 @@
     </a>
     <br />
     Odiseo Sylius Vendor Plugin
+    <br />
+    <a href="https://packagist.org/packages/odiseoteam/sylius-vendor-plugin" title="License" target="_blank">
+        <img src="https://img.shields.io/packagist/l/odiseoteam/sylius-vendor-plugin.svg" />
+    </a>
+    <a href="https://packagist.org/packages/odiseoteam/sylius-vendor-plugin" title="Version" target="_blank">
+        <img src="https://img.shields.io/packagist/v/odiseoteam/sylius-vendor-plugin.svg" />
+    </a>
+    <a href="http://travis-ci.org/odiseoteam/SyliusVendorPlugin" title="Build status" target="_blank">
+        <img src="https://img.shields.io/travis/odiseoteam/SyliusVendorPlugin/master.svg" />
+    </a>
+    <a href="https://scrutinizer-ci.com/g/odiseoteam/SyliusVendorPlugin/" title="Scrutinizer" target="_blank">
+        <img src="https://img.shields.io/scrutinizer/g/odiseoteam/SyliusVendorPlugin.svg" />
+    </a>
+    <a href="https://packagist.org/packages/odiseoteam/sylius-vendor-plugin" title="Total Downloads" target="_blank">
+        <img src="https://poser.pugx.org/odiseoteam/sylius-vendor-plugin/downloads" />
+    </a>
 </h1>
 
 ## Description
