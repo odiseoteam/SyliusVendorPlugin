@@ -30,3 +30,10 @@ services:
         class: Odiseo\SyliusVendorPlugin\Menu\AdminMenuListener
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+
+    #FIXTURES
+    odiseo_sylius_vendor.fixture.vendor:
+        class: Odiseo\SyliusVendorPlugin\Fixture\VendorFixture
+        arguments: ["@odiseo_sylius_vendor.manager.vendor", "@odiseo_sylius_vendor.factory.vendor", "@odiseo_sylius_vendor.repository.vendor", "@sylius.repository.channel", "@sylius.repository.locale"]
+        tags:
+            - { name: "sylius_fixtures.fixture" }

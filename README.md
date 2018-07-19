@@ -80,6 +80,22 @@ odiseo_sylius_shop_vendor:
 {# ... #}
 ```
 
+7. Update your schema and/or migrations.
+
+## Fixtures
+
+This plugin comes with fixtures:
+
+### Vendors
+
+Simply add this configuration on your fixture suite:
+
+```yml
+vendor:
+    options:
+        vendors_per_store: 12
+```
+
 ## Credits
 
 This plugins is maintained by <a href="https://odiseo.com.ar">Odiseo</a>, a team of senior developers. Contact us: <a href="mailto:team@odiseo.com.ar">team@odiseo.com.ar</a>.
