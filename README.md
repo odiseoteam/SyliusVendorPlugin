@@ -93,7 +93,7 @@ Simply add this configuration on your fixture suite:
 ```yml
 vendor:
     options:
-        vendors_per_store: 12
+        vendors_per_channel: 12
 ```
 
 ## Credits
