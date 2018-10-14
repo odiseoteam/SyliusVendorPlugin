@@ -12,15 +12,21 @@ final class AppKernel extends Kernel
      */
     public function registerBundles(): array
     {
-        return array_merge(parent::registerBundles(), [
+        $preResourceBundles = [
+            new \Odiseo\SyliusVendorPlugin\OdiseoSyliusVendorPlugin(),
+        ];
+
+        $bundles = [
             new \Sylius\Bundle\AdminBundle\SyliusAdminBundle(),
             new \Sylius\Bundle\ShopBundle\SyliusShopBundle(),
 
             new \FOS\OAuthServerBundle\FOSOAuthServerBundle(), // Required by SyliusApiBundle
             new \Sylius\Bundle\AdminApiBundle\SyliusAdminApiBundle(),
+            //This plugin use the vich uploader bundle
+            new \Vich\UploaderBundle\VichUploaderBundle(),
+        ];
 
-            new \Acme\SyliusExamplePlugin\OdiseoSyliusVendorPlugin(),
-        ]);
+        return array_merge($preResourceBundles, parent::registerBundles(), $bundles);
     }
 
     /**

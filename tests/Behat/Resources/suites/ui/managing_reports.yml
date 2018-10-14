@@ -1,0 +1,17 @@
+default:
+    suites:
+        ui_managing_reports:
+            contexts_services:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - odiseo_sylius_report.context.transform.report
+                - sylius.behat.context.transform.shared_storage
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.admin_security
+                - odiseo_sylius_report.context.setup.report
+
+                - odiseo_sylius_report.context.ui.admin.managing_reports
+                - sylius.behat.context.ui.admin.notification
+            filters:
+                tags: "@managing_reports && @ui"

@@ -24,7 +24,7 @@
 
 ## Description
 
-This plugin add vendors to the Sylius products. The vendors are fully customizable by the admin.
+This plugin add vendors (Brands) to the Sylius products. The vendors are fully customizable by the admin.
 
 <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_1.png" alt="Vendors admin">
 
@@ -54,20 +54,19 @@ public function registerBundles(): array
 3. Import the configurations on your config.yml:
  
 ```yml
-    - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/app/config.yml" }
-    - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/grids/vendor.yml" }
+    - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yml" }
 ```
 
 5. Add the shop and admin routes:
 
 ```yml
-odiseo_sylius_admin_vendor:
-    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/admin_vendor.yml"
+odiseo_sylius_vendor_admin:
+    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/admin.yml"
     prefix: /admin
 
-odiseo_sylius_shop_vendor:
-    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/shop_vendor.yml"
-    prefix: /{_locale}/vendors
+odiseo_sylius_vendor_shop:
+    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/shop.yml"
+    prefix: /{_locale}
     requirements:
         _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
 ```
@@ -96,6 +95,10 @@ vendor:
         vendors_per_channel: 12
 ```
 
+## Test the plugin
+
+You can follow the instructions to test this plugins in the proper documentation page: [Test the plugin](doc/tests.md).
+    
 ## Credits
 
-This plugins is maintained by <a href="https://odiseo.com.ar">Odiseo</a>, a team of senior developers. Contact us: <a href="mailto:team@odiseo.com.ar">team@odiseo.com.ar</a>.
+This plugin is maintained by <a href="https://odiseo.com.ar">Odiseo</a>. Want us to help you with this plugin or any Sylius project? Contact us on <a href="mailto:team@odiseo.com.ar">team@odiseo.com.ar</a>.
