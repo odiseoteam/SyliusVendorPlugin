@@ -8,7 +8,7 @@ From the plugin root directory, run the following commands:
 
     $ (cd tests/Application && yarn install)
     $ (cd tests/Application && yarn run gulp)
-    $ (cd tests/Application && bin/console assets:install web -e test)
+    $ (cd tests/Application && bin/console assets:install public -e test)
     
     $ (cd tests/Application && bin/console doctrine:database:create -e test)
     $ (cd tests/Application && bin/console doctrine:schema:create -e test)
@@ -35,5 +35,5 @@ From the plugin root directory, run the following commands:
 
     ```bash
     $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
-    $ (cd tests/Application && bin/console server:run -d web -e test)
+    $ (cd tests/Application && bin/console server:run -d public -e test)
     ```

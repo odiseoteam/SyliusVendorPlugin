@@ -1,15 +1,11 @@
-/.php_cs.cache
 .idea
 .DS_Store
-
-/bin/*
-!/bin/.gitkeep
 
 /vendor/
 /node_modules/
 /composer.lock
 
 /etc/build/*
-!/etc/build/.gitkeep
+!/etc/build/.gitignore
 
 /tests/Application/yarn.lock

@@ -26,34 +26,20 @@
 
 This plugin add vendors (Brands) to the Sylius products. The vendors are fully customizable by the admin.
 
+Now supporting Sylius 1.3 with Symfony 4 + Flex structure.
+
 <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_1.png" alt="Vendors admin">
 
 ## Installation
 
 1. Run `composer require odiseoteam/sylius-vendor-plugin`.
 
-2. Add the plugin to the AppKernel but add it before SyliusResourceBundle. To do that you need change the registerBundles like this:
-
-```php
-public function registerBundles(): array
-{
-    $preResourceBundles = [
-        new \Odiseo\SyliusVendorPlugin\OdiseoSyliusVendorPlugin(),
-    ];
-
-    $bundles = [
-        ...
-        //This plugin use the vich uploader bundle
-        new \Vich\UploaderBundle\VichUploaderBundle(),
-    ];
-
-    return array_merge($preResourceBundles, parent::registerBundles(), $bundles);
-}
-```
+2. Add the plugin to the bundles.php but add it before SyliusResourceBundle.
  
-3. Import the configurations on your config.yml:
+3. Import the plugin configurations. For example on services.yaml:
  
 ```yml
+imports:
     - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yml" }
 ```
 
@@ -71,7 +57,7 @@ odiseo_sylius_vendor_shop:
         _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
 ```
 
-6. Add the vendor form attribute to the admin. So, you need to create "app/Resources/SyliusAdminBundle/views/Product/Tab/_details.html.twig"
+6. Add the vendor select box to the product form edit page. So, you need to create "templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig"
 
 ```twig
 {# ... #}
