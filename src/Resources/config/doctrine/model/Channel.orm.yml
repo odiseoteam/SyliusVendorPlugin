@@ -1,7 +1,0 @@
-Odiseo\SyliusVendorPlugin\Model\Channel:
-    type: mappedSuperclass
-    table: sylius_channel
-    manyToMany:
-        vendors:
-            targetEntity: Odiseo\SyliusVendorPlugin\Model\VendorInterface
-            mappedBy: channels

@@ -1,24 +1,12 @@
 imports:
     - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/grids/vendor.yml" }
 
-sylius_channel:
-    resources:
-        channel:
-            classes:
-                model: Odiseo\SyliusVendorPlugin\Model\Channel
-
-sylius_product:
-    resources:
-        product:
-            classes:
-                model: Odiseo\SyliusVendorPlugin\Model\Product
-
 knp_gaufrette:
     stream_wrapper: ~
     adapters:
         vendor_logo:
             local:
-                directory: "%kernel.root_dir%/../web/media/vendor-logo"
+                directory: "%kernel.project_dir%/public/media/vendor-logo"
                 create: true
     filesystems:
         vendor_logo_fs:
@@ -38,13 +26,8 @@ vich_uploader:
             delete_on_remove:   true
 
 liip_imagine:
-    loaders:
-        vendor_logo:
-            filesystem:
-                data_root: "%kernel.root_dir%/../web/media/vendor-logo"
     filter_sets:
         odiseo_sylius_vendor_logo:
-            data_loader: vendor_logo
             filters:
                 thumbnail: { size: [300, 300], mode: inset }
                 background: { size: [300, 300], position: center, color: '#FFFFFF' }

@@ -31,6 +31,12 @@ services:
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
 
+    odiseo_sylius_vendor.vendor_aware_listener.doctrine.orm:
+        class: Odiseo\SyliusVendorPlugin\EventListener\ORMVendorAwareListener
+        arguments: ["@sylius.resource_registry", "%odiseo_sylius_vendor.model.vendor.class%", "%sylius.model.product.class%", "%sylius.model.channel.class%"]
+        tags:
+            - { name: doctrine.event_subscriber, connection: default, priority: 99 }
+
     #FIXTURES
     odiseo_sylius_vendor.fixture.vendor:
         class: Odiseo\SyliusVendorPlugin\Fixture\VendorFixture

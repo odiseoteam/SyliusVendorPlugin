@@ -38,28 +38,3 @@ Odiseo\SyliusVendorPlugin\Model\Vendor:
             gedmo:
                 timestampable:
                     on: update
-    manyToMany:
-        channels:
-            targetEntity: Sylius\Component\Channel\Model\ChannelInterface
-            inversedBy: vendors
-            joinTable:
-                name: odiseo_vendors_channels
-                joinColumns:
-                    vendor_id:
-                        referencedColumnName: id
-                        onDelete: 'CASCADE'
-            inverseJoinColumns:
-                channel_id:
-                    referencedColumnName: id
-        products:
-            targetEntity: Sylius\Component\Product\Model\ProductInterface
-            inversedBy: vendors
-            joinTable:
-                name: odiseo_vendors_products
-                joinColumns:
-                    vendor_id:
-                        referencedColumnName: id
-                        onDelete: 'CASCADE'
-            inverseJoinColumns:
-                product_id:
-                    referencedColumnName: id
