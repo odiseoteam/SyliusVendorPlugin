@@ -7,6 +7,8 @@ use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 use Symfony\Component\HttpFoundation\File\File;
+use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 
 class Vendor implements VendorInterface
 {
@@ -150,8 +152,12 @@ class Vendor implements VendorInterface
      */
     public function addChannel(ChannelInterface $channel)
     {
-        if(!$this->channels->contains($channel))
+        if (!$this->channels->contains($channel)) {
             $this->channels->add($channel);
+
+            if ($channel instanceof VendorsAwareInterface)
+                $channel->addVendor($this);
+        }
     }
 
     /**
@@ -159,8 +165,12 @@ class Vendor implements VendorInterface
      */
     public function removeChannel(ChannelInterface $channel)
     {
-        if($this->channels->contains($channel))
+        if ($this->channels->contains($channel)) {
             $this->channels->removeElement($channel);
+
+            if ($channel instanceof VendorsAwareInterface)
+                $channel->removeVendor($this);
+        }
     }
 
     /**
@@ -184,8 +194,12 @@ class Vendor implements VendorInterface
      */
     public function addProduct(ProductInterface $product)
     {
-        if(!$this->products->contains($product))
+        if (!$this->products->contains($product)) {
             $this->products->add($product);
+
+            if ($product instanceof VendorsAwareInterface)
+                $product->addVendor($this);
+        }
     }
 
     /**
@@ -193,8 +207,12 @@ class Vendor implements VendorInterface
      */
     public function removeProduct(ProductInterface $product)
     {
-        if($this->products->contains($product))
+        if ($this->products->contains($product)) {
             $this->products->removeElement($product);
+
+            if ($product instanceof VendorsAwareInterface)
+                $product->removeVendor($this);
+        }
     }
 
     /**

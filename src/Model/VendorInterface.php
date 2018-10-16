@@ -8,6 +8,8 @@ use Sylius\Component\Resource\Model\TimestampableInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 use Symfony\Component\HttpFoundation\File\File;
+use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 
 interface VendorInterface extends SlugAwareInterface, VendorTranslationInterface, TranslatableInterface, ToggleableInterface, TimestampableInterface
 {

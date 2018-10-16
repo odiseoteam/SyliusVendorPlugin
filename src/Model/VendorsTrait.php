@@ -32,7 +32,6 @@ trait VendorsTrait
     {
         if(!$this->vendors->contains($vendor)) {
             $this->vendors->add($vendor);
-            $vendor->addProduct($this);
         }
     }
 
@@ -43,7 +42,6 @@ trait VendorsTrait
     {
         if($this->vendors->contains($vendor)) {
             $this->vendors->removeElement($vendor);
-            $vendor->removeProduct($this);
         }
     }
 }
