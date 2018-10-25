@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping\ClassMetadata;
 use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
 use Odiseo\SyliusVendorPlugin\Model\VendorsAwareInterface;
 use Sylius\Component\Channel\Model\ChannelInterface;
+use Sylius\Component\Core\Model\Channel;
+use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Product\Model\ProductInterface;
 use Sylius\Component\Resource\Metadata\RegistryInterface;
 
@@ -127,10 +129,9 @@ final class ORMVendorAwareListener implements EventSubscriber
         }
 
         if (!$metadata->hasAssociation('products')) {
-            $metadata->mapManyToMany([
+            $productConfig = [
                 'fieldName' => 'products',
                 'targetEntity' => $productMetadata->getClass('model'),
-                'inversedBy' => 'vendors',
                 'joinTable' => [
                     'name' => 'odiseo_vendors_products',
                     'joinColumns' => [[
@@ -143,15 +144,23 @@ final class ORMVendorAwareListener implements EventSubscriber
                         'name' => 'product_id',
                         'referencedColumnName' => 'id',
                     ]],
-                ]
-            ]);
+                ],
+                'cascade' => ['persist']
+            ];
+
+            if (Product::class != $this->productClass) {
+                $productConfig = array_merge($productConfig, [
+                    'inversedBy' => 'vendors',
+                ]);
+            }
+
+            $metadata->mapManyToMany($productConfig);
         }
 
         if (!$metadata->hasAssociation('channels')) {
-            $metadata->mapManyToMany([
+            $channelConfig = [
                 'fieldName' => 'channels',
                 'targetEntity' => $channelMetadata->getClass('model'),
-                'inversedBy' => 'vendors',
                 'joinTable' => [
                     'name' => 'odiseo_vendors_channels',
                     'joinColumns' => [[
@@ -164,8 +173,17 @@ final class ORMVendorAwareListener implements EventSubscriber
                         'name' => 'channel_id',
                         'referencedColumnName' => 'id',
                     ]],
-                ]
-            ]);
+                ],
+                'cascade' => ['persist']
+            ];
+
+            if (Channel::class != $this->channelClass) {
+                $channelConfig = array_merge($channelConfig, [
+                    'inversedBy' => 'vendors',
+                ]);
+            }
+
+            $metadata->mapManyToMany($channelConfig);
         }
     }
 }
