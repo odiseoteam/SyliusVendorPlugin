@@ -3,8 +3,8 @@
 namespace Odiseo\SyliusVendorPlugin\Doctrine\ORM;
 
 use Doctrine\ORM\QueryBuilder;
-use Odiseo\SyliusVendorPlugin\Model\ChannelInterface;
 use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface VendorRepositoryInterface extends RepositoryInterface

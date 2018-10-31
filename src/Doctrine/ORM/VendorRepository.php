@@ -4,9 +4,9 @@ namespace Odiseo\SyliusVendorPlugin\Doctrine\ORM;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping;
-use Odiseo\SyliusVendorPlugin\Model\ChannelInterface;
 use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\Component\Core\Model\ChannelInterface;
 use SyliusLabs\AssociationHydrator\AssociationHydrator;
 
 class VendorRepository extends EntityRepository implements VendorRepositoryInterface
