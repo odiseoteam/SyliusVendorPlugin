@@ -76,17 +76,19 @@ final class ORMVendorAwareListener implements EventSubscriber
             $reflection->implementsInterface(ProductInterface::class) &&
             $reflection->implementsInterface(VendorsAwareInterface::class)
         ) {
-            $this->mapVendorAware($classMetadata, 'products');
+            $this->mapVendorAware($classMetadata, 'product_id', 'products');
         }
 
         if (
             $reflection->implementsInterface(ChannelInterface::class) &&
             $reflection->implementsInterface(VendorsAwareInterface::class)
         ) {
-            $this->mapVendorAware($classMetadata, 'channels');
+            $this->mapVendorAware($classMetadata, 'channel_id', 'channels');
         }
 
-        if ($reflection->implementsInterface(VendorInterface::class)) {
+        if ($reflection->implementsInterface(VendorInterface::class) &&
+            !$classMetadata->isMappedSuperclass
+        ) {
             $this->mapVendor($classMetadata);
         }
     }
@@ -97,7 +99,7 @@ final class ORMVendorAwareListener implements EventSubscriber
      * @param ClassMetadata $metadata
      * @param string $mappedBy
      */
-    private function mapVendorAware(ClassMetadata $metadata, string $mappedBy): void
+    private function mapVendorAware(ClassMetadata $metadata, string $joinColumn, string $inversedBy): void
     {
         try {
             $vendorMetadata = $this->resourceMetadataRegistry->getByClass($this->vendorClass);
@@ -109,7 +111,18 @@ final class ORMVendorAwareListener implements EventSubscriber
             $metadata->mapManyToMany([
                 'fieldName' => 'vendors',
                 'targetEntity' => $vendorMetadata->getClass('model'),
-                'mappedBy' => $mappedBy,
+                'inversedBy' => $inversedBy,
+                'joinTable' => [
+                    'name' => 'odiseo_vendors_'.$inversedBy,
+                    'joinColumns' => [[
+                        'name' => $joinColumn,
+                        'referencedColumnName' => 'id'
+                    ]],
+                    'inverseJoinColumns' => [[
+                        'name' => 'vendor_id',
+                        'referencedColumnName' => 'id'
+                    ]],
+                ]
             ]);
         }
     }
@@ -131,26 +144,12 @@ final class ORMVendorAwareListener implements EventSubscriber
         if (!$metadata->hasAssociation('products')) {
             $productConfig = [
                 'fieldName' => 'products',
-                'targetEntity' => $productMetadata->getClass('model'),
-                'joinTable' => [
-                    'name' => 'odiseo_vendors_products',
-                    'joinColumns' => [[
-                        'name' => 'vendor_id',
-                        'referencedColumnName' => 'id',
-                        'onDelete' => 'CASCADE',
-                        'nullable' => false,
-                    ]],
-                    'inverseJoinColumns' => [[
-                        'name' => 'product_id',
-                        'referencedColumnName' => 'id',
-                    ]],
-                ],
-                'cascade' => ['persist']
+                'targetEntity' => $productMetadata->getClass('model')
             ];
 
             if (Product::class != $this->productClass) {
                 $productConfig = array_merge($productConfig, [
-                    'inversedBy' => 'vendors',
+                    'mappedBy' => 'vendors',
                 ]);
             }
 
@@ -160,26 +159,12 @@ final class ORMVendorAwareListener implements EventSubscriber
         if (!$metadata->hasAssociation('channels')) {
             $channelConfig = [
                 'fieldName' => 'channels',
-                'targetEntity' => $channelMetadata->getClass('model'),
-                'joinTable' => [
-                    'name' => 'odiseo_vendors_channels',
-                    'joinColumns' => [[
-                        'name' => 'vendor_id',
-                        'referencedColumnName' => 'id',
-                        'onDelete' => 'CASCADE',
-                        'nullable' => false,
-                    ]],
-                    'inverseJoinColumns' => [[
-                        'name' => 'channel_id',
-                        'referencedColumnName' => 'id',
-                    ]],
-                ],
-                'cascade' => ['persist']
+                'targetEntity' => $channelMetadata->getClass('model')
             ];
 
             if (Channel::class != $this->channelClass) {
                 $channelConfig = array_merge($channelConfig, [
-                    'inversedBy' => 'vendors',
+                    'mappedBy' => 'vendors',
                 ]);
             }
 
