@@ -26,6 +26,18 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
         $this->associationHydrator = new AssociationHydrator($entityManager, $class);
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function createListQueryBuilder()
+    {
+        $queryBuilder = $this->createQueryBuilder('o')
+            ->addSelect('translation')
+            ->innerJoin('o.translations', 'translation')
+        ;
+
+        return $queryBuilder;
+    }
 
     /**
      * {@inheritdoc}

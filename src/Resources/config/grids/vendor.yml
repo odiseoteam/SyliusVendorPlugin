@@ -5,6 +5,8 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: "%odiseo_sylius_vendor.model.vendor.class%"
+                    repository:
+                        method: createListQueryBuilder
             sorting:
                 createdAt: desc
             fields:
