@@ -43,3 +43,15 @@ services:
         arguments: ["@odiseo_sylius_vendor.manager.vendor", "@odiseo_sylius_vendor.factory.vendor", "@odiseo_sylius_vendor.repository.vendor", "@sylius.repository.channel", "@sylius.repository.locale"]
         tags:
             - { name: "sylius_fixtures.fixture" }
+
+    #SITEMAPS
+    odiseo_sylius_vendor.sitemap_provider.vendor:
+        class: Odiseo\SyliusVendorPlugin\SitemapProvider\VendorUrlProvider
+        arguments:
+            - "@odiseo_sylius_vendor.repository.vendor"
+            - "@router"
+            - "@sylius.sitemap_url_factory"
+            - "@sylius.context.locale"
+            - "@sylius.context.channel"
+        tags:
+            - { name: sylius.sitemap_provider }

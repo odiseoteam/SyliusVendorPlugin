@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "460fd0a68c500ae30a97d23b61e84758",
+    "content-hash": "2d3f7423a2e97be5f6cde31267c02c12",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -5089,6 +5089,48 @@
                 "time"
             ],
             "time": "2018-06-16T16:09:27+00:00"
+        },
+        {
+            "name": "stefandoorn/sitemap-plugin",
+            "version": "v1.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stefandoorn/sitemap-plugin.git",
+                "reference": "e364eab2371e3c90f5cfd144306ef5a32462feaf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stefandoorn/sitemap-plugin/zipball/e364eab2371e3c90f5cfd144306ef5a32462feaf",
+                "reference": "e364eab2371e3c90f5cfd144306ef5a32462feaf",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "sylius/sylius": "^1.0"
+            },
+            "conflict": {
+                "sylius/sylius": "1.1.3 || 1.1.4",
+                "symfony/symfony": "3.4.7"
+            },
+            "require-dev": {
+                "lakion/api-test-case": "^2.0|^3.1.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^2.0|^3.0",
+                "phpspec/phpspec": "^4.0",
+                "phpstan/phpstan-shim": "^0.9.2",
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "type": "sylius-plugin",
+            "autoload": {
+                "psr-4": {
+                    "SitemapPlugin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Sitemap Plugin for Sylius",
+            "time": "2018-11-07T17:27:53+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
