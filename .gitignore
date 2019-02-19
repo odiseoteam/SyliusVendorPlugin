@@ -6,6 +6,6 @@
 /composer.lock
 
 /etc/build/*
-!/etc/build/.gitignore
+!/etc/build/.gitkeep
 
 /tests/Application/yarn.lock

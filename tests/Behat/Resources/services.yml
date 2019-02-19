@@ -1,3 +1,18 @@
-imports:
-    - { resource: "services/contexts.yml" }
-    - { resource: "services/pages.yml" }
+services:
+    acme_sylius_example.context.ui.shop.welcome:
+        class: Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Ui\Shop\WelcomeContext
+        arguments:
+            - "@acme_sylius_example.page.shop.static_welcome"
+            - "@acme_sylius_example.page.shop.dynamic_welcome"
+        tags:
+            - { name: fob.context_service }
+
+    acme_sylius_example.page.shop.static_welcome:
+        class: Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Shop\StaticWelcomePage
+        parent: sylius.behat.symfony_page
+        public: false
+
+    acme_sylius_example.page.shop.dynamic_welcome:
+        class: Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Shop\DynamicWelcomePage
+        parent: sylius.behat.symfony_page
+        public: false

@@ -33,7 +33,5 @@ From the plugin root directory, run the following commands:
     
 ### Opening Sylius with this plugin
 
-    ```bash
     $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
     $ (cd tests/Application && bin/console server:run -d public -e test)
-    ```
