@@ -84,7 +84,7 @@ interface VendorInterface extends SlugAwareInterface, VendorTranslationInterface
     public function getLogoFile();
 
     /**
-     * @param $logoName
+     * @param string $logoName
      */
     public function setLogoName($logoName);
 

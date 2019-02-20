@@ -24,7 +24,7 @@ class Vendor implements VendorInterface
     /** @var string */
     protected $name;
 
-    /** @var string */
+    /** @var string|null */
     protected $slug;
 
     /** @var string */
@@ -88,7 +88,10 @@ class Vendor implements VendorInterface
      */
     public function getDescription()
     {
-        return $this->getTranslation()->getDescription();
+        /** @var VendorTranslationInterface $translation */
+        $translation = $this->getTranslation();
+
+        return $translation->getDescription();
     }
 
     /**
@@ -96,7 +99,10 @@ class Vendor implements VendorInterface
      */
     public function setDescription($description)
     {
-        $this->getTranslation()->setDescription($description);
+        /** @var VendorTranslationInterface $translation */
+        $translation = $this->getTranslation();
+
+        $translation->setDescription($description);
     }
 
     /**
@@ -222,7 +228,7 @@ class Vendor implements VendorInterface
     {
         $this->logoFile = $file;
 
-        if($file)
+        if(null !== $file)
         {
             $this->setUpdatedAt(new \DateTime());
         }

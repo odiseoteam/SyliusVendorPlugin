@@ -7,7 +7,7 @@ namespace Odiseo\SyliusVendorPlugin\SitemapProvider;
 use Doctrine\Common\Collections\Collection;
 use Odiseo\SyliusVendorPlugin\Doctrine\ORM\VendorRepositoryInterface;
 use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
-use Odiseo\SyliusVendorPlugin\Model\VendorTranslationInterface;
+use Odiseo\SyliusVendorPlugin\Model\VendorTranslation;
 use SitemapPlugin\Factory\SitemapUrlFactoryInterface;
 use SitemapPlugin\Model\ChangeFrequency;
 use SitemapPlugin\Model\SitemapUrlInterface;
@@ -109,7 +109,7 @@ final class VendorUrlProvider implements UrlProviderInterface
             $vendorUrl->setLastModification($vendor->getCreatedAt());
         }
 
-        /** @var VendorTranslationInterface $translation */
+        /** @var VendorTranslation $translation */
         foreach ($this->getTranslations($vendor) as $translation) {
             if (!$translation->getLocale() || !$this->localeInLocaleCodes($translation)) {
                 continue;

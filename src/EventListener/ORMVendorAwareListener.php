@@ -32,15 +32,15 @@ final class ORMVendorAwareListener implements EventSubscriber
 
     /**
      * @param RegistryInterface $resourceMetadataRegistry
-     * @param $vendorClass
-     * @param $productClass
-     * @param $channelClass
+     * @param string $vendorClass
+     * @param string $productClass
+     * @param string $channelClass
      */
     public function __construct(
         RegistryInterface $resourceMetadataRegistry,
-        $vendorClass,
-        $productClass,
-        $channelClass
+        string $vendorClass,
+        string $productClass,
+        string $channelClass
     ) {
         $this->resourceMetadataRegistry = $resourceMetadataRegistry;
         $this->vendorClass = $vendorClass;
@@ -68,7 +68,7 @@ final class ORMVendorAwareListener implements EventSubscriber
         $classMetadata = $eventArgs->getClassMetadata();
         $reflection = $classMetadata->reflClass;
 
-        if (!$reflection || $reflection->isAbstract()) {
+        if (!$reflection instanceof \ReflectionClass || $reflection->isAbstract()) {
             return;
         }
 
@@ -97,7 +97,8 @@ final class ORMVendorAwareListener implements EventSubscriber
      * Add mapping data to a translatable entity.
      *
      * @param ClassMetadata $metadata
-     * @param string $mappedBy
+     * @param string $joinColumn
+     * @param string $inversedBy
      */
     private function mapVendorAware(ClassMetadata $metadata, string $joinColumn, string $inversedBy): void
     {

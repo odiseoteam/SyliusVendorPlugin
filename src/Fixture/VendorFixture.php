@@ -13,6 +13,7 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -114,10 +115,13 @@ class VendorFixture extends AbstractFixture
                 $imageFinder = new Finder();
                 $imagesPath = __DIR__ . '/../Resources/fixtures/vendor';
 
+                /** @var File $img */
                 foreach ($imageFinder->files()->in($imagesPath)->name('0'.$imageIndex.'.png') as $img)
                 {
-                    $file = new UploadedFile($img->getRealPath(), $img->getFilename());
-                    $vendor->setLogoFile($file);
+                    if ($img->getRealPath() !== false) {
+                        $file = new UploadedFile($img->getRealPath(), $img->getFilename());
+                        $vendor->setLogoFile($file);
+                    }
                 }
                 $imageIndex = $imageIndex>=4?1:$imageIndex+1;
 
