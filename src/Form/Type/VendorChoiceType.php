@@ -50,8 +50,7 @@ final class VendorChoiceType extends AbstractType
 
                 $choices = [];
                 /** @var VendorInterface $vendor */
-                foreach ($vendors as $vendor)
-                {
+                foreach ($vendors as $vendor) {
                     $choices[$vendor->getName()] = $vendor;
                 }
 

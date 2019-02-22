@@ -67,8 +67,7 @@ class VendorFixture extends AbstractFixture
         RepositoryInterface $vendorRepository,
         ChannelRepositoryInterface $channelRepository,
         RepositoryInterface $localeRepository
-    )
-    {
+    ) {
         $this->objectManager = $objectManager;
         $this->vendorFactory = $vendorFactory;
         $this->vendorRepository = $vendorRepository;
@@ -93,11 +92,9 @@ class VendorFixture extends AbstractFixture
         $channels = $this->channelRepository->findAll();
 
         /** @var ChannelInterface $channel */
-        foreach($channels as $channel)
-        {
+        foreach ($channels as $channel) {
             $imageIndex = 1;
-            for($i=1; $i <= $options['vendors_per_channel']; $i++)
-            {
+            for ($i=1; $i <= $options['vendors_per_channel']; $i++) {
                 /** @var VendorInterface $vendor */
                 $vendor = $this->vendorFactory->createNew();
 
@@ -116,8 +113,7 @@ class VendorFixture extends AbstractFixture
                 $imagesPath = __DIR__ . '/../Resources/fixtures/vendor';
 
                 /** @var File $img */
-                foreach ($imageFinder->files()->in($imagesPath)->name('0'.$imageIndex.'.png') as $img)
-                {
+                foreach ($imageFinder->files()->in($imagesPath)->name('0'.$imageIndex.'.png') as $img) {
                     if ($img->getRealPath() !== false) {
                         $file = new UploadedFile($img->getRealPath(), $img->getFilename());
                         $vendor->setLogoFile($file);

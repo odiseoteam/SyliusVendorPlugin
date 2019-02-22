@@ -161,8 +161,9 @@ class Vendor implements VendorInterface
         if (!$this->channels->contains($channel)) {
             $this->channels->add($channel);
 
-            if ($channel instanceof VendorsAwareInterface)
+            if ($channel instanceof VendorsAwareInterface) {
                 $channel->addVendor($this);
+            }
         }
     }
 
@@ -174,8 +175,9 @@ class Vendor implements VendorInterface
         if ($this->channels->contains($channel)) {
             $this->channels->removeElement($channel);
 
-            if ($channel instanceof VendorsAwareInterface)
+            if ($channel instanceof VendorsAwareInterface) {
                 $channel->removeVendor($this);
+            }
         }
     }
 
@@ -203,8 +205,9 @@ class Vendor implements VendorInterface
         if (!$this->products->contains($product)) {
             $this->products->add($product);
 
-            if ($product instanceof VendorsAwareInterface)
+            if ($product instanceof VendorsAwareInterface) {
                 $product->addVendor($this);
+            }
         }
     }
 
@@ -216,8 +219,9 @@ class Vendor implements VendorInterface
         if ($this->products->contains($product)) {
             $this->products->removeElement($product);
 
-            if ($product instanceof VendorsAwareInterface)
+            if ($product instanceof VendorsAwareInterface) {
                 $product->removeVendor($this);
+            }
         }
     }
 
@@ -228,8 +232,7 @@ class Vendor implements VendorInterface
     {
         $this->logoFile = $file;
 
-        if(null !== $file)
-        {
+        if (null !== $file) {
             $this->setUpdatedAt(new \DateTime());
         }
     }

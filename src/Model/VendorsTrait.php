@@ -30,7 +30,7 @@ trait VendorsTrait
      */
     public function addVendor(VendorInterface $vendor)
     {
-        if(!$this->vendors->contains($vendor)) {
+        if (!$this->vendors->contains($vendor)) {
             $this->vendors->add($vendor);
         }
     }
@@ -40,7 +40,7 @@ trait VendorsTrait
      */
     public function removeVendor(VendorInterface $vendor)
     {
-        if($this->vendors->contains($vendor)) {
+        if ($this->vendors->contains($vendor)) {
             $this->vendors->removeElement($vendor);
         }
     }
