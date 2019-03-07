@@ -1,7 +1,7 @@
 default:
     suites:
         ui_managing_vendors:
-            contexts_services:
+            contexts:
                 - sylius.behat.context.hook.doctrine_orm
 
                 - odiseo_sylius_vendor.context.transform.vendor

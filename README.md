@@ -26,7 +26,7 @@
 
 This plugin add vendors (Brands) to the Sylius products. The vendors are fully customizable by the admin.
 
-Now supporting Sylius 1.3 with Symfony 4 + Flex structure.
+Now supporting Sylius 1.4 with Symfony 4 + Flex structure.
 
 <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_1.png" alt="Vendors admin">
 

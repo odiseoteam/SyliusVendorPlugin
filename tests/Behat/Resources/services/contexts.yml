@@ -1,22 +1,25 @@
 services:
     odiseo_sylius_vendor.context.setup.vendor:
         class: Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Setup\VendorContext
+        public: true
         arguments:
-            - '@__symfony__.odiseo_sylius_vendor.factory.vendor'
-            - '@__symfony__.odiseo_sylius_vendor.repository.vendor'
-            - '@__symfony__.odiseo_sylius_vendor.manager.vendor'
+            - '@odiseo_sylius_vendor.factory.vendor'
+            - '@odiseo_sylius_vendor.repository.vendor'
+            - '@odiseo_sylius_vendor.manager.vendor'
         tags:
             - { name: 'fob.context_service' }
 
     odiseo_sylius_vendor.context.transform.vendor:
         class: Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Transform\VendorContext
+        public: true
         arguments:
-            - '@__symfony__.odiseo_sylius_vendor.repository.vendor'
+            - '@odiseo_sylius_vendor.repository.vendor'
         tags:
             - { name: 'fob.context_service' }
 
     odiseo_sylius_vendor.context.ui.admin.managing_vendors:
         class: Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Ui\Admin\ManagingVendorsContext
+        public: true
         arguments:
             - "@sylius.behat.current_page_resolver"
             - "@sylius.behat.notification_checker"
