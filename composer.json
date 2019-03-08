@@ -58,10 +58,5 @@
     },
     "autoload-dev": {
         "classmap": ["tests/Application/Kernel.php"]
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "^1.3"
-        }
     }
 }
