@@ -6,7 +6,7 @@ knp_gaufrette:
     adapters:
         vendor_logo:
             local:
-                directory: "%sylius_core.public_dir%/media/vendor-logo"
+                directory: "%sylius_core.public_dir%/media/image/vendor-logo"
                 create: true
     filesystems:
         vendor_logo:
@@ -29,7 +29,7 @@ liip_imagine:
     loaders:
         vendor_logo:
             filesystem:
-                data_root: "%kernel.project_dir%/public/media/vendor-logo"
+                data_root: "%kernel.project_dir%/public/media/image/vendor-logo"
     filter_sets:
         odiseo_sylius_vendor_logo:
             data_loader: vendor_logo
