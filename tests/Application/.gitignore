@@ -1,10 +1,9 @@
 /public/assets
 /public/css
 /public/js
-/public/media/*
-!/public/media/image/
-/public/media/image/*
-!/public/media/image/.gitignore
+/public/media
+!/public/media/image/.gitkeep
+!/public/media/vendor-logo/.gitkeep
 
 /node_modules
 

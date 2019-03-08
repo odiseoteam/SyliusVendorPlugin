@@ -29,9 +29,7 @@ liip_imagine:
     loaders:
         vendor_logo:
             filesystem:
-                data_root:
-                    - "%sylius_core.public_dir%/media/image"
-                    - "%sylius_core.public_dir%/media/vendor-logo"
+                data_root: "%kernel.project_dir%/public/media/vendor-logo"
     filter_sets:
         odiseo_sylius_vendor_logo:
             data_loader: vendor_logo
