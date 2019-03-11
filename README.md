@@ -113,7 +113,7 @@ class Product extends BaseProduct implements VendorsAwareInterface
 }
 ```
 
-6. Add the vendor select box to the product form edit page. So, you need to create "templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig"
+6. Add the vendor select box to the product form edit page. So, you need to run `mkdir -p templates/bundles/SyliusAdminBundle/Product/Tab` then `cp vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/views/Product/Tab/_details.html.twig templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig` and then add the form widget:
 
 ```twig
 {# ... #}
