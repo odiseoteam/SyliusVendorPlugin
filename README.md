@@ -123,7 +123,7 @@ class Product extends BaseProduct implements VendorsAwareInterface
 
 7. Create logo folder
 
-    `mkdir public/media/vendor-logo -p` and insert .gitkeep file.
+`mkdir public/media/vendor-logo -p` and insert .gitkeep file.
 
 8. Update your schema and/or migrations.
 
