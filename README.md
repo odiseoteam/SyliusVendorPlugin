@@ -48,8 +48,8 @@ You can see this plugin in action in our Sylius Demo application.
 
 return [
     // ...
-    Odiseo\SyliusVendorPlugin\OdiseoSyliusVendorPlugin::class => ['all' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
+    Odiseo\SyliusVendorPlugin\OdiseoSyliusVendorPlugin::class => ['all' => true],
     // ...
 ];
 ```
@@ -131,7 +131,7 @@ class Product extends BaseProduct implements VendorsAwareInterface
 
 7. Create logo folder: run `mkdir public/media/vendor-logo -p` and insert a .gitkeep file in that folder
 
-8. Finish the installation updating the database schema and installing assets:
+8. Finish the installation updating the database schema and installing assets
    
 ```
 php bin/console doctrine:schema:update --force
