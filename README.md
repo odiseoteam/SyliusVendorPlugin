@@ -35,6 +35,16 @@ Now supporting Sylius 1.4 with Symfony 4 + Flex structure.
 1. Run `composer require odiseoteam/sylius-vendor-plugin`.
 
 2. Add the plugin to the bundles.php but add it before SyliusResourceBundle.
+
+```php
+<?php
+
+return [
+    // ...
+    Odiseo\SyliusVendorPlugin\OdiseoSyliusVendorPlugin::class => ['all' => true],
+    // ...
+];
+```
  
 3. Import the plugin configurations. For example on services.yaml:
  
@@ -43,7 +53,7 @@ imports:
     - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yml" }
 ```
 
-5. Add the shop and admin routes:
+4. Add the shop and admin routes:
 
 ```yml
 odiseo_sylius_vendor_admin:
@@ -57,6 +67,52 @@ odiseo_sylius_vendor_shop:
         _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
 ```
 
+5. Include traits
+
+```php
+<?php
+// src/Entity/Channel/Channel.php
+
+// ...
+use Odiseo\SyliusVendorPlugin\Model\VendorsAwareInterface;
+use Odiseo\SyliusVendorPlugin\Model\VendorsTrait;
+use Sylius\Component\Core\Model\Channel as BaseChannel;
+// ...
+
+/**
+ * @MappedSuperclass
+ * @Table(name="sylius_channel")
+ */
+class Channel extends BaseChannel implements VendorsAwareInterface
+{
+    use VendorsTrait;
+
+    // ...
+}
+```
+
+```php
+<?php
+// src/Entity/Product/Product.php
+
+// ...
+use Odiseo\SyliusVendorPlugin\Model\VendorsAwareInterface;
+use Odiseo\SyliusVendorPlugin\Model\VendorsTrait;
+use Sylius\Component\Core\Model\Product as BaseProduct;
+// ...
+
+/**
+ * @MappedSuperclass
+ * @Table(name="sylius_product")
+ */
+class Product extends BaseProduct implements VendorsAwareInterface
+{
+    use VendorsTrait;
+
+    // ...
+}
+```
+
 6. Add the vendor select box to the product form edit page. So, you need to create "templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig"
 
 ```twig
@@ -65,7 +121,11 @@ odiseo_sylius_vendor_shop:
 {# ... #}
 ```
 
-7. Update your schema and/or migrations.
+7. Create logo folder
+
+Run `mkdir public/media/vendor-logo -p` and insert .gitkeep file.
+
+8. Update your schema and/or migrations.
 
 ## Fixtures
 
