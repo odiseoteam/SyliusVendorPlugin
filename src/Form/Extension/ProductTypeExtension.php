@@ -24,7 +24,7 @@ class ProductTypeExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getExtendedType(): string
+    public function getExtendedTypes(): string
     {
         return ProductType::class;
     }
