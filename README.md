@@ -30,11 +30,18 @@ Now supporting Sylius 1.4 with Symfony 4 + Flex structure.
 
 <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_1.png" alt="Vendors admin">
 
+## Demo
+
+You can see this plugin in action in our Sylius Demo application.
+
+- Frontend: [sylius-demo.odiseo.com.ar](https://sylius-demo.odiseo.com.ar). 
+- Administration: [sylius-demo.odiseo.com.ar/admin](https://sylius-demo.odiseo.com.ar/admin) with `odiseo: odiseo` credentials.
+
 ## Installation
 
-1. Run `composer require odiseoteam/sylius-vendor-plugin`.
+1. Run `composer require odiseoteam/sylius-vendor-plugin`
 
-2. Add the plugin to the bundles.php but add it before SyliusResourceBundle.
+2. Enable the plugin in bundles.php
 
 ```php
 <?php
@@ -42,18 +49,19 @@ Now supporting Sylius 1.4 with Symfony 4 + Flex structure.
 return [
     // ...
     Odiseo\SyliusVendorPlugin\OdiseoSyliusVendorPlugin::class => ['all' => true],
+    Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     // ...
 ];
 ```
  
-3. Import the plugin configurations. For example on services.yaml:
+3. Import the plugin configurations
  
 ```yml
 imports:
     - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yml" }
 ```
 
-4. Add the shop and admin routes:
+4. Add the shop and admin routes
 
 ```yml
 odiseo_sylius_vendor_admin:
@@ -113,7 +121,7 @@ class Product extends BaseProduct implements VendorsAwareInterface
 }
 ```
 
-6. Add the vendor select box to the product form edit page. So, you need to run `mkdir -p templates/bundles/SyliusAdminBundle/Product/Tab` then `cp vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/views/Product/Tab/_details.html.twig templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig` and then add the form widget:
+6. Add the vendor select box to the product form edit page. So, you need to run `mkdir -p templates/bundles/SyliusAdminBundle/Product/Tab` then `cp vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/views/Product/Tab/_details.html.twig templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig` and then add the form widget
 
 ```twig
 {# ... #}
@@ -121,9 +129,14 @@ class Product extends BaseProduct implements VendorsAwareInterface
 {# ... #}
 ```
 
-7. Create logo folder: run `mkdir public/media/vendor-logo -p` and insert a .gitkeep file in that folder.
+7. Create logo folder: run `mkdir public/media/vendor-logo -p` and insert a .gitkeep file in that folder
 
-8. Update your schema and/or migrations.
+8. Finish the installation updating the database schema and installing assets:
+   
+```
+php bin/console doctrine:schema:update --force
+php bin/console assets:install
+```
 
 ## Fixtures
 
