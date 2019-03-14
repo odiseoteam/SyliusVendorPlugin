@@ -1,6 +1,6 @@
 <h1 align="center">
     <a href="https://odiseo.com.ar/" target="_blank" title="Odiseo">
-        <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/logo_odiseo.png" alt="Odiseo" width="200px" />
+        <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/logo_odiseo.png" alt="Odiseo" width="300px" />
     </a>
     <br />
     Odiseo Sylius Vendor Plugin
