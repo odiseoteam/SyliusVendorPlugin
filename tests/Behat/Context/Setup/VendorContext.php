@@ -44,6 +44,17 @@ final class VendorContext implements Context
     }
 
     /**
+     * @param $quantity
+     * @Given the store has( also) :quantity vendors
+     */
+    public function theStoreHasVendors($quantity)
+    {
+        for ($i = 1;$i <= $quantity;$i++) {
+            $this->saveVendor($this->createVendor('Test'.$i));
+        }
+    }
+
+    /**
      * @param string $name
      *
      * @return VendorInterface
@@ -54,10 +65,10 @@ final class VendorContext implements Context
         $vendor = $this->vendorFactory->createNew();
 
         $vendor->setName($name);
-        $vendor->setDescription('This is a test');
         $vendor->setEmail('test@odiseo.com.ar');
         $vendor->setCurrentLocale('en_US');
         $vendor->setFallbackLocale('en_US');
+        $vendor->setDescription('This is a test');
 
         $uploadedFile = new UploadedFile(__DIR__.'/../../Resources/images/logo_odiseo.png', 'logo_odiseo.png');
         $vendor->setLogoFile($uploadedFile);

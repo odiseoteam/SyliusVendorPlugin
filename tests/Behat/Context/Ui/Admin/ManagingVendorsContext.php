@@ -53,6 +53,15 @@ final class ManagingVendorsContext implements Context
     }
 
     /**
+     * @When I go to the vendors page
+     * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
+     */
+    public function iGoToTheVendorsPage(): void
+    {
+        $this->indexPage->open();
+    }
+
+    /**
      * @Given I want to add a new vendor
      * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
      */
@@ -63,6 +72,7 @@ final class ManagingVendorsContext implements Context
 
     /**
      * @When I fill the name with :vendorName
+     * @When I rename it to :vendorName
      * @param $vendorName
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
@@ -128,6 +138,33 @@ final class ManagingVendorsContext implements Context
     public function iSaveMyChanges()
     {
         $this->updatePage->saveChanges();
+    }
+
+    /**
+     * @When I want to browse vendors
+     * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
+     */
+    public function iWantToBrowseVendors()
+    {
+        $this->indexPage->open();
+    }
+
+    /**
+     * @Then I should see :quantity vendors in the list
+     * @param $quantity
+     */
+    public function iShouldSeeVendorsInTheList(int $quantity = 1): void
+    {
+        Assert::same($this->indexPage->countItems(), (int) $quantity);
+    }
+
+    /**
+     * @When I delete the vendor :name
+     * @param $name
+     */
+    public function iDeleteTheVendor($name): void
+    {
+        $this->indexPage->deleteVendor($name);
     }
 
     /**
