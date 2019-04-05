@@ -5,9 +5,9 @@ Feature: Browsing vendors
     I want to be able to browse vendors
 
     Background:
-        Given the store has "5" vendors
-        And I am logged in as an administrator
+        Given I am logged in as an administrator
         And the store operates on a single channel in "United States"
+        And the store has 5 vendors
 
     @ui
     Scenario: Browsing defined vendors

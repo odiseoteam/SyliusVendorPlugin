@@ -8,27 +8,41 @@ use Behat\Behat\Context\Context;
 use Doctrine\ORM\EntityManagerInterface;
 use Odiseo\SyliusVendorPlugin\Doctrine\ORM\VendorRepositoryInterface;
 use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
+use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
+use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class VendorContext implements Context
 {
+    /** @var SharedStorageInterface */
+    private $sharedStorage;
+
     /** @var FactoryInterface */
     private $vendorFactory;
 
     /** @var VendorRepositoryInterface */
     private $vendorRepository;
 
+    /** @var ProductRepositoryInterface */
+    private $productRepository;
+
     /** @var EntityManagerInterface */
     private $entityManager;
 
     public function __construct(
+        SharedStorageInterface $sharedStorage,
         FactoryInterface $vendorFactory,
         VendorRepositoryInterface $vendorRepository,
+        ProductRepositoryInterface $productRepository,
         EntityManagerInterface $entityManager
     ) {
+        $this->sharedStorage = $sharedStorage;
         $this->vendorFactory = $vendorFactory;
         $this->vendorRepository = $vendorRepository;
+        $this->productRepository = $productRepository;
         $this->entityManager = $entityManager;
     }
 
@@ -55,12 +69,35 @@ final class VendorContext implements Context
     }
 
     /**
+     * @Given this vendor has these products associated with it
+     */
+    public function thisVendorHasTheseProductsAssociatedWithIt()
+    {
+        /** @var VendorInterface $vendor */
+        $vendor = $this->vendorRepository->findOneBy([
+            'name' => 'Test'
+        ]);
+
+        $products = $this->productRepository->findAll();
+
+        /** @var ProductInterface $product */
+        foreach ($products as $product) {
+            $vendor->addProduct($product);
+        }
+
+        $this->entityManager->flush();
+    }
+
+    /**
      * @param string $name
      *
      * @return VendorInterface
      */
     private function createVendor(string $name): VendorInterface
     {
+        /** @var ChannelInterface $channel */
+        $channel = $this->sharedStorage->get('channel');
+
         /** @var VendorInterface $vendor */
         $vendor = $this->vendorFactory->createNew();
 
@@ -69,6 +106,8 @@ final class VendorContext implements Context
         $vendor->setCurrentLocale('en_US');
         $vendor->setFallbackLocale('en_US');
         $vendor->setDescription('This is a test');
+
+        $vendor->addChannel($channel);
 
         $uploadedFile = new UploadedFile(__DIR__.'/../../Resources/images/logo_odiseo.png', 'logo_odiseo.png');
         $vendor->setLogoFile($uploadedFile);

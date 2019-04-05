@@ -3,8 +3,10 @@ services:
         class: Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Setup\VendorContext
         public: true
         arguments:
+            - '@sylius.behat.shared_storage'
             - '@odiseo_sylius_vendor.factory.vendor'
             - '@odiseo_sylius_vendor.repository.vendor'
+            - '@sylius.repository.product'
             - '@odiseo_sylius_vendor.manager.vendor'
         tags:
             - { name: 'fob.context_service' }
@@ -26,5 +28,14 @@ services:
             - '@odiseo_sylius_vendor.page.admin.vendor.index_page'
             - '@odiseo_sylius_vendor.page.admin.vendor.create_page'
             - '@odiseo_sylius_vendor.page.admin.vendor.update_page'
+        tags:
+            - { name: 'fob.context_service' }
+
+    odiseo_sylius_vendor.context.ui.shop.vendor:
+        class: Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Ui\Shop\VendorContext
+        public: true
+        arguments:
+            - '@odiseo_sylius_vendor.page.shop.vendor.index_page'
+            - '@odiseo_sylius_vendor.page.shop.vendor.show_page'
         tags:
             - { name: 'fob.context_service' }
