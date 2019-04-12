@@ -16,7 +16,7 @@
 </h1>
 
 <div class="ui grid">
-    <div class="doubling six column row">
+    <div class="doubling six column row" id="odiseo-vendors">
         {% for vendor in vendors %}
         <div class="column center aligned brand">
             <a href="{{ path('odiseo_sylius_vendor_shop_vendor_show',{'slug': vendor.slug } ) }}" class="ui card">
