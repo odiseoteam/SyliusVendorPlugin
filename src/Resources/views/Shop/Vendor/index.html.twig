@@ -15,20 +15,22 @@
     {{ 'odiseo_sylius_vendor.ui.vendors'|trans }}
 </h1>
 
-<div class="two mobile five column ui stretched grid" id="odiseo-vendors">
-    {% for vendor in vendors %}
-    <div class="column center aligned brand">
-        <a href="{{ path('odiseo_sylius_vendor_shop_vendor_show',{'slug': vendor.slug } ) }}" class="ui card">
-            {% if vendor.logoName %}
-            <div class="image">
-                <img src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_logo') }}" alt="{{ vendor.name }}">
-            </div>
-            {% endif %}
-            <div class="content">
-                <div class="header">{{ vendor.name }}</div>
-            </div>
-        </a>
+<div class="ui grid">
+    <div class="doubling six column row">
+        {% for vendor in vendors %}
+        <div class="column center aligned brand">
+            <a href="{{ path('odiseo_sylius_vendor_shop_vendor_show',{'slug': vendor.slug } ) }}" class="ui card">
+                {% if vendor.logoName %}
+                <div class="image">
+                    <img src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_logo') }}" alt="{{ vendor.name }}">
+                </div>
+                {% endif %}
+                <div class="content">
+                    <div class="description">{{ vendor.name }}</div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
