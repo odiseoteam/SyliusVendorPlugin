@@ -12,3 +12,11 @@ parameters:
 sylius_shop:
     product_grid:
         include_all_descendants: true
+
+sylius_fixtures:
+    suites:
+        default:
+            fixtures:
+                vendor:
+                    options:
+                        vendors_per_channel: 12

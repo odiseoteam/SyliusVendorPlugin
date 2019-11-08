@@ -6,8 +6,8 @@ namespace Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use Doctrine\ORM\EntityManagerInterface;
-use Odiseo\SyliusVendorPlugin\Doctrine\ORM\VendorRepositoryInterface;
-use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
+use Odiseo\SyliusVendorPlugin\Repository\VendorRepositoryInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;

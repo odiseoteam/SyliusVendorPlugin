@@ -1,0 +1,35 @@
+odiseo_sylius_vendor_plugin_shop_vendor_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor:indexAction
+        _sylius:
+            template: '@OdiseoSyliusVendorPlugin/Shop/Vendor/index.html.twig'
+            repository:
+                method: findByChannel
+                arguments:
+                    - "expr:service('sylius.context.channel').getChannel()"
+
+odiseo_sylius_vendor_plugin_shop_vendor_show:
+    path: /{slug}
+    methods: [GET]
+    defaults:
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor:showAction
+        _sylius:
+            template: '@OdiseoSyliusVendorPlugin/Shop/Vendor/show.html.twig'
+            repository:
+                method: findOneBySlug
+                arguments:
+                    - $slug
+
+odiseo_sylius_vendor_plugin_shop_partial_vendor_by_channel:
+    path: /by-channel
+    methods: [GET]
+    defaults:
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor:indexAction
+        _sylius:
+            template: $template
+            repository:
+                method: findByChannel
+                arguments:
+                    - "expr:service('sylius.context.channel').getChannel()"

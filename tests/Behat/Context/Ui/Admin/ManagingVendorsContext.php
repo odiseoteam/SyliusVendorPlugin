@@ -6,7 +6,7 @@ namespace Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
-use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Admin\Vendor\CreatePageInterface;

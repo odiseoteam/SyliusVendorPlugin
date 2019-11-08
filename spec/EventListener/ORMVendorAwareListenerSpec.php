@@ -5,7 +5,7 @@ namespace spec\Odiseo\SyliusVendorPlugin\EventListener;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Odiseo\SyliusVendorPlugin\EventListener\ORMVendorAwareListener;
-use Odiseo\SyliusVendorPlugin\Model\Vendor;
+use Odiseo\SyliusVendorPlugin\Entity\Vendor;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Component\Core\Model\Channel;

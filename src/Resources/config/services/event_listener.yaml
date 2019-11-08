@@ -1,0 +1,13 @@
+services:
+    odiseo_sylius_vendor_plugin.event_listener.admin.menu_builder:
+        class: Odiseo\SyliusVendorPlugin\Menu\AdminMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+
+    odiseo_sylius_vendor_plugin.event_listener.vendor_aware_listener:
+        class: Odiseo\SyliusVendorPlugin\Mapping\VendorAwareListener
+        arguments:
+            - '@sylius.resource_registry'
+            - '%odiseo_sylius_vendor_plugin.model.vendor.class%'
+        tags:
+            - { name: doctrine.event_subscriber, connection: default, priority: 99 }

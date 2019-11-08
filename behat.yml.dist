@@ -1,6 +1,6 @@
 imports:
     - vendor/sylius/sylius/src/Sylius/Behat/Resources/config/suites.yml
-    - tests/Behat/Resources/suites.yml
+    - tests/Behat/Resources/suites.yaml
 
 default:
     extensions:
@@ -30,6 +30,8 @@ default:
                                     - "start-fullscreen"
                                     - "start-maximized"
                                     - "no-sandbox"
+                            extra_capabilities:
+                                unexpectedAlertBehaviour: accept
                 firefox:
                     selenium2:
                         browser: firefox

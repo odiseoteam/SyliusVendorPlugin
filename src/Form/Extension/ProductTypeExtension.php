@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Odiseo\SyliusVendorPlugin\Form\Extension;
 
 use Odiseo\SyliusVendorPlugin\Form\Type\VendorChoiceType;
@@ -7,25 +9,24 @@ use Sylius\Bundle\ProductBundle\Form\Type\ProductType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class ProductTypeExtension extends AbstractTypeExtension
+final class ProductTypeExtension extends AbstractTypeExtension
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    /**
+     * {@inheritdoc}
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('vendors', VendorChoiceType::class, [
-            'multiple' => true,
-            'expanded' => false,
-            'attr' => [
-                'class' => 'fluid search selection'
-            ],
-            'label' => 'odiseo_sylius_vendor.form.product.select_vendors',
+        $builder->add('vendor', VendorChoiceType::class, [
+            'label' => 'odiseo_sylius_vendor_plugin.form.product.select_vendor',
+            'required' => false
         ]);
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function getExtendedType(): string
+    public static function getExtendedTypes(): iterable
     {
-        return ProductType::class;
+        return [ProductType::class];
     }
 }

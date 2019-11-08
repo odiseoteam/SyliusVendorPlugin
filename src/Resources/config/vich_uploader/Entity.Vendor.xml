@@ -1,0 +1,3 @@
+<vich_uploader class="Odiseo\SyliusVendorPlugin\Entity\Vendor">
+    <field mapping="vendor_logo" name="logoFile" filename_property="logo_name"/>
+</vich_uploader>

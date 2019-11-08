@@ -1,0 +1,3 @@
+imports:
+    - { resource: pages/admin.yaml }
+    - { resource: pages/shop.yaml }

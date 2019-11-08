@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Odiseo\SyliusVendorPlugin\Form\Type;
 
-use Odiseo\SyliusVendorPlugin\Doctrine\ORM\VendorRepositoryInterface;
-use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
+use Odiseo\SyliusVendorPlugin\Repository\VendorRepositoryInterface;
 use Symfony\Bridge\Doctrine\Form\DataTransformer\CollectionToArrayTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -16,11 +18,6 @@ final class VendorChoiceType extends AbstractType
     /** @var VendorRepositoryInterface */
     private $vendorRepository;
 
-    /**
-     * VendorChoiceType constructor.
-     *
-     * @param VendorRepositoryInterface $vendorRepository
-     */
     public function __construct(VendorRepositoryInterface $vendorRepository)
     {
         $this->vendorRepository = $vendorRepository;
@@ -39,7 +36,7 @@ final class VendorChoiceType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $criteria = [];
         $orderBy = ['name' => 'ASC'];

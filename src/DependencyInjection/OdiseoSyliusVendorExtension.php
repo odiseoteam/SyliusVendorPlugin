@@ -17,16 +17,9 @@ final class OdiseoSyliusVendorExtension extends AbstractResourceExtension
     public function load(array $config, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
+
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        $this->registerResources('odiseo_sylius_vendor', $config['driver'], $config['resources'], $container);
-
-        $configFiles = [
-            'services.yml',
-        ];
-
-        foreach ($configFiles as $configFile) {
-            $loader->load($configFile);
-        }
+        $loader->load('services.yaml');
     }
 }

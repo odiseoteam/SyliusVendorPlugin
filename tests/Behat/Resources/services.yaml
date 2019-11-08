@@ -1,0 +1,3 @@
+imports:
+    - { resource: services/contexts.yaml }
+    - { resource: services/pages.yaml }

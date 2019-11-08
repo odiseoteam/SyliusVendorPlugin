@@ -3,44 +3,44 @@
 {% block title %}{{ vendor.name }} - {{ parent() }}{% endblock %}
 
 {% block content %}
-<div class="ui breadcrumb">
-    <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
-    <div class="divider"> / </div>
-    <a href="{{ path('odiseo_sylius_vendor_shop_vendor_index') }}" class="section">
-        {{ 'odiseo_sylius_vendor.ui.vendors'|trans }}
-    </a>
-    <div class="divider"> / </div>
-    <div class="active section">
-        {{ vendor.name }}
-    </div>
-</div>
-
-<div class="ui hidden divider"></div>
-
-<div class="ui stackable grid">
-    <div class="sixteen wide tablet seven wide computer column">
-        <div class="ui brandInfo">
-            {% if vendor.logoName %}
-            <img class="ui medium circular image" src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_logo') }}">
-            <div class="ui hidden divider"></div>
-            {% endif %}
-
-            <h1 class="ui header">
-                <span class="odiseo-vendor-name">{{ vendor.name }}</span>
-                <div class="sub header">
-                    {{ vendor.description }}
-                </div>
-            </h1>
+    <div class="ui breadcrumb">
+        <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
+        <div class="divider"> / </div>
+        <a href="{{ path('odiseo_sylius_vendor_plugin_shop_vendor_index') }}" class="section">
+            {{ 'odiseo_sylius_vendor_plugin.ui.vendors'|trans }}
+        </a>
+        <div class="divider"> / </div>
+        <div class="active section">
+            {{ vendor.name }}
         </div>
     </div>
-    <div class="sixteen wide tablet nine wide computer column">
-        <div class="two column stretched ui grid">
-            {% for product in vendor.products %}
-                <div class="column">
-                    {% include '@SyliusShop/Product/_box.html.twig' %}
-                </div>
-            {% endfor %}
+
+    <div class="ui hidden divider"></div>
+
+    <div class="ui stackable grid">
+        <div class="sixteen wide tablet seven wide computer column">
+            <div class="ui brandInfo">
+                {% if vendor.logoName %}
+                    <img class="ui medium circular image" src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_plugin_logo') }}">
+                    <div class="ui hidden divider"></div>
+                {% endif %}
+
+                <h1 class="ui header">
+                    <span class="odiseo-vendor-name">{{ vendor.name }}</span>
+                    <div class="sub header">
+                        {{ vendor.description }}
+                    </div>
+                </h1>
+            </div>
+        </div>
+        <div class="sixteen wide tablet nine wide computer column">
+            <div class="two column stretched ui grid">
+                {% for product in vendor.products %}
+                    <div class="column">
+                        {% include '@SyliusShop/Product/_box.html.twig' %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

@@ -1,3 +1,0 @@
-imports:
-    - suites/ui/managing_vendors.yml
-    - suites/ui/shop_vendors.yml

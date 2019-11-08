@@ -1,0 +1,38 @@
+imports:
+    - { resource: grids.yaml }
+    - { resource: resources.yaml }
+
+knp_gaufrette:
+    stream_wrapper: ~
+    adapters:
+        vendor_logo:
+            local:
+                directory: "%sylius_core.public_dir%/media/vendor-logo"
+                create: true
+    filesystems:
+        vendor_logo_fs:
+            adapter: vendor_logo
+
+vich_uploader:
+   db_driver: orm # or mongodb or propel or phpcr
+   storage:   gaufrette
+
+   mappings:
+        vendor_logo:
+            uri_prefix:         /vendor-logo
+            upload_destination: vendor_logo_fs
+            namer:              vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+liip_imagine:
+    loaders:
+        vendor_logo:
+            filesystem:
+                data_root: "%kernel.project_dir%/public/media/vendor-logo"
+    filter_sets:
+        odiseo_sylius_vendor_plugin_logo:
+            data_loader: vendor_logo
+            filters:
+                thumbnail: { size: [300, 300], mode: outbound }

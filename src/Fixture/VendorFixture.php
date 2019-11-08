@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Odiseo\SyliusVendorPlugin\Fixture;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
-use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
@@ -17,50 +19,29 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class VendorFixture extends AbstractFixture
+final class VendorFixture extends AbstractFixture
 {
-    /**
-     * @var ObjectManager
-     */
-    protected $objectManager;
+    /** @var ObjectManager */
+    private $objectManager;
 
-    /**
-     * @var FactoryInterface
-     */
-    protected $vendorFactory;
+    /** @var FactoryInterface */
+    private $vendorFactory;
 
-    /**
-     * @var RepositoryInterface
-     */
-    protected $vendorRepository;
+    /**  @var RepositoryInterface */
+    private $vendorRepository;
 
-    /**
-     * @var ChannelRepositoryInterface
-     */
-    protected $channelRepository;
+    /** @var ChannelRepositoryInterface */
+    private $channelRepository;
 
-    /**
-     * @var RepositoryInterface
-     */
-    protected $localeRepository;
+    /** @var RepositoryInterface */
+    private $localeRepository;
 
-    /**
-     * @var \Faker\Generator
-     */
-    protected $faker;
+    /** @var \Faker\Generator */
+    private $faker;
 
-    /**
-     * @var OptionsResolver
-     */
-    protected $optionsResolver;
+    /** @var OptionsResolver */
+    private $optionsResolver;
 
-    /**
-     * @param ObjectManager $objectManager
-     * @param FactoryInterface $vendorFactory
-     * @param RepositoryInterface $vendorRepository
-     * @param ChannelRepositoryInterface $channelRepository
-     * @param RepositoryInterface $localeRepository
-     */
     public function __construct(
         ObjectManager $objectManager,
         FactoryInterface $vendorFactory,
@@ -129,9 +110,9 @@ class VendorFixture extends AbstractFixture
     }
 
     /**
-     * @return array
+     * @return \Generator
      */
-    private function getLocales()
+    private function getLocales(): \Generator
     {
         /** @var LocaleInterface[] $locales */
         $locales = $this->localeRepository->findAll();

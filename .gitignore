@@ -4,6 +4,8 @@
 /vendor/
 /node_modules/
 /composer.lock
+/.php_cs.cache
+/.phpunit.result.cache
 
 /etc/build/*
 !/etc/build/.gitignore

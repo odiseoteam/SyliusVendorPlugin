@@ -28,7 +28,6 @@ return [
     Sylius\Bundle\UiBundle\SyliusUiBundle::class => ['all' => true],
     Sylius\Bundle\ReviewBundle\SyliusReviewBundle::class => ['all' => true],
     Sylius\Bundle\CoreBundle\SyliusCoreBundle::class => ['all' => true],
-    Odiseo\SyliusVendorPlugin\OdiseoSyliusVendorPlugin::class => ['all' => true],
     Sylius\Bundle\ResourceBundle\SyliusResourceBundle::class => ['all' => true],
     Sylius\Bundle\GridBundle\SyliusGridBundle::class => ['all' => true],
     winzou\Bundle\StateMachineBundle\winzouStateMachineBundle::class => ['all' => true],
@@ -58,4 +57,5 @@ return [
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true, 'test_cached' => true],
     FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle::class => ['test' => true, 'test_cached' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
+    Odiseo\SyliusVendorPlugin\OdiseoSyliusVendorPlugin::class => ['all' => true],
 ];

@@ -82,8 +82,8 @@ odiseo_sylius_vendor_shop:
 // src/Entity/Channel/Channel.php
 
 // ...
-use Odiseo\SyliusVendorPlugin\Model\VendorsAwareInterface;
-use Odiseo\SyliusVendorPlugin\Model\VendorsTrait;
+use Odiseo\SyliusVendorPlugin\Entity\VendorsAwareInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorsTrait;
 use Sylius\Component\Core\Model\Channel as BaseChannel;
 // ...
 
@@ -104,8 +104,8 @@ class Channel extends BaseChannel implements VendorsAwareInterface
 // src/Entity/Product/Product.php
 
 // ...
-use Odiseo\SyliusVendorPlugin\Model\VendorsAwareInterface;
-use Odiseo\SyliusVendorPlugin\Model\VendorsTrait;
+use Odiseo\SyliusVendorPlugin\Entity\VendorsAwareInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorsTrait;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 // ...
 

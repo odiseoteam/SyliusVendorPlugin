@@ -2,9 +2,9 @@
 
 namespace spec\Odiseo\SyliusVendorPlugin\Model;
 
-use Odiseo\SyliusVendorPlugin\Model\Vendor;
-use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
-use Odiseo\SyliusVendorPlugin\Model\VendorTranslationInterface;
+use Odiseo\SyliusVendorPlugin\Entity\Vendor;
+use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorTranslationInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;

@@ -2,8 +2,8 @@
 
 namespace spec\Odiseo\SyliusVendorPlugin\Model;
 
-use Odiseo\SyliusVendorPlugin\Model\VendorTranslation;
-use Odiseo\SyliusVendorPlugin\Model\VendorTranslationInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorTranslation;
+use Odiseo\SyliusVendorPlugin\Entity\VendorTranslationInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Resource\Model\AbstractTranslation;
 use Sylius\Component\Resource\Model\ResourceInterface;

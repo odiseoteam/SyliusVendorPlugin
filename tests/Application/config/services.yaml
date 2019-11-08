@@ -4,4 +4,4 @@ parameters:
     locale: en_US
 
 imports:
-    - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yml" }
+    - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yaml" }

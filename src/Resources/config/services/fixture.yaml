@@ -1,0 +1,11 @@
+services:
+    odiseo_sylius_vendor_plugin.fixture.vendor:
+        class: Odiseo\SyliusVendorPlugin\Fixture\VendorFixture
+        arguments:
+            - '@odiseo_sylius_vendor_plugin.manager.vendor'
+            - '@odiseo_sylius_vendor_plugin.factory.vendor'
+            - '@odiseo_sylius_vendor_plugin.repository.vendor'
+            - '@sylius.repository.channel'
+            - '@sylius.repository.locale'
+        tags:
+            - { name: sylius_fixtures.fixture }

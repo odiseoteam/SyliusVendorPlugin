@@ -1,0 +1,16 @@
+default:
+    suites:
+        ui_shop_vendors:
+            contexts:
+                - sylius.behat.context.hook.doctrine_orm
+
+                - odiseo_sylius_vendor_plugin.context.transform.vendor
+                - sylius.behat.context.transform.shared_storage
+
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.product
+                - odiseo_sylius_vendor_plugin.context.setup.vendor
+
+                - odiseo_sylius_vendor_plugin.context.ui.shop.vendor
+            filters:
+                tags: "@shop_vendors && @ui"

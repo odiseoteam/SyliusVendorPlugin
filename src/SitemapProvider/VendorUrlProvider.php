@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Odiseo\SyliusVendorPlugin\SitemapProvider;
 
 use Doctrine\Common\Collections\Collection;
-use Odiseo\SyliusVendorPlugin\Doctrine\ORM\VendorRepositoryInterface;
-use Odiseo\SyliusVendorPlugin\Model\VendorInterface;
-use Odiseo\SyliusVendorPlugin\Model\VendorTranslation;
+use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorTranslation;
+use Odiseo\SyliusVendorPlugin\Repository\VendorRepositoryInterface;
 use SitemapPlugin\Factory\SitemapUrlFactoryInterface;
 use SitemapPlugin\Model\ChangeFrequency;
 use SitemapPlugin\Model\SitemapUrlInterface;
@@ -50,11 +50,17 @@ final class VendorUrlProvider implements UrlProviderInterface
         $this->channelContext = $channelContext;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName(): string
     {
         return 'vendors';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function generate(): iterable
     {
         $urls = [];
@@ -66,6 +72,10 @@ final class VendorUrlProvider implements UrlProviderInterface
         return $urls;
     }
 
+    /**
+     * @param VendorInterface $vendor
+     * @return Collection
+     */
     private function getTranslations(VendorInterface $vendor): Collection
     {
         return $vendor->getTranslations()->filter(function (TranslationInterface $translation) {
@@ -73,11 +83,18 @@ final class VendorUrlProvider implements UrlProviderInterface
         });
     }
 
+    /**
+     * @param TranslationInterface $translation
+     * @return bool
+     */
     private function localeInLocaleCodes(TranslationInterface $translation): bool
     {
         return in_array($translation->getLocale(), $this->getLocaleCodes());
     }
 
+    /**
+     * @return iterable
+     */
     private function getVendors(): iterable
     {
         /** @var ChannelInterface $channel */
@@ -86,6 +103,9 @@ final class VendorUrlProvider implements UrlProviderInterface
         return $this->vendorRepository->findByChannel($channel);
     }
 
+    /**
+     * @return array
+     */
     private function getLocaleCodes(): array
     {
         /** @var ChannelInterface $channel */
@@ -96,6 +116,10 @@ final class VendorUrlProvider implements UrlProviderInterface
         })->toArray();
     }
 
+    /**
+     * @param VendorInterface $vendor
+     * @return SitemapUrlInterface
+     */
     private function createVendorUrl(VendorInterface $vendor): SitemapUrlInterface
     {
         $vendorUrl = $this->sitemapUrlFactory->createNew();

@@ -1,0 +1,20 @@
+odiseo_sylius_vendor_plugin:
+    vendor:
+        slug:
+            unique: There is an existing vendor with this slug.
+            not_blank: Slug cannot be blank.
+            min_length: Slug must be at least {{ limit }} characters long.
+            max_length: Slug can not be longer than {{ limit }} characters.
+        name:
+            not_blank: Name cannot be blank.
+            min_length: Name must be at least {{ limit }} characters long.
+            max_length: Name can not be longer than {{ limit }} characters.
+        email:
+            not_blank: Email cannot be blank.
+            min_length: Email must be at least {{ limit }} characters long.
+            max_length: Email can not be longer than {{ limit }} characters.
+        logo_file:
+            not_blank: Logo cannot be blank.
+    vendor_translation:
+        description:
+            not_blank: Description cannot be blank.
