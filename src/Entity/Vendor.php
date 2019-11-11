@@ -67,7 +67,7 @@ class Vendor implements VendorInterface
     /**
      * {@inheritdoc}
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -83,7 +83,7 @@ class Vendor implements VendorInterface
     /**
      * {@inheritdoc}
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         /** @var VendorTranslationInterface $vendorTranslation */
         $vendorTranslation = $this->getTranslation();
@@ -121,7 +121,7 @@ class Vendor implements VendorInterface
     /**
      * {@inheritdoc}
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }

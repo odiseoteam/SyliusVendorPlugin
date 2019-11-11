@@ -8,9 +8,9 @@ odiseo_sylius_vendor_plugin_admin_vendor:
         grid: odiseo_sylius_vendor_plugin_vendor
         permission: true
         vars:
-             all:
-                 templates:
-                     form: '@OdiseoSyliusVendorPlugin/Admin/Vendor/_form.html.twig'
+            all:
+                templates:
+                    form: '@OdiseoSyliusVendorPlugin/Admin/Vendor/_form.html.twig'
             index:
                 icon: trademark
     type: sylius.resource

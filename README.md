@@ -1,9 +1,7 @@
 <h1 align="center">
     <a href="https://odiseo.com.ar/" target="_blank" title="Odiseo">
-        <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/logo_odiseo.png" alt="Odiseo" width="300px" />
+        <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/sylius-vendor-plugin.png" alt="Sylius Vendor Plugin" />
     </a>
-    <br />
-    Odiseo Sylius Vendor Plugin
     <br />
     <a href="https://packagist.org/packages/odiseoteam/sylius-vendor-plugin" title="License" target="_blank">
         <img src="https://img.shields.io/packagist/l/odiseoteam/sylius-vendor-plugin.svg" />
@@ -24,17 +22,30 @@
 
 ## Description
 
-This plugin add vendors (Brands) to the Sylius products. The vendors are fully customizable by the admin.
+This is a Sylius Plugin that add vendors (brands) to your store. The vendors are fully customizable by the admin.
 
-Now supporting Sylius 1.4 with Symfony 4 + Flex structure.
+Some of that features are:
 
-<img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_1.png" alt="Vendors admin">
+* Vendors by Channel: You can select vendors for different stores.
+
+* Vendors with translations: Vendors are translatable.
+
+* Templates: Views into shop for index and show.
+
+* Sitemap: Include with sitemap for your vendors
+
+Now supporting Sylius 1.6 with Symfony 4 + Flex structure.
+
+<img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_1.png" alt="Vendors admin list">
+<img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_2.png" alt="Vendors admin product edit">
+<img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_3.png" alt="Vendors shop index">
+<img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_4.png" alt="Vendors shop show">
 
 ## Demo
 
 You can see this plugin in action in our Sylius Demo application.
 
-- Frontend: [sylius-demo.odiseo.com.ar](https://sylius-demo.odiseo.com.ar). 
+- Frontend: [sylius-demo.odiseo.com.ar](https://sylius-demo.odiseo.com.ar).
 - Administration: [sylius-demo.odiseo.com.ar/admin](https://sylius-demo.odiseo.com.ar/admin) with `odiseo: odiseo` credentials.
 
 ## Installation
@@ -50,27 +61,26 @@ return [
     // ...
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     Odiseo\SyliusVendorPlugin\OdiseoSyliusVendorPlugin::class => ['all' => true],
-    // ...
 ];
 ```
- 
+
 3. Import the plugin configurations
- 
+
 ```yml
 imports:
-    - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yml" }
+    - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yaml" }
 ```
 
 4. Add the shop and admin routes
 
 ```yml
-odiseo_sylius_vendor_admin:
-    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/admin.yml"
+odiseo_sylius_vendor_plugin_admin:
+    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/admin.yaml"
     prefix: /admin
 
-odiseo_sylius_vendor_shop:
-    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/shop.yml"
-    prefix: /{_locale}
+odiseo_sylius_vendor_plugin_shop:
+    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/shop.yaml"
+    prefix: /{_locale}/vendors
     requirements:
         _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
 ```
@@ -82,14 +92,15 @@ odiseo_sylius_vendor_shop:
 // src/Entity/Channel/Channel.php
 
 // ...
+use Doctrine\ORM\Mapping as ORM;
 use Odiseo\SyliusVendorPlugin\Entity\VendorsAwareInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorsTrait;
 use Sylius\Component\Core\Model\Channel as BaseChannel;
 // ...
 
 /**
- * @MappedSuperclass
- * @Table(name="sylius_channel")
+ * @ORM\Table(name="sylius_channel")
+ * @ORM\Entity
  */
 class Channel extends BaseChannel implements VendorsAwareInterface
 {
@@ -104,18 +115,19 @@ class Channel extends BaseChannel implements VendorsAwareInterface
 // src/Entity/Product/Product.php
 
 // ...
-use Odiseo\SyliusVendorPlugin\Entity\VendorsAwareInterface;
-use Odiseo\SyliusVendorPlugin\Entity\VendorsTrait;
+use Doctrine\ORM\Mapping as ORM;
+use Odiseo\SyliusVendorPlugin\Entity\VendorAwareInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorTrait;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 // ...
 
 /**
- * @MappedSuperclass
- * @Table(name="sylius_product")
+ * @ORM\Table(name="sylius_product")
+ * @ORM\Entity
  */
-class Product extends BaseProduct implements VendorsAwareInterface
+class Product extends BaseProduct implements VendorAwareInterface
 {
-    use VendorsTrait;
+    use VendorTrait;
 
     // ...
 }
@@ -155,7 +167,7 @@ vendor:
 ## Test the plugin
 
 You can follow the instructions to test this plugins in the proper documentation page: [Test the plugin](doc/tests.md).
-    
+
 ## Credits
 
 This plugin is maintained by <a href="https://odiseo.com.ar">Odiseo</a>. Want us to help you with this plugin or any Sylius project? Contact us on <a href="mailto:team@odiseo.com.ar">team@odiseo.com.ar</a>.

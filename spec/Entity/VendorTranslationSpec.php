@@ -1,6 +1,8 @@
 <?php
 
-namespace spec\Odiseo\SyliusVendorPlugin\Model;
+declare(strict_types=1);
+
+namespace spec\Odiseo\SyliusVendorPlugin\Entity;
 
 use Odiseo\SyliusVendorPlugin\Entity\VendorTranslation;
 use Odiseo\SyliusVendorPlugin\Entity\VendorTranslationInterface;

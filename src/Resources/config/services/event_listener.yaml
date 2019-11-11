@@ -9,5 +9,7 @@ services:
         arguments:
             - '@sylius.resource_registry'
             - '%odiseo_sylius_vendor_plugin.model.vendor.class%'
+            - '%sylius.model.product.class%'
+            - '%sylius.model.channel.class%'
         tags:
             - { name: doctrine.event_subscriber, connection: default, priority: 99 }

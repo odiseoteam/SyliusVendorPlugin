@@ -14,9 +14,9 @@ interface VendorTranslationInterface extends
     TimestampableInterface
 {
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string;
+    public function getDescription(): ?string;
 
     /**
      * @param string $description

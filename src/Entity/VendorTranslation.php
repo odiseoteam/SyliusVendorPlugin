@@ -33,7 +33,7 @@ class VendorTranslation extends AbstractTranslation implements VendorTranslation
     /**
      * {@inheritdoc}
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }

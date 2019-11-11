@@ -24,18 +24,5 @@
         <field name="updatedAt" type="datetime" column="updated_at">
             <gedmo:timestampable on="update"/>
         </field>
-
-        <many-to-many field="channels" target-entity="Sylius\Component\Channel\Model\ChannelInterface">
-            <join-table name="odiseo_vendor_channels">
-                <join-columns>
-                    <join-column name="vendor_id" referenced-column-name="id" on-delete="CASCADE"/>
-                </join-columns>
-                <inverse-join-columns>
-                    <join-column name="channel_id" referenced-column-name="id"/>
-                </inverse-join-columns>
-            </join-table>
-        </many-to-many>
-
-        <one-to-many field="products" target-entity="Sylius\Component\Product\Model\ProductInterface" mapped-by="vendor"/>
     </mapped-superclass>
 </doctrine-mapping>

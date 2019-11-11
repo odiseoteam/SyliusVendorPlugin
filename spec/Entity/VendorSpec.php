@@ -1,10 +1,11 @@
 <?php
 
-namespace spec\Odiseo\SyliusVendorPlugin\Model;
+declare(strict_types=1);
+
+namespace spec\Odiseo\SyliusVendorPlugin\Entity;
 
 use Odiseo\SyliusVendorPlugin\Entity\Vendor;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
-use Odiseo\SyliusVendorPlugin\Entity\VendorTranslationInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -25,11 +26,6 @@ class VendorSpec extends ObjectBehavior
     function it_implements_vendor_interface(): void
     {
         $this->shouldImplement(VendorInterface::class);
-    }
-
-    function it_implements_vendor_translation_interface(): void
-    {
-        $this->shouldImplement(VendorTranslationInterface::class);
     }
 
     function it_implements_translatable_interface(): void

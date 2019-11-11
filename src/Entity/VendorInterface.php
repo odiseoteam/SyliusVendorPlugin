@@ -24,9 +24,9 @@ interface VendorInterface extends
     ChannelsAwareInterface
 {
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string;
+    public function getName(): ?string;
 
     /**
      * @param string $name
@@ -34,9 +34,9 @@ interface VendorInterface extends
     public function setName(string $name): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEmail(): string;
+    public function getEmail(): ?string;
 
     /**
      * @param string $email
@@ -64,9 +64,9 @@ interface VendorInterface extends
     public function getLogoName(): string;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string;
+    public function getDescription(): ?string;
 
     /**
      * @param string $description

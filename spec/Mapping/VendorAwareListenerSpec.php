@@ -1,18 +1,20 @@
 <?php
 
-namespace spec\Odiseo\SyliusVendorPlugin\EventListener;
+declare(strict_types=1);
+
+namespace spec\Odiseo\SyliusVendorPlugin\Mapping;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
-use Odiseo\SyliusVendorPlugin\EventListener\ORMVendorAwareListener;
 use Odiseo\SyliusVendorPlugin\Entity\Vendor;
+use Odiseo\SyliusVendorPlugin\Mapping\VendorAwareListener;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Component\Core\Model\Channel;
 use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Resource\Metadata\RegistryInterface;
 
-class ORMVendorAwareListenerSpec extends ObjectBehavior
+class VendorAwareListenerSpec extends ObjectBehavior
 {
     public function let(
         RegistryInterface $resourceMetadataRegistry
@@ -28,7 +30,7 @@ class ORMVendorAwareListenerSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(ORMVendorAwareListener::class);
+        $this->shouldHaveType(VendorAwareListener::class);
     }
 
     function it_implements_event_subscriber(): void

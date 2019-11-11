@@ -20,3 +20,15 @@ sylius_fixtures:
                 vendor:
                     options:
                         vendors_per_channel: 12
+
+sylius_channel:
+    resources:
+        channel:
+            classes:
+                model: Tests\Odiseo\SyliusVendorPlugin\Application\Entity\Channel
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: Tests\Odiseo\SyliusVendorPlugin\Application\Entity\Product
