@@ -25,7 +25,7 @@
 
 This is a Sylius Plugin that add vendors (brands) to your store. The vendors is an entity that sells products and are fully customizable by the admin.
 
-Some of that features are:
+Features:
 
 * Vendors by Channel: You can specify what vendors will be enabled for different stores.
 
@@ -40,8 +40,7 @@ Support Sylius version 1.3+.
 <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_1.png" alt="Vendors admin list">
 <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_2.png" alt="Vendors admin product edit">
 <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_3.png" alt="Vendors shop index">
-<img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_4.png" alt="Vendors shop show 1">
-<img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_5.png" alt="Vendors shop show 2">
+<img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_4.png" alt="Vendors shop show">
 
 ## Demo
 
