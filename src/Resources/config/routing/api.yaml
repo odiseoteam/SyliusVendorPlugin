@@ -1,0 +1,7 @@
+odiseo_sylius_vendor_plugin_api_admin:
+    resource: api/admin.yaml
+    prefix: /admin/v{version}
+
+odiseo_sylius_vendor_plugin_api_shop:
+    resource: api/shop.yaml
+    prefix: /shop/v{version}

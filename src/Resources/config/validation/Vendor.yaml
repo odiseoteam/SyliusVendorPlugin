@@ -38,6 +38,6 @@ Odiseo\SyliusVendorPlugin\Entity\Vendor:
         logoFile:
             - NotBlank:
                 message: 'odiseo_sylius_vendor_plugin.vendor.logo_file.not_blank'
-                groups: ['odiseo']
+                groups: ['odiseo_logo_create']
         translations:
             - Valid: ~

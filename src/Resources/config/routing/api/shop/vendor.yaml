@@ -1,0 +1,23 @@
+odiseo_sylius_vendor_plugin_api_shop_vendor:
+    resource: |
+        identifier: slug
+        alias: odiseo_sylius_vendor_plugin.vendor
+        section: shop_api
+        serialization_version: $version
+        only: ['index', 'show']
+        criteria:
+            code: $slug
+    type: sylius.resource_api
+
+odiseo_sylius_vendor_plugin_shop_api_vendor_by_channel:
+    path: /vendors/by-channel/{code}
+    methods: [GET]
+    defaults:
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor:indexAction
+        _sylius:
+            serialization_version: $version
+            section: shop_api
+            repository:
+                method: findByChannel
+                arguments:
+                    - "expr:service('sylius.repository.channel').findOneByCode($code)"

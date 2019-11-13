@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class VendorType extends AbstractResourceType
 {
@@ -49,5 +51,25 @@ final class VendorType extends AbstractResourceType
                 'label' => 'odiseo_sylius_vendor_plugin.form.vendor.channel',
             ])
         ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        parent::configureOptions($resolver);
+
+        $resolver->setDefaults([
+            'validation_groups' => function (FormInterface $form) {
+                $vendor = $form->getData();
+
+                if (!$vendor || null === $vendor->getId()) {
+                    return array_merge($this->validationGroups, ['odiseo_logo_create']);
+                }
+
+                return $this->validationGroups;
+            },
+        ]);
     }
 }

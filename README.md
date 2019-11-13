@@ -86,7 +86,15 @@ odiseo_sylius_vendor_plugin_shop:
         _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
 ```
 
-5. Include traits
+5. This plugin includes an API version. If you want to use it you have to add the route
+
+```yml
+odiseo_sylius_vendor_plugin_api:
+    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/api.yaml"
+    prefix: /api
+```
+
+6. Include traits
 
 ```php
 <?php
@@ -143,7 +151,7 @@ class Product extends BaseProduct implements VendorAwareInterface
 }
 ```
 
-6. Add the vendor select box to the product form edit page. So, you need to run `mkdir -p templates/bundles/SyliusAdminBundle/Product/Tab` then `cp vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/views/Product/Tab/_details.html.twig templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig` and then add the form widget
+7. Add the vendor select box to the product form edit page. So, you need to run `mkdir -p templates/bundles/SyliusAdminBundle/Product/Tab` then `cp vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/views/Product/Tab/_details.html.twig templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig` and then add the form widget
 
 ```twig
 {# ... #}
@@ -151,13 +159,26 @@ class Product extends BaseProduct implements VendorAwareInterface
 {# ... #}
 ```
 
-7. Create logo folder: run `mkdir public/media/vendor-logo -p` and insert a .gitkeep file in that folder
+8. Create logo folder: run `mkdir public/media/vendor-logo -p` and insert a .gitkeep file in that folder
 
-8. Finish the installation updating the database schema and installing assets
-   
+9. Finish the installation updating the database schema and installing assets
+
 ```
 php bin/console doctrine:schema:update --force
 php bin/console sylius:theme:assets:install
+```
+
+## Usage
+
+For the administration you will have the Vendor menu.
+Feel free to modify the plugin templates like you want.
+
+### Partial routes
+
+To render vendor by channel you can do something like this:
+
+```twig
+{{ render(url('odiseo_sylius_vendor_plugin_shop_partial_vendor_by_channel', {'template': '@OdiseoSyliusVendorPlugin/Shop/Vendor/_vendor.html.twig'})) }}
 ```
 
 ## Fixtures

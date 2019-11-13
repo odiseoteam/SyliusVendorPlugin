@@ -1,0 +1,2 @@
+odiseo_sylius_vendor_plugin_api_shop_vendor:
+    resource: shop/vendor.yaml

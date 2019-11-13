@@ -1,0 +1,2 @@
+odiseo_sylius_vendor_plugin_api_admin_vendor:
+    resource: admin/vendor.yaml

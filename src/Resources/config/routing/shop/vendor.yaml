@@ -23,7 +23,7 @@ odiseo_sylius_vendor_plugin_shop_vendor_show:
                     - $slug
 
 odiseo_sylius_vendor_plugin_shop_partial_vendor_by_channel:
-    path: /by-channel
+    path: /partial/by-channel
     methods: [GET]
     defaults:
         _controller: odiseo_sylius_vendor_plugin.controller.vendor:indexAction
