@@ -26,19 +26,19 @@ class Vendor implements VendorInterface
     /** @var int|null */
     private $id;
 
-    /** @var string */
+    /** @var string|null */
     private $name;
 
     /** @var string|null */
     private $slug;
 
-    /** @var string */
+    /** @var string|null */
     private $email;
 
-    /** @var File */
+    /** @var File|null */
     private $logoFile;
 
-    /** @var string */
+    /** @var string|null */
     private $logoName;
 
     /** @var Collection|ChannelInterface[] */
@@ -75,7 +75,7 @@ class Vendor implements VendorInterface
     /**
      * {@inheritdoc}
      */
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -94,7 +94,7 @@ class Vendor implements VendorInterface
     /**
      * {@inheritdoc}
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         /** @var VendorTranslationInterface $vendorTranslation */
         $vendorTranslation = $this->getTranslation();
@@ -129,9 +129,43 @@ class Vendor implements VendorInterface
     /**
      * {@inheritdoc}
      */
-    public function setEmail(string $email): void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLogoFile(?File $file): void
+    {
+        $this->logoFile = $file;
+
+        $this->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLogoFile(): ?File
+    {
+        return $this->logoFile;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLogoName(?string $logoName): void
+    {
+        $this->logoName = $logoName;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLogoName(): ?string
+    {
+        return $this->logoName;
     }
 
     /**
@@ -220,40 +254,6 @@ class Vendor implements VendorInterface
                 $product->setVendor(null);
             }
         }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setLogoFile(File $file): void
-    {
-        $this->logoFile = $file;
-
-        $this->setUpdatedAt(new \DateTime());
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getLogoFile(): ?File
-    {
-        return $this->logoFile;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setLogoName(string $logoName): void
-    {
-        $this->logoName = $logoName;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getLogoName(): string
-    {
-        return $this->logoName;
     }
 
     /**

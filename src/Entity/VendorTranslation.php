@@ -14,7 +14,7 @@ class VendorTranslation extends AbstractTranslation implements VendorTranslation
     /** @var int|null */
     private $id;
 
-    /** @var string */
+    /** @var string|null */
     private $description;
 
     public function __construct()
@@ -41,7 +41,7 @@ class VendorTranslation extends AbstractTranslation implements VendorTranslation
     /**
      * {@inheritdoc}
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }

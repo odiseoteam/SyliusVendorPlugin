@@ -29,9 +29,9 @@ interface VendorInterface extends
     public function getName(): ?string;
 
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function setName(string $name): void;
+    public function setName(?string $name): void;
 
     /**
      * @return string|null
@@ -39,29 +39,29 @@ interface VendorInterface extends
     public function getEmail(): ?string;
 
     /**
-     * @param string $email
+     * @param string|null $email
      */
-    public function setEmail(string $email): void;
+    public function setEmail(?string $email): void;
 
     /**
-     * @param File $file
+     * @param File|null $file
      */
-    public function setLogoFile(File $file): void;
+    public function setLogoFile(?File $file): void;
 
     /**
-     * @return File
+     * @return File|null
      */
     public function getLogoFile(): ?File;
 
     /**
-     * @param string $logoName
+     * @param string|null $logoName
      */
-    public function setLogoName(string $logoName): void;
+    public function setLogoName(?string $logoName): void;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLogoName(): string;
+    public function getLogoName(): ?string;
 
     /**
      * @return string|null
@@ -69,9 +69,9 @@ interface VendorInterface extends
     public function getDescription(): ?string;
 
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(string $description): void;
+    public function setDescription(?string $description): void;
 
     /**
      * @return Collection|ProductInterface[]
