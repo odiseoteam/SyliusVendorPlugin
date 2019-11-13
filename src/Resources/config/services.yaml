@@ -1,4 +1,5 @@
 imports:
+    - { resource: services/controller.yaml }
     - { resource: services/event_listener.yaml }
     - { resource: services/fixture.yaml }
     - { resource: services/form.yaml }

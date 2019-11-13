@@ -80,7 +80,9 @@ final class VendorFixture extends AbstractFixture
                 $vendor = $this->vendorFactory->createNew();
 
                 $vendor->setName($this->faker->company);
+                $vendor->setSlug($this->faker->slug);
                 $vendor->setEmail($this->faker->companyEmail);
+
                 $vendor->addChannel($channel);
 
                 foreach ($this->getLocales() as $localeCode) {

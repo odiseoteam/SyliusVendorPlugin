@@ -18,8 +18,9 @@ final class VendorChoiceType extends AbstractType
     /** @var VendorRepositoryInterface */
     private $vendorRepository;
 
-    public function __construct(VendorRepositoryInterface $vendorRepository)
-    {
+    public function __construct(
+        VendorRepositoryInterface $vendorRepository
+    ) {
         $this->vendorRepository = $vendorRepository;
     }
 

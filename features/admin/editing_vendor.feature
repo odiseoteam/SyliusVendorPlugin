@@ -12,6 +12,6 @@ Feature: Editing a vendor
     @ui
     Scenario: Renaming a vendor
         Given I want to modify the vendor "Test"
-        When I rename it to "Test Edited"
+        When I rename the name with "Test Edited"
         And I save my changes
         Then I should be notified that it has been successfully edited

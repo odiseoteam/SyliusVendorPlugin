@@ -58,10 +58,10 @@ final class VendorContext implements Context
     }
 
     /**
-     * @param $quantity
+     * @param int $quantity
      * @Given the store has( also) :quantity vendors
      */
-    public function theStoreHasVendors($quantity)
+    public function theStoreHasVendors(int $quantity): void
     {
         for ($i = 1;$i <= $quantity;$i++) {
             $this->saveVendor($this->createVendor('Test'.$i));
@@ -90,7 +90,6 @@ final class VendorContext implements Context
 
     /**
      * @param string $name
-     *
      * @return VendorInterface
      */
     private function createVendor(string $name): VendorInterface
@@ -102,6 +101,7 @@ final class VendorContext implements Context
         $vendor = $this->vendorFactory->createNew();
 
         $vendor->setName($name);
+        $vendor->setSlug(strtolower($name));
         $vendor->setEmail('test@odiseo.com.ar');
         $vendor->setCurrentLocale('en_US');
         $vendor->setFallbackLocale('en_US');

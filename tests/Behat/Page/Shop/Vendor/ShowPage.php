@@ -6,21 +6,27 @@ namespace Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Shop\Vendor;
 
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPage;
 
-class ShowPage extends SymfonyPage implements ShowPageInterface
+final class ShowPage extends SymfonyPage implements ShowPageInterface
 {
+    /**
+     * @inheritdoc
+     */
     public function getRouteName(): string
     {
-        return 'odiseo_sylius_vendor_shop_vendor_show';
+        return 'odiseo_sylius_vendor_plugin_shop_vendor_show';
     }
 
     /**
      * @inheritdoc
      */
-    public function hasName($name)
+    public function hasName(string $name): bool
     {
         return $name === $this->getElement('name')->getText();
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [

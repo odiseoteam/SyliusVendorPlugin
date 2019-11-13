@@ -7,6 +7,7 @@ odiseo_sylius_vendor_plugin:
         product:
             select_vendor: Select vendor
         vendor:
+            slug: Slug
             email: Email
             translations: Translations
             description: Description

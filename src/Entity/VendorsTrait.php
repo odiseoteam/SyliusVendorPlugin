@@ -4,12 +4,18 @@ declare(strict_types=1);
 
 namespace Odiseo\SyliusVendorPlugin\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 trait VendorsTrait
 {
     /** @var Collection|VendorInterface[] */
     protected $vendors;
+
+    public function __construct()
+    {
+        $this->vendors = new ArrayCollection();
+    }
 
     /**
      * @return Collection|VendorInterface[]

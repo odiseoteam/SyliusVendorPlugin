@@ -14,3 +14,10 @@ odiseo_sylius_vendor_plugin_admin_vendor:
             index:
                 icon: trademark
     type: sylius.resource
+
+odiseo_sylius_vendor_plugin_admin_ajax_generate_vendor_slug:
+    path: /vendors/generate-slug
+    methods: [GET]
+    defaults:
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor_slug:generateAction
+        _format: json

@@ -5,19 +5,15 @@ declare(strict_types=1);
 namespace Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Transform;
 
 use Behat\Behat\Context\Context;
+use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Webmozart\Assert\Assert;
 
 final class VendorContext implements Context
 {
-    /**
-     * @var RepositoryInterface
-     */
+    /** @var RepositoryInterface */
     private $vendorRepository;
 
-    /**
-     * @param RepositoryInterface $vendorRepository
-     */
     public function __construct(
         RepositoryInterface $vendorRepository
     ) {
@@ -27,9 +23,12 @@ final class VendorContext implements Context
     /**
      * @Transform /^vendor "([^"]+)"$/
      * @Transform /^"([^"]+)" vendor$/
+     * @param string $vendorName
+     * @return VendorInterface
      */
-    public function getVendorByName($vendorName)
+    public function getVendorByName(string $vendorName): VendorInterface
     {
+        /** @var VendorInterface $vendor */
         $vendor = $this->vendorRepository->findOneBy(['name' => $vendorName]);
 
         Assert::notNull(

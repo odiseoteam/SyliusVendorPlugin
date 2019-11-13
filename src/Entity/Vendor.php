@@ -41,10 +41,10 @@ class Vendor implements VendorInterface
     /** @var string */
     private $logoName;
 
-    /** @var ArrayCollection|ChannelInterface[] */
+    /** @var Collection|ChannelInterface[] */
     private $channels;
 
-    /** @var ArrayCollection|ProductInterface[] */
+    /** @var Collection|ProductInterface[] */
     private $products;
 
     public function __construct()

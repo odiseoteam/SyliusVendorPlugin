@@ -23,7 +23,7 @@
 
 ## Description
 
-This is a Sylius Plugin that add vendors (brands) to your store. The vendors is an entity that sells products and are fully customizable by the admin.
+This is a Sylius Plugin that add vendors (brands) to your store. The vendor is an entity that sells products and are fully customizable by the admin.
 
 Features:
 
@@ -105,7 +105,16 @@ use Sylius\Component\Core\Model\Channel as BaseChannel;
  */
 class Channel extends BaseChannel implements VendorsAwareInterface
 {
-    use VendorsTrait;
+    use VendorsTrait {
+        __construct as private initializeVendorsCollection;
+    }
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->initializeVendorsCollection();
+    }
 
     // ...
 }

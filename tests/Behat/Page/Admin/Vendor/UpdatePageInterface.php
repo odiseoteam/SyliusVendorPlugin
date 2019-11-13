@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Admin\Vendor;
 
 use Sylius\Behat\Page\Admin\Crud\UpdatePageInterface as BaseUpdatePageInterface;
@@ -11,5 +13,5 @@ interface UpdatePageInterface extends BaseUpdatePageInterface, ContainsErrorInte
      * @param string $name
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
-    public function fillName($name);
+    public function fillName(string $name): void;
 }

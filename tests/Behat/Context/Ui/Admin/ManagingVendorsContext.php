@@ -31,13 +31,6 @@ final class ManagingVendorsContext implements Context
     /** @var UpdatePageInterface */
     private $updatePage;
 
-    /**
-     * @param CurrentPageResolverInterface $currentPageResolver
-     * @param NotificationCheckerInterface $notificationChecker
-     * @param IndexPageInterface $indexPage
-     * @param CreatePageInterface $createPage
-     * @param UpdatePageInterface $updatePage
-     */
     public function __construct(
         CurrentPageResolverInterface $currentPageResolver,
         NotificationCheckerInterface $notificationChecker,
@@ -65,29 +58,40 @@ final class ManagingVendorsContext implements Context
      * @Given I want to add a new vendor
      * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
      */
-    public function iWantToAddNewVendor()
+    public function iWantToAddNewVendor(): void
     {
         $this->createPage->open(); // This method will send request.
     }
 
     /**
      * @When I fill the name with :vendorName
-     * @When I rename it to :vendorName
-     * @param $vendorName
+     * @When I rename the name with :vendorName
+     * @param string $vendorName
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
-    public function iFillTheNameWith($vendorName)
+    public function iFillTheNameWith(string $vendorName): void
     {
         $this->createPage->fillName($vendorName);
     }
 
     /**
-     * @When I fill the description with :vendorDescription
-     * @When I change the description with :vendorDescription
-     * @param $vendorDescription
+     * @When I fill the slug with :vendorSlug
+     * @When I rename the slug with :vendorSlug
+     * @param string $vendorSlug
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
-    public function iFillTheDescriptionWith($vendorDescription)
+    public function iFillTheSlugWith(string $vendorSlug): void
+    {
+        $this->createPage->fillSlug($vendorSlug);
+    }
+
+    /**
+     * @When I fill the description with :vendorDescription
+     * @When I change the description with :vendorDescription
+     * @param string $vendorDescription
+     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     */
+    public function iFillTheDescriptionWith(string $vendorDescription): void
     {
         $this->createPage->fillDescription($vendorDescription);
     }
@@ -95,20 +99,20 @@ final class ManagingVendorsContext implements Context
     /**
      * @When I fill the email with :vendorEmail
      * @When I change the email with :vendorEmail
-     * @param $vendorEmail
+     * @param string $vendorEmail
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
-    public function iFillTheEmailWith($vendorEmail)
+    public function iFillTheEmailWith(string $vendorEmail): void
     {
         $this->createPage->fillEmail($vendorEmail);
     }
 
     /**
      * @When I upload the :file image
-     * @param $vendorImage
+     * @param string $vendorImage
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
-    public function iUploadTheImage($vendorImage)
+    public function iUploadTheImage(string $vendorImage): void
     {
         $this->resolveCurrentPage()->uploadFile($vendorImage);
     }
@@ -117,7 +121,7 @@ final class ManagingVendorsContext implements Context
      * @When I add it
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
-    public function iAddIt()
+    public function iAddIt(): void
     {
         $this->createPage->create();
     }
@@ -127,7 +131,7 @@ final class ManagingVendorsContext implements Context
      * @param VendorInterface $vendor
      * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
      */
-    public function iWantToModifyVendor(VendorInterface $vendor)
+    public function iWantToModifyVendor(VendorInterface $vendor): void
     {
         $this->updatePage->open(['id' => $vendor->getId()]);
     }
@@ -135,7 +139,7 @@ final class ManagingVendorsContext implements Context
     /**
      * @When I save my changes
      */
-    public function iSaveMyChanges()
+    public function iSaveMyChanges(): void
     {
         $this->updatePage->saveChanges();
     }
@@ -144,7 +148,7 @@ final class ManagingVendorsContext implements Context
      * @When I want to browse vendors
      * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
      */
-    public function iWantToBrowseVendors()
+    public function iWantToBrowseVendors(): void
     {
         $this->indexPage->open();
     }
@@ -160,9 +164,9 @@ final class ManagingVendorsContext implements Context
 
     /**
      * @When I delete the vendor :name
-     * @param $name
+     * @param string $name
      */
-    public function iDeleteTheVendor($name): void
+    public function iDeleteTheVendor(string $name): void
     {
         $this->indexPage->deleteVendor($name);
     }
@@ -172,7 +176,7 @@ final class ManagingVendorsContext implements Context
      * @param VendorInterface $vendor
      * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
      */
-    public function vendorShouldAppearInTheAdmin(VendorInterface $vendor)
+    public function vendorShouldAppearInTheAdmin(VendorInterface $vendor): void
     {
         $this->indexPage->open();
 
@@ -194,12 +198,12 @@ final class ManagingVendorsContext implements Context
     }
 
     /**
-     * @Then I should be notified that there is already an existing vendor with provided name
+     * @Then I should be notified that there is already an existing vendor with provided slug
      */
-    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingVendorWithCode(): void
+    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingVendorWithSlug(): void
     {
         Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            'There is an existing vendor with this code.',
+            'There is an existing vendor with this slug.',
             false
         ));
     }

@@ -12,9 +12,7 @@
         </id>
 
         <field name="name" type="string"/>
-        <field name="slug" type="string" unique="true">
-            <gedmo:slug fields="slug" unique="true"/>
-        </field>
+        <field name="slug" type="string" unique="true"/>
         <field name="email" type="string"/>
         <field name="logoName" type="string" column="logo_name"/>
         <field name="enabled" type="boolean"/>
