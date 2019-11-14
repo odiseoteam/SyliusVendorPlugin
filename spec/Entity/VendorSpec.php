@@ -16,7 +16,7 @@ use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 use Symfony\Component\HttpFoundation\File\File;
 
-class VendorSpec extends ObjectBehavior
+final class VendorSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {

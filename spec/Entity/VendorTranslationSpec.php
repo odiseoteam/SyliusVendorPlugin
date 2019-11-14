@@ -11,7 +11,7 @@ use Sylius\Component\Resource\Model\AbstractTranslation;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 
-class VendorTranslationSpec extends ObjectBehavior
+final class VendorTranslationSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {

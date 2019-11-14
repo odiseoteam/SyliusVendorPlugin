@@ -14,7 +14,7 @@ use Sylius\Component\Core\Model\Channel;
 use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Resource\Metadata\RegistryInterface;
 
-class VendorAwareListenerSpec extends ObjectBehavior
+final class VendorAwareListenerSpec extends ObjectBehavior
 {
     public function let(
         RegistryInterface $resourceMetadataRegistry
