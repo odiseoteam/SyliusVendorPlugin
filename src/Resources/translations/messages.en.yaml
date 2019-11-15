@@ -3,6 +3,9 @@ odiseo_sylius_vendor_plugin:
         vendors: Vendors
         edit_vendor: Edit vendor
         new_vendor: New vendor
+    menu:
+        admin:
+            vendors: Vendors
     form:
         product:
             select_vendor: Select vendor
