@@ -186,6 +186,8 @@ To render vendor by channel you can do something like this:
 {{ render(url('odiseo_sylius_vendor_plugin_shop_partial_vendor_by_channel', {'template': '@OdiseoSyliusVendorPlugin/Shop/Vendor/_vendor.html.twig'})) }}
 ```
 
+For forms use the validation group `odiseo`
+
 ## Fixtures
 
 This plugin comes with fixtures:
