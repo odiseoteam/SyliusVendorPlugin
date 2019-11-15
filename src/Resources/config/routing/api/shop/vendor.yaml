@@ -6,7 +6,7 @@ odiseo_sylius_vendor_plugin_api_shop_vendor:
         serialization_version: $version
         only: ['index', 'show']
         criteria:
-            code: $slug
+            slug: $slug
     type: sylius.resource_api
 
 odiseo_sylius_vendor_plugin_shop_api_vendor_by_channel:

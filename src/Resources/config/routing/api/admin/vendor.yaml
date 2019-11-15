@@ -5,5 +5,5 @@ odiseo_sylius_vendor_plugin_api_admin_vendor:
         section: admin_api
         serialization_version: $version
         criteria:
-            code: $slug
+            slug: $slug
     type: sylius.resource_api
