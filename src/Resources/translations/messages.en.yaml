@@ -15,4 +15,4 @@ odiseo_sylius_vendor_plugin:
             translations: Translations
             description: Description
             logo: Logo
-            channel: Channel
+            channels: Channels

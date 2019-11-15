@@ -48,7 +48,7 @@ final class VendorType extends AbstractResourceType
                 'required' => false,
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.channel',
+                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.channels',
             ])
         ;
     }
