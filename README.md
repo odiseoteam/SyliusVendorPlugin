@@ -68,6 +68,7 @@ return [
 3. Import the plugin configurations
 
 ```yml
+# config/packages/_sylius.yaml
 imports:
     - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yaml" }
 ```
@@ -75,6 +76,7 @@ imports:
 4. Add the shop and admin routes
 
 ```yml
+# config/routes/odiseo_sylius_vendor_plugin.yaml
 odiseo_sylius_vendor_plugin_admin:
     resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/admin.yaml"
     prefix: /admin
@@ -89,6 +91,7 @@ odiseo_sylius_vendor_plugin_shop:
 5. This plugin includes an API version. If you want to use it you have to add the route
 
 ```yml
+# config/routes/odiseo_sylius_vendor_plugin.yaml
 odiseo_sylius_vendor_plugin_api:
     resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/api.yaml"
     prefix: /api
@@ -155,7 +158,9 @@ class Product extends BaseProduct implements VendorAwareInterface
 
 ```twig
 {# ... #}
-{{ form_row(form.vendors) }}
+{{ form_row(form.code) }}
+{{ form_row(form.enabled) }}
+{{ form_row(form.vendor) }}
 {# ... #}
 ```
 
