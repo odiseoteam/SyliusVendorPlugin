@@ -6,6 +6,7 @@
 
 ```php
 <?php
+// config/bundles.php
 
 return [
     // ...
@@ -17,7 +18,7 @@ return [
 3. Import the plugin configurations
 
 ```yml
-# config/packages/_sylius.yaml
+# config/services.yaml
 imports:
     - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yaml" }
 ```
@@ -25,7 +26,7 @@ imports:
 4. Add the shop and admin routes
 
 ```yml
-# config/routes/odiseo_sylius_vendor_plugin.yaml
+# config/routes.yaml
 odiseo_sylius_vendor_plugin_admin:
     resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/admin.yaml"
     prefix: /admin
@@ -40,7 +41,7 @@ odiseo_sylius_vendor_plugin_shop:
 5. This plugin includes an API version. If you want to use it you have to add the route
 
 ```yml
-# config/routes/odiseo_sylius_vendor_plugin.yaml
+# config/routes.yaml
 odiseo_sylius_vendor_plugin_api:
     resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/api.yaml"
     prefix: /api
@@ -57,7 +58,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Odiseo\SyliusVendorPlugin\Entity\VendorsAwareInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorsTrait;
 use Sylius\Component\Core\Model\Channel as BaseChannel;
-// ...
 
 /**
  * @ORM\Table(name="sylius_channel")
@@ -89,7 +89,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Odiseo\SyliusVendorPlugin\Entity\VendorAwareInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorTrait;
 use Sylius\Component\Core\Model\Product as BaseProduct;
-// ...
 
 /**
  * @ORM\Table(name="sylius_product")
