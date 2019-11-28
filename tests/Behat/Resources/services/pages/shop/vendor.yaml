@@ -3,7 +3,7 @@ services:
         class: Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Shop\Vendor\IndexPage
         parent: sylius.behat.symfony_page
         public: false
-            -
+
     odiseo_sylius_vendor_plugin.page.shop.vendor.show_page:
         class: Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Shop\Vendor\ShowPage
         parent: sylius.behat.symfony_page
