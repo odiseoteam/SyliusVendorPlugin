@@ -49,7 +49,7 @@ odiseo_sylius_vendor_plugin_api:
     prefix: /api
 ```
 
-6. Include traits
+6. Include traits and override the models
 
 ```php
 <?php
@@ -102,6 +102,21 @@ class Product extends BaseProduct implements VendorAwareInterface
 
     // ...
 }
+```
+
+```yml
+# config/packages/_sylius.yaml
+sylius_channel:
+    resources:
+        channel:
+            classes:
+                model: App\Entity\Channel
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: App\Entity\Product
 ```
 
 7. Add the vendor select box to the product form edit page. So, you need to run `mkdir -p templates/bundles/SyliusAdminBundle/Product/Tab` then `cp vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/views/Product/Tab/_details.html.twig templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig` and then add the form widget
