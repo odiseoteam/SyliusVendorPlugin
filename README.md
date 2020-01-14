@@ -37,6 +37,10 @@ Features:
 
 Support Sylius version 1.3+.
 
+#### Premium features!
+
+Do you want advanced features? Take a look at our [Multi Vendor Marketplace Plugin](https://odiseo.com.ar/plugins-and-bundles/premium/sylius-mvm-plugin), this convert your Sylius store into a fully Multi Vendor Marketplace.
+
 ## Screenshots
 
 <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/screenshot_1.png" alt="Vendors admin list" width="650">
