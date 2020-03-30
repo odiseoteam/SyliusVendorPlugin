@@ -19,7 +19,7 @@
         <img src="https://poser.pugx.org/odiseoteam/sylius-vendor-plugin/downloads" />
     </a>
 </p>
-<p align="center"><a href="https://sylius.com/plugins/" target="_blank"><img src="https://sylius.com/assets/badge-approved-by-sylius.png" width="100"></a></p>
+<p align="center"><a href="https://sylius.com/partners/odiseo/" target="_blank"><img src="https://github.com/odiseoteam/SyliusReportPlugin/blob/master/badge-partner-by-sylius.png" width="140"></a></p>
 
 ## Description
 
