@@ -11,9 +11,9 @@
             <generator strategy="AUTO"/>
         </id>
 
-        <field name="name" type="string"/>
+        <field name="name" type="string" unique="true"/>
         <field name="slug" type="string" unique="true"/>
-        <field name="email" type="string"/>
+        <field name="email" type="string" unique="true"/>
         <field name="logoName" type="string" column="logo_name"/>
         <field name="enabled" type="boolean"/>
         <field name="createdAt" type="datetime" column="created_at">

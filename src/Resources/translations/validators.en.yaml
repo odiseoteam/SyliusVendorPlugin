@@ -6,10 +6,13 @@ odiseo_sylius_vendor_plugin:
             min_length: Slug must be at least {{ limit }} characters long.
             max_length: Slug can not be longer than {{ limit }} characters.
         name:
+            unique: There is an existing vendor with this name.
             not_blank: Name cannot be blank.
             min_length: Name must be at least {{ limit }} characters long.
             max_length: Name can not be longer than {{ limit }} characters.
         email:
+            invalid: This email is invalid.
+            unique: This email is already used.
             not_blank: Email cannot be blank.
             min_length: Email must be at least {{ limit }} characters long.
             max_length: Email can not be longer than {{ limit }} characters.

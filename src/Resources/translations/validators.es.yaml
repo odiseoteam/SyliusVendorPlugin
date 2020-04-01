@@ -3,15 +3,18 @@ odiseo_sylius_vendor_plugin:
         slug:
             unique: Ya existe un vendedor con este slug.
             not_blank: El slug no puede ir vacío.
-            min_length: El slug debe tener al menos {{ limit }} caracteres
+            min_length: El slug debe tener al menos {{ limit }} caracteres.
             max_length: El slug no puede tener más de {{ limit }} caracteres.
         name:
+            unique: Ya existe un vendedor con este nombre.
             not_blank: El nombre no puede ir vacío.
-            min_length: El nombre debe tener al menos {{ limit }} caracteres
+            min_length: El nombre debe tener al menos {{ limit }} caracteres.
             max_length: El nombre no puede tener más de {{ limit }} caracteres.
         email:
+            invalid: Este email no es válido.
+            unique: Este correo electrónico ya está en uso.
             not_blank: El email no puede ir vacío.
-            min_length: El email debe tener al menos {{ limit }} caracteres
+            min_length: El email debe tener al menos {{ limit }} caracteres.
             max_length: El email no puede tener más de {{ limit }} caracteres.
         logo_file:
             not_blank: El logo no puede ir vacío.

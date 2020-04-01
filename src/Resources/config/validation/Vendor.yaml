@@ -1,8 +1,16 @@
 Odiseo\SyliusVendorPlugin\Entity\Vendor:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [name]
+            message: 'odiseo_sylius_vendor_plugin.vendor.name.unique'
+            groups: ['odiseo']
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [slug]
             message: 'odiseo_sylius_vendor_plugin.vendor.slug.unique'
+            groups: ['odiseo']
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email]
+            message: 'odiseo_sylius_vendor_plugin.vendor.email.unique'
             groups: ['odiseo']
     properties:
         name:
@@ -34,6 +42,10 @@ Odiseo\SyliusVendorPlugin\Entity\Vendor:
                 max: 250
                 minMessage: 'odiseo_sylius_vendor_plugin.vendor.email.min_length'
                 maxMessage: 'odiseo_sylius_vendor_plugin.vendor.email.max_length'
+                groups: ['odiseo']
+            - Email:
+                message: 'odiseo_sylius_vendor_plugin.vendor.email.invalid'
+                strict: true
                 groups: ['odiseo']
         logoFile:
             - NotBlank:
