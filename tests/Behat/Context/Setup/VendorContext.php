@@ -102,7 +102,7 @@ final class VendorContext implements Context
 
         $vendor->setName($name);
         $vendor->setSlug(strtolower($name));
-        $vendor->setEmail('test@odiseo.com.ar');
+        $vendor->setEmail(strtolower($name).'@odiseo.com.ar');
         $vendor->setCurrentLocale('en_US');
         $vendor->setFallbackLocale('en_US');
         $vendor->setDescription('This is a test');
