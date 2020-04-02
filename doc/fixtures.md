@@ -8,7 +8,11 @@ Simply add this configuration on your fixture suite:
 
 ```yml
 # config/packages/_sylius.yaml
-vendor:
-    options:
-        vendors_per_channel: 12
+sylius_fixtures:
+    suites:
+        default:
+            fixtures:
+                vendor:
+                    options:
+                        random: 3
 ```

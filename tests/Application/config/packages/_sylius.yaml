@@ -21,7 +21,7 @@ sylius_fixtures:
             fixtures:
                 vendor:
                     options:
-                        vendors_per_channel: 12
+                        random: 6
 
 sylius_channel:
     resources:

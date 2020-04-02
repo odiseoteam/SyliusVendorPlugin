@@ -3,9 +3,14 @@ services:
         class: Odiseo\SyliusVendorPlugin\Fixture\VendorFixture
         arguments:
             - '@odiseo_sylius_vendor_plugin.manager.vendor'
-            - '@odiseo_sylius_vendor_plugin.factory.vendor'
-            - '@odiseo_sylius_vendor_plugin.repository.vendor'
-            - '@sylius.repository.channel'
-            - '@sylius.repository.locale'
+            - '@odiseo_sylius_vendor_plugin.fixture.example_factory.vendor'
         tags:
             - { name: sylius_fixtures.fixture }
+
+    odiseo_sylius_vendor_plugin.fixture.example_factory.vendor:
+        class: Odiseo\SyliusVendorPlugin\Fixture\Factory\VendorExampleFactory
+        arguments:
+            - '@odiseo_sylius_vendor_plugin.factory.vendor'
+            - '@sylius.repository.channel'
+            - '@sylius.repository.locale'
+            - '@file_locator'
