@@ -1,2 +1,3 @@
 imports:
     - { resource: resources/vendor.yaml }
+    - { resource: resources/vendor_email.yaml }

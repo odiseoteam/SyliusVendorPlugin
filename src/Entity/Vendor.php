@@ -47,12 +47,16 @@ class Vendor implements VendorInterface
     /** @var Collection|ProductInterface[] */
     protected $products;
 
+    /** @var Collection|VendorEmailInterface[] */
+    protected $extraEmails;
+
     public function __construct()
     {
         $this->initializeTranslationsCollection();
 
         $this->channels = new ArrayCollection();
         $this->products = new ArrayCollection();
+        $this->extraEmails = new ArrayCollection();
         $this->createdAt = new \DateTime();
     }
 
@@ -253,6 +257,44 @@ class Vendor implements VendorInterface
             if ($product instanceof VendorAwareInterface) {
                 $product->setVendor(null);
             }
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExtraEmails(): Collection
+    {
+        return $this->extraEmails;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasExtraEmail(VendorEmailInterface $email): bool
+    {
+        return $this->extraEmails->contains($email);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addExtraEmail(VendorEmailInterface $email): void
+    {
+        if (!$this->hasExtraEmail($email)) {
+            $this->extraEmails->add($email);
+            $email->setVendor($this);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeExtraEmail(VendorEmailInterface $email): void
+    {
+        if ($this->hasExtraEmail($email)) {
+            $this->extraEmails->removeElement($email);
+            $email->setVendor(null);
         }
     }
 

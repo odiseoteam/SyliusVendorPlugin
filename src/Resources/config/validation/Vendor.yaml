@@ -53,3 +53,5 @@ Odiseo\SyliusVendorPlugin\Entity\Vendor:
                 groups: ['odiseo_logo_create']
         translations:
             - Valid: ~
+        extraEmails:
+            - Valid: ~

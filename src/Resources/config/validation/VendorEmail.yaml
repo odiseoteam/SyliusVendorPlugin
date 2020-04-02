@@ -1,0 +1,22 @@
+Odiseo\SyliusVendorPlugin\Entity\VendorEmail:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [vendor, value]
+            errorPath: value
+            message: 'odiseo_sylius_vendor_plugin.vendor.email.unique'
+            groups: ['odiseo']
+    properties:
+        value:
+            - NotBlank:
+                message: 'odiseo_sylius_vendor_plugin.vendor.email.not_blank'
+                groups: ['odiseo']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'odiseo_sylius_vendor_plugin.vendor.email.min_length'
+                maxMessage: 'odiseo_sylius_vendor_plugin.vendor.email.max_length'
+                groups: ['odiseo']
+            - Email:
+                message: 'odiseo_sylius_vendor_plugin.vendor.email.invalid'
+                strict: true
+                groups: ['odiseo']

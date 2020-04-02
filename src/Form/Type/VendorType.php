@@ -8,6 +8,7 @@ use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -49,6 +50,13 @@ final class VendorType extends AbstractResourceType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'odiseo_sylius_vendor_plugin.form.vendor.channels',
+            ])
+            ->add('extraEmails', CollectionType::class, [
+                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.extra_emails',
+                'entry_type' => VendorEmailType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
             ])
         ;
     }

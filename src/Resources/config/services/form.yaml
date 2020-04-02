@@ -26,3 +26,11 @@ services:
             - ['odiseo']
         tags:
             - { name: form.type, alias: odiseo_sylius_vendor_translation }
+
+    odiseo_sylius_vendor_plugin.form.type.vendor_email:
+        class: Odiseo\SyliusVendorPlugin\Form\Type\VendorEmailType
+        arguments:
+            - '%odiseo_sylius_vendor_plugin.model.vendor_email.class%'
+            - ['odiseo']
+        tags:
+            - { name: form.type, alias: odiseo_sylius_vendor_email }

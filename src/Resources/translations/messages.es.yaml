@@ -16,3 +16,4 @@ odiseo_sylius_vendor_plugin:
             description: Descripción
             logo: Logo
             channels: Tiendas
+            extra_emails: Emails extra

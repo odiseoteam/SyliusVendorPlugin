@@ -1,0 +1,11 @@
+sylius_resource:
+    resources:
+        odiseo_sylius_vendor_plugin.vendor_email:
+            driver: doctrine/orm
+            classes:
+                model: Odiseo\SyliusVendorPlugin\Entity\VendorEmail
+                interface: Odiseo\SyliusVendorPlugin\Entity\VendorEmailInterface
+                form: Odiseo\SyliusVendorPlugin\Form\Type\VendorEmailType
+                repository: Odiseo\SyliusVendorPlugin\Repository\VendorEmailRepository
+                controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+                factory: Sylius\Component\Resource\Factory\Factory

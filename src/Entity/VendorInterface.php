@@ -95,6 +95,27 @@ interface VendorInterface extends
     public function removeProduct(ProductInterface $product): void;
 
     /**
+     * @return Collection|VendorEmailInterface[]
+     */
+    public function getExtraEmails(): Collection;
+
+    /**
+     * @param VendorEmailInterface $email
+     * @return bool
+     */
+    public function hasExtraEmail(VendorEmailInterface $email): bool;
+
+    /**
+     * @param VendorEmailInterface $email
+     */
+    public function addExtraEmail(VendorEmailInterface $email): void;
+
+    /**
+     * @param VendorEmailInterface $email
+     */
+    public function removeExtraEmail(VendorEmailInterface $email): void;
+
+    /**
      * @param string|null $locale
      * @return TranslationInterface
      */
