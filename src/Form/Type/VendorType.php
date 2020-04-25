@@ -80,4 +80,12 @@ final class VendorType extends AbstractResourceType
             },
         ]);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix(): string
+    {
+        return 'odiseo_vendor';
+    }
 }

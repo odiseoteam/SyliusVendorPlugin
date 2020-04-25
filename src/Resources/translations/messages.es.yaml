@@ -1,8 +1,11 @@
 odiseo_sylius_vendor_plugin:
     ui:
+        vendor: Vendedor
         vendors: Vendedores
         edit_vendor: Editar vendedor
         new_vendor: Nuevo vendedor
+        profile: Perfil
+        manage_vendors: Administrar vendedores
     menu:
         admin:
             vendors: Vendedores

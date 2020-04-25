@@ -4,6 +4,14 @@ services:
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
 
+    odiseo_sylius_vendor_plugin.menu_builder.admin.vendor_form:
+        class: Odiseo\SyliusVendorPlugin\Menu\VendorFormMenuBuilder
+        arguments:
+            - '@knp_menu.factory'
+            - '@event_dispatcher'
+        tags:
+            - { name: knp_menu.menu_builder, method: createMenu, alias: odiseo_sylius_vendor_plugin.admin.vendor_form }
+
     odiseo_sylius_vendor_plugin.block_event_listener.layout.vendor.javascripts:
         class: Odiseo\SyliusVendorPlugin\Block\VendorJsBlockListener
         tags:

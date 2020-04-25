@@ -7,9 +7,10 @@ namespace Odiseo\SyliusVendorPlugin\Fixture\Factory;
 use Faker\Factory;
 use Generator;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
-use Sylius\Bundle\CoreBundle\Fixture\Factory\AbstractExampleFactory;
+use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
+use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
@@ -18,13 +19,16 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class VendorExampleFactory extends AbstractExampleFactory
+final class VendorExampleFactory implements ExampleFactoryInterface
 {
     /** @var FactoryInterface */
     private $vendorFactory;
 
     /** @var ChannelRepositoryInterface */
     private $channelRepository;
+
+    /** @var RepositoryInterface */
+    private $productRepository;
 
     /** @var RepositoryInterface */
     private $localeRepository;
@@ -41,11 +45,13 @@ final class VendorExampleFactory extends AbstractExampleFactory
     public function __construct(
         FactoryInterface $vendorFactory,
         ChannelRepositoryInterface $channelRepository,
+        RepositoryInterface $productRepository,
         RepositoryInterface $localeRepository,
         ?FileLocatorInterface $fileLocator = null
     ) {
         $this->vendorFactory = $vendorFactory;
         $this->channelRepository = $channelRepository;
+        $this->productRepository = $productRepository;
         $this->localeRepository = $localeRepository;
         $this->fileLocator = $fileLocator;
 
@@ -58,43 +64,30 @@ final class VendorExampleFactory extends AbstractExampleFactory
     /**
      * {@inheritdoc}
      */
-    protected function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver
-            ->setDefault('channels', LazyOption::randomOnes($this->channelRepository, 3))
-            ->setAllowedTypes('channels', 'array')
-            ->setNormalizer('channels', LazyOption::findBy($this->channelRepository, 'code'))
-
-            ->setDefault('logo', function (Options $options): string {
-                return __DIR__.'/../../Resources/fixtures/vendor/0'.rand(1, 4).'.png';
-            })
-            ->setAllowedTypes('logo', ['string'])
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function create(array $options = []): VendorInterface
     {
         $options = $this->optionsResolver->resolve($options);
 
         /** @var VendorInterface $vendor */
         $vendor = $this->vendorFactory->createNew();
-        $vendor->setName($this->faker->company);
-        $vendor->setSlug($this->faker->slug);
-        $vendor->setEmail($this->faker->companyEmail);
-
-        foreach ($options['channels'] as $channel) {
-            $vendor->addChannel($channel);
-        }
+        $vendor->setName($options['name']);
+        $vendor->setEmail($options['email']);
 
         /** @var string $localeCode */
         foreach ($this->getLocales() as $localeCode) {
             $vendor->setCurrentLocale($localeCode);
             $vendor->setFallbackLocale($localeCode);
 
-            $vendor->setDescription($this->faker->text);
+            $vendor->setDescription($options['description']);
+            $vendor->setSlug($options['slug']);
+        }
+
+        foreach ($options['channels'] as $channel) {
+            $vendor->addChannel($channel);
+        }
+
+        foreach ($options['products'] as $product) {
+            $vendor->addProduct($product);
         }
 
         $vendor->setLogoFile($this->createImage($options['logo']));
@@ -102,15 +95,10 @@ final class VendorExampleFactory extends AbstractExampleFactory
         return $vendor;
     }
 
-    /**
-     * @param string $imagePath
-     * @return UploadedFile
-     */
     private function createImage(string $imagePath): UploadedFile
     {
-        $imagePath = $this->fileLocator === null ? $imagePath : $this->fileLocator->locate($imagePath);
-        if(is_array($imagePath) && count($imagePath) > 0)
-            $imagePath = $imagePath[0];
+        /** @var string $imagePath */
+        $imagePath = null === $this->fileLocator ? $imagePath : $this->fileLocator->locate($imagePath);
 
         return new UploadedFile($imagePath, basename($imagePath));
     }
@@ -125,5 +113,45 @@ final class VendorExampleFactory extends AbstractExampleFactory
         foreach ($locales as $locale) {
             yield $locale->getCode();
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver
+            ->setDefault('channels', LazyOption::randomOnes($this->channelRepository, 3))
+            ->setAllowedTypes('channels', 'array')
+            ->setNormalizer('channels', LazyOption::findBy($this->channelRepository, 'code'))
+            ->setDefault('products', LazyOption::randomOnes($this->productRepository, 3))
+            ->setAllowedTypes('products', 'array')
+            ->setNormalizer('products', LazyOption::findBy($this->productRepository, 'code'))
+            ->setRequired('name')
+            ->setAllowedTypes('name', 'string')
+            ->setDefault('name', function (Options $options): string {
+                return $this->faker->company;
+            })
+            ->setRequired('slug')
+            ->setAllowedTypes('slug', 'string')
+            ->setDefault('slug', function (Options $options): string {
+                return StringInflector::nameToCode((string) $options['name']);
+            })
+            ->setRequired('email')
+            ->setAllowedTypes('email', 'string')
+            ->setDefault('email', function (Options $options): string {
+                return $this->faker->companyEmail;
+            })
+            ->setRequired('logo')
+            ->setAllowedTypes('logo', 'string')
+            ->setDefault('logo', function (Options $options): string {
+                return __DIR__.'/../../Resources/fixtures/vendor/images/0'.rand(1, 3).'.png';
+            })
+            ->setRequired('description')
+            ->setAllowedTypes('description', 'string')
+            ->setDefault('description', function (Options $options): string {
+                return $this->faker->text;
+            })
+        ;
     }
 }

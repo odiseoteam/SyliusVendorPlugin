@@ -1,0 +1,12 @@
+{% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationForm %}
+
+<div class="ui tab" data-tab="profile">
+    <h3 class="ui top attached header">{{ 'odiseo_sylius_vendor_plugin.ui.profile'|trans }}</h3>
+    <div class="ui attached segment">
+        <div class="ui segment">
+            {{ form_row(form.extraEmails) }}
+        </div>
+
+        {{ translationForm(form.translations) }}
+    </div>
+</div>

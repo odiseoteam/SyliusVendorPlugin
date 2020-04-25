@@ -9,6 +9,7 @@ odiseo_sylius_vendor_plugin_admin_vendor:
         permission: true
         vars:
             all:
+                subheader: odiseo_sylius_vendor_plugin.ui.manage_vendors
                 templates:
                     form: '@OdiseoSyliusVendorPlugin/Admin/Vendor/_form.html.twig'
             index:

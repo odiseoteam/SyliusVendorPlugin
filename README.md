@@ -39,7 +39,7 @@ Support Sylius version 1.3+.
 
 #### Premium features!
 
-Do you want advanced features? Take a look at our [Multi Vendor Marketplace Plugin](https://odiseo.io/plugins-and-bundles/premium/sylius-mvm-plugin), this convert your Sylius store into a fully Multi Vendor Marketplace.
+Do you want advanced features? Take a look at our [Multi Vendor Marketplace Plugin](https://odiseo.io/plugins-and-bundles/premium/sylius-mvm-plugin), this convert your Sylius store into a marketplace store like Amazon, Etsy, eBay.
 
 ## Screenshots
 

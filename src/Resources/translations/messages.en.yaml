@@ -1,8 +1,11 @@
 odiseo_sylius_vendor_plugin:
     ui:
+        vendor: Vendor
         vendors: Vendors
         edit_vendor: Edit vendor
         new_vendor: New vendor
+        profile: Profile
+        manage_vendors: Manage vendors
     menu:
         admin:
             vendors: Vendors

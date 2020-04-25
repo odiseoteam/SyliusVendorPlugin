@@ -12,5 +12,6 @@ services:
         arguments:
             - '@odiseo_sylius_vendor_plugin.factory.vendor'
             - '@sylius.repository.channel'
+            - '@sylius.repository.product'
             - '@sylius.repository.locale'
             - '@file_locator'
