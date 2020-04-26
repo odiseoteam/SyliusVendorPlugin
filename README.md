@@ -28,12 +28,11 @@ This is a Sylius Plugin that add vendors (brands) to your store. The vendor is a
 Features:
 
 * Vendors by Channel: You can specify what vendors will be enabled for different stores.
-
 * Vendors with translations: Vendor's information are translatable.
-
 * Templates: This plugin has shop views for list and show vendors.
-
+* Multi Emails: Vendors can have a primary and also additionals emails.
 * Sitemap: All shop pages are connected with the [Sitemap Plugin](https://github.com/stefandoorn/sitemap-plugin).
+* Easy to extend: This plugin follow the best practices to make it fully extensible.
 
 Support Sylius version 1.3+.
 
