@@ -8,5 +8,7 @@
         </div>
 
         {{ translationForm(form.translations) }}
+
+        {{ sylius_template_event(['odiseo_sylius_vendor_plugin.admin.vendor.' ~ action ~ '.tab_profile', 'odiseo_sylius_vendor_plugin.admin.vendor.tab_profile'], {'form': form}) }}
     </div>
 </div>

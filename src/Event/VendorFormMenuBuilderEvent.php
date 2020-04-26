@@ -9,7 +9,7 @@ use Knp\Menu\ItemInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
-class VendorMenuBuilderEvent extends MenuBuilderEvent
+class VendorFormMenuBuilderEvent extends MenuBuilderEvent
 {
     /** @var VendorInterface */
     private $vendor;

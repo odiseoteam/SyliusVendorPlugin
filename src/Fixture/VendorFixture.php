@@ -7,7 +7,7 @@ namespace Odiseo\SyliusVendorPlugin\Fixture;
 use Sylius\Bundle\CoreBundle\Fixture\AbstractResourceFixture;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
-final class VendorFixture extends AbstractResourceFixture
+class VendorFixture extends AbstractResourceFixture
 {
     /**
      * {@inheritdoc}

@@ -7,13 +7,11 @@ namespace Odiseo\SyliusVendorPlugin\Menu;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
-use Odiseo\SyliusVendorPlugin\Event\VendorMenuBuilderEvent;
+use Odiseo\SyliusVendorPlugin\Event\VendorFormMenuBuilderEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 final class VendorFormMenuBuilder
 {
-    public const EVENT_NAME = 'odiseo_sylius_vendor_plugin.menu.admin.vendor.form';
-
     /** @var FactoryInterface */
     private $factory;
 
@@ -54,7 +52,7 @@ final class VendorFormMenuBuilder
         ;
 
         $this->eventDispatcher->dispatch(
-            new VendorMenuBuilderEvent($this->factory, $menu, $options['vendor'])
+            new VendorFormMenuBuilderEvent($this->factory, $menu, $options['vendor'])
         );
 
         return $menu;

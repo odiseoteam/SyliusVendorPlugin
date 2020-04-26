@@ -9,7 +9,6 @@ use Generator;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;
-use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -19,32 +18,32 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class VendorExampleFactory implements ExampleFactoryInterface
+class VendorExampleFactory implements ExampleFactoryInterface
 {
     /** @var FactoryInterface */
-    private $vendorFactory;
-
-    /** @var ChannelRepositoryInterface */
-    private $channelRepository;
+    protected $vendorFactory;
 
     /** @var RepositoryInterface */
-    private $productRepository;
+    protected $channelRepository;
 
     /** @var RepositoryInterface */
-    private $localeRepository;
+    protected $productRepository;
+
+    /** @var RepositoryInterface */
+    protected $localeRepository;
 
     /** @var \Faker\Generator */
-    private $faker;
+    protected $faker;
 
     /** @var FileLocatorInterface|null */
-    private $fileLocator;
+    protected $fileLocator;
 
     /** @var OptionsResolver */
-    private $optionsResolver;
+    protected $optionsResolver;
 
     public function __construct(
         FactoryInterface $vendorFactory,
-        ChannelRepositoryInterface $channelRepository,
+        RepositoryInterface $channelRepository,
         RepositoryInterface $productRepository,
         RepositoryInterface $localeRepository,
         ?FileLocatorInterface $fileLocator = null
@@ -95,7 +94,7 @@ final class VendorExampleFactory implements ExampleFactoryInterface
         return $vendor;
     }
 
-    private function createImage(string $imagePath): UploadedFile
+    protected function createImage(string $imagePath): UploadedFile
     {
         /** @var string $imagePath */
         $imagePath = null === $this->fileLocator ? $imagePath : $this->fileLocator->locate($imagePath);
@@ -106,7 +105,7 @@ final class VendorExampleFactory implements ExampleFactoryInterface
     /**
      * @return Generator
      */
-    private function getLocales(): Generator
+    protected function getLocales(): Generator
     {
         /** @var LocaleInterface[] $locales */
         $locales = $this->localeRepository->findAll();
