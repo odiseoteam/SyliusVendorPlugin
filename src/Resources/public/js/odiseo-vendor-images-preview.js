@@ -26,7 +26,7 @@
       var reader = new FileReader();
 
       reader.onload = function (e) {
-        var image = $(input).siblings('.image');
+        var image = $(input).parent().siblings('.image');
 
         if (image.length > 0) {
           image.attr('src', e.target.result);
