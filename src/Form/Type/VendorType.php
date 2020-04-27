@@ -57,6 +57,7 @@ final class VendorType extends AbstractResourceType
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
+                'required' => false,
             ])
         ;
     }

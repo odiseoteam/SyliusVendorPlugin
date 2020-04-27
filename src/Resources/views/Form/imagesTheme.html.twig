@@ -2,10 +2,15 @@
 
 {% block _odiseo_vendor_logoFile_widget %}
     {% apply spaceless %}
-        {% if form.parent.vars.value.logoName|default(null) is not null %}
-            <img class="ui small bordered image" src="{{ form.parent.vars.value.logoName|imagine_filter('odiseo_sylius_vendor_plugin_logo') }}" alt="{{ form.parent.vars.value.name }} Logo" />
-        {% endif %}
+        <div>
+            <label for="{{ form.vars.id }}" class="ui icon labeled button"><i class="cloud upload icon"></i> {{ 'sylius.ui.choose_file'|trans }}</label>
+            {% if form.parent.vars.value.logoName|default(null) is not null %}
+                <img class="ui small bordered image" src="{{ form.parent.vars.value.logoName|imagine_filter('odiseo_sylius_vendor_plugin_logo') }}" alt="{{ form.parent.vars.value.name }} Logo" />
+            {% endif %}
 
-        {{ block('form_widget') }}
+            <div class="ui hidden element">
+                {{ block('form_widget') }}
+            </div>
+        </div>
     {% endapply %}
 {% endblock %}
