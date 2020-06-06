@@ -23,7 +23,7 @@
             <gedmo:timestampable on="update"/>
         </field>
 
-        <one-to-many field="extraEmails" target-entity="Odiseo\SyliusVendorPlugin\Entity\VendorEmailInterface" mapped-by="vendor">
+        <one-to-many field="extraEmails" target-entity="Odiseo\SyliusVendorPlugin\Entity\VendorEmailInterface" mapped-by="vendor" orphan-removal="true">
             <cascade>
                 <cascade-all/>
             </cascade>
