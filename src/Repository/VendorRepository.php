@@ -9,7 +9,7 @@ use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Core\Model\ChannelInterface;
 
-final class VendorRepository extends EntityRepository implements VendorRepositoryInterface
+class VendorRepository extends EntityRepository implements VendorRepositoryInterface
 {
     /**
      * {@inheritdoc}
@@ -44,7 +44,7 @@ final class VendorRepository extends EntityRepository implements VendorRepositor
      */
     public function findOneBySlug(string $slug): ?VendorInterface
     {
-        $vendor = $this->createQueryBuilder('o')
+        return $this->createQueryBuilder('o')
             ->andWhere('o.slug = :slug')
             ->andWhere('o.enabled = :enabled')
             ->setParameter('slug', $slug)
@@ -52,7 +52,5 @@ final class VendorRepository extends EntityRepository implements VendorRepositor
             ->getQuery()
             ->getOneOrNullResult()
         ;
-
-        return $vendor;
     }
 }
