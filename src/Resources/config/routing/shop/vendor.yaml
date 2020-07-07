@@ -33,3 +33,16 @@ odiseo_sylius_vendor_plugin_shop_partial_vendor_by_channel:
                 method: findByChannel
                 arguments:
                     - "expr:service('sylius.context.channel').getChannel()"
+
+odiseo_sylius_vendor_plugin_shop_partial_product_by_channel_index:
+    path: /partial/products-by-enabled-and-channel
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product:indexAction
+        _sylius:
+            #  template: '@OdiseoSyliusMarketplacePlugin/Shop/Vendor/show.html.twig'
+            repository:
+                method: findByEnabledAndChannel
+                arguments:
+                    - $vendor
+                    - "expr:service('sylius.context.channel').getChannel()"
