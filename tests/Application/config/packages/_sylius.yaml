@@ -34,3 +34,4 @@ sylius_product:
         product:
             classes:
                 model: Tests\Odiseo\SyliusVendorPlugin\Application\Entity\Product
+                repository: Tests\Odiseo\SyliusVendorPlugin\Application\Repository\ProductRepository

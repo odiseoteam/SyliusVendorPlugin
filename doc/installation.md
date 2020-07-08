@@ -104,6 +104,23 @@ class Product extends BaseProduct implements VendorAwareInterface
 }
 ```
 
+```php
+<?php
+// src/Repository/ProductRepository.php
+
+// ...
+use Odiseo\SyliusVendorPlugin\Repository\ProductRepositoryInterface;
+use Odiseo\SyliusVendorPlugin\Repository\ProductRepositoryTrait;
+use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository as BaseProductRepository;
+
+class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
+{
+    use ProductRepositoryTrait;
+
+    // ...
+}
+```
+
 ```yml
 # config/packages/_sylius.yaml
 sylius_channel:
@@ -117,6 +134,7 @@ sylius_product:
         product:
             classes:
                 model: App\Entity\Product
+                repository: App\Repository\ProductRepository
 ```
 
 7. Add the vendor select box to the product form edit page. So, you need to run `mkdir -p templates/bundles/SyliusAdminBundle/Product/Tab` then `cp vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/views/Product/Tab/_details.html.twig templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig` and then add the form widget

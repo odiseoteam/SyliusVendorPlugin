@@ -35,11 +35,7 @@
         </div>
         <div class="sixteen wide tablet nine wide computer column">
             <div class="two column stretched ui grid">
-                {% for product in vendor.products %}
-                    <div class="column">
-                        {% include '@SyliusShop/Product/_box.html.twig' %}
-                    </div>
-                {% endfor %}
+                {{ render(url('odiseo_sylius_vendor_plugin_shop_partial_vendor_products', {'template': '@OdiseoSyliusVendorPlugin/Shop/Vendor/_products.html.twig', 'slug': vendor.slug})) }}
             </div>
         </div>
     </div>
