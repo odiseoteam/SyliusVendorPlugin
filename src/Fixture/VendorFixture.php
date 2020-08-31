@@ -14,16 +14,15 @@ class VendorFixture extends AbstractResourceFixture
      */
     protected function configureResourceNode(ArrayNodeDefinition $resourceNode): void
     {
-        $resourceNode
-            ->children()
-            ->arrayNode('products')->scalarPrototype()->end()->end()
-            ->arrayNode('channels')->scalarPrototype()->end()->end()
-            ->scalarNode('name')->cannotBeEmpty()->end()
-            ->scalarNode('slug')->cannotBeEmpty()->end()
-            ->scalarNode('email')->cannotBeEmpty()->end()
-            ->scalarNode('logo')->end()
-            ->scalarNode('description')->end()
-        ;
+        $node = $resourceNode->children();
+
+        $node->arrayNode('products')->scalarPrototype();
+        $node->arrayNode('channels')->scalarPrototype();
+        $node->scalarNode('name')->cannotBeEmpty();
+        $node->scalarNode('slug')->cannotBeEmpty();
+        $node->scalarNode('email')->cannotBeEmpty();
+        $node->scalarNode('logo');
+        $node->scalarNode('description');
     }
 
     /**

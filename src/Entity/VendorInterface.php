@@ -75,6 +75,8 @@ interface VendorInterface extends
 
     /**
      * @return Collection|ProductInterface[]
+     *
+     * @psalm-return Collection<array-key, ProductInterface>
      */
     public function getProducts(): Collection;
 
@@ -96,6 +98,8 @@ interface VendorInterface extends
 
     /**
      * @return Collection|VendorEmailInterface[]
+     *
+     * @psalm-return Collection<array-key, VendorEmailInterface>
      */
     public function getExtraEmails(): Collection;
 

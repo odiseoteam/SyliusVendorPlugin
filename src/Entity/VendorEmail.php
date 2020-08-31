@@ -8,16 +8,14 @@ use Sylius\Component\Resource\Model\TimestampableTrait;
 
 class VendorEmail implements VendorEmailInterface
 {
+    use VendorTrait;
     use TimestampableTrait;
 
     /** @var int|null */
-    private $id;
+    protected $id;
 
     /** @var string|null */
-    private $value;
-
-    /** @var VendorInterface */
-    protected $vendor;
+    protected $value;
 
     public function __construct()
     {
@@ -25,15 +23,15 @@ class VendorEmail implements VendorEmailInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getValue(): ?string
     {
@@ -41,26 +39,10 @@ class VendorEmail implements VendorEmailInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setValue(?string $value): void
     {
         $this->value = $value;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getVendor(): ?VendorInterface
-    {
-        return $this->vendor;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setVendor(?VendorInterface $vendor): void
-    {
-        $this->vendor = $vendor;
     }
 }

@@ -12,7 +12,7 @@ class VendorTranslation extends AbstractTranslation implements VendorTranslation
     use TimestampableTrait;
 
     /** @var int|null */
-    private $id;
+    protected $id;
 
     /** @var string|null */
     private $description;

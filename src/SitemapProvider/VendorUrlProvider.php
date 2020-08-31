@@ -74,7 +74,9 @@ final class VendorUrlProvider implements UrlProviderInterface
 
     /**
      * @param VendorInterface $vendor
-     * @return Collection
+     * @return Collection|TranslationInterface[]
+     *
+     * @psalm-return Collection<array-key, TranslationInterface>
      */
     private function getTranslations(VendorInterface $vendor): Collection
     {

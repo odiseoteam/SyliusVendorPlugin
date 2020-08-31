@@ -10,6 +10,8 @@ interface VendorsAwareInterface
 {
     /**
      * @return Collection|VendorInterface[]
+     *
+     * @psalm-return Collection<array-key, VendorInterface>
      */
     public function getVendors(): Collection;
 

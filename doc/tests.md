@@ -9,10 +9,10 @@ From the plugin root directory, run the following commands:
     $ (cd tests/Application && yarn install)
     $ (cd tests/Application && yarn build)
     $ (cd tests/Application && bin/console assets:install public -e test)
-    
+
     $ (cd tests/Application && bin/console doctrine:database:create -e test)
     $ (cd tests/Application && bin/console doctrine:schema:create -e test)
-    
+
 To be able to setup a plugin's database, remember to configure you database credentials in `tests/Application/.env` and `tests/Application/.env.test`.
 
 ## Usage
@@ -36,7 +36,7 @@ To be able to setup a plugin's database, remember to configure you database cred
     ```bash
     $ bin/behat
     ```
-    
+
 ### Opening Sylius with this plugin
 
 - Using `test` environment:
@@ -45,7 +45,7 @@ To be able to setup a plugin's database, remember to configure you database cred
     $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
     $ (cd tests/Application && bin/console server:run -d public -e test)
     ```
-    
+
 - Using `dev` environment:
 
     ```bash
