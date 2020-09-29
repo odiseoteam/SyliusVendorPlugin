@@ -129,15 +129,15 @@ final class VendorUrlProvider implements UrlProviderInterface
         $vendorUrl->setChangeFrequency(ChangeFrequency::daily());
         $vendorUrl->setPriority(0.7);
 
-        if ($vendor->getUpdatedAt()) {
+        if (null !== $vendor->getUpdatedAt()) {
             $vendorUrl->setLastModification($vendor->getUpdatedAt());
-        } elseif ($vendor->getCreatedAt()) {
+        } elseif (null !== $vendor->getCreatedAt()) {
             $vendorUrl->setLastModification($vendor->getCreatedAt());
         }
 
         /** @var VendorTranslation $translation */
         foreach ($this->getTranslations($vendor) as $translation) {
-            if (!$translation->getLocale() || !$this->localeInLocaleCodes($translation)) {
+            if (null === $translation->getLocale() || !$this->localeInLocaleCodes($translation)) {
                 continue;
             }
 
