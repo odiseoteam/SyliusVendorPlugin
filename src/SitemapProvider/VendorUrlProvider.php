@@ -80,7 +80,7 @@ final class VendorUrlProvider implements UrlProviderInterface
      */
     private function getTranslations(VendorInterface $vendor): Collection
     {
-        return $vendor->getTranslations()->filter(function (TranslationInterface $translation) {
+        return $vendor->getTranslations()->filter(function (TranslationInterface $translation): bool {
             return $this->localeInLocaleCodes($translation);
         });
     }
@@ -91,7 +91,7 @@ final class VendorUrlProvider implements UrlProviderInterface
      */
     private function localeInLocaleCodes(TranslationInterface $translation): bool
     {
-        return in_array($translation->getLocale(), $this->getLocaleCodes());
+        return in_array($translation->getLocale(), $this->getLocaleCodes(), true);
     }
 
     /**
@@ -113,7 +113,7 @@ final class VendorUrlProvider implements UrlProviderInterface
         /** @var ChannelInterface $channel */
         $channel = $this->channelContext->getChannel();
 
-        return $channel->getLocales()->map(function (LocaleInterface $locale) {
+        return $channel->getLocales()->map(function (LocaleInterface $locale): ?string {
             return $locale->getCode();
         })->toArray();
     }

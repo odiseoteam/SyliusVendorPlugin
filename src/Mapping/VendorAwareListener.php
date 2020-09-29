@@ -61,7 +61,7 @@ final class VendorAwareListener implements EventSubscriber
         $classMetadata = $eventArgs->getClassMetadata();
         $reflection = $classMetadata->reflClass;
 
-        if (!$reflection instanceof \ReflectionClass || $reflection->isAbstract()) {
+        if ($reflection->isAbstract()) {
             return;
         }
 

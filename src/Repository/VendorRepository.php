@@ -21,7 +21,7 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
             ->setParameter('enabled', true)
         ;
 
-        if ($channel) {
+        if ($channel instanceof ChannelInterface) {
             $queryBuilder->innerJoin('v.channels', 'channel')
                 ->andWhere('channel = :channel')
                 ->setParameter('channel', $channel)

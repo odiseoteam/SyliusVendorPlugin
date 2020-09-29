@@ -12,4 +12,15 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <PropertyNotSetInConstructor errorLevel="info" />
+        <PossiblyNullArrayOffset errorLevel="info" />
+        <MixedAssignment errorLevel="info" />
+        <MixedArgument errorLevel="info" />
+        <DocblockTypeContradiction errorLevel="info" />
+        <MixedInferredReturnType errorLevel="info" />
+        <MixedReturnStatement errorLevel="info" />
+        <PossiblyNullArgument errorLevel="info" />
+    </issueHandlers>
 </psalm>

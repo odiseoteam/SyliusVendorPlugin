@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Odiseo\SyliusVendorPlugin\Form\Type;
 
+use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
@@ -70,10 +71,11 @@ final class VendorType extends AbstractResourceType
         parent::configureOptions($resolver);
 
         $resolver->setDefaults([
-            'validation_groups' => function (FormInterface $form) {
+            'validation_groups' => function (FormInterface $form): array {
+                /** @var VendorInterface|null $vendor */
                 $vendor = $form->getData();
 
-                if (!$vendor || null === $vendor->getId()) {
+                if (!$vendor instanceof VendorInterface || null === $vendor->getId()) {
                     return array_merge($this->validationGroups, ['odiseo_logo_create']);
                 }
 
