@@ -1,6 +1,6 @@
 ## Installation
 
-1. Run `composer require odiseoteam/sylius-vendor-plugin`
+1. Run `composer require odiseoteam/sylius-vendor-plugin --no-scripts`
 
 2. Enable the plugin in bundles.php
 
@@ -154,4 +154,5 @@ sylius_product:
 ```
 php bin/console doctrine:schema:update --force
 php bin/console sylius:theme:assets:install
+php bin/console cache:clear
 ```
