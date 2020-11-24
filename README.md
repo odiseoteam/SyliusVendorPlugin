@@ -23,22 +23,22 @@
 
 ## Description
 
-This is a Sylius Plugin that add vendors (brands) to your store. The vendor is an entity that sells products and are fully customizable by the admin.
+This is a Sylius Plugin that adds vendors (brands) to your store. A vendor is an entity that sells products and is fully customizable by the admin.
 
 Features:
 
 * Vendors by Channel: You can specify what vendors will be enabled for different stores.
-* Vendors with translations: Vendor's information are translatable.
+* Vendors with translations: Vendor's information is translatable.
 * Templates: This plugin has shop views for list and show vendors.
 * Multi Emails: Vendors can have a primary and also additionals emails.
 * Sitemap: All shop pages are connected with the [Sitemap Plugin](https://github.com/stefandoorn/sitemap-plugin).
-* Easy to extend: This plugin follow the best practices to make it fully extensible.
+* Easy to extend: This plugin follows the best practices to make it fully extensible.
 
 Support Sylius version 1.3+.
 
 #### Premium features!
 
-Do you want advanced features? Take a look at our [Multi Vendor Marketplace Plugin](https://odiseo.io/plugins-and-bundles/premium/sylius-mvm-plugin), this convert your Sylius store into a marketplace store like Amazon, Etsy, eBay.
+Do you want advanced features? Take a look at our [Multi Vendor Marketplace Plugin](https://odiseo.io/plugins-and-bundles/premium/sylius-mvm-plugin), this converts your Sylius store into a marketplace store like Amazon, Etsy, eBay.
 
 ## Screenshots
 
