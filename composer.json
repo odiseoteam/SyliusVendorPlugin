@@ -12,7 +12,7 @@
     "require": {
         "php": "^7.3",
 
-        "sylius/sylius": "^1.3",
+        "sylius/sylius": "^1.7",
         "vich/uploader-bundle": "^1.6",
         "stefandoorn/sitemap-plugin": "^1.0"
     },
