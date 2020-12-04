@@ -63,7 +63,6 @@ You can see this plugin in action in our Sylius Demo application.
 - [Customization](doc/customization.md)
 - [Tests](doc/tests.md)
 
-
 ## Credits
 
 This plugin is maintained by <a href="https://odiseo.io">Odiseo</a>. Want us to help you with this plugin or any Sylius project? Contact us on <a href="mailto:team@odiseo.com.ar">team@odiseo.com.ar</a>.
