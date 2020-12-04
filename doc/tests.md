@@ -1,6 +1,6 @@
 ## Test the plugin
 
-We are using PHPStan, Psalm, Behat, PHPSpec and PHPUnit to test this plugin.
+We are using Behat, PHPSpec and PHPUnit to test this plugin.
 
 ### How to run the tests
 
@@ -9,10 +9,10 @@ From the plugin root directory, run the following commands:
     ```bash
     $ (cd tests/Application && yarn install)
     $ (cd tests/Application && yarn build)
-    $ (cd tests/Application && APP_ENV=test bin/console assets:install public)
+    $ (cd tests/Application && bin/console assets:install public -e test)
 
-    $ (cd tests/Application && APP_ENV=test bin/console doctrine:database:create)
-    $ (cd tests/Application && APP_ENV=test bin/console doctrine:schema:create)
+    $ (cd tests/Application && bin/console doctrine:database:create -e test)
+    $ (cd tests/Application && bin/console doctrine:schema:create -e test)
     ```
 
 To be able to setup a plugin's database, remember to configure you database credentials in `tests/Application/.env` and `tests/Application/.env.test`.
@@ -61,38 +61,18 @@ To be able to setup a plugin's database, remember to configure you database cred
       $ vendor/bin/behat --strict --tags="@javascript"
       ```
 
-  - Static Analysis
-
-    - Psalm
-
-      ```bash
-      $ vendor/bin/psalm
-      ```
-
-    - PHPStan
-
-      ```bash
-      $ vendor/bin/phpstan analyse -c phpstan.neon -l max src/
-      ```
-
-  - Coding Standard
-
-    ```bash
-    $ vendor/bin/ecs check src
-    ```
-
 ### Opening Sylius with this plugin
 
 - Using `test` environment:
 
     ```bash
-    $ (cd tests/Application && APP_ENV=test bin/console sylius:fixtures:load)
-    $ (cd tests/Application && APP_ENV=test bin/console server:run -d public)
+    $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
+    $ (cd tests/Application && bin/console server:run -d public -e test)
     ```
 
 - Using `dev` environment:
 
     ```bash
-    $ (cd tests/Application && APP_ENV=dev bin/console sylius:fixtures:load)
-    $ (cd tests/Application && APP_ENV=dev bin/console server:run -d public)
+    $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
+    $ (cd tests/Application && bin/console server:run -d public -e dev)
     ```
