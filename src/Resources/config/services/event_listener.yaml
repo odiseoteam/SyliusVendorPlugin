@@ -26,3 +26,11 @@ services:
             - '%sylius.model.channel.class%'
         tags:
             - { name: doctrine.event_subscriber, connection: default, priority: 99 }
+
+    odiseo_sylius_vendor_plugin.event_listener.vendor_logo_upload:
+        class: Odiseo\SyliusVendorPlugin\EventListener\VendorLogoUploadListener
+        arguments:
+            - '@odiseo_sylius_vendor_plugin.uploader.vendor_logo'
+        tags:
+            - { name: kernel.event_listener, event: odiseo_sylius_vendor_plugin.vendor.pre_create, method: uploadLogo }
+            - { name: kernel.event_listener, event: odiseo_sylius_vendor_plugin.vendor.pre_update, method: uploadLogo }

@@ -4,3 +4,4 @@ imports:
     - { resource: services/fixture.yaml }
     - { resource: services/form.yaml }
     - { resource: services/sitemap.yaml }
+    - { resource: services/uploader.yaml }

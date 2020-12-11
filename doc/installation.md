@@ -10,7 +10,6 @@
 
 return [
     // ...
-    Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     Odiseo\SyliusVendorPlugin\OdiseoSyliusVendorPlugin::class => ['all' => true],
 ];
 ```

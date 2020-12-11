@@ -10,21 +10,8 @@ knp_gaufrette:
                 directory: "%sylius_core.public_dir%/media/vendor-logo"
                 create: true
     filesystems:
-        vendor_logo_fs:
-            adapter: vendor_logo
-
-vich_uploader:
-   db_driver: orm # or mongodb or propel or phpcr
-   storage:   gaufrette
-
-   mappings:
         vendor_logo:
-            uri_prefix:         /vendor-logo
-            upload_destination: vendor_logo_fs
-            namer:              vich_uploader.namer_uniqid
-            inject_on_load:     false
-            delete_on_update:   true
-            delete_on_remove:   true
+            adapter: vendor_logo
 
 liip_imagine:
     loaders:

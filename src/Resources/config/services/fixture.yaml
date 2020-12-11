@@ -11,6 +11,7 @@ services:
         class: Odiseo\SyliusVendorPlugin\Fixture\Factory\VendorExampleFactory
         arguments:
             - '@odiseo_sylius_vendor_plugin.factory.vendor'
+            - '@odiseo_sylius_vendor_plugin.uploader.vendor_logo'
             - '@sylius.repository.channel'
             - '@sylius.repository.product'
             - '@sylius.repository.locale'

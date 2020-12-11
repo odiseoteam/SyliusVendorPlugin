@@ -8,6 +8,7 @@ use Behat\Behat\Context\Context;
 use Doctrine\ORM\EntityManagerInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Odiseo\SyliusVendorPlugin\Repository\VendorRepositoryInterface;
+use Odiseo\SyliusVendorPlugin\Uploader\VendorLogoUploaderInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -23,6 +24,9 @@ final class VendorContext implements Context
     /** @var FactoryInterface */
     private $vendorFactory;
 
+    /** @var VendorLogoUploaderInterface */
+    private $vendorLogoUploader;
+
     /** @var VendorRepositoryInterface */
     private $vendorRepository;
 
@@ -35,12 +39,14 @@ final class VendorContext implements Context
     public function __construct(
         SharedStorageInterface $sharedStorage,
         FactoryInterface $vendorFactory,
+        VendorLogoUploaderInterface $vendorLogoUploader,
         VendorRepositoryInterface $vendorRepository,
         ProductRepositoryInterface $productRepository,
         EntityManagerInterface $entityManager
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->vendorFactory = $vendorFactory;
+        $this->vendorLogoUploader = $vendorLogoUploader;
         $this->vendorRepository = $vendorRepository;
         $this->productRepository = $productRepository;
         $this->entityManager = $entityManager;
@@ -111,6 +117,8 @@ final class VendorContext implements Context
 
         $uploadedFile = new UploadedFile(__DIR__.'/../../Resources/images/logo_odiseo.png', 'logo_odiseo.png');
         $vendor->setLogoFile($uploadedFile);
+
+        $this->vendorLogoUploader->upload($vendor);
 
         return $vendor;
     }

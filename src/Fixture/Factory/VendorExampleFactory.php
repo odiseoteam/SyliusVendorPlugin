@@ -7,6 +7,7 @@ namespace Odiseo\SyliusVendorPlugin\Fixture\Factory;
 use Faker\Factory;
 use Generator;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
+use Odiseo\SyliusVendorPlugin\Uploader\VendorLogoUploaderInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;
 use Sylius\Component\Core\Formatter\StringInflector;
@@ -22,6 +23,9 @@ class VendorExampleFactory implements ExampleFactoryInterface
 {
     /** @var FactoryInterface */
     protected $vendorFactory;
+
+    /** @var VendorLogoUploaderInterface */
+    protected $vendorLogoUploader;
 
     /** @var RepositoryInterface */
     protected $channelRepository;
@@ -43,12 +47,14 @@ class VendorExampleFactory implements ExampleFactoryInterface
 
     public function __construct(
         FactoryInterface $vendorFactory,
+        VendorLogoUploaderInterface $vendorLogoUploader,
         RepositoryInterface $channelRepository,
         RepositoryInterface $productRepository,
         RepositoryInterface $localeRepository,
         ?FileLocatorInterface $fileLocator = null
     ) {
         $this->vendorFactory = $vendorFactory;
+        $this->vendorLogoUploader = $vendorLogoUploader;
         $this->channelRepository = $channelRepository;
         $this->productRepository = $productRepository;
         $this->localeRepository = $localeRepository;
@@ -90,6 +96,8 @@ class VendorExampleFactory implements ExampleFactoryInterface
         }
 
         $vendor->setLogoFile($this->createImage($options['logo']));
+
+        $this->vendorLogoUploader->upload($vendor);
 
         return $vendor;
     }

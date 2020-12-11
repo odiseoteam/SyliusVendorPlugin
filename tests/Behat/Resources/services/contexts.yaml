@@ -5,6 +5,7 @@ services:
         arguments:
             - '@sylius.behat.shared_storage'
             - '@odiseo_sylius_vendor_plugin.factory.vendor'
+            - '@odiseo_sylius_vendor_plugin.uploader.vendor_logo'
             - '@odiseo_sylius_vendor_plugin.repository.vendor'
             - '@sylius.repository.product'
             - '@odiseo_sylius_vendor_plugin.manager.vendor'
