@@ -122,17 +122,10 @@ class ProductRepository extends BaseProductRepository implements ProductReposito
 
 ```yml
 # config/packages/_sylius.yaml
-sylius_channel:
-    resources:
-        channel:
-            classes:
-                model: App\Entity\Channel
-
 sylius_product:
     resources:
         product:
             classes:
-                model: App\Entity\Product
                 repository: App\Repository\ProductRepository
 ```
 
