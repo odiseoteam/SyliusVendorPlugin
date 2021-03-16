@@ -9,9 +9,6 @@
     <a href="https://packagist.org/packages/odiseoteam/sylius-vendor-plugin" title="Version" target="_blank">
         <img src="https://img.shields.io/packagist/v/odiseoteam/sylius-vendor-plugin.svg" />
     </a>
-    <a href="http://travis-ci.org/odiseoteam/SyliusVendorPlugin" title="Build status" target="_blank">
-        <img src="https://img.shields.io/travis/odiseoteam/SyliusVendorPlugin/master.svg" />
-    </a>
     <a href="https://scrutinizer-ci.com/g/odiseoteam/SyliusVendorPlugin/" title="Scrutinizer" target="_blank">
         <img src="https://img.shields.io/scrutinizer/g/odiseoteam/SyliusVendorPlugin.svg" />
     </a>
