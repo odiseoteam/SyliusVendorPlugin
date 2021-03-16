@@ -2,7 +2,7 @@ odiseo_sylius_vendor_plugin_admin_vendor:
     resource: |
         alias: odiseo_sylius_vendor_plugin.vendor
         section: admin
-        templates: SyliusAdminBundle:Crud
+        templates: "@SyliusAdmin/Crud"
         except: ['show']
         redirect: index
         grid: odiseo_sylius_vendor_plugin_vendor

@@ -27,6 +27,7 @@ final class VendorSlugController extends AbstractController
      */
     public function generateAction(Request $request): Response
     {
+        /** @var string $name */
         $name = $request->query->get('name');
 
         return new JsonResponse([

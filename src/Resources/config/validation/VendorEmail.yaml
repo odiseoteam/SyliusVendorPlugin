@@ -18,5 +18,4 @@ Odiseo\SyliusVendorPlugin\Entity\VendorEmail:
                 groups: ['odiseo']
             - Email:
                 message: 'odiseo_sylius_vendor_plugin.vendor.email.invalid'
-                strict: true
                 groups: ['odiseo']

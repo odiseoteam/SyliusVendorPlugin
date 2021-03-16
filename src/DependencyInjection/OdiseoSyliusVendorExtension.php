@@ -15,9 +15,9 @@ final class OdiseoSyliusVendorExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function load(array $config, ContainerBuilder $container): void
+    public function load(array $configs, ContainerBuilder $container): void
     {
-        $this->processConfiguration($this->getConfiguration([], $container), $config);
+        $this->processConfiguration($this->getConfiguration([], $container), $configs);
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
