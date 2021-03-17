@@ -1,51 +1,53 @@
 {% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationFormWithSlug %}
 
 <div class="ui active tab" data-tab="details">
-    <h3 class="ui dividing header">{{ 'sylius.ui.details'|trans }}</h3>
-    {{ form_errors(form) }}
+    <h3 class="ui top attached header">{{ 'sylius.ui.details'|trans }}</h3>
 
-    <div class="ui two column stackable grid">
-        <div class="column">
-            <div class="ui segment">
-                {{ form_row(form.code) }}
-                {{ form_row(form.enabled) }}
-                {{ form_row(form.vendor) }}
-                {% if product.simple %}
-                    {{ form_row(form.variant.onHand) }}
-                    {{ form_row(form.variant.tracked) }}
-                    {{ form_row(form.variant.shippingRequired) }}
-                    {{ form_row(form.variant.version) }}
-                {% else %}
-                    {{ form_row(form.options) }}
-                    {{ form_row(form.variantSelectionMethod) }}
-                {% endif %}
+    <div class="ui attached segment">
+        {{ form_errors(form) }}
 
-                {# Nothing to see here. #}
-                <div class="ui hidden element">
-                    {% if product.simple %}
-                        {{ form_row(form.variant.translations) }}
-                    {% endif %}
-                    {{ form_row(form.variantSelectionMethod) }}
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            {{ form_row(form.channels) }}
-
-            {% if product.simple %}
-                <h4 class="ui dividing header">{{ 'sylius.ui.pricing'|trans }}</h4>
-                {{ form_row(form.variant.channelPricings, {'label': false}) }}
-            {% endif %}
-        </div>
-    </div>
-    <div class="ui hidden divider"></div>
-    {{ translationFormWithSlug(form.translations, '@SyliusAdmin/Product/_slugField.html.twig', product) }}
-    {% if product.simple %}
-        <div class="ui hidden divider"></div>
         <div class="ui two column stackable grid">
             <div class="column">
                 <div class="ui segment">
-                    <h4 class="ui dividing header">{{ 'sylius.ui.shipping'|trans }}</h4>
+                    {{ form_row(form.code) }}
+                    {{ form_row(form.enabled) }}
+                    {{ form_row(form.vendor) }}
+                    {% if product.simple %}
+                        {{ form_row(form.variant.shippingRequired) }}
+                    {% else %}
+                        {{ form_row(form.options) }}
+                        {{ form_row(form.variantSelectionMethod) }}
+                    {% endif %}
+
+                    {# Nothing to see here. #}
+                    <div class="ui hidden element">
+                        {% if product.simple %}
+                            {{ form_row(form.variant.translations) }}
+                            {{ form_row(form.variantSelectionMethod) }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                {{ form_row(form.channels) }}
+            </div>
+        </div>
+        {% if product.simple %}
+            <div class="ui one column stackable grid">
+                <div class="column">
+                    <h4 class="ui dividing header">{{ 'sylius.ui.pricing'|trans }}</h4>
+                    {% include "@SyliusAdmin/Product/_channel_pricing.html.twig" with { product: product, variantForm: form.variant } only %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="ui hidden divider"></div>
+        {{ translationFormWithSlug(form.translations, '@SyliusAdmin/Product/_slugField.html.twig', product) }}
+        {% if product.simple %}
+        <div class="ui hidden divider"></div>
+        <div class="ui two column stackable grid">
+            <div class="column">
+                <h4 class="ui top attached header">{{ 'sylius.ui.shipping'|trans }}</h4>
+                <div class="ui attached segment">
                     {{ form_row(form.variant.shippingCategory) }}
                     {{ form_row(form.variant.width) }}
                     {{ form_row(form.variant.height) }}
@@ -54,13 +56,14 @@
                 </div>
             </div>
             <div class="column">
-                <div class="ui segment">
-                    <h4 class="ui dividing header">{{ 'sylius.ui.taxes'|trans }}</h4>
+                <h4 class="ui top attached header">{{ 'sylius.ui.taxes'|trans }}</h4>
+                <div class="ui attached segment">
                     {{ form_row(form.variant.taxCategory) }}
                 </div>
             </div>
         </div>
-    {% endif %}
+        {% endif %}
 
-    {{ sonata_block_render_event('sylius.admin.product.' ~ action ~ '.tab_details', {'form': form}) }}
+        {{ sylius_template_event(['sylius.admin.product.' ~ action ~ '.tab_details', 'sylius.admin.product.tab_details'], {'form': form}) }}
+    </div>
 </div>
