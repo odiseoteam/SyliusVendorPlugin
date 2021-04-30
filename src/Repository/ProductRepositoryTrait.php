@@ -23,7 +23,8 @@ trait ProductRepositoryTrait
     public function createShopListByVendorQueryBuilder(
         ChannelInterface $channel,
         VendorInterface $vendor,
-        string $locale
+        string $locale,
+        array $sorting = []
     ): QueryBuilder {
         $queryBuilder = $this->createQueryBuilder('o')
             ->distinct()
@@ -40,6 +41,31 @@ trait ProductRepositoryTrait
             ->setParameter('channel', $channel)
             ->setParameter('vendor', $vendor)
         ;
+
+        if (isset($sorting['price'])) {
+            $subQuery = $this->createQueryBuilder('m')
+                ->select('min(v.position)')
+                ->innerJoin('m.variants', 'v')
+                ->andWhere('m.id = :product_id')
+                ->andWhere('v.enabled = :enabled')
+            ;
+
+            $queryBuilder
+                ->addSelect('variant')
+                ->addSelect('channelPricing')
+                ->innerJoin('o.variants', 'variant')
+                ->innerJoin('variant.channelPricings', 'channelPricing')
+                ->andWhere('channelPricing.channelCode = :channelCode')
+                ->andWhere(
+                    $queryBuilder->expr()->in(
+                        'variant.position',
+                        str_replace(':product_id', 'o.id', $subQuery->getDQL())
+                    )
+                )
+                ->setParameter('channelCode', $channel->getCode())
+                ->setParameter('enabled', true)
+            ;
+        }
 
         return $queryBuilder;
     }

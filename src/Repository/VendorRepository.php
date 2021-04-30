@@ -16,13 +16,13 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
      */
     public function findByEnabledQueryBuilder(?ChannelInterface $channel): QueryBuilder
     {
-        $queryBuilder = $this->createQueryBuilder('v')
-            ->andWhere('v.enabled = :enabled')
+        $queryBuilder = $this->createQueryBuilder('o')
+            ->andWhere('o.enabled = :enabled')
             ->setParameter('enabled', true)
         ;
 
         if ($channel instanceof ChannelInterface) {
-            $queryBuilder->innerJoin('v.channels', 'channel')
+            $queryBuilder->innerJoin('o.channels', 'channel')
                 ->andWhere('channel = :channel')
                 ->setParameter('channel', $channel)
             ;
@@ -42,13 +42,16 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
     /**
      * {@inheritdoc}
      */
-    public function findOneBySlug(string $slug): ?VendorInterface
+    public function findOneBySlug(string $slug, string $locale): ?VendorInterface
     {
         return $this->createQueryBuilder('o')
+            ->addSelect('translation')
+            ->innerJoin('o.translations', 'translation')
             ->andWhere('o.slug = :slug')
-            ->andWhere('o.enabled = :enabled')
+            ->andWhere('o.enabled = true')
+            ->andWhere('translation.locale = :locale')
             ->setParameter('slug', $slug)
-            ->setParameter('enabled', true)
+            ->setParameter('locale', $locale)
             ->getQuery()
             ->getOneOrNullResult()
         ;

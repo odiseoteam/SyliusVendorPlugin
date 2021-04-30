@@ -1,0 +1,10 @@
+odiseo_sylius_vendor_plugin_shop_vendor_product_index:
+    path: /{slug}/products
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product:indexAction
+        _sylius:
+            template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/index.html.twig"
+            grid: odiseo_sylius_vendor_plugin_vendor_product
+    requirements:
+        slug: .+

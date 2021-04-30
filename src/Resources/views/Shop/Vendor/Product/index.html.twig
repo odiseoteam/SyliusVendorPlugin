@@ -1,0 +1,16 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block content %}
+    {% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_header.html.twig' %}
+
+    <div class="ui hidden divider"></div>
+
+    <div class="ui stackable grid">
+        <div class="four wide column">
+            {% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_sidebar.html.twig' %}
+        </div>
+        <div class="twelve wide column">
+            {% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_main.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

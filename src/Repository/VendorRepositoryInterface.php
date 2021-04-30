@@ -25,7 +25,8 @@ interface VendorRepositoryInterface extends RepositoryInterface
 
     /**
      * @param string $slug
+     * @param string $locale
      * @return VendorInterface|null
      */
-    public function findOneBySlug(string $slug): ?VendorInterface;
+    public function findOneBySlug(string $slug, string $locale): ?VendorInterface;
 }

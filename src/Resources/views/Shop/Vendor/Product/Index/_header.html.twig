@@ -1,0 +1,4 @@
+{{ render(url('odiseo_sylius_vendor_plugin_shop_partial_vendor_show_by_slug', {
+    'slug': app.request.attributes.get('slug'),
+    'template': '@OdiseoSyliusVendorPlugin/Shop/Vendor/_header.html.twig'
+})) }}

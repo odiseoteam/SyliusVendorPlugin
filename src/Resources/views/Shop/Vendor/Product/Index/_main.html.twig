@@ -1,0 +1,22 @@
+{% import '@SyliusUi/Macro/messages.html.twig' as messages %}
+{% import '@SyliusUi/Macro/pagination.html.twig' as pagination %}
+
+{% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_search.html.twig' %}
+
+{% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_pagination.html.twig' %}
+{% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_sorting.html.twig' %}
+
+<div class="ui clearing hidden divider"></div>
+
+{% if resources.data|length > 0 %}
+    <div class="ui three cards" id="products" {{ sylius_test_html_attribute('products') }}>
+        {% for product in resources.data %}
+            {% include '@SyliusShop/Product/_box.html.twig' %}
+        {% endfor %}
+    </div>
+    <div class="ui hidden divider"></div>
+
+    {{ pagination.simple(resources.data) }}
+{% else %}
+    {{ messages.info('sylius.ui.no_results_to_display') }}
+{% endif %}

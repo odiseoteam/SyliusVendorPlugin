@@ -1,6 +1,6 @@
 {% for vendor in vendors %}
     <div class="column center aligned brand">
-        <a href="{{ path('odiseo_sylius_vendor_plugin_shop_vendor_show', {'slug': vendor.slug} ) }}" class="ui card">
+        <a href="{{ path('odiseo_sylius_vendor_plugin_shop_vendor_product_index', {'slug': vendor.slug} ) }}" class="ui card">
             {% if vendor.logoName %}
                 <div class="image">
                     <img src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_plugin_logo') }}" alt="{{ vendor.name }}">

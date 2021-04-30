@@ -9,8 +9,9 @@ sylius_grid:
                         method: createShopListByVendorQueryBuilder
                         arguments:
                             channel: "expr:service('sylius.context.channel').getChannel()"
-                            vendor: "expr:notFoundOnNull(service('odiseo_sylius_vendor_plugin.repository.vendor').findOneBySlug($slug))"
+                            vendor: "expr:notFoundOnNull(service('odiseo_sylius_vendor_plugin.repository.vendor').findOneBySlug($slug, service('sylius.context.locale').getLocaleCode()))"
                             locale: "expr:service('sylius.context.locale').getLocaleCode()"
+                            sorting: "expr:service('request_stack').getCurrentRequest().get('sorting', [])"
             sorting:
                 position: asc
             limits: [9, 18, 27]
@@ -19,10 +20,10 @@ sylius_grid:
                     type: datetime
                     sortable: ~
                 position:
-                    type: string 
+                    type: string
                     sortable: productTaxon.position
                 name:
-                    type: string 
+                    type: string
                     sortable: translation.name
                 price:
                     type: int
