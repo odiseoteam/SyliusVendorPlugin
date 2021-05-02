@@ -1,23 +1,11 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
-{% block title %}{{ 'odiseo_sylius_vendor_plugin.ui.vendors'|trans }} - {{ parent() }}{% endblock %}
+{% block title %}{{ 'odiseo_sylius_vendor_plugin.ui.vendors'|trans }} | {{ parent() }}{% endblock %}
 
 {% block content %}
-    <div class="ui breadcrumb">
-        <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
-        <div class="divider"> / </div>
-        <div class="active section">
-            {{ 'odiseo_sylius_vendor_plugin.ui.vendors'|trans }}
-        </div>
-    </div>
+    {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.index.header', _context) }}
 
-    <h1 class="ui monster section dividing header">
-        {{ 'odiseo_sylius_vendor_plugin.ui.vendors'|trans }}
-    </h1>
-
-    <div class="ui grid">
-        <div class="doubling six column row" id="odiseo-vendors">
-            {% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/_vendor.html.twig' with {'vendors': vendors} only %}
-        </div>
+    <div class="ui doubling six column grid" id="vendors" {{ sylius_test_html_attribute('vendors') }}>
+        {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.index.list', _context) }}
     </div>
 {% endblock %}

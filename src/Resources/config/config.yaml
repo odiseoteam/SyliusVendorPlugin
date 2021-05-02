@@ -23,3 +23,90 @@ liip_imagine:
             data_loader: vendor_logo
             filters:
                 thumbnail: { size: [300, 300], mode: outbound }
+
+sylius_ui:
+    events:
+        odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_vertical_menu:
+            blocks:
+                legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_vertical_menu
+
+        odiseo_sylius_vendor_plugin.shop.vendor.product.index.after_vertical_menu:
+            blocks:
+                legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.after_vertical_menu
+
+        odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_list:
+            blocks:
+                legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_list
+
+        odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_pagination:
+            blocks:
+                legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_pagination
+
+        odiseo_sylius_vendor_plugin.shop.vendor.product.index.search:
+            blocks:
+                before_search_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 35
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_search
+                search:
+                    template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_search.html.twig"
+                    priority: 30
+                after_search_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 25
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.after_search
+                pagination:
+                    template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_pagination.html.twig"
+                    priority: 20
+                sorting:
+                    template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_sorting.html.twig"
+                    priority: 10
+
+        odiseo_sylius_vendor_plugin.shop.vendor.index.header:
+            blocks:
+                breadcrumb:
+                    template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Header/_breadcrumb.html.twig"
+                    priority: 20
+                before_header_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 15
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.index.header.before
+                header:
+                    template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Header/_content.html.twig"
+                    priority: 10
+                after_header_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 5
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.index.header.after
+
+        odiseo_sylius_vendor_plugin.shop.vendor.index.list:
+            blocks:
+                before_list_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 25
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.index.before_list
+                list:
+                    template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/_list.html.twig"
+                    priority: 20
+                after_list_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 15
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.index.after_list

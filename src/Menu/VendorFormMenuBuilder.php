@@ -12,6 +12,8 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 final class VendorFormMenuBuilder
 {
+    public const EVENT_NAME = 'odiseo_sylius_vendor_plugin.menu.admin.vendor.form';
+
     /** @var FactoryInterface */
     private $factory;
 
@@ -52,7 +54,8 @@ final class VendorFormMenuBuilder
         ;
 
         $this->eventDispatcher->dispatch(
-            new VendorFormMenuBuilderEvent($this->factory, $menu, $options['vendor'])
+            new VendorFormMenuBuilderEvent($this->factory, $menu, $options['vendor']),
+            self::EVENT_NAME
         );
 
         return $menu;

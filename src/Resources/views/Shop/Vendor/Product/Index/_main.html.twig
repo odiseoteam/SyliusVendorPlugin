@@ -1,12 +1,11 @@
 {% import '@SyliusUi/Macro/messages.html.twig' as messages %}
 {% import '@SyliusUi/Macro/pagination.html.twig' as pagination %}
 
-{% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_search.html.twig' %}
-
-{% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_pagination.html.twig' %}
-{% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_sorting.html.twig' %}
+{{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.product.index.search', _context) }}
 
 <div class="ui clearing hidden divider"></div>
+
+{{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_list', {'products': resources.data}) }}
 
 {% if resources.data|length > 0 %}
     <div class="ui three cards" id="products" {{ sylius_test_html_attribute('products') }}>
@@ -15,6 +14,8 @@
         {% endfor %}
     </div>
     <div class="ui hidden divider"></div>
+
+    {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_pagination', {'products': resources.data}) }}
 
     {{ pagination.simple(resources.data) }}
 {% else %}

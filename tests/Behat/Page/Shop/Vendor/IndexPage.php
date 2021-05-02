@@ -21,7 +21,9 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
      */
     public function hasPagesNumber(int $pagesNumber): bool
     {
-        $vendorsNumberOnPage = count($this->getElement('vendors')->findAll('css', '.brand'));
+        $vendorsList = $this->getElement('vendors');
+
+        $vendorsNumberOnPage = count($vendorsList->findAll('css', '[data-test-vendor]'));
 
         return $pagesNumber == $vendorsNumberOnPage;
     }
@@ -32,7 +34,7 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'vendors' => '#odiseo-vendors'
+            'vendors' => '[data-test-vendors]'
         ]);
     }
 }

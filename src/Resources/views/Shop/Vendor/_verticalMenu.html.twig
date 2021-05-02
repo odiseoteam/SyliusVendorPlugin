@@ -1,11 +1,13 @@
-{% if vendor.logoName %}
-    <img class="ui medium circular image" src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_plugin_logo') }}">
-    <div class="ui hidden divider"></div>
-{% endif %}
+{{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_vertical_menu', {'vendor': vendor}) }}
+
+<img class="ui medium circular image" src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_plugin_logo') }}" alt="{{ vendor.name }}">
+<div class="ui hidden divider"></div>
 
 <h1 class="ui header">
-    <span class="odiseo-vendor-name">{{ vendor.name }}</span>
+    <span {{ sylius_test_html_attribute('vendor-name') }}>{{ vendor.name }}</span>
     <div class="sub header">
         {{ vendor.description }}
     </div>
 </h1>
+
+{{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.product.index.after_vertical_menu', {'vendor': vendor}) }}

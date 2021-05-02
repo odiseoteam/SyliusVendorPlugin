@@ -30,7 +30,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'name' => '.odiseo-vendor-name'
+            'name' => '[data-test-vendor-name]'
         ]);
     }
 }

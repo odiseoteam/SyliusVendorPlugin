@@ -8,7 +8,7 @@ Feel free to modify the plugin templates like you want.
 To render vendor by channel you can do something like this:
 
 ```twig
-{{ render(url('odiseo_sylius_vendor_plugin_shop_partial_vendor_index_by_channel', {'template': '@OdiseoSyliusVendorPlugin/Shop/Vendor/_vendor.html.twig'})) }}
+{{ render(url('odiseo_sylius_vendor_plugin_shop_partial_vendor_index_by_channel', {'template': '@OdiseoSyliusVendorPlugin/Shop/Vendor/_list.html.twig'})) }}
 ```
 
 ### Form validation group
