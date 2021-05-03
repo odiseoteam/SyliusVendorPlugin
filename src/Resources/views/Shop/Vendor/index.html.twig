@@ -5,7 +5,5 @@
 {% block content %}
     {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.index.header', _context) }}
 
-    <div class="ui doubling six column grid" id="vendors" {{ sylius_test_html_attribute('vendors') }}>
-        {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.index.list', _context) }}
-    </div>
+    {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.index.list', _context) }}
 {% endblock %}

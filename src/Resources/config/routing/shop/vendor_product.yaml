@@ -5,6 +5,6 @@ odiseo_sylius_vendor_plugin_shop_vendor_product_index:
         _controller: sylius.controller.product:indexAction
         _sylius:
             template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/index.html.twig"
-            grid: odiseo_sylius_vendor_plugin_vendor_product
+            grid: odiseo_sylius_vendor_plugin_shop_vendor_product
     requirements:
         slug: .+

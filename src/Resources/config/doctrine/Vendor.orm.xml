@@ -16,6 +16,9 @@
         <field name="email" type="string" unique="true"/>
         <field name="logoName" type="string" column="logo_name"/>
         <field name="enabled" type="boolean"/>
+        <field name="position" type="integer">
+            <gedmo:sortable-position />
+        </field>
         <field name="createdAt" type="datetime" column="created_at">
             <gedmo:timestampable on="create"/>
         </field>

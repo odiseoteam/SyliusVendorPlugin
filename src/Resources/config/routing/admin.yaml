@@ -1,2 +1,6 @@
 odiseo_sylius_vendor_plugin_admin_vendor:
     resource: admin/vendor.yaml
+
+odiseo_sylius_vendor_plugin_admin_ajax:
+    resource: admin/ajax.yaml
+    prefix: /ajax

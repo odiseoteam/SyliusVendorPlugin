@@ -74,6 +74,16 @@ interface VendorInterface extends
     public function setDescription(?string $description): void;
 
     /**
+     * @return int|null
+     */
+    public function getPosition(): ?int;
+
+    /**
+     * @param int|null $position
+     */
+    public function setPosition(?int $position): void;
+
+    /**
      * @return Collection|ProductInterface[]
      *
      * @psalm-return Collection<array-key, ProductInterface>

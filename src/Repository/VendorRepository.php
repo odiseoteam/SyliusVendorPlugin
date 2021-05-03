@@ -14,6 +14,16 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
     /**
      * {@inheritdoc}
      */
+    public function createShopListQueryBuilder(
+        ChannelInterface $channel,
+        array $sorting = []
+    ): QueryBuilder {
+        return $this->findByEnabledQueryBuilder($channel);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findByEnabledQueryBuilder(?ChannelInterface $channel): QueryBuilder
     {
         $queryBuilder = $this->createQueryBuilder('o')

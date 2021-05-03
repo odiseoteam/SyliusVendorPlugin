@@ -5,7 +5,4 @@ odiseo_sylius_vendor_plugin_shop_vendor_index:
         _controller: odiseo_sylius_vendor_plugin.controller.vendor:indexAction
         _sylius:
             template: '@OdiseoSyliusVendorPlugin/Shop/Vendor/index.html.twig'
-            repository:
-                method: findByChannel
-                arguments:
-                    - "expr:service('sylius.context.channel').getChannel()"
+            grid: odiseo_sylius_vendor_plugin_shop_vendor

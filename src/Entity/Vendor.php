@@ -41,6 +41,9 @@ class Vendor implements VendorInterface
     /** @var string|null */
     protected $logoName;
 
+    /** @var int|null */
+    protected $position;
+
     /**
      * @var Collection|ChannelInterface[]
      *
@@ -182,6 +185,22 @@ class Vendor implements VendorInterface
     public function getLogoName(): ?string
     {
         return $this->logoName;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPosition(?int $position): void
+    {
+        $this->position = $position;
     }
 
     /**

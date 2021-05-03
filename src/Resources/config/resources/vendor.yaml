@@ -7,7 +7,7 @@ sylius_resource:
                 interface: Odiseo\SyliusVendorPlugin\Entity\VendorInterface
                 form: Odiseo\SyliusVendorPlugin\Form\Type\VendorType
                 repository: Odiseo\SyliusVendorPlugin\Repository\VendorRepository
-                controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+                controller: Odiseo\SyliusVendorPlugin\Controller\VendorController
                 factory: Sylius\Component\Resource\Factory\Factory
             translation:
                 classes:

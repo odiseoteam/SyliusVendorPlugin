@@ -1,0 +1,15 @@
+odiseo_sylius_vendor_plugin_admin_ajax_vendor_generate_slug:
+    path: /generate-slug
+    methods: [GET]
+    defaults:
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor_slug:generateAction
+        _format: json
+
+odiseo_sylius_vendor_plugin_admin_ajax_vendor_update_position:
+    path: /update
+    methods: [PUT]
+    defaults:
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor:updatePositionsAction
+        _format: json
+        _sylius:
+            permission: true
