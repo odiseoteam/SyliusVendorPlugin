@@ -13,6 +13,7 @@ use SitemapPlugin\Factory\AlternativeUrlFactoryInterface;
 use SitemapPlugin\Model\ChangeFrequency;
 use SitemapPlugin\Model\UrlInterface;
 use SitemapPlugin\Provider\UrlProviderInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
@@ -36,6 +37,9 @@ final class VendorUrlProvider implements UrlProviderInterface
     /** @var LocaleContextInterface */
     private $localeContext;
 
+    /** @var ChannelContextInterface */
+    private $channelContext;
+
     /** @var ChannelInterface */
     private $channel;
 
@@ -44,13 +48,15 @@ final class VendorUrlProvider implements UrlProviderInterface
         RouterInterface $router,
         UrlFactoryInterface $sitemapUrlFactory,
         AlternativeUrlFactoryInterface $urlAlternativeFactory,
-        LocaleContextInterface $localeContext
+        LocaleContextInterface $localeContext,
+        ChannelContextInterface $channelContext
     ) {
         $this->vendorRepository = $vendorRepository;
         $this->router = $router;
         $this->sitemapUrlFactory = $sitemapUrlFactory;
         $this->urlAlternativeFactory = $urlAlternativeFactory;
         $this->localeContext = $localeContext;
+        $this->channelContext = $channelContext;
     }
 
     /**
@@ -64,9 +70,12 @@ final class VendorUrlProvider implements UrlProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function generate(ChannelInterface $channel): iterable
+    public function generate(?ChannelInterface $channel): iterable
     {
-        $this->channel = $channel;
+        /** @var ChannelInterface $channelOfContext */
+        $channelOfContext = $this->channelContext->getChannel();
+
+        $this->channel = $channel ?? $channelOfContext;
         $urls = [];
 
         foreach ($this->getVendors() as $vendor) {

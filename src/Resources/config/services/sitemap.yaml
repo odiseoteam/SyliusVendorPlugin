@@ -7,5 +7,6 @@ services:
             - '@sylius.sitemap_url_factory'
             - '@sylius.sitemap_url_alternative_factory'
             - '@sylius.context.locale'
+            - '@sylius.context.channel'
         tags:
             - { name: sylius.sitemap_provider }
