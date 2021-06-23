@@ -12,7 +12,6 @@ use SitemapPlugin\Factory\UrlFactoryInterface;
 use SitemapPlugin\Factory\AlternativeUrlFactoryInterface;
 use SitemapPlugin\Model\ChangeFrequency;
 use SitemapPlugin\Model\UrlInterface;
-use SitemapPlugin\Provider\UrlProviderInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -20,7 +19,7 @@ use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-final class VendorUrlProvider implements UrlProviderInterface
+final class VendorUrlProvider implements VendorUrlProviderInterface
 {
     /** @var VendorRepositoryInterface */
     private $vendorRepository;
