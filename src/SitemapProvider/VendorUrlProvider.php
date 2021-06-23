@@ -8,10 +8,10 @@ use Doctrine\Common\Collections\Collection;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorTranslation;
 use Odiseo\SyliusVendorPlugin\Repository\VendorRepositoryInterface;
-use SitemapPlugin\Factory\UrlFactoryInterface;
-use SitemapPlugin\Factory\AlternativeUrlFactoryInterface;
+use SitemapPlugin\Factory\SitemapUrlFactoryInterface;
 use SitemapPlugin\Model\ChangeFrequency;
-use SitemapPlugin\Model\UrlInterface;
+use SitemapPlugin\Model\SitemapUrlInterface;
+use SitemapPlugin\Provider\UrlProviderInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -19,7 +19,7 @@ use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-final class VendorUrlProvider implements VendorUrlProviderInterface
+final class VendorUrlProvider implements UrlProviderInterface
 {
     /** @var VendorRepositoryInterface */
     private $vendorRepository;
@@ -27,11 +27,8 @@ final class VendorUrlProvider implements VendorUrlProviderInterface
     /** @var RouterInterface */
     private $router;
 
-    /** @var UrlFactoryInterface */
+    /** @var SitemapUrlFactoryInterface */
     private $sitemapUrlFactory;
-
-    /** @var AlternativeUrlFactoryInterface */
-    private $urlAlternativeFactory;
 
     /** @var LocaleContextInterface */
     private $localeContext;
@@ -39,21 +36,16 @@ final class VendorUrlProvider implements VendorUrlProviderInterface
     /** @var ChannelContextInterface */
     private $channelContext;
 
-    /** @var ChannelInterface */
-    private $channel;
-
     public function __construct(
         VendorRepositoryInterface $vendorRepository,
         RouterInterface $router,
-        UrlFactoryInterface $sitemapUrlFactory,
-        AlternativeUrlFactoryInterface $urlAlternativeFactory,
+        SitemapUrlFactoryInterface $sitemapUrlFactory,
         LocaleContextInterface $localeContext,
         ChannelContextInterface $channelContext
     ) {
         $this->vendorRepository = $vendorRepository;
         $this->router = $router;
         $this->sitemapUrlFactory = $sitemapUrlFactory;
-        $this->urlAlternativeFactory = $urlAlternativeFactory;
         $this->localeContext = $localeContext;
         $this->channelContext = $channelContext;
     }
@@ -69,12 +61,8 @@ final class VendorUrlProvider implements VendorUrlProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function generate(?ChannelInterface $channel): iterable
+    public function generate(): iterable
     {
-        /** @var ChannelInterface $channelOfContext */
-        $channelOfContext = $this->channelContext->getChannel();
-
-        $this->channel = $channel ?? $channelOfContext;
         $urls = [];
 
         foreach ($this->getVendors() as $vendor) {
@@ -111,7 +99,10 @@ final class VendorUrlProvider implements VendorUrlProviderInterface
      */
     private function getVendors(): iterable
     {
-        return $this->vendorRepository->findByChannel($this->channel);
+        /** @var ChannelInterface $channel */
+        $channel = $this->channelContext->getChannel();
+
+        return $this->vendorRepository->findByChannel($channel);
     }
 
     /**
@@ -119,18 +110,21 @@ final class VendorUrlProvider implements VendorUrlProviderInterface
      */
     private function getLocaleCodes(): array
     {
-        return $this->channel->getLocales()->map(function (LocaleInterface $locale): ?string {
+        /** @var ChannelInterface $channel */
+        $channel = $this->channelContext->getChannel();
+
+        return $channel->getLocales()->map(function (LocaleInterface $locale): ?string {
             return $locale->getCode();
         })->toArray();
     }
 
     /**
      * @param VendorInterface $vendor
-     * @return UrlInterface
+     * @return SitemapUrlInterface
      */
-    private function createVendorUrl(VendorInterface $vendor): UrlInterface
+    private function createVendorUrl(VendorInterface $vendor): SitemapUrlInterface
     {
-        $vendorUrl = $this->sitemapUrlFactory->createNew('');
+        $vendorUrl = $this->sitemapUrlFactory->createNew();
 
         $vendorUrl->setChangeFrequency(ChangeFrequency::daily());
         $vendorUrl->setPriority(0.7);
@@ -153,12 +147,12 @@ final class VendorUrlProvider implements VendorUrlProviderInterface
             ]);
 
             if ($translation->getLocale() === $this->localeContext->getLocaleCode()) {
-                $vendorUrl->setLocation($location);
+                $vendorUrl->setLocalization($location);
 
                 continue;
             }
 
-            $vendorUrl->addAlternative($this->urlAlternativeFactory->createNew($location, $translation->getLocale()));
+            $vendorUrl->addAlternative($location, $translation->getLocale());
         }
 
         return $vendorUrl;

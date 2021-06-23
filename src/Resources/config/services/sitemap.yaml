@@ -5,7 +5,6 @@ services:
             - '@odiseo_sylius_vendor_plugin.repository.vendor'
             - '@router'
             - '@sylius.sitemap_url_factory'
-            - '@sylius.sitemap_url_alternative_factory'
             - '@sylius.context.locale'
             - '@sylius.context.channel'
         tags:
