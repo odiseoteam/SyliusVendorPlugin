@@ -59,10 +59,10 @@ sylius_grid:
                     label: sylius.ui.creation_date
             actions:
                 main:
-                    update_positions:
-                        type: update_vendor_positions
                     create:
                         type: create
+                    update_positions:
+                        type: update_vendor_positions
                 item:
                     update:
                         type: update
