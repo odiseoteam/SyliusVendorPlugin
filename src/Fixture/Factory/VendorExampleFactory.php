@@ -136,8 +136,8 @@ class VendorExampleFactory implements ExampleFactoryInterface
             ->setNormalizer('products', LazyOption::findBy($this->productRepository, 'code'))
             ->setRequired('name')
             ->setAllowedTypes('name', 'string')
-            ->setDefault('name', function (Options $options): string {
-                return $this->faker->company;
+            ->setDefault('name', function (Options $_options): string {
+                return $this->faker->company();
             })
             ->setRequired('slug')
             ->setAllowedTypes('slug', 'string')
@@ -146,18 +146,18 @@ class VendorExampleFactory implements ExampleFactoryInterface
             })
             ->setRequired('email')
             ->setAllowedTypes('email', 'string')
-            ->setDefault('email', function (Options $options): string {
-                return $this->faker->companyEmail;
+            ->setDefault('email', function (Options $_options): string {
+                return $this->faker->companyEmail();
             })
             ->setRequired('logo')
             ->setAllowedTypes('logo', 'string')
-            ->setDefault('logo', function (Options $options): string {
+            ->setDefault('logo', function (Options $_options): string {
                 return __DIR__.'/../../Resources/fixtures/vendor/images/0'.rand(1, 3).'.png';
             })
             ->setRequired('description')
             ->setAllowedTypes('description', 'string')
-            ->setDefault('description', function (Options $options): string {
-                return $this->faker->text;
+            ->setDefault('description', function (Options $_options): string {
+                return $this->faker->text();
             })
         ;
     }

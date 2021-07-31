@@ -29,7 +29,9 @@ final class VendorChoiceType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        if ($options['multiple']) {
+        /** @var bool $multiple */
+        $multiple = $options['multiple'];
+        if ($multiple) {
             $builder->addModelTransformer(new CollectionToArrayTransformer());
         }
     }
@@ -43,7 +45,7 @@ final class VendorChoiceType extends AbstractType
         $orderBy = ['name' => 'ASC'];
 
         $resolver->setDefaults([
-            'choices' => function (Options $options) use ($criteria, $orderBy): array {
+            'choices' => function (Options $_options) use ($criteria, $orderBy): array {
                 $vendors = $this->vendorRepository->findBy($criteria, $orderBy);
 
                 $choices = [];
