@@ -7,7 +7,7 @@ parameters:
         # Makes PHPStan crash
         - 'src/DependencyInjection/Configuration.php'
 
-        - 'src/SitemapProvider/VendorUrlProvider.php'
+        - 'src/SitemapProvider/**.php'
 
         # Test dependencies
         - 'tests/Application/app/**.php'
