@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ruleset name="php-genesis">
+    <description>Coding standard used for the PHP Applications.</description>
+
+    <file>./src</file>
+
+    <arg name="extensions" value="php" />
+    <arg name="standard" value="PSR12" />
+
+    <rule ref="PSR12"/>
+</ruleset>

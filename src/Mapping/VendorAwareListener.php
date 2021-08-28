@@ -79,7 +79,8 @@ final class VendorAwareListener implements EventSubscriber
             $this->mapVendorsAware($classMetadata, 'channel_id', 'channels');
         }
 
-        if ($reflection->implementsInterface(VendorInterface::class) &&
+        if (
+            $reflection->implementsInterface(VendorInterface::class) &&
             !$classMetadata->isMappedSuperclass
         ) {
             $this->mapVendor($classMetadata);
@@ -131,7 +132,7 @@ final class VendorAwareListener implements EventSubscriber
                 'targetEntity' => $vendorMetadata->getClass('model'),
                 'inversedBy' => $inversedBy,
                 'joinTable' => [
-                    'name' => 'odiseo_vendor_'.$inversedBy,
+                    'name' => 'odiseo_vendor_' . $inversedBy,
                     'joinColumns' => [[
                         'name' => $joinColumn,
                         'referencedColumnName' => 'id'

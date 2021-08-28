@@ -152,7 +152,7 @@ class VendorExampleFactory implements ExampleFactoryInterface
             ->setRequired('logo')
             ->setAllowedTypes('logo', 'string')
             ->setDefault('logo', function (Options $_options): string {
-                return __DIR__.'/../../Resources/fixtures/vendor/images/0'.rand(1, 3).'.png';
+                return __DIR__ . '/../../Resources/fixtures/vendor/images/0' . rand(1, 3) . '.png';
             })
             ->setRequired('description')
             ->setAllowedTypes('description', 'string')
