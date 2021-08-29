@@ -39,16 +39,7 @@ odiseo_sylius_vendor_plugin_shop:
         _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
 ```
 
-5. This plugin includes an API version. If you want to use it you have to add the route
-
-```yml
-# config/routes.yaml
-odiseo_sylius_vendor_plugin_api:
-    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/api.yaml"
-    prefix: /api
-```
-
-6. Include traits and override the models
+5. Include traits and override the models
 
 ```php
 <?php
@@ -129,7 +120,7 @@ sylius_product:
                 repository: App\Repository\ProductRepository
 ```
 
-7. Add the vendor select box to the product form edit page. So, you need to run `mkdir -p templates/bundles/SyliusAdminBundle/Product/Tab` then `cp vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/views/Product/Tab/_details.html.twig templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig` and then add the form widget
+6. Add the vendor select box to the product form edit page. So, you need to run `mkdir -p templates/bundles/SyliusAdminBundle/Product/Tab` then `cp vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/views/Product/Tab/_details.html.twig templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig` and then add the form widget
 
 ```twig
 {# ... #}
@@ -139,9 +130,9 @@ sylius_product:
 {# ... #}
 ```
 
-8. Create logo folder: run `mkdir public/media/vendor-logo -p` and insert a .gitkeep file in that folder
+7. Create logo folder: run `mkdir public/media/vendor-logo -p` and insert a .gitkeep file in that folder
 
-9. Finish the installation updating the database schema and installing assets
+8. Finish the installation updating the database schema and installing assets
 
 ```
 php bin/console doctrine:schema:update --force

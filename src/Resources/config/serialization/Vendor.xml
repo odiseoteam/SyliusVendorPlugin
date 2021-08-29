@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Odiseo\SyliusVendorPlugin\Entity\Vendor">
+        <attribute name="id">
+            <group>admin:vendor:read</group>
+            <group>shop:vendor:read</group>
+        </attribute>
+        <attribute name="slug">
+            <group>admin:vendor:create</group>
+            <group>admin:vendor:read</group>
+            <group>admin:vendor:update</group>
+            <group>shop:vendor:read</group>
+        </attribute>
+        <attribute name="name">
+            <group>admin:vendor:create</group>
+            <group>admin:vendor:read</group>
+            <group>admin:vendor:update</group>
+            <group>shop:vendor:read</group>
+        </attribute>
+        <attribute name="email">
+            <group>admin:vendor:create</group>
+            <group>admin:vendor:read</group>
+            <group>admin:vendor:update</group>
+            <group>shop:vendor:read</group>
+        </attribute>
+        <attribute name="logoName">
+            <group>admin:vendor:create</group>
+            <group>admin:vendor:read</group>
+            <group>admin:vendor:update</group>
+            <group>shop:vendor:read</group>
+        </attribute>
+        <attribute name="enabled">
+            <group>admin:vendor:create</group>
+            <group>admin:vendor:read</group>
+            <group>admin:vendor:update</group>
+            <group>shop:vendor:read</group>
+        </attribute>
+        <attribute name="createdAt">
+            <group>admin:vendor:read</group>
+            <group>shop:vendor:read</group>
+        </attribute>
+        <attribute name="updatedAt">
+            <group>admin:vendor:read</group>
+            <group>shop:vendor:read</group>
+        </attribute>
+        <attribute name="translations">
+            <group>admin:vendor:create</group>
+            <group>admin:vendor:read</group>
+            <group>admin:vendor:update</group>
+            <group>shop:vendor:read</group>
+        </attribute>
+    </class>
+</serializer>

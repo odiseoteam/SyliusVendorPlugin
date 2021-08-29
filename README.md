@@ -37,6 +37,7 @@ Features:
 * Vendors with translations: Vendor's information is translatable.
 * Templates: This plugin has shop views for list and show vendors.
 * Multi Emails: Vendors can have a primary and also additionals emails.
+* Ready for Headless: Full Rest API.
 * Sitemap: All shop pages are connected with the [Sitemap Plugin](https://github.com/stefandoorn/sitemap-plugin).
 * Easy to extend: This plugin follows the best practices to make it fully extensible.
 
