@@ -68,11 +68,9 @@
         <property name="slug" identifier="true" required="true"/>
         <property name="name" required="true"/>
         <property name="email" required="true"/>
-        <property name="logoName" readable="true" writable="true"/>
+        <property name="logoName" required="true"/>
         <property name="enabled" readable="true" writable="true"/>
-        <property name="createdAt" writable="false"/>
-        <property name="updatedAt" writable="false"/>
-        <property name="translations" readable="true" writable="true">
+        <property name="translations" required="true">
             <attribute name="openapi_context">
                 <attribute name="type">object</attribute>
                 <attribute name="example">
@@ -83,5 +81,8 @@
                 </attribute>
             </attribute>
         </property>
+        <property name="channels" required="false"/>
+        <property name="createdAt" writable="false"/>
+        <property name="updatedAt" writable="false"/>
     </resource>
 </resources>

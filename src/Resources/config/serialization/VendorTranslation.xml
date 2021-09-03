@@ -13,6 +13,7 @@
             <group>admin:vendor:create</group>
         </attribute>
         <attribute name="description">
+            <group>admin:vendor:create</group>
             <group>shop:vendor:read</group>
         </attribute>
     </class>

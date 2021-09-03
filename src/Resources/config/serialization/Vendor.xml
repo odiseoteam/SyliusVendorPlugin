@@ -39,18 +39,24 @@
             <group>admin:vendor:update</group>
             <group>shop:vendor:read</group>
         </attribute>
+        <attribute name="translations">
+            <group>admin:vendor:create</group>
+            <group>admin:vendor:read</group>
+            <group>admin:vendor:update</group>
+            <group>shop:vendor:read</group>
+        </attribute>
+        <attribute name="channels">
+            <group>admin:vendor:create</group>
+            <group>admin:vendor:read</group>
+            <group>admin:vendor:update</group>
+            <group>shop:vendor:read</group>
+        </attribute>
         <attribute name="createdAt">
             <group>admin:vendor:read</group>
             <group>shop:vendor:read</group>
         </attribute>
         <attribute name="updatedAt">
             <group>admin:vendor:read</group>
-            <group>shop:vendor:read</group>
-        </attribute>
-        <attribute name="translations">
-            <group>admin:vendor:create</group>
-            <group>admin:vendor:read</group>
-            <group>admin:vendor:update</group>
             <group>shop:vendor:read</group>
         </attribute>
     </class>
