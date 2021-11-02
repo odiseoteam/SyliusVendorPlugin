@@ -12,13 +12,7 @@ interface VendorEmailInterface extends
     VendorAwareInterface,
     TimestampableInterface
 {
-    /**
-     * @return string|null
-     */
     public function getValue(): ?string;
 
-    /**
-     * @param string|null $value
-     */
     public function setValue(?string $value): void;
 }

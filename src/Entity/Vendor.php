@@ -23,47 +23,28 @@ class Vendor implements VendorInterface
     use TimestampableTrait;
     use ToggleableTrait;
 
-    /** @var int|null */
-    protected $id;
-
-    /** @var string|null */
-    protected $name;
-
-    /** @var string|null */
-    protected $slug;
-
-    /** @var string|null */
-    protected $email;
-
-    /** @var File|null */
-    protected $logoFile;
-
-    /** @var string|null */
-    protected $logoName;
-
-    /** @var int|null */
-    protected $position;
+    protected ?int $id = null;
+    protected ?string $name = null;
+    protected ?string $slug = null;
+    protected ?string $email = null;
+    protected ?File $logoFile = null;
+    protected ?string $logoName = null;
+    protected ?int $position = null;
 
     /**
-     * @var Collection|ChannelInterface[]
-     *
      * @psalm-var Collection<array-key, ChannelInterface>
      */
-    protected $channels;
+    protected Collection $channels;
 
     /**
-     * @var Collection|ProductInterface[]
-     *
      * @psalm-var Collection<array-key, ProductInterface>
      */
-    protected $products;
+    protected Collection $products;
 
     /**
-     * @var Collection|VendorEmailInterface[]
-     *
      * @psalm-var Collection<array-key, VendorEmailInterface>
      */
-    protected $extraEmails;
+    protected Collection $extraEmails;
 
     public function __construct()
     {
@@ -75,33 +56,21 @@ class Vendor implements VendorInterface
         $this->createdAt = new \DateTime();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getDescription(): ?string
     {
         /** @var VendorTranslationInterface $vendorTranslation */
@@ -110,9 +79,6 @@ class Vendor implements VendorInterface
         return $vendorTranslation->getDescription();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setDescription(?string $description): void
     {
         /** @var VendorTranslationInterface $vendorTranslation */
@@ -121,41 +87,26 @@ class Vendor implements VendorInterface
         $vendorTranslation->setDescription($description);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setSlug(?string $slug = null): void
     {
         $this->slug = $slug;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setLogoFile(?File $file): void
     {
         $this->logoFile = $file;
@@ -163,65 +114,41 @@ class Vendor implements VendorInterface
         $this->setUpdatedAt(new \DateTime());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLogoFile(): ?File
     {
         return $this->logoFile;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setLogoName(?string $logoName): void
     {
         $this->logoName = $logoName;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLogoName(): ?string
     {
         return $this->logoName;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPosition(): ?int
     {
         return $this->position;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setPosition(?int $position): void
     {
         $this->position = $position;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getChannels(): Collection
     {
         return $this->channels;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasChannel(ChannelInterface $channel): bool
     {
         return $this->channels->contains($channel);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addChannel(ChannelInterface $channel): void
     {
         if (!$this->hasChannel($channel)) {
@@ -233,9 +160,6 @@ class Vendor implements VendorInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeChannel(ChannelInterface $channel): void
     {
         if ($this->hasChannel($channel)) {
@@ -247,25 +171,16 @@ class Vendor implements VendorInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getProducts(): Collection
     {
         return $this->products;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasProduct(ProductInterface $product): bool
     {
         return $this->products->contains($product);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addProduct(ProductInterface $product): void
     {
         if (!$this->hasProduct($product)) {
@@ -277,9 +192,6 @@ class Vendor implements VendorInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeProduct(ProductInterface $product): void
     {
         if ($this->hasProduct($product)) {
@@ -291,25 +203,16 @@ class Vendor implements VendorInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getExtraEmails(): Collection
     {
         return $this->extraEmails;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasExtraEmail(VendorEmailInterface $email): bool
     {
         return $this->extraEmails->contains($email);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addExtraEmail(VendorEmailInterface $email): void
     {
         if (!$this->hasExtraEmail($email)) {
@@ -318,9 +221,6 @@ class Vendor implements VendorInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeExtraEmail(VendorEmailInterface $email): void
     {
         if ($this->hasExtraEmail($email)) {
@@ -329,9 +229,6 @@ class Vendor implements VendorInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createTranslation(): TranslationInterface
     {
         return new VendorTranslation();

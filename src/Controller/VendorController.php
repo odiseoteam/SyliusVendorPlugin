@@ -16,10 +16,6 @@ use Webmozart\Assert\Assert;
 
 class VendorController extends ResourceController
 {
-    /**
-     * @param Request $request
-     * @return Response
-     */
     public function updateVendorPositionsAction(Request $request): Response
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
@@ -52,10 +48,6 @@ class VendorController extends ResourceController
         return $this->redirectHandler->redirectToReferer($configuration);
     }
 
-    /**
-     * @param Request $request
-     * @param RequestConfiguration $configuration
-     */
     private function validateCsrfProtection(Request $request, RequestConfiguration $configuration): void
     {
         /** @var string|null $token */
@@ -65,20 +57,11 @@ class VendorController extends ResourceController
         }
     }
 
-    /**
-     * @param Request $request
-     * @param array|null $vendors
-     * @return bool
-     */
     private function shouldProductsPositionsBeUpdated(Request $request, ?array $vendors): bool
     {
         return in_array($request->getMethod(), ['POST', 'PUT', 'PATCH'], true) && null !== $vendors;
     }
 
-    /**
-     * @param string $position
-     * @param int $id
-     */
     private function updatePositions(string $position, int $id): void
     {
         Assert::numeric($position, sprintf('The position "%s" is invalid.', $position));

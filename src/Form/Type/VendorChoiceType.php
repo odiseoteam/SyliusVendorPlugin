@@ -15,8 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class VendorChoiceType extends AbstractType
 {
-    /** @var VendorRepositoryInterface */
-    private $vendorRepository;
+    private VendorRepositoryInterface $vendorRepository;
 
     public function __construct(
         VendorRepositoryInterface $vendorRepository
@@ -24,9 +23,6 @@ final class VendorChoiceType extends AbstractType
         $this->vendorRepository = $vendorRepository;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         /** @var bool $multiple */
@@ -36,9 +32,6 @@ final class VendorChoiceType extends AbstractType
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $criteria = [];
@@ -59,17 +52,11 @@ final class VendorChoiceType extends AbstractType
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getParent(): string
     {
         return ChoiceType::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix(): string
     {
         return 'odiseo_sylius_vendor_choice';

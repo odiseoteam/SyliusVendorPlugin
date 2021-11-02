@@ -11,9 +11,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class ProductTypeExtension extends AbstractTypeExtension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('vendor', VendorChoiceType::class, [
@@ -22,9 +19,6 @@ final class ProductTypeExtension extends AbstractTypeExtension
         ]);
     }
 
-    /**
-     * @inheritdoc
-     */
     public static function getExtendedTypes(): iterable
     {
         return [ProductType::class];

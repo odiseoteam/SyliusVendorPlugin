@@ -9,34 +9,23 @@ use Doctrine\Common\Collections\Collection;
 
 trait VendorsTrait
 {
-    /** @var Collection|VendorInterface[] */
-    protected $vendors;
+    protected Collection $vendors;
 
     public function __construct()
     {
         $this->vendors = new ArrayCollection();
     }
 
-    /**
-     * @return Collection|VendorInterface[]
-     */
     public function getVendors(): Collection
     {
         return $this->vendors;
     }
 
-    /**
-     * @param VendorInterface $vendor
-     * @return bool
-     */
     public function hasVendor(VendorInterface $vendor): bool
     {
         return $this->vendors->contains($vendor);
     }
 
-    /**
-     * @param VendorInterface $vendor
-     */
     public function addVendor(VendorInterface $vendor): void
     {
         if (!$this->hasVendor($vendor)) {
@@ -44,9 +33,6 @@ trait VendorsTrait
         }
     }
 
-    /**
-     * @param VendorInterface $vendor
-     */
     public function removeVendor(VendorInterface $vendor): void
     {
         if ($this->hasVendor($vendor)) {

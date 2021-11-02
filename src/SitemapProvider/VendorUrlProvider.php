@@ -21,23 +21,12 @@ use Symfony\Component\Routing\RouterInterface;
 
 final class VendorUrlProvider implements UrlProviderInterface
 {
-    /** @var VendorRepositoryInterface */
-    private $vendorRepository;
-
-    /** @var RouterInterface */
-    private $router;
-
-    /** @var UrlFactoryInterface */
-    private $sitemapUrlFactory;
-
-    /** @var AlternativeUrlFactoryInterface */
-    private $urlAlternativeFactory;
-
-    /** @var LocaleContextInterface */
-    private $localeContext;
-
-    /** @var ChannelInterface */
-    private $channel;
+    private VendorRepositoryInterface $vendorRepository;
+    private RouterInterface $router;
+    private UrlFactoryInterface $sitemapUrlFactory;
+    private AlternativeUrlFactoryInterface $urlAlternativeFactory;
+    private LocaleContextInterface $localeContext;
+    private ChannelInterface $channel;
 
     public function __construct(
         VendorRepositoryInterface $vendorRepository,
@@ -53,17 +42,11 @@ final class VendorUrlProvider implements UrlProviderInterface
         $this->localeContext = $localeContext;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'vendors';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function generate(ChannelInterface $channel): iterable
     {
         $this->channel = $channel;
@@ -77,9 +60,6 @@ final class VendorUrlProvider implements UrlProviderInterface
     }
 
     /**
-     * @param VendorInterface $vendor
-     * @return Collection|TranslationInterface[]
-     *
      * @psalm-return Collection<array-key, TranslationInterface>
      */
     private function getTranslations(VendorInterface $vendor): Collection
@@ -89,26 +69,16 @@ final class VendorUrlProvider implements UrlProviderInterface
         });
     }
 
-    /**
-     * @param TranslationInterface $translation
-     * @return bool
-     */
     private function localeInLocaleCodes(TranslationInterface $translation): bool
     {
         return in_array($translation->getLocale(), $this->getLocaleCodes(), true);
     }
 
-    /**
-     * @return iterable
-     */
     private function getVendors(): iterable
     {
         return $this->vendorRepository->findByChannel($this->channel);
     }
 
-    /**
-     * @return array
-     */
     private function getLocaleCodes(): array
     {
         return $this->channel->getLocales()->map(function (LocaleInterface $locale): ?string {
@@ -116,10 +86,6 @@ final class VendorUrlProvider implements UrlProviderInterface
         })->toArray();
     }
 
-    /**
-     * @param VendorInterface $vendor
-     * @return UrlInterface
-     */
     private function createVendorUrl(VendorInterface $vendor): UrlInterface
     {
         $vendorUrl = $this->sitemapUrlFactory->createNew('');

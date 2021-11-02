@@ -9,9 +9,6 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 class VendorFixture extends AbstractResourceFixture
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function configureResourceNode(ArrayNodeDefinition $resourceNode): void
     {
         $node = $resourceNode->children();
@@ -25,9 +22,6 @@ class VendorFixture extends AbstractResourceFixture
         $node->scalarNode('description');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'vendor';

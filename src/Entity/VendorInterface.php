@@ -23,115 +23,51 @@ interface VendorInterface extends
     TimestampableInterface,
     ChannelsAwareInterface
 {
-    /**
-     * @return string|null
-     */
     public function getName(): ?string;
 
-    /**
-     * @param string|null $name
-     */
     public function setName(?string $name): void;
 
-    /**
-     * @return string|null
-     */
     public function getEmail(): ?string;
 
-    /**
-     * @param string|null $email
-     */
     public function setEmail(?string $email): void;
 
-    /**
-     * @param File|null $file
-     */
     public function setLogoFile(?File $file): void;
 
-    /**
-     * @return File|null
-     */
     public function getLogoFile(): ?File;
 
-    /**
-     * @param string|null $logoName
-     */
     public function setLogoName(?string $logoName): void;
 
-    /**
-     * @return string|null
-     */
     public function getLogoName(): ?string;
 
-    /**
-     * @return string|null
-     */
     public function getDescription(): ?string;
 
-    /**
-     * @param string|null $description
-     */
     public function setDescription(?string $description): void;
 
-    /**
-     * @return int|null
-     */
     public function getPosition(): ?int;
 
-    /**
-     * @param int|null $position
-     */
     public function setPosition(?int $position): void;
 
     /**
-     * @return Collection|ProductInterface[]
-     *
      * @psalm-return Collection<array-key, ProductInterface>
      */
     public function getProducts(): Collection;
 
-    /**
-     * @param ProductInterface $product
-     * @return bool
-     */
     public function hasProduct(ProductInterface $product): bool;
 
-    /**
-     * @param ProductInterface $product
-     */
     public function addProduct(ProductInterface $product): void;
 
-    /**
-     * @param ProductInterface $product
-     */
     public function removeProduct(ProductInterface $product): void;
 
     /**
-     * @return Collection|VendorEmailInterface[]
-     *
      * @psalm-return Collection<array-key, VendorEmailInterface>
      */
     public function getExtraEmails(): Collection;
 
-    /**
-     * @param VendorEmailInterface $email
-     * @return bool
-     */
     public function hasExtraEmail(VendorEmailInterface $email): bool;
 
-    /**
-     * @param VendorEmailInterface $email
-     */
     public function addExtraEmail(VendorEmailInterface $email): void;
 
-    /**
-     * @param VendorEmailInterface $email
-     */
     public function removeExtraEmail(VendorEmailInterface $email): void;
 
-    /**
-     * @param string|null $locale
-     * @return TranslationInterface
-     */
     public function getTranslation(?string $locale = null): TranslationInterface;
 }

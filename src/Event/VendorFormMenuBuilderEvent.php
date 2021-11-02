@@ -11,8 +11,7 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 class VendorFormMenuBuilderEvent extends MenuBuilderEvent
 {
-    /** @var VendorInterface */
-    private $vendor;
+    private VendorInterface $vendor;
 
     public function __construct(FactoryInterface $factory, ItemInterface $menu, VendorInterface $vendor)
     {

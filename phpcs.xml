@@ -7,5 +7,7 @@
     <arg name="extensions" value="php" />
     <arg name="standard" value="PSR12" />
 
-    <rule ref="PSR12"/>
+    <rule ref="PSR12">
+        <exclude-pattern>src/Migrations/*</exclude-pattern>
+    </rule>
 </ruleset>

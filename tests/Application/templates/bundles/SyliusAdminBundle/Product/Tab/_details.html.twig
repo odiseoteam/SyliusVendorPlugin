@@ -43,25 +43,25 @@
         <div class="ui hidden divider"></div>
         {{ translationFormWithSlug(form.translations, '@SyliusAdmin/Product/_slugField.html.twig', product) }}
         {% if product.simple %}
-        <div class="ui hidden divider"></div>
-        <div class="ui two column stackable grid">
-            <div class="column">
-                <h4 class="ui top attached header">{{ 'sylius.ui.shipping'|trans }}</h4>
-                <div class="ui attached segment">
-                    {{ form_row(form.variant.shippingCategory) }}
-                    {{ form_row(form.variant.width) }}
-                    {{ form_row(form.variant.height) }}
-                    {{ form_row(form.variant.depth) }}
-                    {{ form_row(form.variant.weight) }}
+            <div class="ui hidden divider"></div>
+            <div class="ui two column stackable grid">
+                <div class="column">
+                    <h4 class="ui top attached header">{{ 'sylius.ui.shipping'|trans }}</h4>
+                    <div class="ui attached segment">
+                        {{ form_row(form.variant.shippingCategory) }}
+                        {{ form_row(form.variant.width) }}
+                        {{ form_row(form.variant.height) }}
+                        {{ form_row(form.variant.depth) }}
+                        {{ form_row(form.variant.weight) }}
+                    </div>
+                </div>
+                <div class="column">
+                    <h4 class="ui top attached header">{{ 'sylius.ui.taxes'|trans }}</h4>
+                    <div class="ui attached segment">
+                        {{ form_row(form.variant.taxCategory) }}
+                    </div>
                 </div>
             </div>
-            <div class="column">
-                <h4 class="ui top attached header">{{ 'sylius.ui.taxes'|trans }}</h4>
-                <div class="ui attached segment">
-                    {{ form_row(form.variant.taxCategory) }}
-                </div>
-            </div>
-        </div>
         {% endif %}
 
         {{ sylius_template_event(['sylius.admin.product.' ~ action ~ '.tab_details', 'sylius.admin.product.tab_details'], {'form': form}) }}

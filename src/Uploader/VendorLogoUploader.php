@@ -7,12 +7,10 @@ namespace Odiseo\SyliusVendorPlugin\Uploader;
 use Gaufrette\FilesystemInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Symfony\Component\HttpFoundation\File\File;
-use Webmozart\Assert\Assert;
 
 final class VendorLogoUploader implements VendorLogoUploaderInterface
 {
-    /** @var FilesystemInterface */
-    private $filesystem;
+    private FilesystemInterface $filesystem;
 
     public function __construct(
         FilesystemInterface $filesystem
@@ -20,9 +18,6 @@ final class VendorLogoUploader implements VendorLogoUploaderInterface
         $this->filesystem = $filesystem;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function upload(VendorInterface $vendor): void
     {
         if ($vendor->getLogoFile() === null) {
@@ -57,9 +52,6 @@ final class VendorLogoUploader implements VendorLogoUploaderInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function remove(string $path): bool
     {
         if ($this->filesystem->has($path)) {
@@ -69,19 +61,11 @@ final class VendorLogoUploader implements VendorLogoUploaderInterface
         return false;
     }
 
-    /**
-     * @param string $path
-     * @return bool
-     */
     private function has(string $path): bool
     {
         return $this->filesystem->has($path);
     }
 
-    /**
-     * @param File $file
-     * @return string
-     */
     private function name(File $file): string
     {
         $name = \str_replace('.', '', \uniqid('', true));
@@ -94,10 +78,6 @@ final class VendorLogoUploader implements VendorLogoUploaderInterface
         return $name;
     }
 
-    /**
-     * @param string $path
-     * @return bool
-     */
     private function isAdBlockingProne(string $path): bool
     {
         return strpos($path, 'ad') !== false;

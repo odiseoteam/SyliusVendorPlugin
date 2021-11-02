@@ -135,7 +135,7 @@ sylius_product:
 8. Finish the installation updating the database schema and installing assets
 
 ```
-php bin/console doctrine:schema:update --force
+php bin/console doctrine:migrations:migrate
 php bin/console sylius:theme:assets:install
 php bin/console cache:clear
 ```

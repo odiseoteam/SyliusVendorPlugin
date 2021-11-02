@@ -12,11 +12,8 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 final class VendorFormMenuBuilder
 {
-    /** @var FactoryInterface */
-    private $factory;
-
-    /** @var EventDispatcherInterface */
-    private $eventDispatcher;
+    private FactoryInterface $factory;
+    private EventDispatcherInterface $eventDispatcher;
 
     public function __construct(FactoryInterface $factory, EventDispatcherInterface $eventDispatcher)
     {

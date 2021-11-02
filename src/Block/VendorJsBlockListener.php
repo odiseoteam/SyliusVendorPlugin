@@ -9,9 +9,6 @@ use Sonata\BlockBundle\Model\Block;
 
 final class VendorJsBlockListener
 {
-    /**
-     * @param BlockEvent $event
-     */
     public function onBlockEvent(BlockEvent $event): void
     {
         $template = '@OdiseoSyliusVendorPlugin/Admin/Vendor/_vendor_js.html.twig';

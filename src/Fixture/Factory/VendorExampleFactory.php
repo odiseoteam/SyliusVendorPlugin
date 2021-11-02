@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Odiseo\SyliusVendorPlugin\Fixture\Factory;
 
 use Faker\Factory;
+use Faker\Generator as FakerGenerator;
 use Generator;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Odiseo\SyliusVendorPlugin\Uploader\VendorLogoUploaderInterface;
@@ -21,29 +22,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class VendorExampleFactory implements ExampleFactoryInterface
 {
-    /** @var FactoryInterface */
-    protected $vendorFactory;
-
-    /** @var VendorLogoUploaderInterface */
-    protected $vendorLogoUploader;
-
-    /** @var RepositoryInterface */
-    protected $channelRepository;
-
-    /** @var RepositoryInterface */
-    protected $productRepository;
-
-    /** @var RepositoryInterface */
-    protected $localeRepository;
-
-    /** @var \Faker\Generator */
-    protected $faker;
-
-    /** @var FileLocatorInterface|null */
-    protected $fileLocator;
-
-    /** @var OptionsResolver */
-    protected $optionsResolver;
+    protected FactoryInterface $vendorFactory;
+    protected VendorLogoUploaderInterface $vendorLogoUploader;
+    protected RepositoryInterface $channelRepository;
+    protected RepositoryInterface $productRepository;
+    protected RepositoryInterface $localeRepository;
+    protected FakerGenerator $faker;
+    protected ?FileLocatorInterface $fileLocator;
+    protected OptionsResolver $optionsResolver;
 
     public function __construct(
         FactoryInterface $vendorFactory,
@@ -66,9 +52,6 @@ class VendorExampleFactory implements ExampleFactoryInterface
         $this->configureOptions($this->optionsResolver);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(array $options = []): VendorInterface
     {
         $options = $this->optionsResolver->resolve($options);
@@ -110,9 +93,6 @@ class VendorExampleFactory implements ExampleFactoryInterface
         return new UploadedFile($imagePath, basename($imagePath));
     }
 
-    /**
-     * @return Generator
-     */
     protected function getLocales(): Generator
     {
         /** @var LocaleInterface[] $locales */
@@ -122,9 +102,6 @@ class VendorExampleFactory implements ExampleFactoryInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureOptions(OptionsResolver $resolver): void
     {
         $resolver

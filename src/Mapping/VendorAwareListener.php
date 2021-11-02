@@ -19,17 +19,10 @@ use Sylius\Component\Resource\Metadata\RegistryInterface;
 
 final class VendorAwareListener implements EventSubscriber
 {
-    /** @var RegistryInterface */
-    private $resourceMetadataRegistry;
-
-    /** @var string */
-    private $vendorClass;
-
-    /** @var string */
-    private $productClass;
-
-    /** @var string */
-    private $channelClass;
+    private RegistryInterface $resourceMetadataRegistry;
+    private string $vendorClass;
+    private string $productClass;
+    private string $channelClass;
 
     public function __construct(
         RegistryInterface $resourceMetadataRegistry,
@@ -43,9 +36,6 @@ final class VendorAwareListener implements EventSubscriber
         $this->channelClass = $channelClass;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSubscribedEvents(): array
     {
         return [
@@ -53,9 +43,6 @@ final class VendorAwareListener implements EventSubscriber
         ];
     }
 
-    /**
-     * @param LoadClassMetadataEventArgs $eventArgs
-     */
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void
     {
         $classMetadata = $eventArgs->getClassMetadata();
@@ -87,11 +74,6 @@ final class VendorAwareListener implements EventSubscriber
         }
     }
 
-    /**
-     * @param ClassMetadata $metadata
-     * @param string $joinColumn
-     * @param string $inversedBy
-     */
     private function mapVendorAware(ClassMetadata $metadata, string $joinColumn, string $inversedBy): void
     {
         try {
@@ -113,11 +95,6 @@ final class VendorAwareListener implements EventSubscriber
         }
     }
 
-    /**
-     * @param ClassMetadata $metadata
-     * @param string $joinColumn
-     * @param string $inversedBy
-     */
     private function mapVendorsAware(ClassMetadata $metadata, string $joinColumn, string $inversedBy): void
     {
         try {
@@ -146,9 +123,6 @@ final class VendorAwareListener implements EventSubscriber
         }
     }
 
-    /**
-     * @param ClassMetadata $metadata
-     */
     private function mapVendor(ClassMetadata $metadata): void
     {
         try {

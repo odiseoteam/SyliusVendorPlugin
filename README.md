@@ -41,7 +41,7 @@ Features:
 * Sitemap: All shop pages are connected with the [Sitemap Plugin](https://github.com/stefandoorn/sitemap-plugin).
 * Easy to extend: This plugin follows the best practices to make it fully extensible.
 
-Support Sylius version 1.7+.
+Support Sylius version 1.9+.
 
 #### Premium features!
 

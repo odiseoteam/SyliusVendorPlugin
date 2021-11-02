@@ -11,13 +11,6 @@ use Sylius\Component\Core\Repository\ProductRepositoryInterface as BaseProductRe
 
 interface ProductRepositoryInterface extends BaseProductRepositoryInterface
 {
-    /**
-     * @param ChannelInterface $channel
-     * @param VendorInterface $vendor
-     * @param string $locale
-     * @param array $sorting
-     * @return QueryBuilder
-     */
     public function createShopListByVendorQueryBuilder(
         ChannelInterface $channel,
         VendorInterface $vendor,

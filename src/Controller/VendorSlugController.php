@@ -12,10 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class VendorSlugController extends AbstractController
 {
-    /**
-     * @param Request $request
-     * @return Response
-     */
     public function generateAction(Request $request): Response
     {
         /** @var string $name */

@@ -11,9 +11,6 @@ use Sylius\Component\Core\Model\ChannelInterface;
 
 class VendorRepository extends EntityRepository implements VendorRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createShopListQueryBuilder(
         ChannelInterface $channel,
         array $sorting = []
@@ -21,9 +18,6 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
         return $this->findByEnabledQueryBuilder($channel);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findByEnabledQueryBuilder(?ChannelInterface $channel): QueryBuilder
     {
         $queryBuilder = $this->createQueryBuilder('o')
@@ -41,17 +35,11 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
         return $queryBuilder;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findByChannel(ChannelInterface $channel): array
     {
         return $this->findByEnabledQueryBuilder($channel)->getQuery()->getResult();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findOneBySlug(string $slug, string $locale): ?VendorInterface
     {
         return $this->createQueryBuilder('o')

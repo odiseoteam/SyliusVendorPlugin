@@ -11,36 +11,24 @@ class VendorTranslation extends AbstractTranslation implements VendorTranslation
 {
     use TimestampableTrait;
 
-    /** @var int|null */
-    protected $id;
-
-    /** @var string|null */
-    private $description;
+    protected ?int $id = null;
+    private ?string $description = null;
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setDescription(?string $description): void
     {
         $this->description = $description;

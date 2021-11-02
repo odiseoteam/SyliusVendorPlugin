@@ -10,9 +10,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class VendorTranslationType extends AbstractResourceType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         parent::buildForm($builder, $options);
