@@ -20,7 +20,7 @@ class VendorController extends ResourceController
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
         $this->isGrantedOr403($configuration, ResourceActions::UPDATE);
-        $vendors = $request->get('vendors');
+        $vendors = $request->attributes->get('vendors');
 
         $this->validateCsrfProtection($request, $configuration);
 

@@ -2,5 +2,5 @@ odiseo_sylius_vendor_plugin_admin_ajax_vendor_generate_slug:
     path: /generate-slug
     methods: [GET]
     defaults:
-        _controller: odiseo_sylius_vendor_plugin.controller.vendor_slug:generateAction
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor_slug:generate
         _format: json
