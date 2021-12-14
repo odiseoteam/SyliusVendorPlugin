@@ -48,7 +48,10 @@ final class VendorAwareListener implements EventSubscriber
         $classMetadata = $eventArgs->getClassMetadata();
         $reflection = $classMetadata->reflClass;
 
-        if ($reflection->isAbstract()) {
+        /**
+         * @phpstan-ignore-next-line
+         */
+        if ($reflection === null || $reflection->isAbstract()) {
             return;
         }
 
