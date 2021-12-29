@@ -14,3 +14,15 @@
         </div>
     </div>
 {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.product.index.stylesheets') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.product.index.javascripts') }}
+{% endblock %}
