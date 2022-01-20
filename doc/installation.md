@@ -19,8 +19,7 @@ return [
 ```yml
 # config/packages/_sylius.yaml
 imports:
-    ...
-
+    # ...
     - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yaml" }
 ```
 
@@ -52,8 +51,8 @@ use Odiseo\SyliusVendorPlugin\Entity\VendorsTrait;
 use Sylius\Component\Core\Model\Channel as BaseChannel;
 
 /**
- * @ORM\Table(name="sylius_channel")
  * @ORM\Entity
+ * @ORM\Table(name="sylius_channel")
  */
 class Channel extends BaseChannel implements VendorsAwareInterface
 {
@@ -83,8 +82,8 @@ use Odiseo\SyliusVendorPlugin\Entity\VendorTrait;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
 /**
- * @ORM\Table(name="sylius_product")
  * @ORM\Entity
+ * @ORM\Table(name="sylius_product")
  */
 class Product extends BaseProduct implements VendorAwareInterface
 {
@@ -124,7 +123,6 @@ sylius_product:
 
 ```twig
 {# ... #}
-{{ form_row(form.code) }}
 {{ form_row(form.enabled) }}
 {{ form_row(form.vendor) }}
 {# ... #}

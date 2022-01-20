@@ -23,8 +23,7 @@ return [
 ```yml
 # config/services.yaml
 imports:
-    ...
-
+    # ...
     - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/services/sitemap.yaml" }
 ```
 
