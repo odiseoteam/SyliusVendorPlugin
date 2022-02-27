@@ -10,7 +10,6 @@ Feature: Displaying brands
     @ui
     Scenario: Displaying vendor
         Given there is an existing vendor with "Test" name
-        And the store has "iPhone 8" and "iPhone X" products
-        And this vendor has these products associated with it
+        And this vendor has "iPhone 8" and "iPhone X" products associated with it
         When I go to the "test" page
         Then I should see a page with "Test" name

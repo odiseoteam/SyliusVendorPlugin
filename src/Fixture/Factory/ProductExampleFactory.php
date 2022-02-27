@@ -67,14 +67,15 @@ class ProductExampleFactory extends BaseProductExampleFactory
 
     public function create(array $options = []): ProductInterface
     {
-        /** @var ProductInterface|VendorAwareInterface $product */
         $product = parent::create($options);
 
         $this->configureOptions($this->optionsResolver);
 
         $options = $this->optionsResolver->resolve($options);
 
-        $product->setVendor($options['vendor']);
+        if ($product instanceof VendorAwareInterface) {
+            $product->setVendor($options['vendor']);
+        }
 
         return $product;
     }

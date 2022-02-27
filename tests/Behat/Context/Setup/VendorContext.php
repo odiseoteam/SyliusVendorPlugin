@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use Doctrine\ORM\EntityManagerInterface;
+use Odiseo\SyliusVendorPlugin\Entity\VendorAwareInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Odiseo\SyliusVendorPlugin\Repository\VendorRepositoryInterface;
 use Odiseo\SyliusVendorPlugin\Uploader\VendorLogoUploaderInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use Sylius\Component\Product\Factory\ProductFactoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -33,8 +35,8 @@ final class VendorContext implements Context
     /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /** @var EntityManagerInterface */
-    private $entityManager;
+    /** @var ProductFactoryInterface */
+    private $productFactory;
 
     public function __construct(
         SharedStorageInterface $sharedStorage,
@@ -42,14 +44,14 @@ final class VendorContext implements Context
         VendorLogoUploaderInterface $vendorLogoUploader,
         VendorRepositoryInterface $vendorRepository,
         ProductRepositoryInterface $productRepository,
-        EntityManagerInterface $entityManager
+        ProductFactoryInterface $productFactory
     ) {
         $this->sharedStorage = $sharedStorage;
         $this->vendorFactory = $vendorFactory;
         $this->vendorLogoUploader = $vendorLogoUploader;
         $this->vendorRepository = $vendorRepository;
         $this->productRepository = $productRepository;
-        $this->entityManager = $entityManager;
+        $this->productFactory = $productFactory;
     }
 
     /**
@@ -75,23 +77,23 @@ final class VendorContext implements Context
     }
 
     /**
-     * @Given this vendor has these products associated with it
+     * @Given this vendor has( also) :firstProductName and :secondProductName products associated with it
      */
-    public function thisVendorHasTheseProductsAssociatedWithIt()
+    public function thisVendorHasProductsAssociatedWithIt(...$productsNames)
     {
         /** @var VendorInterface $vendor */
         $vendor = $this->vendorRepository->findOneBy([
             'name' => 'Test'
         ]);
 
-        $products = $this->productRepository->findAll();
+        foreach ($productsNames as $productName) {
+            /** @var ProductInterface|VendorAwareInterface $product */
+            $product = $this->productFactory->createNew();
+            $product->setCode(StringInflector::nameToUppercaseCode($productName));
+            $product->setVendor($vendor);
 
-        /** @var ProductInterface $product */
-        foreach ($products as $product) {
-            $vendor->addProduct($product);
+            $this->productRepository->add($product);
         }
-
-        $this->entityManager->flush();
     }
 
     /**
