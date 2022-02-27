@@ -59,7 +59,7 @@ final class VendorAwareListener implements EventSubscriber
             $reflection->implementsInterface(ProductInterface::class) &&
             $reflection->implementsInterface(VendorAwareInterface::class)
         ) {
-            $this->mapVendorAware($classMetadata, 'product_id', 'products');
+            $this->mapVendorAware($classMetadata, 'vendor_id', 'products');
         }
 
         if (
@@ -90,9 +90,12 @@ final class VendorAwareListener implements EventSubscriber
                 'fieldName' => 'vendor',
                 'targetEntity' => $vendorMetadata->getClass('model'),
                 'inversedBy' => $inversedBy,
-                'joinColumn' => [
-                    'name' => $joinColumn,
-                    'referencedColumnName' => 'id'
+                'joinColumns' => [
+                    [
+                        'name' => $joinColumn,
+                        'referencedColumnName' => 'id',
+                        'nullable' => false
+                    ]
                 ]
             ]);
         }
@@ -113,14 +116,18 @@ final class VendorAwareListener implements EventSubscriber
                 'inversedBy' => $inversedBy,
                 'joinTable' => [
                     'name' => 'odiseo_vendor_' . $inversedBy,
-                    'joinColumns' => [[
-                        'name' => $joinColumn,
-                        'referencedColumnName' => 'id'
-                    ]],
-                    'inverseJoinColumns' => [[
-                        'name' => 'vendor_id',
-                        'referencedColumnName' => 'id'
-                    ]],
+                    'joinColumns' => [
+                        [
+                            'name' => $joinColumn,
+                            'referencedColumnName' => 'id'
+                        ]
+                    ],
+                    'inverseJoinColumns' => [
+                        [
+                            'name' => 'vendor_id',
+                            'referencedColumnName' => 'id'
+                        ]
+                    ],
                 ]
             ]);
         }

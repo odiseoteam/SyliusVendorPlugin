@@ -8,6 +8,7 @@ use Odiseo\SyliusVendorPlugin\Form\Type\VendorChoiceType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 final class ProductTypeExtension extends AbstractTypeExtension
 {
@@ -15,7 +16,12 @@ final class ProductTypeExtension extends AbstractTypeExtension
     {
         $builder->add('vendor', VendorChoiceType::class, [
             'label' => 'odiseo_sylius_vendor_plugin.form.product.select_vendor',
-            'required' => false
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'odiseo_sylius_vendor_plugin.product.vendor.not_blank',
+                    'groups' => ['sylius'],
+                ]),
+            ],
         ]);
     }
 

@@ -21,3 +21,6 @@ odiseo_sylius_vendor_plugin:
     vendor_translation:
         description:
             not_blank: Description cannot be blank.
+    product:
+        vendor:
+            not_blank: Please select a vendor.

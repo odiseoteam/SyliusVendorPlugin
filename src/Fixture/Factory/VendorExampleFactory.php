@@ -25,7 +25,6 @@ class VendorExampleFactory implements ExampleFactoryInterface
     protected FactoryInterface $vendorFactory;
     protected VendorLogoUploaderInterface $vendorLogoUploader;
     protected RepositoryInterface $channelRepository;
-    protected RepositoryInterface $productRepository;
     protected RepositoryInterface $localeRepository;
     protected FakerGenerator $faker;
     protected ?FileLocatorInterface $fileLocator;
@@ -35,14 +34,12 @@ class VendorExampleFactory implements ExampleFactoryInterface
         FactoryInterface $vendorFactory,
         VendorLogoUploaderInterface $vendorLogoUploader,
         RepositoryInterface $channelRepository,
-        RepositoryInterface $productRepository,
         RepositoryInterface $localeRepository,
         ?FileLocatorInterface $fileLocator = null
     ) {
         $this->vendorFactory = $vendorFactory;
         $this->vendorLogoUploader = $vendorLogoUploader;
         $this->channelRepository = $channelRepository;
-        $this->productRepository = $productRepository;
         $this->localeRepository = $localeRepository;
         $this->fileLocator = $fileLocator;
 
@@ -72,10 +69,6 @@ class VendorExampleFactory implements ExampleFactoryInterface
 
         foreach ($options['channels'] as $channel) {
             $vendor->addChannel($channel);
-        }
-
-        foreach ($options['products'] as $product) {
-            $vendor->addProduct($product);
         }
 
         $vendor->setLogoFile($this->createImage($options['logo']));
@@ -108,9 +101,6 @@ class VendorExampleFactory implements ExampleFactoryInterface
             ->setDefault('channels', LazyOption::randomOnes($this->channelRepository, 3))
             ->setAllowedTypes('channels', 'array')
             ->setNormalizer('channels', LazyOption::findBy($this->channelRepository, 'code'))
-            ->setDefault('products', LazyOption::randomOnes($this->productRepository, 3))
-            ->setAllowedTypes('products', 'array')
-            ->setNormalizer('products', LazyOption::findBy($this->productRepository, 'code'))
             ->setRequired('name')
             ->setAllowedTypes('name', 'string')
             ->setDefault('name', function (Options $_options): string {

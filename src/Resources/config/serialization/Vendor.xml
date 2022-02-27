@@ -45,6 +45,12 @@
             <group>admin:vendor:update</group>
             <group>shop:vendor:read</group>
         </attribute>
+        <attribute name="products">
+            <group>admin:vendor:create</group>
+            <group>admin:vendor:read</group>
+            <group>admin:vendor:update</group>
+            <group>shop:vendor:read</group>
+        </attribute>
         <attribute name="channels">
             <group>admin:vendor:create</group>
             <group>admin:vendor:read</group>
