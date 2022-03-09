@@ -13,6 +13,7 @@ class VendorFixture extends AbstractResourceFixture
     {
         $node = $resourceNode->children();
 
+        $node->arrayNode('products')->scalarPrototype();
         $node->arrayNode('channels')->scalarPrototype();
         $node->scalarNode('name')->cannotBeEmpty();
         $node->scalarNode('slug')->cannotBeEmpty();

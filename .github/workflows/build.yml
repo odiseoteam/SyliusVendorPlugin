@@ -148,7 +148,7 @@ jobs:
 
             -
                 name: Load fixtures in test application
-                run: (cd tests/Application && bin/console sylius:fixtures:load vendor -n)
+                run: (cd tests/Application && bin/console sylius:fixtures:load -n)
 
             -
                 name: Validate composer.json

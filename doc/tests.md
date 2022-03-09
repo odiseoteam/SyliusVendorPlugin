@@ -90,13 +90,13 @@ To be able to setup a plugin's database, remember to configure you database cred
 - Using `test` environment:
 
     ```bash
-    $ (cd tests/Application && APP_ENV=test bin/console sylius:fixtures:load vendor)
+    $ (cd tests/Application && APP_ENV=test bin/console sylius:fixtures:load)
     $ (cd tests/Application && APP_ENV=test symfony server:start --document-root=public -d)
     ```
 
 - Using `dev` environment:
 
     ```bash
-    $ (cd tests/Application && APP_ENV=dev bin/console sylius:fixtures:load vendor)
+    $ (cd tests/Application && APP_ENV=dev bin/console sylius:fixtures:load)
     $ (cd tests/Application && APP_ENV=dev symfony server:start --document-root=public -d)
     ```

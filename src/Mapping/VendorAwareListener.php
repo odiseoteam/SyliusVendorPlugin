@@ -93,8 +93,7 @@ final class VendorAwareListener implements EventSubscriber
                 'joinColumns' => [
                     [
                         'name' => $joinColumn,
-                        'referencedColumnName' => 'id',
-                        'nullable' => false
+                        'referencedColumnName' => 'id'
                     ]
                 ]
             ]);

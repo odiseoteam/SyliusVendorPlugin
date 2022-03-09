@@ -8,7 +8,7 @@ services:
             - '@odiseo_sylius_vendor_plugin.uploader.vendor_logo'
             - '@odiseo_sylius_vendor_plugin.repository.vendor'
             - '@sylius.repository.product'
-            - '@sylius.factory.product'
+            - '@odiseo_sylius_vendor_plugin.manager.vendor'
         tags:
             - { name: fob.context_service }
 
