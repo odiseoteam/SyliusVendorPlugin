@@ -45,6 +45,7 @@ Odiseo\SyliusVendorPlugin\Entity\Vendor:
                 groups: ['odiseo']
             - Email:
                 message: 'odiseo_sylius_vendor_plugin.vendor.email.invalid'
+                mode: strict
                 groups: ['odiseo']
         logoFile:
             - NotBlank:
