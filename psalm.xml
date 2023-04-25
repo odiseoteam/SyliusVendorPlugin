@@ -26,5 +26,11 @@
         <PossiblyUndefinedMethod errorLevel="info" />
         <MixedMethodCall errorLevel="info" />
         <PossiblyInvalidArgument errorLevel="info" />
+        <MissingTemplateParam errorLevel="info" />
+        <MixedArrayAssignment errorLevel="info" />
+        <MixedArgumentTypeCoercion errorLevel="info" />
+        <TooManyArguments errorLevel="info" />
+        <MixedOperand errorLevel="info" />
+        <MixedArrayAccess errorLevel="info" />
     </issueHandlers>
 </psalm>

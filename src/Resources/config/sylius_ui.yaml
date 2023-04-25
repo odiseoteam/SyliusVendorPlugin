@@ -1,5 +1,11 @@
 sylius_ui:
     events:
+        sylius.admin.layout.javascripts:
+            blocks:
+                vendor_js:
+                    template: "@OdiseoSyliusVendorPlugin/Admin/Layout/_vendor_js.html.twig"
+                    priority: 5
+
         odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_vertical_menu:
             blocks:
                 legacy:

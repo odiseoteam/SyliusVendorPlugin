@@ -1,0 +1,12 @@
+api_platform:
+    messenger:
+        enabled: true
+    mapping:
+        paths:
+            - '%kernel.project_dir%/../../vendor/sylius/sylius/src/Sylius/Bundle/ApiBundle/Resources/config/api_resources'
+            - '%kernel.project_dir%/config/api_platform'
+            - '%kernel.project_dir%/Entity'
+    patch_formats:
+        json: ['application/merge-patch+json']
+    swagger:
+        versions: [3]

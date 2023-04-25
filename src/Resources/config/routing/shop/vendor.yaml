@@ -2,7 +2,7 @@ odiseo_sylius_vendor_plugin_shop_vendor_index:
     path: /
     methods: [GET]
     defaults:
-        _controller: odiseo_sylius_vendor_plugin.controller.vendor:indexAction
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor::indexAction
         _sylius:
             template: '@OdiseoSyliusVendorPlugin/Shop/Vendor/index.html.twig'
             grid: odiseo_sylius_vendor_plugin_shop_vendor

@@ -5,21 +5,22 @@
         vendorSlugGenerator: function () {
             let timeout;
 
-            $('[name*="vendor"][name*="[name]"]').on('input', function() {
+            $('[name*="vendor"][name*="[name]"]').on('input', function () {
                 clearTimeout(timeout);
                 let element = $(this);
 
-                timeout = setTimeout(function() {
+                timeout = setTimeout(function () {
                     updateSlug(element);
                 }, 1000);
             });
 
-            $('.toggle-vendor-slug-modification').on('click', function(e) {
+            $('.toggle-vendor-slug-modification').on('click', function (e) {
                 e.preventDefault();
                 toggleSlugModification($(this), $(this).siblings('input'));
             });
 
-            function updateSlug(element) {
+            function updateSlug(element)
+            {
                 let slugInput = element.parents().find('[name*="[slug]"]');
                 let loadableParent = slugInput.parents('.field.loadable');
 
@@ -35,7 +36,7 @@
                     data: { name: element.val() },
                     dataType: "json",
                     accept: "application/json",
-                    success: function(data) {
+                    success: function (data) {
                         slugInput.val(data.slug);
                         if (slugInput.parents('.field').hasClass('error')) {
                             slugInput.parents('.field').removeClass('error');
@@ -46,7 +47,8 @@
                 });
             }
 
-            function toggleSlugModification(button, slugInput) {
+            function toggleSlugModification(button, slugInput)
+            {
                 if (slugInput.attr('readonly')) {
                     slugInput.removeAttr('readonly');
                     button.html('<i class="unlock icon"></i>');
@@ -59,7 +61,7 @@
     });
 })(jQuery);
 
-(function($) {
+(function ($) {
     $(document).ready(function () {
         $(this).vendorSlugGenerator();
     });
