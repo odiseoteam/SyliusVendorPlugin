@@ -8,8 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorTranslation;
 use Odiseo\SyliusVendorPlugin\Repository\VendorRepositoryInterface;
-use SitemapPlugin\Factory\UrlFactoryInterface;
 use SitemapPlugin\Factory\AlternativeUrlFactoryInterface;
+use SitemapPlugin\Factory\UrlFactoryInterface;
 use SitemapPlugin\Model\ChangeFrequency;
 use SitemapPlugin\Model\UrlInterface;
 use SitemapPlugin\Provider\UrlProviderInterface;
@@ -21,25 +21,13 @@ use Symfony\Component\Routing\RouterInterface;
 
 final class VendorUrlProvider implements UrlProviderInterface
 {
-    private VendorRepositoryInterface $vendorRepository;
-    private RouterInterface $router;
-    private UrlFactoryInterface $sitemapUrlFactory;
-    private AlternativeUrlFactoryInterface $urlAlternativeFactory;
-    private LocaleContextInterface $localeContext;
-    private ChannelInterface $channel;
-
     public function __construct(
-        VendorRepositoryInterface $vendorRepository,
-        RouterInterface $router,
-        UrlFactoryInterface $sitemapUrlFactory,
-        AlternativeUrlFactoryInterface $urlAlternativeFactory,
-        LocaleContextInterface $localeContext
+        private VendorRepositoryInterface $vendorRepository,
+        private RouterInterface $router,
+        private UrlFactoryInterface $sitemapUrlFactory,
+        private AlternativeUrlFactoryInterface $urlAlternativeFactory,
+        private LocaleContextInterface $localeContext
     ) {
-        $this->vendorRepository = $vendorRepository;
-        $this->router = $router;
-        $this->sitemapUrlFactory = $sitemapUrlFactory;
-        $this->urlAlternativeFactory = $urlAlternativeFactory;
-        $this->localeContext = $localeContext;
     }
 
     public function getName(): string

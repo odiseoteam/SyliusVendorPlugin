@@ -10,12 +10,9 @@ use Symfony\Component\HttpFoundation\File\File;
 
 final class VendorLogoUploader implements VendorLogoUploaderInterface
 {
-    private FilesystemInterface $filesystem;
-
     public function __construct(
-        FilesystemInterface $filesystem
+        private FilesystemInterface $filesystem
     ) {
-        $this->filesystem = $filesystem;
     }
 
     public function upload(VendorInterface $vendor): void

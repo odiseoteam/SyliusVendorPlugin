@@ -19,11 +19,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductExampleFactory extends BaseProductExampleFactory
 {
-    protected RepositoryInterface $vendorRepository;
     protected OptionsResolver $optionsResolver;
 
     public function __construct(
-        RepositoryInterface $vendorRepository,
+        protected RepositoryInterface $vendorRepository,
         FactoryInterface $productFactory,
         FactoryInterface $productVariantFactory,
         FactoryInterface $channelPricing,
@@ -41,8 +40,6 @@ class ProductExampleFactory extends BaseProductExampleFactory
         RepositoryInterface $taxCategoryRepository,
         ?FileLocatorInterface $fileLocator = null
     ) {
-        $this->vendorRepository = $vendorRepository;
-
         $this->optionsResolver = new OptionsResolver();
 
         parent::__construct(

@@ -22,27 +22,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class VendorExampleFactory implements ExampleFactoryInterface
 {
-    protected FactoryInterface $vendorFactory;
-    protected VendorLogoUploaderInterface $vendorLogoUploader;
-    protected RepositoryInterface $channelRepository;
-    protected RepositoryInterface $localeRepository;
     protected FakerGenerator $faker;
-    protected ?FileLocatorInterface $fileLocator;
     protected OptionsResolver $optionsResolver;
 
     public function __construct(
-        FactoryInterface $vendorFactory,
-        VendorLogoUploaderInterface $vendorLogoUploader,
-        RepositoryInterface $channelRepository,
-        RepositoryInterface $localeRepository,
-        ?FileLocatorInterface $fileLocator = null
+        protected FactoryInterface $vendorFactory,
+        protected VendorLogoUploaderInterface $vendorLogoUploader,
+        protected RepositoryInterface $channelRepository,
+        protected RepositoryInterface $localeRepository,
+        protected ?FileLocatorInterface $fileLocator = null
     ) {
-        $this->vendorFactory = $vendorFactory;
-        $this->vendorLogoUploader = $vendorLogoUploader;
-        $this->channelRepository = $channelRepository;
-        $this->localeRepository = $localeRepository;
-        $this->fileLocator = $fileLocator;
-
         $this->faker = Factory::create();
         $this->optionsResolver = new OptionsResolver();
 
