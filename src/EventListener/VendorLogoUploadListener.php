@@ -11,11 +11,9 @@ use Webmozart\Assert\Assert;
 
 final class VendorLogoUploadListener
 {
-    private VendorLogoUploaderInterface $uploader;
-
-    public function __construct(VendorLogoUploaderInterface $uploader)
-    {
-        $this->uploader = $uploader;
+    public function __construct(
+        private VendorLogoUploaderInterface $uploader
+    ) {
     }
 
     public function uploadLogo(GenericEvent $event): void

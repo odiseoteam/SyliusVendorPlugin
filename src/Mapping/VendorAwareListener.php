@@ -19,21 +19,12 @@ use Sylius\Component\Resource\Metadata\RegistryInterface;
 
 final class VendorAwareListener implements EventSubscriber
 {
-    private RegistryInterface $resourceMetadataRegistry;
-    private string $vendorClass;
-    private string $productClass;
-    private string $channelClass;
-
     public function __construct(
-        RegistryInterface $resourceMetadataRegistry,
-        string $vendorClass,
-        string $productClass,
-        string $channelClass
+        private RegistryInterface $resourceMetadataRegistry,
+        private string $vendorClass,
+        private string $productClass,
+        private string $channelClass
     ) {
-        $this->resourceMetadataRegistry = $resourceMetadataRegistry;
-        $this->vendorClass = $vendorClass;
-        $this->productClass = $productClass;
-        $this->channelClass = $channelClass;
     }
 
     public function getSubscribedEvents(): array

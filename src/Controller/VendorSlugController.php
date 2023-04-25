@@ -11,11 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class VendorSlugController
 {
-    private SlugGeneratorInterface $slugGenerator;
-
-    public function __construct(SlugGeneratorInterface $slugGenerator)
-    {
-        $this->slugGenerator = $slugGenerator;
+    public function __construct(
+        private SlugGeneratorInterface $slugGenerator
+    ) {
     }
 
     public function generate(Request $request): Response

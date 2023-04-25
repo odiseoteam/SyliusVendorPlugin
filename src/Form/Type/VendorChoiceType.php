@@ -15,12 +15,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class VendorChoiceType extends AbstractType
 {
-    private VendorRepositoryInterface $vendorRepository;
 
     public function __construct(
-        VendorRepositoryInterface $vendorRepository
+        private VendorRepositoryInterface $vendorRepository
     ) {
-        $this->vendorRepository = $vendorRepository;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
