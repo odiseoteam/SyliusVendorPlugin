@@ -12,11 +12,6 @@ services:
         tags:
             - { name: knp_menu.menu_builder, method: createMenu, alias: odiseo_sylius_vendor_plugin.admin.vendor_form }
 
-    odiseo_sylius_vendor_plugin.block_event_listener.layout.vendor.javascripts:
-        class: Odiseo\SyliusVendorPlugin\Block\VendorJsBlockListener
-        tags:
-            - { name: kernel.event_listener, event: sonata.block.event.sylius.admin.layout.javascripts, method: onBlockEvent }
-
     odiseo_sylius_vendor_plugin.event_listener.vendor_aware_listener:
         class: Odiseo\SyliusVendorPlugin\Mapping\VendorAwareListener
         arguments:

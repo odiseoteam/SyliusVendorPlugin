@@ -14,23 +14,18 @@ on:
 
 jobs:
     tests:
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-latest
 
         name: "Sylius ${{ matrix.sylius }}, PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}, MySQL ${{ matrix.mysql }}"
 
         strategy:
             fail-fast: false
             matrix:
-                php: ["7.4", "8.0"]
-                symfony: ["^4.4", "^5.2"]
-                sylius: ["~1.9.0", "~1.10.0"]
-                node: ["14.x"]
+                php: ["8.0", "8.1"]
+                symfony: ["^6.0"]
+                sylius: ["^1.12"]
+                node: ["14.x", "16.x", "18.x"]
                 mysql: ["5.7", "8.0"]
-
-                exclude:
-                    -
-                        php: "8.0"
-                        sylius: "~1.9.0"
 
         env:
             APP_ENV: test
@@ -38,7 +33,7 @@ jobs:
 
         steps:
             -
-                uses: actions/checkout@v2
+                uses: actions/checkout@v3
 
             -
                 name: Setup PHP
@@ -46,12 +41,12 @@ jobs:
                 with:
                     php-version: "${{ matrix.php }}"
                     extensions: intl
-                    tools: symfony
+                    tools: flex,symfony
                     coverage: none
 
             -
                 name: Setup Node
-                uses: actions/setup-node@v1
+                uses: actions/setup-node@v3
                 with:
                     node-version: "${{ matrix.node }}"
 
@@ -85,11 +80,11 @@ jobs:
             -
                 name: Get Composer cache directory
                 id: composer-cache
-                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+                run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
             -
                 name: Cache Composer
-                uses: actions/cache@v2
+                uses: actions/cache@v3
                 with:
                     path: ${{ steps.composer-cache.outputs.dir }}
                     key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json **/composer.lock') }}
@@ -97,10 +92,15 @@ jobs:
                         ${{ runner.os }}-php-${{ matrix.php }}-composer-
 
             -
+                name: Configure global composer
+                run: |
+                    composer global config --no-plugins allow-plugins.symfony/flex true
+                    composer global require --no-progress --no-scripts --no-plugins "symfony/flex:^2.2.2"
+
+            -
                 name: Restrict Symfony version
                 if: matrix.symfony != ''
                 run: |
-                    composer global require --no-progress --no-scripts --no-plugins "symfony/flex:^1.10"
                     composer config extra.symfony.require "${{ matrix.symfony }}"
 
             -
@@ -111,15 +111,17 @@ jobs:
             -
                 name: Install PHP dependencies
                 run: composer install --no-interaction
+                env:
+                    SYMFONY_REQUIRE: ${{ matrix.symfony }}
 
             -
                 name: Get Yarn cache directory
                 id: yarn-cache
-                run: echo "::set-output name=dir::$(yarn cache dir)"
+                run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
             -
                 name: Cache Yarn
-                uses: actions/cache@v2
+                uses: actions/cache@v3
                 with:
                     path: ${{ steps.yarn-cache.outputs.dir }}
                     key: ${{ runner.os }}-node-${{ matrix.node }}-yarn-${{ hashFiles('**/package.json **/yarn.lock') }}
@@ -140,7 +142,7 @@ jobs:
                 name: Prepare test application assets
                 run: |
                     (cd tests/Application && bin/console assets:install public -vvv)
-                    (cd tests/Application && yarn build)
+                    (cd tests/Application && yarn build:prod)
 
             -
                 name: Prepare test application cache
@@ -184,7 +186,7 @@ jobs:
 
             -
                 name: Upload Behat logs
-                uses: actions/upload-artifact@v2
+                uses: actions/upload-artifact@v3
                 if: failure()
                 with:
                     name: Behat logs

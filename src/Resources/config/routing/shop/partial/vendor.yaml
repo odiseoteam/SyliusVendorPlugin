@@ -2,7 +2,7 @@ odiseo_sylius_vendor_plugin_shop_partial_vendor_show_by_slug:
     path: /by-slug/{slug}
     methods: [GET]
     defaults:
-        _controller: odiseo_sylius_vendor_plugin.controller.vendor:showAction
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor::showAction
         _sylius:
             template: $template
             repository:
@@ -17,7 +17,7 @@ odiseo_sylius_vendor_plugin_shop_partial_vendor_index_by_channel:
     path: /by-channel
     methods: [GET]
     defaults:
-        _controller: odiseo_sylius_vendor_plugin.controller.vendor:indexAction
+        _controller: odiseo_sylius_vendor_plugin.controller.vendor::indexAction
         _sylius:
             template: $template
             repository:
