@@ -72,6 +72,9 @@ class VendorExampleFactory implements ExampleFactoryInterface
     {
         $imagePath = null === $this->fileLocator ? $imagePath : $this->fileLocator->locate($imagePath);
 
+        /**
+         * @phpstan-ignore-next-line
+         */
         return new UploadedFile($imagePath, basename($imagePath));
     }
 
