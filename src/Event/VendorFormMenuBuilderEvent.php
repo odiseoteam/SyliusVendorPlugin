@@ -14,7 +14,7 @@ class VendorFormMenuBuilderEvent extends MenuBuilderEvent
     public function __construct(
         FactoryInterface $factory,
         ItemInterface $menu,
-        private VendorInterface $vendor
+        private VendorInterface $vendor,
     ) {
         parent::__construct($factory, $menu);
     }

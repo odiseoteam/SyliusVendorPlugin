@@ -23,6 +23,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class VendorExampleFactory implements ExampleFactoryInterface
 {
     protected FakerGenerator $faker;
+
     protected OptionsResolver $optionsResolver;
 
     public function __construct(
@@ -30,7 +31,7 @@ class VendorExampleFactory implements ExampleFactoryInterface
         protected VendorLogoUploaderInterface $vendorLogoUploader,
         protected RepositoryInterface $channelRepository,
         protected RepositoryInterface $localeRepository,
-        protected ?FileLocatorInterface $fileLocator = null
+        protected ?FileLocatorInterface $fileLocator = null,
     ) {
         $this->faker = Factory::create();
         $this->optionsResolver = new OptionsResolver();
@@ -69,7 +70,6 @@ class VendorExampleFactory implements ExampleFactoryInterface
 
     protected function createImage(string $imagePath): UploadedFile
     {
-        /** @var string $imagePath */
         $imagePath = null === $this->fileLocator ? $imagePath : $this->fileLocator->locate($imagePath);
 
         return new UploadedFile($imagePath, basename($imagePath));

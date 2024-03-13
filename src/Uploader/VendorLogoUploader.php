@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\File\File;
 final class VendorLogoUploader implements VendorLogoUploaderInterface
 {
     public function __construct(
-        private FilesystemInterface $filesystem
+        private FilesystemInterface $filesystem,
     ) {
     }
 
@@ -45,7 +45,7 @@ final class VendorLogoUploader implements VendorLogoUploaderInterface
         $this->filesystem->write(
             $vendor->getLogoName(),
             file_get_contents($file->getPathname()),
-            true
+            true,
         );
     }
 

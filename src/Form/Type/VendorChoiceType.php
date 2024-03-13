@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 final class VendorChoiceType extends AbstractType
 {
     public function __construct(
-        private VendorRepositoryInterface $vendorRepository
+        private VendorRepositoryInterface $vendorRepository,
     ) {
     }
 

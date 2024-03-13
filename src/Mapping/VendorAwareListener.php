@@ -23,7 +23,7 @@ final class VendorAwareListener implements EventSubscriber
         private RegistryInterface $resourceMetadataRegistry,
         private string $vendorClass,
         private string $productClass,
-        private string $channelClass
+        private string $channelClass,
     ) {
     }
 
@@ -85,9 +85,9 @@ final class VendorAwareListener implements EventSubscriber
                     [
                         'name' => $joinColumn,
                         'referencedColumnName' => 'id',
-                        'nullable' => false
-                    ]
-                ]
+                        'nullable' => false,
+                    ],
+                ],
             ]);
         }
     }
@@ -110,16 +110,16 @@ final class VendorAwareListener implements EventSubscriber
                     'joinColumns' => [
                         [
                             'name' => $joinColumn,
-                            'referencedColumnName' => 'id'
-                        ]
+                            'referencedColumnName' => 'id',
+                        ],
                     ],
                     'inverseJoinColumns' => [
                         [
                             'name' => 'vendor_id',
-                            'referencedColumnName' => 'id'
-                        ]
+                            'referencedColumnName' => 'id',
+                        ],
                     ],
-                ]
+                ],
             ]);
         }
     }
@@ -136,7 +136,7 @@ final class VendorAwareListener implements EventSubscriber
         if (!$metadata->hasAssociation('products')) {
             $productConfig = [
                 'fieldName' => 'products',
-                'targetEntity' => $productMetadata->getClass('model')
+                'targetEntity' => $productMetadata->getClass('model'),
             ];
 
             if (Product::class != $this->productClass) {
@@ -151,7 +151,7 @@ final class VendorAwareListener implements EventSubscriber
         if (!$metadata->hasAssociation('channels')) {
             $channelConfig = [
                 'fieldName' => 'channels',
-                'targetEntity' => $channelMetadata->getClass('model')
+                'targetEntity' => $channelMetadata->getClass('model'),
             ];
 
             if (Channel::class != $this->channelClass) {

@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 final class VendorSlugController
 {
     public function __construct(
-        private SlugGeneratorInterface $slugGenerator
+        private SlugGeneratorInterface $slugGenerator,
     ) {
     }
 

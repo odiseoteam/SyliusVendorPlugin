@@ -33,7 +33,6 @@ class VendorController extends ResourceController
             /**
              * @var int $id
              * @var string $position
-             *
              * @psalm-var array{position: string, id: int} $vendors
              */
             foreach ($vendors as $id => $position) {

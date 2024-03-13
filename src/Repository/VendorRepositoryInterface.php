@@ -13,7 +13,7 @@ interface VendorRepositoryInterface extends RepositoryInterface
 {
     public function createShopListQueryBuilder(
         ChannelInterface $channel,
-        array $sorting = []
+        array $sorting = [],
     ): QueryBuilder;
 
     public function findByEnabledQueryBuilder(?ChannelInterface $channel): QueryBuilder;

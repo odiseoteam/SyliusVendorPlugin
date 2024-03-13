@@ -14,7 +14,7 @@ final class VendorFormMenuBuilder
 {
     public function __construct(
         private FactoryInterface $factory,
-        private EventDispatcherInterface $eventDispatcher
+        private EventDispatcherInterface $eventDispatcher,
     ) {
     }
 
@@ -46,7 +46,7 @@ final class VendorFormMenuBuilder
         ;
 
         $this->eventDispatcher->dispatch(
-            new VendorFormMenuBuilderEvent($this->factory, $menu, $options['vendor'])
+            new VendorFormMenuBuilderEvent($this->factory, $menu, $options['vendor']),
         );
 
         return $menu;

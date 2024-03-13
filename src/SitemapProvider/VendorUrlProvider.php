@@ -26,7 +26,7 @@ final class VendorUrlProvider implements UrlProviderInterface
         private RouterInterface $router,
         private UrlFactoryInterface $sitemapUrlFactory,
         private AlternativeUrlFactoryInterface $urlAlternativeFactory,
-        private LocaleContextInterface $localeContext
+        private LocaleContextInterface $localeContext,
     ) {
     }
 

@@ -12,6 +12,7 @@ class VendorEmail implements VendorEmailInterface
     use TimestampableTrait;
 
     protected ?int $id = null;
+
     protected ?string $value = null;
 
     public function __construct()
