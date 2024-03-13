@@ -70,6 +70,10 @@ class VendorExampleFactory implements ExampleFactoryInterface
 
     protected function createImage(string $imagePath): UploadedFile
     {
+        /**
+         * @var string $imagePath
+         * @psalm-suppress UnnecessaryVarAnnotation
+         */
         $imagePath = null === $this->fileLocator ? $imagePath : $this->fileLocator->locate($imagePath);
 
         return new UploadedFile($imagePath, basename($imagePath));
