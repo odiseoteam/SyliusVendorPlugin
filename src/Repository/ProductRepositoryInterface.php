@@ -15,6 +15,6 @@ interface ProductRepositoryInterface extends BaseProductRepositoryInterface
         ChannelInterface $channel,
         VendorInterface $vendor,
         string $locale,
-        array $sorting = []
+        array $sorting = [],
     ): QueryBuilder;
 }

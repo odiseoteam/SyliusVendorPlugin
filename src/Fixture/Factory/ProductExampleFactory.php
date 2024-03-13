@@ -38,7 +38,7 @@ class ProductExampleFactory extends BaseProductExampleFactory
         RepositoryInterface $channelRepository,
         RepositoryInterface $localeRepository,
         RepositoryInterface $taxCategoryRepository,
-        ?FileLocatorInterface $fileLocator = null
+        ?FileLocatorInterface $fileLocator = null,
     ) {
         $this->optionsResolver = new OptionsResolver();
 
@@ -58,7 +58,7 @@ class ProductExampleFactory extends BaseProductExampleFactory
             $channelRepository,
             $localeRepository,
             $taxCategoryRepository,
-            $fileLocator
+            $fileLocator,
         );
     }
 

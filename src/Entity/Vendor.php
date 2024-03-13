@@ -24,26 +24,26 @@ class Vendor implements VendorInterface
     use ToggleableTrait;
 
     protected ?int $id = null;
+
     protected ?string $name = null;
+
     protected ?string $slug = null;
+
     protected ?string $email = null;
+
     protected ?File $logoFile = null;
+
     protected ?string $logoName = null;
+
     protected ?int $position = null;
 
-    /**
-     * @psalm-var Collection<array-key, ChannelInterface>
-     */
+    /** @psalm-var Collection<array-key, ChannelInterface> */
     protected Collection $channels;
 
-    /**
-     * @psalm-var Collection<array-key, ProductInterface>
-     */
+    /** @psalm-var Collection<array-key, ProductInterface> */
     protected Collection $products;
 
-    /**
-     * @psalm-var Collection<array-key, VendorEmailInterface>
-     */
+    /** @psalm-var Collection<array-key, VendorEmailInterface> */
     protected Collection $extraEmails;
 
     public function __construct()

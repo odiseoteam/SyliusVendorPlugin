@@ -12,7 +12,7 @@ use Webmozart\Assert\Assert;
 final class VendorLogoUploadListener
 {
     public function __construct(
-        private VendorLogoUploaderInterface $uploader
+        private VendorLogoUploaderInterface $uploader,
     ) {
     }
 

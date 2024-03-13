@@ -16,7 +16,7 @@ trait ProductRepositoryTrait
         ChannelInterface $channel,
         VendorInterface $vendor,
         string $locale,
-        array $sorting = []
+        array $sorting = [],
     ): QueryBuilder {
         $queryBuilder = $this->createQueryBuilder('o')
             ->distinct()
@@ -51,8 +51,8 @@ trait ProductRepositoryTrait
                 ->andWhere(
                     $queryBuilder->expr()->in(
                         'variant.position',
-                        str_replace(':product_id', 'o.id', $subQuery->getDQL())
-                    )
+                        str_replace(':product_id', 'o.id', $subQuery->getDQL()),
+                    ),
                 )
                 ->setParameter('channelCode', $channel->getCode())
                 ->setParameter('enabled', true)
