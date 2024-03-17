@@ -72,6 +72,7 @@ class VendorExampleFactory implements ExampleFactoryInterface
     {
         /**
          * @var string $imagePath
+         *
          * @psalm-suppress UnnecessaryVarAnnotation
          */
         $imagePath = null === $this->fileLocator ? $imagePath : $this->fileLocator->locate($imagePath);
