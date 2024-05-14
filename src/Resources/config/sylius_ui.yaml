@@ -6,19 +6,43 @@ sylius_ui:
                     template: "@OdiseoSyliusVendorPlugin/Admin/Layout/_vendor_js.html.twig"
                     priority: 5
 
-        odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_vertical_menu:
+        odiseo_sylius_vendor_plugin.shop.vendor.product.index.header.content:
             blocks:
+                breadcrumb:
+                    template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/Header/_breadcrumb.html.twig"
+                    priority: 20
                 legacy:
                     template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 15
                     context:
-                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_vertical_menu
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.header
+                content:
+                    template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/Header/_content.html.twig"
+                    priority: 10
 
-        odiseo_sylius_vendor_plugin.shop.vendor.product.index.after_vertical_menu:
+        odiseo_sylius_vendor_plugin.shop.vendor.product.index.content:
             blocks:
-                legacy:
+                before_header_legacy:
                     template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 25
                     context:
-                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.after_vertical_menu
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_header
+                header:
+                    template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_headerWidget.html.twig"
+                    priority: 20
+                after_header_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 15
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.after_header
+                content:
+                    template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_content.html.twig"
+                    priority: 10
+                after_content_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 5
+                    context:
+                        event: odiseo_sylius_vendor_plugin.shop.vendor.product.index.after_content
 
         odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_list:
             blocks:

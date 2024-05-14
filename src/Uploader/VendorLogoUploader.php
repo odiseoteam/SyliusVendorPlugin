@@ -44,7 +44,7 @@ final class VendorLogoUploader implements VendorLogoUploaderInterface
 
         $this->filesystem->write(
             $vendor->getLogoName(),
-            file_get_contents($file->getPathname()),
+            (string) file_get_contents($file->getPathname()),
             true,
         );
     }
@@ -77,6 +77,6 @@ final class VendorLogoUploader implements VendorLogoUploaderInterface
 
     private function isAdBlockingProne(string $path): bool
     {
-        return strpos($path, 'ad') !== false;
+        return str_contains($path, 'ad');
     }
 }

@@ -1,17 +1,14 @@
 {% extends '@SyliusShop/layout.html.twig' %}
 
-{% block content %}
-    {% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_header.html.twig' %}
+{% block title %}
+    {% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_title.html.twig' %} | {{ parent() }}
+{% endblock %}
 
-    <div class="ui hidden divider"></div>
+{% block content %}
+    <div class="ui clearing hidden divider"></div>
 
     <div class="ui stackable grid">
-        <div class="four wide column">
-            {% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_sidebar.html.twig' %}
-        </div>
-        <div class="twelve wide column">
-            {% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Product/Index/_main.html.twig' %}
-        </div>
+        {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.product.index.content', _context) }}
     </div>
 {% endblock %}
 
