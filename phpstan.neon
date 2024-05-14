@@ -1,8 +1,6 @@
 parameters:
     level: max
     reportUnmatchedIgnoredErrors: false
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false
     paths:
         - src
         - tests/Behat
@@ -18,6 +16,8 @@ parameters:
         - 'tests/Application/src/**.php'
 
     ignoreErrors:
+        - identifier: missingType.iterableValue
+        - identifier: missingType.generics
         - '/Parameter #1 \$configuration of method Symfony\\Component\\DependencyInjection\\Extension\\Extension::processConfiguration\(\) expects Symfony\\Component\\Config\\Definition\\ConfigurationInterface, Symfony\\Component\\Config\\Definition\\ConfigurationInterface\|null given\./'
         - '/Cannot cast mixed to int./'
         - '/Cannot cast mixed to string./'

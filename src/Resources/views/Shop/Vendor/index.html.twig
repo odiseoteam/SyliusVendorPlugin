@@ -7,3 +7,15 @@
 
     {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.index.list', _context) }}
 {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.index.stylesheets') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.index.javascripts') }}
+{% endblock %}

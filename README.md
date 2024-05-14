@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://odiseo.com.ar/" target="_blank" title="Odiseo">
+    <a href="https://odiseo.io/" target="_blank" title="Odiseo">
         <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/sylius-vendor-plugin.png" alt="Sylius Vendor Plugin" />
     </a>
     <br />
