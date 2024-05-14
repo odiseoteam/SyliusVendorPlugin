@@ -6,7 +6,7 @@
             {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.product.index.before_logo', {'vendor': vendor}) }}
 
             <div class="ui segment">
-                <img class="ui image" src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_plugin_logo') }}" alt="{{ vendor.name }}">
+                <img class="ui fluid image" src="{{ vendor.logoName|imagine_filter('odiseo_sylius_vendor_plugin_logo') }}" alt="{{ vendor.name }}">
             </div>
 
             {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.product.index.after_logo', {'vendor': vendor}) }}
