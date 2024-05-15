@@ -13,7 +13,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
      */
     public function getRouteName(): string
     {
-        return 'odiseo_sylius_vendor_plugin_shop_vendor_product_index';
+        return 'odiseo_sylius_vendor_plugin_shop_vendor_show';
     }
 
     /**

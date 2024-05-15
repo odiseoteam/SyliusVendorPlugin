@@ -1,9 +1,6 @@
 odiseo_sylius_vendor_plugin_shop_vendor:
     resource: shop/vendor.yaml
 
-odiseo_sylius_vendor_plugin_shop_vendor_product:
-    resource: shop/vendor_product.yaml
-
 odiseo_sylius_vendor_plugin_shop_partial:
     resource: shop/partial.yaml
     prefix: /_partial

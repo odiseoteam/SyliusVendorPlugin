@@ -1,0 +1,25 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}
+    {% include '@OdiseoSyliusVendorPlugin/Shop/Vendor/Show/_title.html.twig' %} | {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="ui clearing hidden divider"></div>
+
+    <div class="ui stackable grid">
+        {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.show.content', _context) }}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.show.stylesheets') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ sylius_template_event('odiseo_sylius_vendor_plugin.shop.vendor.show.javascripts') }}
+{% endblock %}

@@ -93,7 +93,7 @@ final class VendorUrlProvider implements UrlProviderInterface
                 continue;
             }
 
-            $location = $this->router->generate('odiseo_sylius_vendor_plugin_shop_vendor_product_index', [
+            $location = $this->router->generate('odiseo_sylius_vendor_plugin_shop_vendor_show', [
                 'slug' => $vendor->getSlug(),
                 '_locale' => $translation->getLocale(),
             ]);
