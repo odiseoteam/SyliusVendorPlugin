@@ -1,0 +1,26 @@
+odiseo_sylius_vendor_plugin:
+    vendor:
+        slug:
+            unique: Il existe déjà un fournisseur avec ce slug.
+            not_blank: Le slug ne peux pas être null.
+            min_length: Le slug doit contenir au minimum {{ limit }} caractères.
+            max_length: Le slug doit contenir au maximum {{ limit }} caractères.
+        name:
+            unique: Il existe déjà un fournisseur avec ce nom.
+            not_blank: Le nom ne peut pas être null.
+            min_length: Le nom doit contenir au minimum {{ limit }} caractères.
+            max_length: Le nom doit contenir au maximum {{ limit }} caractères.
+        email:
+            invalid: Cette adresse email est invalide.
+            unique: Cette adresse email est déjà utilisée.
+            not_blank: L''adresse email ne peut pas être nulle.
+            min_length: L''email doit contenir au minimum {{ limit }} caractères.
+            max_length: L''email doit contenir au maximum {{ limit }} caractères.
+        logo_file:
+            not_blank: Le logo ne peut pas être null.
+    vendor_translation:
+        description:
+            not_blank: La description ne peut pas être nulle.
+    product:
+        vendor:
+            not_blank: Veuillez sélectionner un fournisseur.
