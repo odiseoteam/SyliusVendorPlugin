@@ -12,8 +12,8 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
 use Sylius\Component\Product\Generator\ProductVariantGeneratorInterface;
 use Sylius\Component\Product\Generator\SlugGeneratorInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
+use Sylius\Resource\Factory\FactoryInterface;
 use Symfony\Component\Config\FileLocatorInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -38,7 +38,7 @@ class ProductExampleFactory extends BaseProductExampleFactory
         RepositoryInterface $channelRepository,
         RepositoryInterface $localeRepository,
         RepositoryInterface $taxCategoryRepository,
-        ?FileLocatorInterface $fileLocator = null,
+        FileLocatorInterface $fileLocator,
     ) {
         $this->optionsResolver = new OptionsResolver();
 

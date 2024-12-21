@@ -25,7 +25,6 @@ services:
         public: true
         arguments:
             - "@sylius.behat.current_page_resolver"
-            - "@sylius.behat.notification_checker"
             - '@odiseo_sylius_vendor_plugin.page.admin.vendor.index_page'
             - '@odiseo_sylius_vendor_plugin.page.admin.vendor.create_page'
             - '@odiseo_sylius_vendor_plugin.page.admin.vendor.update_page'

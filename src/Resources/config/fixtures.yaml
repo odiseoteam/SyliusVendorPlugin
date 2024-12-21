@@ -4,6 +4,7 @@ imports:
     - { resource: fixtures/cap.yaml }
     - { resource: fixtures/dress.yaml }
     - { resource: fixtures/jeans.yaml }
+    - { resource: fixtures/promotion.yaml }
     - { resource: fixtures/custom_fixtures.yaml }
 
 parameters:

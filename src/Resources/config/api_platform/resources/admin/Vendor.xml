@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources
+    xmlns="https://api-platform.com/schema/metadata/resources-3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://api-platform.com/schema/metadata/resources-3.0 https://api-platform.com/schema/metadata/resources-3.0.xsd"
+>
+    <resource class="%odiseo_sylius_vendor_plugin.model.vendor.class%">
+        <operations>
+            <operation name="odiseo_sylius_vendor_plugin_api_admin_vendor_get_collection" class="ApiPlatform\Metadata\GetCollection" uriTemplate="/admin/vendors">
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo_sylius_vendor_plugin:admin:vendor:index</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+                <order>
+                    <values>
+                        <value name="slug">ASC</value>
+                    </values>
+                </order>
+            </operation>
+
+            <operation name="odiseo_sylius_vendor_plugin_api_admin_vendor_get" class="ApiPlatform\Metadata\Get" uriTemplate="/admin/vendors/{slug}">
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo_sylius_vendor_plugin:admin:vendor:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+            </operation>
+
+            <operation name="odiseo_sylius_vendor_plugin_api_admin_vendor_post" class="ApiPlatform\Metadata\Post" uriTemplate="/admin/vendors">
+                <denormalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo_sylius_vendor_plugin:admin:vendor:create</value>
+                            </values>
+                        </value>
+                    </values>
+                </denormalizationContext>
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo_sylius_vendor_plugin:admin:vendor:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+                <validationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo</value>
+                            </values>
+                        </value>
+                    </values>
+                </validationContext>
+            </operation>
+
+            <operation name="odiseo_sylius_vendor_plugin_api_admin_vendor_put" class="ApiPlatform\Metadata\Put" uriTemplate="/admin/vendors/{slug}">
+                <denormalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo_sylius_vendor_plugin:admin:vendor:update</value>
+                            </values>
+                        </value>
+                    </values>
+                </denormalizationContext>
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo_sylius_vendor_plugin:admin:vendor:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+                <validationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo</value>
+                            </values>
+                        </value>
+                    </values>
+                </validationContext>
+            </operation>
+
+            <operation
+                name="odiseo_sylius_vendor_plugin_api_admin_vendor_delete"
+                class="ApiPlatform\Metadata\Delete"
+                uriTemplate="/admin/vendors/{slug}"
+            />
+        </operations>
+    </resource>
+</resources>

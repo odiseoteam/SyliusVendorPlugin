@@ -7,7 +7,6 @@ namespace Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Ui\Admin;
 use Behat\Behat\Context\Context;
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
-use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Admin\Vendor\CreatePageInterface;
 use Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Admin\Vendor\IndexPageInterface;
@@ -18,9 +17,6 @@ final class ManagingVendorsContext implements Context
 {
     /** @var CurrentPageResolverInterface */
     private $currentPageResolver;
-
-    /** @var NotificationCheckerInterface */
-    private $notificationChecker;
 
     /** @var IndexPageInterface */
     private $indexPage;
@@ -33,13 +29,11 @@ final class ManagingVendorsContext implements Context
 
     public function __construct(
         CurrentPageResolverInterface $currentPageResolver,
-        NotificationCheckerInterface $notificationChecker,
         IndexPageInterface $indexPage,
         CreatePageInterface $createPage,
         UpdatePageInterface $updatePage
     ) {
         $this->currentPageResolver = $currentPageResolver;
-        $this->notificationChecker = $notificationChecker;
         $this->indexPage = $indexPage;
         $this->createPage = $createPage;
         $this->updatePage = $updatePage;

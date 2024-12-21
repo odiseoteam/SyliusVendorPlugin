@@ -1,0 +1,63 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.base#javascripts':
+            vendor_js:
+                template: "@OdiseoSyliusVendorPlugin/Admin/Layout/_vendor_js.html.twig"
+                priority: 5
+
+        'odiseo_sylius_vendor_plugin_shop.vendor.show.header.content':
+            breadcrumb:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Show/Header/_breadcrumb.html.twig"
+                priority: 20
+            content:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Show/Header/_content.html.twig"
+                priority: 10
+
+        'odiseo_sylius_vendor_plugin_shop.vendor.show.content':
+            header:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Show/_headerWidget.html.twig"
+                priority: 20
+            content:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Show/_content.html.twig"
+                priority: 10
+
+        'odiseo_sylius_vendor_plugin_shop.vendor.show.before_list': ~
+
+        'odiseo_sylius_vendor_plugin_shop.vendor.show.before_pagination': ~
+
+        'odiseo_sylius_vendor_plugin_shop.vendor.show.search':
+            search:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Show/_search.html.twig"
+                priority: 30
+            pagination:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Show/_pagination.html.twig"
+                priority: 20
+            sorting:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Show/_sorting.html.twig"
+                priority: 10
+
+        'odiseo_sylius_vendor_plugin_shop.vendor.index.header':
+            breadcrumb:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Header/_breadcrumb.html.twig"
+                priority: 20
+            header:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Header/_content.html.twig"
+                priority: 10
+
+        'odiseo_sylius_vendor_plugin_shop.vendor.index.before_pagination': ~
+
+        'odiseo_sylius_vendor_plugin_shop.vendor.index.search':
+            search:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Index/_search.html.twig"
+                priority: 30
+            pagination:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Index/_pagination.html.twig"
+                priority: 20
+            sorting:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Index/_sorting.html.twig"
+                priority: 10
+
+        'odiseo_sylius_vendor_plugin_shop.vendor.index.list':
+            list:
+                template: "@OdiseoSyliusVendorPlugin/Shop/Vendor/Index/_list.html.twig"
+                priority: 20

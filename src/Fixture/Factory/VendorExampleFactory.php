@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace Odiseo\SyliusVendorPlugin\Fixture\Factory;
 
 use Faker\Factory;
-use Faker\Generator as FakerGenerator;
-use Generator;
+use Faker\Generator;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Odiseo\SyliusVendorPlugin\Uploader\VendorLogoUploaderInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Locale\Model\LocaleInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
+use Sylius\Resource\Factory\FactoryInterface;
 use Symfony\Component\Config\FileLocatorInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\Options;
@@ -22,7 +21,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class VendorExampleFactory implements ExampleFactoryInterface
 {
-    protected FakerGenerator $faker;
+    protected Generator $faker;
 
     protected OptionsResolver $optionsResolver;
 
@@ -31,7 +30,7 @@ class VendorExampleFactory implements ExampleFactoryInterface
         protected VendorLogoUploaderInterface $vendorLogoUploader,
         protected RepositoryInterface $channelRepository,
         protected RepositoryInterface $localeRepository,
-        protected ?FileLocatorInterface $fileLocator = null,
+        protected FileLocatorInterface $fileLocator,
     ) {
         $this->faker = Factory::create();
         $this->optionsResolver = new OptionsResolver();
@@ -70,17 +69,12 @@ class VendorExampleFactory implements ExampleFactoryInterface
 
     protected function createImage(string $imagePath): UploadedFile
     {
-        /**
-         * @var string $imagePath
-         *
-         * @psalm-suppress UnnecessaryVarAnnotation
-         */
-        $imagePath = null === $this->fileLocator ? $imagePath : $this->fileLocator->locate($imagePath);
+        $imagePath = $this->fileLocator->locate($imagePath);
 
         return new UploadedFile($imagePath, basename($imagePath));
     }
 
-    protected function getLocales(): Generator
+    protected function getLocales(): iterable
     {
         /** @var LocaleInterface[] $locales */
         $locales = $this->localeRepository->findAll();

@@ -18,7 +18,7 @@ services:
             - '@sylius.factory.product_attribute_value'
             - '@sylius.factory.product_image'
             - '@sylius.factory.product_taxon'
-            - '@sylius.image_uploader'
+            - '@sylius.uploader.image'
             - '@sylius.generator.slug'
             - '@sylius.repository.taxon'
             - '@sylius.repository.product_attribute'

@@ -47,9 +47,8 @@ sylius_fixtures:
                                 countries:
                                     - 'US'
                             WORLD:
-                                name: 'World'
+                                name: 'Rest of the World'
                                 countries:
-                                    - 'US'
                                     - 'FR'
                                     - 'DE'
                                     - 'AU'
@@ -165,7 +164,7 @@ sylius_fixtures:
                                 locale_code: '%locale%'
                                 first_name: 'John'
                                 last_name: 'Doe'
-                                avatar: '@SyliusCoreBundle/Resources/fixtures/adminAvatars/john.jpg'
+                                avatar: '@SyliusCoreBundle/Resources/fixtures/adminAvatars/john.webp'
 
                             -   email: 'api@example.com'
                                 username: 'api'
@@ -175,7 +174,7 @@ sylius_fixtures:
                                 first_name: 'Luke'
                                 last_name: 'Brushwood'
                                 api: true
-                                avatar: '@SyliusCoreBundle/Resources/fixtures/adminAvatars/luke.jpg'
+                                avatar: '@SyliusCoreBundle/Resources/fixtures/adminAvatars/luke.webp'
 
                 tax_category:
                     options:
@@ -203,40 +202,6 @@ sylius_fixtures:
                                 zone: 'US'
                                 category: 'other'
                                 amount: 0.2
-
-                promotion:
-                    options:
-                        custom:
-                            christmas:
-                                code: 'christmas'
-                                name: 'Christmas'
-                                channels:
-                                    - 'FASHION_WEB'
-                                coupon_based: true
-                                coupons:
-                                    -   code: 'CHRISTMAS_SALE'
-                                        expires_at: 'December 24'
-                                        usage_limit: 10
-                                        per_customer_usage_limit: 1
-                            new_year:
-                                code: 'new_year'
-                                name: 'New Year'
-                                usage_limit: 10
-                                priority: 2
-                                starts_at: '-7 day'
-                                ends_at: '7 day'
-                                channels:
-                                    - 'FASHION_WEB'
-                                rules:
-                                    -   type: 'item_total'
-                                        configuration:
-                                            FASHION_WEB:
-                                                amount: 100.00
-                                actions:
-                                    -   type: 'order_fixed_discount'
-                                        configuration:
-                                            FASHION_WEB:
-                                                amount: 10.00
 
                 vendor:
                     options:
