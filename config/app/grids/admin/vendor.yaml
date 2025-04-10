@@ -1,0 +1,70 @@
+sylius_grid:
+    templates:
+        action:
+            update_vendor_positions: "@OdiseoSyliusVendorPlugin/admin/vendor/grid/action/updatePositions.html.twig"
+    grids:
+        odiseo_vendor_admin_vendor:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%odiseo_vendor.model.vendor.class%"
+            sorting:
+                position: asc
+            fields:
+                name:
+                    type: string
+                    label: sylius.ui.name
+                    sortable: ~
+                email:
+                    type: string
+                    label: sylius.ui.email
+                    sortable: ~
+                logo:
+                    type: twig
+                    label: sylius.ui.image
+                    path: logoName
+                    options:
+                        template: "@OdiseoSyliusVendorPlugin/field/_image.html.twig"
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/grid/field/enabled.html.twig"
+                position:
+                    type: twig
+                    label: sylius.ui.position
+                    path: .
+                    sortable: position
+                    options:
+                        template: "@OdiseoSyliusVendorPlugin/admin/vendor/grid/field/position.html.twig"
+                createdAt:
+                    type: datetime
+                    label: sylius.ui.creation_date
+                    sortable: ~
+                    options:
+                        format: d-m-Y H:i
+            filters:
+                name:
+                    type: string
+                    label: sylius.ui.name
+                email:
+                    type: string
+                    label: sylius.ui.email
+                enabled:
+                    type: boolean
+                    label: sylius.ui.enabled
+                createdAt:
+                    type: date
+                    label: sylius.ui.creation_date
+            actions:
+                main:
+                    create:
+                        type: create
+                    update_positions:
+                        type: update_vendor_positions
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

@@ -1,0 +1,15 @@
+<form method="get" action="{{ path('odiseo_vendor_shop_vendor_index') }}">
+    <div class="input-group">
+        {% set vendors = hookable_metadata.context.vendors %}
+
+        {% for filter in vendors.definition.enabledFilters %}
+            {{ sylius_grid_render_filter(vendors, filter) }}
+        {% endfor %}
+        <button class="btn btn btn-outline-secondary btn-sm" type="submit" {{ sylius_test_html_attribute('search') }} aria-label="search button">
+            {{ ux_icon('tabler:search') }}
+        </button>
+        <a class="btn btn btn-outline-secondary btn-sm" href="{{ path('odiseo_vendor_shop_vendor_index') }}" {{ sylius_test_html_attribute('clear') }} aria-label="clear filters">
+            {{ ux_icon('tabler:x') }}
+        </a>
+    </div>
+</form>

@@ -5,7 +5,7 @@ imports:
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusApiBundle/Resources/config/app/config.yaml" }
 
-    - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yaml" }
+    - { resource: '@OdiseoSyliusVendorPlugin/config/config.yaml' }
 
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
@@ -16,20 +16,6 @@ sylius_shop:
 
 sylius_api:
     enabled: true
-
-sylius_fixtures:
-    suites:
-        default:
-            fixtures:
-                vendor:
-                    options:
-                        random: 6
-
-sylius_channel:
-    resources:
-        channel:
-            classes:
-                model: Tests\Odiseo\SyliusVendorPlugin\Application\Entity\Channel
 
 sylius_product:
     resources:

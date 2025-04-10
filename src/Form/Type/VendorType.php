@@ -28,29 +28,29 @@ final class VendorType extends AbstractResourceType
                 'label' => 'sylius.ui.name',
             ])
             ->add('slug', TextType::class, [
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.slug',
+                'label' => 'odiseo_vendor.form.vendor.slug',
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'sylius.ui.enabled',
             ])
             ->add('translations', ResourceTranslationsType::class, [
                 'entry_type' => VendorTranslationType::class,
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.translations',
+                'label' => 'odiseo_vendor.form.vendor.translations',
             ])
             ->add('email', EmailType::class, [
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.email',
+                'label' => 'odiseo_vendor.form.vendor.email',
             ])
             ->add('logoFile', FileType::class, [
-                 'label' => 'odiseo_sylius_vendor_plugin.form.vendor.logo',
+                 'label' => 'odiseo_vendor.form.vendor.logo',
             ])
             ->add('channels', ChannelChoiceType::class, [
                 'required' => false,
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.channels',
+                'label' => 'odiseo_vendor.form.vendor.channels',
             ])
             ->add('extraEmails', CollectionType::class, [
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.extra_emails',
+                'label' => 'odiseo_vendor.form.vendor.extra_emails',
                 'entry_type' => VendorEmailType::class,
                 'allow_add' => true,
                 'allow_delete' => true,

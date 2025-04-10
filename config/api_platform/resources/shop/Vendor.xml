@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources
+    xmlns="https://api-platform.com/schema/metadata/resources-3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://api-platform.com/schema/metadata/resources-3.0 https://api-platform.com/schema/metadata/resources-3.0.xsd"
+>
+    <resource class="%odiseo_vendor.model.vendor.class%">
+        <operations>
+            <operation name="odiseo_vendor_api_shop_vendor_get_collection" class="ApiPlatform\Metadata\GetCollection" uriTemplate="/shop/vendors">
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo_vendor:shop:vendor:index</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+                <order>
+                    <values>
+                        <value name="slug">ASC</value>
+                    </values>
+                </order>
+            </operation>
+
+            <operation name="odiseo_vendor_api_shop_vendor_get" class="ApiPlatform\Metadata\Get" uriTemplate="/shop/vendors/{slug}">
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo_vendor:shop:vendor:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+            </operation>
+        </operations>
+    </resource>
+</resources>

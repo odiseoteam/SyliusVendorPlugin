@@ -1,0 +1,34 @@
+sylius_grid:
+    grids:
+        odiseo_vendor_shop_vendor:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%odiseo_vendor.model.vendor.class%"
+                    repository:
+                        method: createShopListQueryBuilder
+                        arguments:
+                            channel: "expr:service('sylius.context.channel').getChannel()"
+                            sorting: "expr:service('request_stack').getCurrentRequest().get('sorting', [])"
+            sorting:
+                position: asc
+            limits: [12, 24, 36]
+            fields:
+                createdAt:
+                    type: datetime
+                    sortable: ~
+                position:
+                    type: string
+                    sortable: ~
+                name:
+                    type: string
+                    label: sylius.ui.name
+                    sortable: ~
+            filters:
+                search:
+                    type: shop_string
+                    label: false
+                    options:
+                        fields: [name]
+                    form_options:
+                        type: contains

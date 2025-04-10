@@ -1,0 +1,17 @@
+odiseo_vendor_shop_vendor_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: odiseo_vendor.controller.vendor::indexAction
+        _sylius:
+            template: '@OdiseoSyliusVendorPlugin/shop/vendor/index.html.twig'
+            grid: odiseo_vendor_shop_vendor
+
+odiseo_vendor_shop_vendor_show:
+    path: /{slug}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product::indexAction
+        _sylius:
+            template: "@OdiseoSyliusVendorPlugin/shop/vendor/show.html.twig"
+            grid: odiseo_vendor_shop_vendor_product

@@ -1,0 +1,23 @@
+odiseo_vendor_admin_vendor:
+    resource: |
+        alias: odiseo_vendor.vendor
+        section: admin
+        templates: "@SyliusAdmin/Crud"
+        except: ['show']
+        redirect: index
+        grid: odiseo_vendor_admin_vendor
+        permission: true
+        vars:
+            all:
+                subheader: odiseo_vendor.ui.manage_vendors
+                templates:
+                    form: '@OdiseoSyliusVendorPlugin/admin/vendor/_form.html.twig'
+            index:
+                icon: trademark
+    type: sylius.resource
+
+odiseo_vendor_admin_vendor_update_position:
+    path: /vendors/update
+    methods: [PUT]
+    defaults:
+        _controller: odiseo_vendor.controller.vendor::updateVendorPositionsAction

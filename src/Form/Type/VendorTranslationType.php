@@ -16,7 +16,7 @@ final class VendorTranslationType extends AbstractResourceType
 
         $builder
             ->add('description', TextareaType::class, [
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.description',
+                'label' => 'odiseo_vendor.form.vendor.description',
             ])
         ;
     }

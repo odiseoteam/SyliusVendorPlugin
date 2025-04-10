@@ -1,10 +1,10 @@
 #!/usr/bin/env php
 <?php
 
+use Tests\Odiseo\SyliusVendorPlugin\Application\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Debug\Debug;
-use Tests\Odiseo\SyliusVendorPlugin\Application\Kernel;
 
 set_time_limit(0);
 

@@ -1,0 +1,11 @@
+services:
+    odiseo_vendor.sitemap_provider.vendor:
+        class: Odiseo\SyliusVendorPlugin\SitemapProvider\VendorUrlProvider
+        arguments:
+            - '@odiseo_vendor.repository.vendor'
+            - '@router'
+            - '@sylius.sitemap_url_factory'
+            - '@sylius.sitemap_url_alternative_factory'
+            - '@sylius.context.locale'
+        tags:
+            - { name: sylius.sitemap_provider }

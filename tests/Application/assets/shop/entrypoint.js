@@ -1,1 +1,1 @@
-
+import '../../../../assets/shop/entrypoint';

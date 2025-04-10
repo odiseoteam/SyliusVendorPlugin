@@ -1,0 +1,5 @@
+services:
+    odiseo_vendor.twig.component.vendor:
+        class: Odiseo\SyliusVendorPlugin\Twig\Component\VendorComponent
+        tags:
+            - { name: sylius.twig_component, key: 'odiseo_vendor_shop:vendor' }

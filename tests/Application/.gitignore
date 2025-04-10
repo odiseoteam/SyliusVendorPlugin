@@ -8,6 +8,8 @@
 !/public/media/image/.gitignore
 
 /node_modules
+/yarn.lock
+/package-lock.json
 
 ###> symfony/framework-bundle ###
 /.env.*.local
@@ -21,3 +23,8 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+!/config/jwt/*-test.pem
+###< lexik/jwt-authentication-bundle ###

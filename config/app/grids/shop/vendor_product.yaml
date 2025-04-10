@@ -1,0 +1,38 @@
+sylius_grid:
+    grids:
+        odiseo_vendor_shop_vendor_product:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%sylius.model.product.class%"
+                    repository:
+                        method: createShopListByVendorQueryBuilder
+                        arguments:
+                            channel: "expr:service('sylius.context.channel').getChannel()"
+                            vendor: "expr:notFoundOnNull(service('odiseo_vendor.repository.vendor').findOneBySlug($slug, service('sylius.context.locale').getLocaleCode()))"
+                            locale: "expr:service('sylius.context.locale').getLocaleCode()"
+                            sorting: "expr:service('request_stack').getCurrentRequest().get('sorting', [])"
+            sorting:
+                position: asc
+            limits: [9, 18, 27]
+            fields:
+                createdAt:
+                    type: datetime
+                    sortable: ~
+                position:
+                    type: string
+                    sortable: productTaxon.position
+                name:
+                    type: string
+                    sortable: translation.name
+                price:
+                    type: int
+                    sortable: channelPricing.price
+            filters:
+                search:
+                    type: shop_string
+                    label: false
+                    options:
+                        fields: [translation.name]
+                    form_options:
+                        type: contains

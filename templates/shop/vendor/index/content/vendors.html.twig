@@ -1,0 +1,15 @@
+{% import '@SyliusShop/shared/messages.html.twig' as messages %}
+
+{% set resources = hookable_metadata.context.resources %}
+
+{% if resources.data|length > 0 %}
+    <div class="row" {{ sylius_test_html_attribute('vendors') }}>
+        {% for vendor in resources.data %}
+            <div class="col-6 col-lg-3">
+                {{ component('odiseo_vendor_shop:vendor', { vendor: vendor, template: '@OdiseoSyliusVendorPlugin/shop/vendor/common/vendor.html.twig' }) }}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    {{ messages.info('sylius.ui.no_results_to_display') }}
+{% endif %}

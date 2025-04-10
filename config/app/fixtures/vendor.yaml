@@ -1,0 +1,47 @@
+sylius_fixtures:
+    suites:
+        default:
+            fixtures:
+                tshirt_product:
+                    priority: -100
+                cap_product:
+                    priority: -100
+                dress_product:
+                    priority: -100
+                jeans_product:
+                    priority: -100
+                product_review:
+                    priority: -150
+                similar_product_association:
+                    priority: -150
+                order:
+                    priority: -200
+                vendor:
+                    priority: -50
+                    options:
+                        custom:
+                            vendor_1:
+                                name: 'Whole Find'
+                                slug: 'whole-find'
+                                channels:
+                                    - 'FASHION_WEB'
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/whole_find.png'
+                                description: 'Description Vendor 1'
+                            vendor_2:
+                                name: 'Sunbeam Market'
+                                channels:
+                                    - 'FASHION_WEB'
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/sunbeam_market.png'
+                                description: 'Description Vendor 2'
+                            vendor_3:
+                                name: 'Modella'
+                                channels:
+                                    - 'FASHION_WEB'
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/modella.png'
+                                description: 'Description Vendor 3'
+                            vendor_4:
+                                name: 'Simple Tasty'
+                                channels:
+                                    - 'FASHION_WEB'
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/simple_tasty.png'
+                                description: 'Description Vendor 4'

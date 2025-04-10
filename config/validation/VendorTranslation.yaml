@@ -1,0 +1,6 @@
+Odiseo\SyliusVendorPlugin\Entity\VendorTranslation:
+    properties:
+        description:
+            - NotBlank:
+                message: 'odiseo_vendor.vendor_translation.description.not_blank'
+                groups: ['odiseo']
