@@ -1,0 +1,26 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_shop.base#stylesheets':
+            custom_styles:
+                template: '@OdiseoSyliusVendorPlugin/shop/shared/layout/base/styles.html.twig'
+                priority: -100
+
+        'sylius_shop.base#javascripts':
+            custom_scripts:
+                template: '@OdiseoSyliusVendorPlugin/shop/shared/layout/base/scripts.html.twig'
+                priority: -100
+
+        'sylius_shop.base.header.content':
+            content:
+                template: "@OdiseoSyliusVendorPlugin/shop/shared/layout/_menu.html.twig"
+                priority: 250
+        
+        'sylius_shop.base.header.navbar.menu':
+            content:
+                template: "@OdiseoSyliusVendorPlugin/shop/shared/layout/_menuMobile.html.twig"
+                priority: -100
+
+        'sylius_shop.product.show.content.info.summary':
+            vendor:
+                template: "@OdiseoSyliusVendorPlugin/shop/shared/product/show/vendor.html.twig"
+                priority: 150

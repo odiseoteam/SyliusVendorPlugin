@@ -3,3 +3,18 @@ services:
         class: Odiseo\SyliusVendorPlugin\Twig\Component\VendorComponent
         tags:
             - { name: sylius.twig_component, key: 'odiseo_vendor_shop:vendor' }
+
+    odiseo_vendor.twig.component.admin.vendor.form:
+        class: Odiseo\SyliusVendorPlugin\Twig\Component\Vendor\FormComponent
+        arguments:
+            - '@odiseo_vendor.repository.vendor'
+            - '@form.factory'
+            - '%odiseo_vendor.model.vendor.class%'
+            - 'Odiseo\SyliusVendorPlugin\Form\Type\VendorType'
+            - '@sylius.generator.slug'
+        calls:
+            - method: setLiveResponder
+              arguments:
+                  - '@ux.live_component.live_responder'
+        tags:
+            - { name: 'sylius.live_component.admin', key: 'odiseo_vendor:admin:vendor:form' }

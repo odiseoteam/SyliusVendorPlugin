@@ -1,0 +1,80 @@
+sylius_twig_hooks:
+    hooks:
+        'odiseo_vendor.admin.vendor.create.content':
+            form:
+                component: 'odiseo_vendor:admin:vendor:form'
+                props:
+                    resource: '@=_context.resource'
+                    form: '@=_context.form'
+                    template: '@OdiseoSyliusVendorPlugin/admin/vendor/form.html.twig'
+                priority: 0
+
+        'odiseo_vendor.admin.vendor.create.content.form':
+            side_navigation:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/side_navigation.html.twig'
+                priority: 100
+            sections:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections.html.twig'
+                priority: 0
+
+        'odiseo_vendor.admin.vendor.create.content.form.side_navigation':
+            general:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/side_navigation/general.html.twig'
+                configuration:
+                    active: true
+                priority: 200
+            profile:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/side_navigation/profile.html.twig'
+                priority: 100
+            media:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/side_navigation/media.html.twig'
+                priority: 0
+
+        'odiseo_vendor.admin.vendor.create.content.form.sections':
+            general:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/general.html.twig'
+                configuration:
+                    active: true
+                priority: 200
+            profile:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/profile.html.twig'
+                priority: 100
+            media:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/media.html.twig'
+                priority: 0
+
+        'odiseo_vendor.admin.vendor.create.content.form.sections.general':
+            default:
+                enabled: false
+            name:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/general/name.html.twig'
+                priority: 400
+            slug:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/general/slug.html.twig'
+                priority: 300
+            email:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/general/email.html.twig'
+                priority: 200
+            enabled:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/general/enabled.html.twig'
+                priority: 100
+            channels:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/general/channels.html.twig'
+
+        'odiseo_vendor.admin.vendor.create.content.form.sections.profile':
+            translations:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/profile/translations.html.twig'
+                priority: 100
+            extraEmails:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/profile/extraEmails.html.twig'
+                priority: 0
+
+        'odiseo_vendor.admin.vendor.create.content.form.sections.profile.translations':
+            name:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/profile/translations/description.html.twig'
+                priority: 0
+
+        'odiseo_vendor.admin.vendor.create.content.form.sections.media':
+            logo:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/media/logo.html.twig'
+                priority: 0

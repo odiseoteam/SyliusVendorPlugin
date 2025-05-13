@@ -1,0 +1,14 @@
+<div class="dropdown">
+    {% set resources = hookable_metadata.context.resources %}
+    {% set pagination_limits = ( resources.definition.limits ) %}
+
+    <div class="dropdown-menu dropdown-menu-end ">
+        {% for limit in pagination_limits|filter(limit => limit != resources.data.maxPerPage) %}
+            {% set path = path(app.request.attributes.get('_route'), app.request.attributes.all('_route_params')|merge(app.request.query.all)|merge({'limit': limit})) %}
+            <a class="dropdown-item" href="{{ path }}">{{ limit }}</a>
+        {% endfor %}
+    </div>
+    <button type="button" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+        <span class="text-black-50">{{ 'sylius.ui.show'|trans }}: </span>{{ hookable_metadata.context.resources.data.maxPerPage }}
+    </button>
+</div>

@@ -1,0 +1,13 @@
+services:
+    odiseo_vendor.twig.extension.vendor:
+        class: Odiseo\SyliusVendorPlugin\Twig\VendorExtension
+        tags:
+            - { name: twig.extension }
+
+    odiseo_vendor.twig.extension_runtime.vendor:
+        class: Odiseo\SyliusVendorPlugin\Twig\VendorRuntime
+        arguments:
+            - '@odiseo_vendor.repository.vendor'
+            - '@sylius.context.locale'
+        tags:
+            - { name: twig.runtime }

@@ -1,6 +1,2 @@
 odiseo_vendor_admin_vendor:
     resource: routing/admin/vendor.yaml
-
-odiseo_vendor_admin_ajax:
-    resource: routing/admin/ajax.yaml
-    prefix: /ajax

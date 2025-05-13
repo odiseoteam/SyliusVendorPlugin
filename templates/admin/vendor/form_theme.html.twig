@@ -1,0 +1,28 @@
+{% extends '@SyliusAdmin/shared/form_theme.html.twig' %}
+
+{% block _odiseo_vendor_channels_row %}
+    {{ form_label(form) }}
+
+    {% for channel in form %}
+        {{ form_row(channel, sylius_test_form_attribute('channel-code', channel.vars.value)|merge({ label_attr: { class: 'checkbox-switch' } })) }}
+    {% endfor %}
+
+    {{ form_errors(form) }}
+{% endblock %}
+
+{% block _odiseo_vendor_slug_row %}
+    {{ form_label(form) }}
+    <div class="input-group mb-3">
+        {{ form_widget(form, sylius_test_form_attribute('slug')) }}
+        <button
+            class="btn btn-outline-secondary"
+            type="button"
+            data-action="live#action"
+            data-live-action-param="debounce(300)|generateSlug"
+            {{ sylius_test_html_attribute('generate-slug-button') }}
+        >
+            {{ ux_icon('tabler:wand', {'class': 'icon mx-0'}) }}
+        </button>
+    </div>
+    {{ form_errors(form) }}
+{% endblock %}

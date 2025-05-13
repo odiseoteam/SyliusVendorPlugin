@@ -20,28 +20,59 @@ sylius_fixtures:
                     priority: -50
                     options:
                         custom:
-                            vendor_1:
-                                name: 'Whole Find'
-                                slug: 'whole-find'
+                            zaneya:
+                                name: 'Zaneya'
+                                slug: 'zaneya'
                                 channels:
                                     - 'FASHION_WEB'
-                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/whole_find.png'
-                                description: 'Description Vendor 1'
-                            vendor_2:
-                                name: 'Sunbeam Market'
-                                channels:
-                                    - 'FASHION_WEB'
-                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/sunbeam_market.png'
-                                description: 'Description Vendor 2'
-                            vendor_3:
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/zaneya.png'
+                                description: 'Contemporary fashion brand known for minimalistic and elegant styles.'
+                            modella:
                                 name: 'Modella'
+                                slug: 'modella'
                                 channels:
                                     - 'FASHION_WEB'
                                 logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/modella.png'
-                                description: 'Description Vendor 3'
-                            vendor_4:
-                                name: 'Simple Tasty'
+                                description: 'Chic and modern label offering trend-driven apparel for all seasons.'
+                            sunbeam_market:
+                                name: 'Sunbeam Market'
+                                slug: 'sunbeam-market'
                                 channels:
                                     - 'FASHION_WEB'
-                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/simple_tasty.png'
-                                description: 'Description Vendor 4'
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/sunbeam_market.png'
+                                description: 'Colorful streetwear and casual basics inspired by urban lifestyles.'
+                            lenora:
+                                name: 'Lenora'
+                                slug: 'lenora'
+                                channels:
+                                    - 'FASHION_WEB'
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/lenora.png'
+                                description: 'Timeless silhouettes with a modern twist, crafted for everyday elegance.'
+                            style_mart:
+                                name: 'Style Mart'
+                                slug: 'style-mart'
+                                channels:
+                                    - 'FASHION_WEB'
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/style_mart.png'
+                                description: 'Versatile fashion pieces combining comfort, quality, and affordability.'
+                            finley:
+                                name: 'Finley'
+                                slug: 'finley'
+                                channels:
+                                    - 'FASHION_WEB'
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/finley.png'
+                                description: 'Refined essentials and accessories with a clean, classic aesthetic.'
+                            marlow:
+                                name: 'Marlow'
+                                slug: 'marlow'
+                                channels:
+                                    - 'FASHION_WEB'
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/marlow.png'
+                                description: 'Stylish headwear and statement garments with a bold personality.'
+                            orchid:
+                                name: 'Orchid'
+                                slug: 'orchid'
+                                channels:
+                                    - 'FASHION_WEB'
+                                logo: '@OdiseoSyliusVendorPlugin/etc/fixtures/vendor/logo/orchid.png'
+                                description: 'Floral-inspired fashion merging beauty, grace, and everyday wear.'

@@ -1,0 +1,35 @@
+{% set extraEmails = hookable_metadata.context.form.extraEmails %}
+{% set vendor = hookable_metadata.context.vendor %}
+{% set form = hookable_metadata.context.form %}
+
+<div class="mb-3 field">
+    {{ form_label(extraEmails) }}
+    <div
+        class="row"
+        {{ sylius_test_html_attribute('extraEmails') }}
+        {{ sylius_test_html_attribute('extraEmails-subforms') }}
+    >
+        {% for email_form in extraEmails %}
+            <div
+                class="col-12 col-md-6 row mb-4"
+                {{ sylius_test_html_attribute('email-subform')}}
+                {{ sylius_test_html_attribute('email', email_form.value.vars.value) }}
+            >
+                <div class="col-auto">
+                    <div>
+                        {{ form_row(email_form.value, sylius_test_form_attribute('value')) }}
+                    </div>
+                    <div class="mt-3 d-flex items-center">
+                        {{ form_widget(email_form.vars.button_delete, { label: 'sylius.ui.delete'|trans, attr: { class: 'btn btn-outline-danger w-100','data-test-email-delete': '' }}) }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% set attributes = sylius_test_form_attribute('add-extraEmail')|sylius_merge_recursive({ label: 'sylius.ui.add_image'|trans, attr: { class: 'btn btn-outline-primary '}}) %}
+
+    <div class="d-grid gap-2">
+        {{ form_widget(extraEmails.vars.button_add, attributes) }}
+    </div>
+</div>

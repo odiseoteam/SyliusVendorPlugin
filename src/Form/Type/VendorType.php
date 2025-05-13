@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 
 final class VendorType extends AbstractResourceType
 {
@@ -49,13 +50,14 @@ final class VendorType extends AbstractResourceType
                 'expanded' => true,
                 'label' => 'odiseo_vendor.form.vendor.channels',
             ])
-            ->add('extraEmails', CollectionType::class, [
-                'label' => 'odiseo_vendor.form.vendor.extra_emails',
+            ->add('extraEmails', LiveCollectionType::class, [
                 'entry_type' => VendorEmailType::class,
+                'label' => 'odiseo_vendor.form.vendor.extra_emails',
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
                 'required' => false,
+                'block_name' => 'entry',
             ])
         ;
     }

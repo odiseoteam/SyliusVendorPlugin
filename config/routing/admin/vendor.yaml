@@ -2,22 +2,14 @@ odiseo_vendor_admin_vendor:
     resource: |
         alias: odiseo_vendor.vendor
         section: admin
-        templates: "@SyliusAdmin/Crud"
-        except: ['show']
-        redirect: index
+        templates: "@SyliusAdmin\\shared\\crud"
+        redirect: update
         grid: odiseo_vendor_admin_vendor
+        form:
+            type: Odiseo\SyliusVendorPlugin\Form\Type\VendorType
+        except: ['show']
         permission: true
         vars:
             all:
-                subheader: odiseo_vendor.ui.manage_vendors
-                templates:
-                    form: '@OdiseoSyliusVendorPlugin/admin/vendor/_form.html.twig'
-            index:
-                icon: trademark
+                hook_prefix: 'odiseo_vendor.admin.vendor'
     type: sylius.resource
-
-odiseo_vendor_admin_vendor_update_position:
-    path: /vendors/update
-    methods: [PUT]
-    defaults:
-        _controller: odiseo_vendor.controller.vendor::updateVendorPositionsAction

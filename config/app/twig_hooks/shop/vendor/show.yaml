@@ -1,0 +1,43 @@
+sylius_twig_hooks:
+    hooks:
+        'odiseo_vendor_shop.vendor.show':
+            content:
+                template: '@OdiseoSyliusVendorPlugin/shop/vendor/show/content.html.twig'
+                priority: 0
+
+        'odiseo_vendor_shop.vendor.show.content':
+            header:
+                template: "@OdiseoSyliusVendorPlugin/shop/vendor/show/content/header.html.twig"
+                priority: 300
+            filters:
+                template: "@OdiseoSyliusVendorPlugin/shop/vendor/show/content/filters.html.twig"
+                priority: 200
+            products:
+                template: "@OdiseoSyliusVendorPlugin/shop/vendor/show/content/products.html.twig"
+                priority: 100
+            pagination:
+                template: '@OdiseoSyliusVendorPlugin/shop/vendor/index/content/pagination.html.twig'
+                priority: 0
+
+        'odiseo_vendor_shop.vendor.show.content.header':
+            breadcrumb:
+                template: "@OdiseoSyliusVendorPlugin/shop/vendor/show/content/header/breadcrumbs.html.twig"
+                priority: 100
+            vendor:
+                template: "@OdiseoSyliusVendorPlugin/shop/vendor/show/content/header/vendor.html.twig"
+                priority: 0
+        
+        'odiseo_vendor_shop.vendor.show.content.search':
+            search:
+                template: '@OdiseoSyliusVendorPlugin/shop/vendor/show/content/filters/search.html.twig'
+                priority: 0
+
+        'odiseo_vendor_shop.vendor.show.content.limit':
+            limit:
+                template: '@OdiseoSyliusVendorPlugin/shop/vendor/show/content/filters/limit.html.twig'
+                priority: 0
+
+        'odiseo_vendor_shop.vendor.show.content.sorting':
+            sorting:
+                template: '@OdiseoSyliusVendorPlugin/shop/vendor/show/content/filters/sorting.html.twig'
+                priority: 0
