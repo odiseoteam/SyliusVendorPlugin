@@ -14,8 +14,7 @@ class VendorRuntime implements RuntimeExtensionInterface
     public function __construct(
         protected VendorRepositoryInterface $vendorRepository,
         protected LocaleContextInterface $localeContext,
-    )
-    {
+    ) {
     }
 
     public function getVendorBySlug(string $slug, ?string $localeCode = null): ?VendorInterface
