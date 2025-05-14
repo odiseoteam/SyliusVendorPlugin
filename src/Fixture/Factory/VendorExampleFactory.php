@@ -11,6 +11,7 @@ use Odiseo\SyliusVendorPlugin\Uploader\VendorLogoUploaderInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;
 use Sylius\Component\Core\Formatter\StringInflector;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Sylius\Resource\Factory\FactoryInterface;
@@ -25,6 +26,11 @@ class VendorExampleFactory implements ExampleFactoryInterface
 
     protected OptionsResolver $optionsResolver;
 
+    /**
+     * @param FactoryInterface<VendorInterface> $vendorFactory
+     * @param RepositoryInterface<ChannelInterface> $channelRepository
+     * @param RepositoryInterface<LocaleInterface> $localeRepository
+     */
     public function __construct(
         protected FactoryInterface $vendorFactory,
         protected VendorLogoUploaderInterface $vendorLogoUploader,
@@ -97,7 +103,13 @@ class VendorExampleFactory implements ExampleFactoryInterface
             ->setRequired('slug')
             ->setAllowedTypes('slug', 'string')
             ->setDefault('slug', function (Options $options): string {
-                return StringInflector::nameToCode((string) $options['name']);
+                $name = $options['name'];
+
+                if (!is_string($name)) {
+                    throw new \InvalidArgumentException('Expected "name" to be a string.');
+                }
+
+                return StringInflector::nameToCode($name);
             })
             ->setRequired('email')
             ->setAllowedTypes('email', 'string')

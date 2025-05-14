@@ -10,6 +10,7 @@ use Sylius\Bundle\CoreBundle\Fixture\Factory\AbstractExampleFactory;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\ProductExampleFactory as BaseProductExampleFactory;
 use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Product\Model\ProductAttributeInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,6 +18,9 @@ class ProductExampleFactory extends AbstractExampleFactory
 {
     protected OptionsResolver $optionsResolver;
 
+    /**
+     * @param RepositoryInterface<VendorInterface> $vendorRepository
+     */
     public function __construct(
         protected BaseProductExampleFactory $baseProductExampleFactory,
         protected RepositoryInterface $vendorRepository,

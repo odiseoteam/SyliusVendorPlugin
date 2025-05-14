@@ -18,7 +18,7 @@ class VendorRuntime implements RuntimeExtensionInterface
     {
     }
 
-    public function getVendorBySlug(string $slug, ?string $localeCode = null): VendorInterface
+    public function getVendorBySlug(string $slug, ?string $localeCode = null): ?VendorInterface
     {
         if (!$localeCode) {
             $localeCode = $this->localeContext->getLocaleCode();

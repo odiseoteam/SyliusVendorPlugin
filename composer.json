@@ -46,7 +46,7 @@
         "symfony/webpack-encore-bundle": "^2.2"
     },
     "suggest": {
-        "stefandoorn/sitemap-plugin": "Adds vendors to the Sylius sitemap plugin"
+        "stefandoorn/sitemap-plugin": "^2.2"
     },
     "config": {
         "sort-packages": true,
