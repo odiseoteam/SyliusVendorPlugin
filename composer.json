@@ -12,10 +12,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "sylius/sylius": "~2.0.0"
+        "sylius/sylius": "^2.0"
     },
     "require-dev": {
         "behat/behat": "^3.16",
+        "dbrekelmans/bdi": "^1.4",
         "dmore/behat-chrome-extension": "^1.4",
         "dmore/chrome-mink-driver": "^2.9",
         "friends-of-behat/mink": "^1.11",
@@ -36,12 +37,13 @@
         "sylius-labs/coding-standard": "^4.4",
         "sylius-labs/suite-tags-extension": "~0.2",
         "sylius/sylius-rector": "^2.0",
+        "sylius/test-application": "^2.0.0@alpha",
         "symfony/browser-kit": "^6.4 || ^7.1",
         "symfony/debug-bundle": "^6.4 || ^7.1",
         "symfony/dotenv": "^6.4 || ^7.1",
-        "symfony/flex": "^2.4",
         "symfony/http-client": "^6.4 || ^7.1",
         "symfony/intl": "^6.4 || ^7.1",
+        "symfony/runtime": "^6.4 || ^7.1",
         "symfony/web-profiler-bundle": "^6.4 || ^7.1",
         "symfony/webpack-encore-bundle": "^2.2"
     },
@@ -54,7 +56,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": false,
             "php-http/discovery": false,
             "phpstan/extension-installer": true,
-            "symfony/flex": true
+            "symfony/flex": true,
+            "symfony/runtime": true
         }
     },
     "extra": {
@@ -63,33 +66,33 @@
         },
         "symfony": {
             "require": "^6.4"
-        }
+        },
+        "public-dir": "vendor/sylius/test-application/public"
     },
     "autoload": {
         "psr-4": {
-            "Odiseo\\SyliusVendorPlugin\\": "src/",
-            "Tests\\Odiseo\\SyliusVendorPlugin\\": "tests/"
+            "Odiseo\\SyliusVendorPlugin\\": "src/"
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/Application/Kernel.php"
-        ]
+        "psr-4": {
+            "Tests\\Odiseo\\SyliusVendorPlugin\\": ["tests/", "tests/TestApplication/src/"]
+        }
     },
     "scripts": {
-        "post-install-cmd": [
-            "php bin/create_node_symlink.php"
+        "database-reset": [
+            "vendor/bin/console doctrine:database:drop --force --if-exists",
+            "vendor/bin/console doctrine:database:create",
+            "vendor/bin/console doctrine:migration:migrate -n",
+            "vendor/bin/console sylius:fixtures:load -n"
         ],
-        "post-update-cmd": [
-            "php bin/create_node_symlink.php"
+        "frontend-clear": [
+            "cd vendor/sylius/test-application && yarn install && yarn build",
+            "vendor/bin/console assets:install"
         ],
-        "post-create-project-cmd": [
-            "php bin/create_node_symlink.php"
-        ],
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "security-checker security:check": "script"
-        }
+        "test-app-init": [
+            "@database-reset",
+            "@frontend-clear"
+        ]
     }
 }

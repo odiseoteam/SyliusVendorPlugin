@@ -40,8 +40,6 @@ final class OdiseoSyliusVendorExtension extends AbstractResourceExtension implem
 
     protected function getNamespacesOfMigrationsExecutedBefore(): array
     {
-        return [
-            'Sylius\Bundle\CoreBundle\Migrations',
-        ];
+        return ['Sylius\Bundle\CoreBundle\Migrations'];
     }
 }

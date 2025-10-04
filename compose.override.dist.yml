@@ -43,7 +43,7 @@ services:
             - "3306:3306"
     nginx:
         environment:
-            WORKING_DIR: /srv/sylius/tests/Application
+            WORKING_DIR: /srv/sylius/vendor/sylius/test-application
         volumes:
             - .:/srv/sylius:ro
             # if you develop on Linux, you may use a bind-mounted host directory instead
@@ -57,7 +57,7 @@ services:
         entrypoint: [ "/bin/sh","-c" ]
         command:
             - |
-                cd tests/Application
+                cd vendor/sylius/test-application
                 yarn install
                 yarn build
         volumes:

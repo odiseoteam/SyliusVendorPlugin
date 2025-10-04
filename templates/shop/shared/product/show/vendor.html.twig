@@ -4,7 +4,7 @@
 <div class="mb-2">
     <p>
         <span>{{ 'odiseo_vendor.ui.vendor'|trans }}:</span>
-        <a class="col-md-auto" href="/en_US/products/blissful-breeze-cap/reviews/new">
+        <a class="col-md-auto" href="{{ path('odiseo_vendor_shop_vendor_show', {'slug': product.vendor.slug}) }}">
             {{ product.vendor.name }}
         </a>
     </p>

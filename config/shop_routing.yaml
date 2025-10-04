@@ -1,3 +1,0 @@
-odiseo_vendor_shop_vendor:
-    prefix: /vendors
-    resource: routing/shop/vendor.yaml

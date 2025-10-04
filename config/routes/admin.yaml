@@ -1,0 +1,2 @@
+odiseo_vendor_admin_vendor:
+    resource: admin/vendor.yaml

@@ -1,0 +1,26 @@
+imports:
+    - { resource: "@OdiseoSyliusVendorPlugin/config/config.yaml" }
+    - { resource: "services_test.php" }
+
+twig:
+    paths:
+        '%kernel.project_dir%/../../../tests/TestApplication/templates': ~
+
+# Remove if you do not need to extend entities
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    TestApplication:
+                        is_bundle: false
+                        type: attribute
+                        dir: '%kernel.project_dir%/../../../tests/TestApplication/src/Entity'
+                        prefix: Tests\Odiseo\SyliusVendorPlugin
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: Tests\Odiseo\SyliusVendorPlugin\Entity\Product
+                repository: Tests\Odiseo\SyliusVendorPlugin\Repository\ProductRepository

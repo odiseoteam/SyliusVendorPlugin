@@ -4,12 +4,11 @@
 /vendor/
 /var/
 /node_modules/
+/drivers/
 /composer.lock
 
 /etc/build/*
 !/etc/build/.gitignore
-
-/tests/Application/yarn.lock
 
 /.phpunit.result.cache
 /behat.yml
@@ -21,3 +20,6 @@
 # Symfony CLI https://symfony.com/doc/current/setup/symfony_server.html#different-php-settings-per-project
 /.php-version
 /php.ini
+
+/tests/TestApplication/.env.local
+/tests/TestApplication/.env.*.local

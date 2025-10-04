@@ -1,4 +1,0 @@
-suites:
-    main:
-        namespace: Odiseo\SyliusVendorPlugin
-        psr4_prefix: Odiseo\SyliusVendorPlugin

@@ -25,13 +25,14 @@
         <img src="https://img.shields.io/badge/support-contact%20author-blue" />
     </a>
 </p>
-<p align="center"><a href="https://sylius.com/partners/odiseo/" target="_blank"><img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/badge-partner-by-sylius.png" width="140"></a></p>
+
+<h1 align="center">Sylius Vendor Plugin</h1>
+
+<p align="center">This is a Sylius Plugin that adds vendors (brands) to your store. A vendor is an entity that sells products and is fully customizable by the admin.</p>
 
 ## Description
 
-This is a Sylius Plugin that adds vendors (brands) to your store. A vendor is an entity that sells products and is fully customizable by the admin.
-
-Features:
+#### Features:
 
 * Vendors by Channel: You can specify what vendors will be enabled for different stores.
 * Vendors with translations: Vendor's information is translatable.
