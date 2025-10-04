@@ -20,6 +20,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @implements ExampleFactoryInterface<VendorInterface>
+ */
 class VendorExampleFactory implements ExampleFactoryInterface
 {
     protected Generator $faker;
