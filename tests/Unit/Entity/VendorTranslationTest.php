@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class VendorTranslationTest extends TestCase
 {
-    private VendorTranslation $vendorTranslation;
+    private VendorTranslationInterface $vendorTranslation;
 
     protected function setUp(): void
     {

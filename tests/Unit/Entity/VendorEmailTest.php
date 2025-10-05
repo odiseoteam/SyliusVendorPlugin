@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class VendorEmailTest extends TestCase
 {
-    private VendorEmail $vendorEmail;
+    private VendorEmailInterface $vendorEmail;
 
     protected function setUp(): void
     {

@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\File\File;
 
 final class VendorTest extends TestCase
 {
-    private Vendor $vendor;
+    private VendorInterface $vendor;
 
     protected function setUp(): void
     {
