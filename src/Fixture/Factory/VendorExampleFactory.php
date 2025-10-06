@@ -8,7 +8,7 @@ use Faker\Factory;
 use Faker\Generator;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Odiseo\SyliusVendorPlugin\Uploader\VendorLogoUploaderInterface;
-use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
+use Sylius\Bundle\CoreBundle\Fixture\Factory\AbstractExampleFactory;
 use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Model\ChannelInterface;
@@ -20,10 +20,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * @implements ExampleFactoryInterface<VendorInterface>
- */
-class VendorExampleFactory implements ExampleFactoryInterface
+class VendorExampleFactory extends AbstractExampleFactory
 {
     protected Generator $faker;
 
