@@ -15,7 +15,7 @@ final class VendorContext implements Context
     private $vendorRepository;
 
     public function __construct(
-        RepositoryInterface $vendorRepository
+        RepositoryInterface $vendorRepository,
     ) {
         $this->vendorRepository = $vendorRepository;
     }
@@ -23,8 +23,6 @@ final class VendorContext implements Context
     /**
      * @Transform /^vendor "([^"]+)"$/
      * @Transform /^"([^"]+)" vendor$/
-     * @param string $vendorName
-     * @return VendorInterface
      */
     public function getVendorByName(string $vendorName): VendorInterface
     {
@@ -33,7 +31,7 @@ final class VendorContext implements Context
 
         Assert::notNull(
             $vendor,
-            'Vendor with name %s does not exist'
+            'Vendor with name %s does not exist',
         );
 
         return $vendor;

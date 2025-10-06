@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="odiseo_vendor.behat.page.admin.vendor.index" class="Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Admin\Vendor\IndexPage" parent="sylius.behat.page.admin.crud.index">
+            <argument type="string">odiseo_vendor_admin_vendor_index</argument>
+        </service>
+        <service id="odiseo_vendor.behat.page.admin.vendor.create" class="Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Admin\Vendor\CreatePage" parent="sylius.behat.page.admin.crud.create">
+            <argument type="string">odiseo_vendor_admin_vendor_create</argument>
+        </service>
+        <service id="odiseo_vendor.behat.page.admin.vendor.update" class="Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Admin\Vendor\UpdatePage" parent="sylius.behat.page.admin.crud.update">
+            <argument type="string">odiseo_vendor_admin_vendor_update</argument>
+        </service>
+    </services>
+</container>

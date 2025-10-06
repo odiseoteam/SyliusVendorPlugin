@@ -10,7 +10,6 @@ use Tests\Odiseo\SyliusVendorPlugin\Behat\Behaviour\ContainsErrorInterface;
 interface UpdatePageInterface extends BaseUpdatePageInterface, ContainsErrorInterface
 {
     /**
-     * @param string $name
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
     public function fillName(string $name): void;

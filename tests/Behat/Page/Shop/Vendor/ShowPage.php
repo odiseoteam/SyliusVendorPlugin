@@ -13,7 +13,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
      */
     public function getRouteName(): string
     {
-        return 'odiseo_sylius_vendor_plugin_shop_vendor_show';
+        return 'odiseo_vendor_shop_vendor_show';
     }
 
     /**
@@ -30,7 +30,7 @@ final class ShowPage extends SymfonyPage implements ShowPageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'name' => '[data-test-vendor-name]'
+            'name' => '[data-test-vendor-name]',
         ]);
     }
 }

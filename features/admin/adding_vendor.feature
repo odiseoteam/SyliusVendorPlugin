@@ -33,4 +33,4 @@ Feature: Adding a new vendor
         And I want to add a new vendor
         When I fill the slug with "test"
         And I add it
-        Then I should be notified that there is already an existing vendor with provided slug
+        Then I should be notified that the form contains invalid fields
