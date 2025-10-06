@@ -6,7 +6,6 @@ namespace Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use Behat\Mink\Exception\ElementNotFoundException;
-use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
 use FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
@@ -180,15 +179,17 @@ final class ManagingVendorsContext implements Context
         );
     }
 
-    /**
-     * @return IndexPageInterface|CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
-     */
-    private function resolveCurrentPage(): SymfonyPageInterface
+    private function resolveCurrentPage(): CreatePageInterface|UpdatePageInterface
     {
-        return $this->currentPageResolver->getCurrentPageWithForm([
-            $this->indexPage,
+        $page = $this->currentPageResolver->getCurrentPageWithForm([
             $this->createPage,
             $this->updatePage,
         ]);
+
+        if (!$page instanceof CreatePageInterface && !$page instanceof UpdatePageInterface) {
+            throw new \RuntimeException('Resolved page is not a create or update vendor page.');
+        }
+
+        return $page;
     }
 }

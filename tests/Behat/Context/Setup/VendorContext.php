@@ -32,12 +32,16 @@ final class VendorContext implements Context
     /** @var VendorRepositoryInterface */
     private $vendorRepository;
 
-    /** @var ProductRepositoryInterface */
+    /** @var ProductRepositoryInterface<ProductInterface> */
     private $productRepository;
 
-    /** @var ProductFactoryInterface */
+    /** @var ProductFactoryInterface<ProductInterface> */
     private $productFactory;
 
+    /**
+     * @param ProductRepositoryInterface<ProductInterface> $productRepository
+     * @param ProductFactoryInterface<ProductInterface> $productFactory
+     */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         FactoryInterface $vendorFactory,
@@ -77,7 +81,7 @@ final class VendorContext implements Context
     /**
      * @Given this vendor has( also) :firstProductName and :secondProductName products associated with it
      */
-    public function thisVendorHasProductsAssociatedWithIt(...$productsNames)
+    public function thisVendorHasProductsAssociatedWithIt(string ...$productsNames): void
     {
         /** @var VendorInterface $vendor */
         $vendor = $this->vendorRepository->findOneBy([
@@ -85,7 +89,7 @@ final class VendorContext implements Context
         ]);
 
         foreach ($productsNames as $productName) {
-            /** @var ProductInterface|VendorAwareInterface $product */
+            /** @var ProductInterface&VendorAwareInterface $product */
             $product = $this->productFactory->createNew();
             $product->setCode(StringInflector::nameToUppercaseCode($productName));
             $product->setVendor($vendor);

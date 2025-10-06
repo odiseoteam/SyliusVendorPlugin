@@ -13,4 +13,24 @@ interface UpdatePageInterface extends BaseUpdatePageInterface, ContainsErrorInte
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
     public function fillName(string $name): void;
+
+    /**
+     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     */
+    public function fillSlug(string $slug): void;
+
+    /**
+     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     */
+    public function fillDescription(string $description): void;
+
+    /**
+     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     */
+    public function fillEmail(string $email): void;
+
+    /**
+     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     */
+    public function uploadFile(string $file): void;
 }
