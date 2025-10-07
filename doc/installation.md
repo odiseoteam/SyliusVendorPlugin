@@ -27,49 +27,17 @@ imports:
 
 ```yml
 # config/routes.yaml
-odiseo_sylius_vendor_plugin_admin:
-    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/admin.yaml"
-    prefix: /admin
+odiseo_sylius_vendor_admin:
+    resource: "@OdiseoSyliusVendorPlugin/config/routes/admin.yaml"
 
-odiseo_sylius_vendor_plugin_shop:
-    resource: "@OdiseoSyliusVendorPlugin/Resources/config/routing/shop.yaml"
-    prefix: /{_locale}/vendors
+odiseo_sylius_vendor_shop:
+    resource: "@OdiseoSyliusVendorPlugin/config/routes/shop.yaml"
+    prefix: /{_locale}
     requirements:
         _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
 ```
 
 5. Include traits and override the models
-
-```php
-<?php
-// src/Entity/Channel/Channel.php
-
-// ...
-use Doctrine\ORM\Mapping as ORM;
-use Odiseo\SyliusVendorPlugin\Entity\VendorsAwareInterface;
-use Odiseo\SyliusVendorPlugin\Entity\VendorsTrait;
-use Sylius\Component\Core\Model\Channel as BaseChannel;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="sylius_channel")
- */
-class Channel extends BaseChannel implements VendorsAwareInterface
-{
-    use VendorsTrait {
-        __construct as private initializeVendorsCollection;
-    }
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->initializeVendorsCollection();
-    }
-
-    // ...
-}
-```
 
 ```php
 <?php
@@ -81,10 +49,8 @@ use Odiseo\SyliusVendorPlugin\Entity\VendorAwareInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorTrait;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="sylius_product")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'sylius_product')]
 class Product extends BaseProduct implements VendorAwareInterface
 {
     use VendorTrait;
@@ -116,6 +82,7 @@ sylius_product:
     resources:
         product:
             classes:
+                model: App\Entity\Product
                 repository: App\Repository\ProductRepository
 ```
 

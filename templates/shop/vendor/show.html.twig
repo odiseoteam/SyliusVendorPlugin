@@ -1,0 +1,9 @@
+{% extends '@SyliusShop/shared/layout/base.html.twig' %}
+
+{% set vendor = odiseo_vendor_get_vendor_by_slug(app.request.get('slug')) %}
+
+{% block title %}{{ vendor.name }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    {% hook 'odiseo_vendor_shop.vendor.show' with { vendor, products, resources } %}
+{% endblock %}

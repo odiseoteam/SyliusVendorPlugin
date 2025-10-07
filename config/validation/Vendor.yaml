@@ -1,0 +1,57 @@
+Odiseo\SyliusVendorPlugin\Entity\Vendor:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [name]
+            message: 'odiseo_vendor.vendor.name.unique'
+            groups: ['odiseo']
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [slug]
+            message: 'odiseo_vendor.vendor.slug.unique'
+            groups: ['odiseo']
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email]
+            message: 'odiseo_vendor.vendor.email.unique'
+            groups: ['odiseo']
+    properties:
+        name:
+            - NotBlank:
+                message: 'odiseo_vendor.vendor.name.not_blank'
+                groups: ['odiseo']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'odiseo_vendor.vendor.name.min_length'
+                maxMessage: 'odiseo_vendor.vendor.name.max_length'
+                groups: ['odiseo']
+        slug:
+            - NotBlank:
+                message: 'odiseo_vendor.vendor.slug.not_blank'
+                groups: ['odiseo']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'odiseo_vendor.vendor.slug.min_length'
+                maxMessage: 'odiseo_vendor.vendor.slug.max_length'
+                groups: ['odiseo']
+        email:
+            - NotBlank:
+                message: 'odiseo_vendor.vendor.email.not_blank'
+                groups: ['odiseo']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'odiseo_vendor.vendor.email.min_length'
+                maxMessage: 'odiseo_vendor.vendor.email.max_length'
+                groups: ['odiseo']
+            - Email:
+                message: 'odiseo_vendor.vendor.email.invalid'
+                mode: strict
+                groups: ['odiseo']
+        logoFile:
+            - NotBlank:
+                message: 'odiseo_vendor.vendor.logo_file.not_blank'
+                groups: ['odiseo_vendor_logo_create']
+        translations:
+            - Valid: ~
+        extraEmails:
+            - Valid: ~

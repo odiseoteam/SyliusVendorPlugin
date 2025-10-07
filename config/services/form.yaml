@@ -1,0 +1,36 @@
+services:
+    odiseo_vendor.form.extension.type.product:
+        class: Odiseo\SyliusVendorPlugin\Form\Extension\ProductTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Sylius\Bundle\ProductBundle\Form\Type\ProductType }
+
+    odiseo_vendor.form.type.vendor_choice:
+        class: Odiseo\SyliusVendorPlugin\Form\Type\VendorChoiceType
+        arguments:
+            - '@odiseo_vendor.repository.vendor'
+        tags:
+            - { name: form.type , alias: odiseo_vendor_choice }
+
+    odiseo_vendor.form.type.vendor:
+        class: Odiseo\SyliusVendorPlugin\Form\Type\VendorType
+        arguments:
+            - '%odiseo_vendor.model.vendor.class%'
+            - ['odiseo']
+        tags:
+            - { name: form.type, alias: odiseo_vendor }
+
+    odiseo_vendor.form.type.vendor_translation:
+        class: Odiseo\SyliusVendorPlugin\Form\Type\VendorTranslationType
+        arguments:
+            - '%odiseo_vendor.model.vendor_translation.class%'
+            - ['odiseo']
+        tags:
+            - { name: form.type, alias: odiseo_vendor_translation }
+
+    odiseo_vendor.form.type.vendor_email:
+        class: Odiseo\SyliusVendorPlugin\Form\Type\VendorEmailType
+        arguments:
+            - '%odiseo_vendor.model.vendor_email.class%'
+            - ['odiseo']
+        tags:
+            - { name: form.type, alias: odiseo_vendor_email }

@@ -1,0 +1,12 @@
+{% set product = hookable_metadata.context.product|default(null) %}
+
+{% if product and product.vendor %}
+<div class="mb-2">
+    <p>
+        <span>{{ 'odiseo_vendor.ui.vendor'|trans }}:</span>
+        <a class="col-md-auto" href="{{ path('odiseo_vendor_shop_vendor_show', {'slug': product.vendor.slug}) }}">
+            {{ product.vendor.name }}
+        </a>
+    </p>
+</div>
+{% endif %}

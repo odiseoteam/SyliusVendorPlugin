@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
-use FriendsOfBehat\PageObjectExtension\Page\SymfonyPageInterface;
+use Behat\Mink\Exception\ElementNotFoundException;
+use FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException;
 use Odiseo\SyliusVendorPlugin\Entity\VendorInterface;
-use Sylius\Behat\Service\NotificationCheckerInterface;
 use Sylius\Behat\Service\Resolver\CurrentPageResolverInterface;
 use Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Admin\Vendor\CreatePageInterface;
 use Tests\Odiseo\SyliusVendorPlugin\Behat\Page\Admin\Vendor\IndexPageInterface;
@@ -16,38 +16,18 @@ use Webmozart\Assert\Assert;
 
 final class ManagingVendorsContext implements Context
 {
-    /** @var CurrentPageResolverInterface */
-    private $currentPageResolver;
-
-    /** @var NotificationCheckerInterface */
-    private $notificationChecker;
-
-    /** @var IndexPageInterface */
-    private $indexPage;
-
-    /** @var CreatePageInterface */
-    private $createPage;
-
-    /** @var UpdatePageInterface */
-    private $updatePage;
-
     public function __construct(
-        CurrentPageResolverInterface $currentPageResolver,
-        NotificationCheckerInterface $notificationChecker,
-        IndexPageInterface $indexPage,
-        CreatePageInterface $createPage,
-        UpdatePageInterface $updatePage
+        private CurrentPageResolverInterface $currentPageResolver,
+        private IndexPageInterface $indexPage,
+        private CreatePageInterface $createPage,
+        private UpdatePageInterface $updatePage,
     ) {
-        $this->currentPageResolver = $currentPageResolver;
-        $this->notificationChecker = $notificationChecker;
-        $this->indexPage = $indexPage;
-        $this->createPage = $createPage;
-        $this->updatePage = $updatePage;
     }
 
     /**
      * @When I go to the vendors page
-     * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
+     *
+     * @throws UnexpectedPageException
      */
     public function iGoToTheVendorsPage(): void
     {
@@ -56,18 +36,19 @@ final class ManagingVendorsContext implements Context
 
     /**
      * @Given I want to add a new vendor
-     * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
+     *
+     * @throws UnexpectedPageException
      */
     public function iWantToAddNewVendor(): void
     {
-        $this->createPage->open(); // This method will send request.
+        $this->createPage->open();
     }
 
     /**
      * @When I fill the name with :vendorName
      * @When I rename the name with :vendorName
-     * @param string $vendorName
-     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     *
+     * @throws ElementNotFoundException
      */
     public function iFillTheNameWith(string $vendorName): void
     {
@@ -77,8 +58,8 @@ final class ManagingVendorsContext implements Context
     /**
      * @When I fill the slug with :vendorSlug
      * @When I rename the slug with :vendorSlug
-     * @param string $vendorSlug
-     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     *
+     * @throws ElementNotFoundException
      */
     public function iFillTheSlugWith(string $vendorSlug): void
     {
@@ -88,8 +69,8 @@ final class ManagingVendorsContext implements Context
     /**
      * @When I fill the description with :vendorDescription
      * @When I change the description with :vendorDescription
-     * @param string $vendorDescription
-     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     *
+     * @throws ElementNotFoundException
      */
     public function iFillTheDescriptionWith(string $vendorDescription): void
     {
@@ -99,8 +80,8 @@ final class ManagingVendorsContext implements Context
     /**
      * @When I fill the email with :vendorEmail
      * @When I change the email with :vendorEmail
-     * @param string $vendorEmail
-     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     *
+     * @throws ElementNotFoundException
      */
     public function iFillTheEmailWith(string $vendorEmail): void
     {
@@ -109,8 +90,8 @@ final class ManagingVendorsContext implements Context
 
     /**
      * @When I upload the :file image
-     * @param string $vendorImage
-     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     *
+     * @throws ElementNotFoundException
      */
     public function iUploadTheImage(string $vendorImage): void
     {
@@ -119,7 +100,8 @@ final class ManagingVendorsContext implements Context
 
     /**
      * @When I add it
-     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     *
+     * @throws ElementNotFoundException
      */
     public function iAddIt(): void
     {
@@ -128,8 +110,8 @@ final class ManagingVendorsContext implements Context
 
     /**
      * @Given /^I want to modify the (vendor "([^"]+)")/
-     * @param VendorInterface $vendor
-     * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
+     *
+     * @throws UnexpectedPageException
      */
     public function iWantToModifyVendor(VendorInterface $vendor): void
     {
@@ -146,7 +128,8 @@ final class ManagingVendorsContext implements Context
 
     /**
      * @When I want to browse vendors
-     * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
+     *
+     * @throws UnexpectedPageException
      */
     public function iWantToBrowseVendors(): void
     {
@@ -155,7 +138,6 @@ final class ManagingVendorsContext implements Context
 
     /**
      * @Then I should see :quantity vendors in the list
-     * @param $quantity
      */
     public function iShouldSeeVendorsInTheList(int $quantity = 1): void
     {
@@ -164,7 +146,6 @@ final class ManagingVendorsContext implements Context
 
     /**
      * @When I delete the vendor :name
-     * @param string $name
      */
     public function iDeleteTheVendor(string $name): void
     {
@@ -173,8 +154,8 @@ final class ManagingVendorsContext implements Context
 
     /**
      * @Then /^the (vendor "([^"]+)") should appear in the admin/
-     * @param VendorInterface $vendor
-     * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
+     *
+     * @throws UnexpectedPageException
      */
     public function vendorShouldAppearInTheAdmin(VendorInterface $vendor): void
     {
@@ -183,7 +164,7 @@ final class ManagingVendorsContext implements Context
         //Webmozart assert library.
         Assert::true(
             $this->indexPage->isSingleResourceOnPage(['name' => $vendor->getName()]),
-            sprintf('Vendor %s should exist but it does not', $vendor->getName())
+            sprintf('Vendor %s should exist but it does not', $vendor->getName()),
         );
     }
 
@@ -192,31 +173,23 @@ final class ManagingVendorsContext implements Context
      */
     public function iShouldBeNotifiedThatTheFormContainsInvalidFields(): void
     {
-        Assert::true($this->resolveCurrentPage()->containsError(),
-            sprintf('The form should be notified you that the form contains invalid field but it does not')
+        Assert::true(
+            $this->resolveCurrentPage()->containsError(),
+            sprintf('The form should be notified you that the form contains invalid field but it does not'),
         );
     }
 
-    /**
-     * @Then I should be notified that there is already an existing vendor with provided slug
-     */
-    public function iShouldBeNotifiedThatThereIsAlreadyAnExistingVendorWithSlug(): void
+    private function resolveCurrentPage(): CreatePageInterface|UpdatePageInterface
     {
-        Assert::true($this->resolveCurrentPage()->containsErrorWithMessage(
-            'There is an existing vendor with this slug.',
-            false
-        ));
-    }
-
-    /**
-     * @return IndexPageInterface|CreatePageInterface|UpdatePageInterface|SymfonyPageInterface
-     */
-    private function resolveCurrentPage(): SymfonyPageInterface
-    {
-        return $this->currentPageResolver->getCurrentPageWithForm([
-            $this->indexPage,
+        $page = $this->currentPageResolver->getCurrentPageWithForm([
             $this->createPage,
-            $this->updatePage
+            $this->updatePage,
         ]);
+
+        if (!$page instanceof CreatePageInterface && !$page instanceof UpdatePageInterface) {
+            throw new \RuntimeException('Resolved page is not a create or update vendor page.');
+        }
+
+        return $page;
     }
 }

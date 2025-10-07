@@ -1,0 +1,7 @@
+{% extends '@SyliusShop/shared/layout/base.html.twig' %}
+
+{% block title %}{{ 'odiseo_vendor.ui.vendors'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    {% hook 'odiseo_vendor_shop.vendor.index' with { vendors, resources } %}
+{% endblock %}

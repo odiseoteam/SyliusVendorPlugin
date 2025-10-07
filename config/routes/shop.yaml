@@ -1,0 +1,3 @@
+odiseo_vendor_shop_vendor:
+    prefix: /vendors
+    resource: shop/vendor.yaml

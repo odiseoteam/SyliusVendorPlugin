@@ -1,0 +1,69 @@
+sylius_grid:
+    grids:
+        odiseo_vendor_admin_vendor:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%odiseo_vendor.model.vendor.class%"
+            sorting:
+                position: asc
+            fields:
+                logo:
+                    type: twig
+                    label: sylius.ui.image
+                    path: logoName
+                    options:
+                        template: "@OdiseoSyliusVendorPlugin/admin/vendor/grid/field/image.html.twig"
+                name:
+                    type: string
+                    label: sylius.ui.name
+                    sortable: ~
+                email:
+                    type: string
+                    label: sylius.ui.email
+                    sortable: ~
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    sortable: ~
+                    options:
+                        template: "@SyliusAdmin/shared/grid/field/boolean.html.twig"
+                position:
+                    type: twig
+                    label: sylius.ui.position
+                    path: position
+                    sortable: position
+                    options:
+                        template: "@SyliusUi/grid/field/position.html.twig"
+                        vars:
+                            th_class: "w-1 text-center"
+                            td_class: "text-center"
+                createdAt:
+                    type: datetime
+                    label: sylius.ui.creation_date
+                    sortable: ~
+                    options:
+                        format: d-m-Y H:i
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [name, email]
+                    form_options:
+                        type: !php/const Sylius\Component\Grid\Filter\StringFilter::TYPE_CONTAINS
+                enabled:
+                    type: boolean
+                    label: sylius.ui.enabled
+                createdAt:
+                    type: date
+                    label: sylius.ui.creation_date
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<serializer
+    xmlns="http://symfony.com/schema/dic/serializer-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Odiseo\SyliusVendorPlugin\Entity\VendorTranslation">
+        <attribute name="id">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+        </attribute>
+        <attribute name="locale">
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+        </attribute>
+        <attribute name="description">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+        </attribute>
+    </class>
+</serializer>

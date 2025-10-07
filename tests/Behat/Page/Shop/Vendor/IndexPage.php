@@ -13,7 +13,7 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
      */
     public function getRouteName(): string
     {
-        return 'odiseo_sylius_vendor_plugin_shop_vendor_index';
+        return 'odiseo_vendor_shop_vendor_index';
     }
 
     /**
@@ -34,7 +34,7 @@ final class IndexPage extends SymfonyPage implements IndexPageInterface
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
-            'vendors' => '[data-test-vendors]'
+            'vendors' => '[data-test-vendors]',
         ]);
     }
 }

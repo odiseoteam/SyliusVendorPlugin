@@ -37,12 +37,12 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
 
     public function findByChannel(ChannelInterface $channel): array
     {
-        return $this->findByEnabledQueryBuilder($channel)->getQuery()->getResult();
+        return (array) $this->findByEnabledQueryBuilder($channel)->getQuery()->getResult();
     }
 
     public function findOneBySlug(string $slug, string $locale): ?VendorInterface
     {
-        return $this->createQueryBuilder('o')
+        $vendor = $this->createQueryBuilder('o')
             ->addSelect('translation')
             ->innerJoin('o.translations', 'translation')
             ->andWhere('o.slug = :slug')
@@ -53,5 +53,7 @@ class VendorRepository extends EntityRepository implements VendorRepositoryInter
             ->getQuery()
             ->getOneOrNullResult()
         ;
+
+        return $vendor instanceof VendorInterface ? $vendor : null;
     }
 }

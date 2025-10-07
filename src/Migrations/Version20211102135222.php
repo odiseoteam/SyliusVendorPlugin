@@ -24,7 +24,7 @@ final class Version20211102135222 extends AbstractMigration
         $this->addSql('ALTER TABLE odiseo_vendor_translation ADD CONSTRAINT FK_5F5AE1AB2C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES odiseo_vendor (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE odiseo_vendor_channels ADD CONSTRAINT FK_42A3C6D272F5A1AA FOREIGN KEY (channel_id) REFERENCES sylius_channel (id)');
         $this->addSql('ALTER TABLE odiseo_vendor_channels ADD CONSTRAINT FK_42A3C6D2F603EE73 FOREIGN KEY (vendor_id) REFERENCES odiseo_vendor (id)');
-        $this->addSql('ALTER TABLE sylius_product ADD vendor_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE sylius_product ADD vendor_id INT NOT NULL');
         $this->addSql('ALTER TABLE sylius_product ADD CONSTRAINT FK_677B9B74F603EE73 FOREIGN KEY (vendor_id) REFERENCES odiseo_vendor (id)');
         $this->addSql('CREATE INDEX IDX_677B9B74F603EE73 ON sylius_product (vendor_id)');
     }

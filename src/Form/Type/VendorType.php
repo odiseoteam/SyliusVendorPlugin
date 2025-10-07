@@ -9,13 +9,13 @@ use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 
 final class VendorType extends AbstractResourceType
 {
@@ -28,34 +28,35 @@ final class VendorType extends AbstractResourceType
                 'label' => 'sylius.ui.name',
             ])
             ->add('slug', TextType::class, [
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.slug',
+                'label' => 'odiseo_vendor.form.vendor.slug',
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'sylius.ui.enabled',
             ])
             ->add('translations', ResourceTranslationsType::class, [
                 'entry_type' => VendorTranslationType::class,
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.translations',
+                'label' => 'odiseo_vendor.form.vendor.translations',
             ])
             ->add('email', EmailType::class, [
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.email',
+                'label' => 'odiseo_vendor.form.vendor.email',
             ])
             ->add('logoFile', FileType::class, [
-                 'label' => 'odiseo_sylius_vendor_plugin.form.vendor.logo',
+                 'label' => 'odiseo_vendor.form.vendor.logo',
             ])
             ->add('channels', ChannelChoiceType::class, [
                 'required' => false,
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.channels',
+                'label' => 'odiseo_vendor.form.vendor.channels',
             ])
-            ->add('extraEmails', CollectionType::class, [
-                'label' => 'odiseo_sylius_vendor_plugin.form.vendor.extra_emails',
+            ->add('extraEmails', LiveCollectionType::class, [
                 'entry_type' => VendorEmailType::class,
+                'label' => 'odiseo_vendor.form.vendor.extra_emails',
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
                 'required' => false,
+                'block_name' => 'entry',
             ])
         ;
     }

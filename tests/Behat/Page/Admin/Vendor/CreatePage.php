@@ -12,45 +12,32 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
     use ContainsErrorTrait;
 
-    /**
-     * @inheritdoc
-     */
     public function fillName(string $name): void
     {
         $this->getDocument()->fillField('Name', $name);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function fillSlug(string $slug): void
     {
         $this->getDocument()->fillField('Slug', $slug);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function fillDescription(string $description): void
     {
         $this->getDocument()->fillField('Description', $description);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function fillEmail(string $email): void
     {
         $this->getDocument()->fillField('Email', $email);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function uploadFile(string $file): void
     {
-        $path = __DIR__.'/../../../Resources/images/'.$file;
+        $path = __DIR__ . '/../../../Resources/images/' . $file;
         Assert::fileExists($path);
-        $this->getDocument()->attachFileToField('Logo', realpath($path));
+        $realPath = realpath($path);
+        Assert::string($realPath, sprintf('Could not resolve real path for %s', $path));
+        $this->getDocument()->attachFileToField('Logo', $realPath);
     }
 }

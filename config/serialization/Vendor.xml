@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+
+<serializer
+    xmlns="http://symfony.com/schema/dic/serializer-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Odiseo\SyliusVendorPlugin\Entity\Vendor">
+        <attribute name="id">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+        <attribute name="slug">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+        <attribute name="name">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+        <attribute name="email">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+        <attribute name="logoName">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+        <attribute name="enabled">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+        <attribute name="translations">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+        <attribute name="products">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+        <attribute name="channels">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+        <attribute name="createdAt">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+        <attribute name="updatedAt">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:shop:vendor:index</group>
+            <group>odiseo_vendor:shop:vendor:show</group>
+        </attribute>
+    </class>
+</serializer>

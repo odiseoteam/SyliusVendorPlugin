@@ -1,0 +1,8 @@
+{% from '@SyliusShop/shared/breadcrumbs.html.twig' import breadcrumbs as breadcrumbs %}
+
+{% set items = [
+    { path: path('sylius_shop_homepage'), label: 'sylius.ui.home'|trans },
+    { label: 'odiseo_vendor.ui.vendors'|trans }
+] %}
+
+{{ breadcrumbs(items) }}

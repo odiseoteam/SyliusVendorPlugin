@@ -1,0 +1,15 @@
+odiseo_vendor_admin_vendor:
+    resource: |
+        alias: odiseo_vendor.vendor
+        section: admin
+        templates: "@SyliusAdmin\\shared\\crud"
+        redirect: update
+        grid: odiseo_vendor_admin_vendor
+        form:
+            type: Odiseo\SyliusVendorPlugin\Form\Type\VendorType
+        except: ['show']
+        permission: true
+        vars:
+            all:
+                hook_prefix: 'odiseo_vendor.admin.vendor'
+    type: sylius.resource

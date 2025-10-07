@@ -1,0 +1,21 @@
+services:
+    odiseo_vendor.event_listener.admin.menu_builder:
+        class: Odiseo\SyliusVendorPlugin\Menu\AdminMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+
+    odiseo_vendor.menu_builder.admin.vendor_form:
+        class: Odiseo\SyliusVendorPlugin\Menu\AdminVendorFormMenuBuilder
+        arguments:
+            - '@knp_menu.factory'
+            - '@event_dispatcher'
+        tags:
+            - { name: knp_menu.menu_builder, method: createMenu, alias: odiseo_vendor.admin.admin_vendor_form }
+
+    odiseo_vendor.event_listener.vendor_logo_upload:
+        class: Odiseo\SyliusVendorPlugin\EventListener\VendorLogoUploadListener
+        arguments:
+            - '@odiseo_vendor.uploader.vendor_logo'
+        tags:
+            - { name: kernel.event_listener, event: odiseo_vendor.vendor.pre_create, method: uploadLogo }
+            - { name: kernel.event_listener, event: odiseo_vendor.vendor.pre_update, method: uploadLogo }

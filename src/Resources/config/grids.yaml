@@ -1,5 +1,0 @@
-imports:
-    - { resource: grids/admin/vendor.yaml }
-
-    - { resource: grids/shop/vendor.yaml }
-    - { resource: grids/shop/vendor_product.yaml }

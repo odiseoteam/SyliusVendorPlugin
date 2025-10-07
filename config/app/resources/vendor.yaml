@@ -1,0 +1,18 @@
+sylius_resource:
+    resources:
+        odiseo_vendor.vendor:
+            driver: doctrine/orm
+            classes:
+                model: Odiseo\SyliusVendorPlugin\Entity\Vendor
+                interface: Odiseo\SyliusVendorPlugin\Entity\VendorInterface
+                form: Odiseo\SyliusVendorPlugin\Form\Type\VendorType
+                repository: Odiseo\SyliusVendorPlugin\Repository\VendorRepository
+                factory: Sylius\Component\Resource\Factory\Factory
+            translation:
+                classes:
+                    model: Odiseo\SyliusVendorPlugin\Entity\VendorTranslation
+                    interface: Odiseo\SyliusVendorPlugin\Entity\VendorTranslationInterface
+                    form: Odiseo\SyliusVendorPlugin\Form\Type\VendorTranslationType
+                    repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+                    controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+                    factory: Sylius\Component\Resource\Factory\Factory

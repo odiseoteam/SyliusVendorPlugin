@@ -19,7 +19,7 @@ final class VendorContext implements Context
 
     public function __construct(
         IndexPageInterface $indexPage,
-        ShowPageInterface $showPage
+        ShowPageInterface $showPage,
     ) {
         $this->indexPage = $indexPage;
         $this->showPage = $showPage;
@@ -27,6 +27,7 @@ final class VendorContext implements Context
 
     /**
      * @When I want to list vendors
+     *
      * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
      */
     public function iWantToListVendors(): void
@@ -36,7 +37,7 @@ final class VendorContext implements Context
 
     /**
      * @Then I should see :pagesNumber vendors on the page
-     * @param int $pagesNumber
+     *
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
     public function iShouldSeeVendorsOnThePage(int $pagesNumber): void
@@ -46,7 +47,7 @@ final class VendorContext implements Context
 
     /**
      * @When I go to the :slug page
-     * @param string $slug
+     *
      * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
      */
     public function iGoToThePage(string $slug): void
@@ -56,7 +57,7 @@ final class VendorContext implements Context
 
     /**
      * @Then I should see a page with :name name
-     * @param string $name
+     *
      * @throws \Behat\Mink\Exception\ElementNotFoundException
      */
     public function iShouldSeeAPageWithName(string $name): void

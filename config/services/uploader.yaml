@@ -1,0 +1,13 @@
+services:
+    odiseo_vendor.filesystem.vendor_logo:
+        class: Gaufrette\Filesystem
+        arguments:
+            - 'odiseo_vendor_logo'
+        factory:
+            - '@knp_gaufrette.filesystem_map'
+            - 'get'
+
+    odiseo_vendor.uploader.vendor_logo:
+        class: Odiseo\SyliusVendorPlugin\Uploader\VendorLogoUploader
+        arguments:
+            - '@odiseo_vendor.filesystem.vendor_logo'

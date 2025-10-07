@@ -1,0 +1,11 @@
+{% set form = hookable_metadata.context.form %}
+{% set vendor = form.vars.data %}
+
+<div class="mb-4">
+    {% if vendor.logoName is not null %}
+        <span class="avatar avatar-xl" style="background-image: url('{{ vendor.logoName|imagine_filter('odiseo_vendor_logo') }}')"></span>
+    {% else %}
+        <span class="avatar avatar-xl"></span>
+    {% endif %}
+</div>
+{{ form_row(form.logoFile, sylius_test_form_attribute('logo')) }}

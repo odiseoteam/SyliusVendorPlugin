@@ -19,8 +19,8 @@ final class AdminMenuListener
             $item = $menu;
         }
 
-        $item->addChild('vendors', ['route' => 'odiseo_sylius_vendor_plugin_admin_vendor_index'])
-            ->setLabel('odiseo_sylius_vendor_plugin.menu.admin.vendors')
+        $item->addChild('vendors', ['route' => 'odiseo_vendor_admin_vendor_index'])
+            ->setLabel('odiseo_vendor.menu.admin.vendors')
             ->setLabelAttribute('icon', 'trademark')
         ;
     }

@@ -1,6 +1,0 @@
-services:
-    odiseo_sylius_vendor_plugin.controller.vendor_slug:
-        class: Odiseo\SyliusVendorPlugin\Controller\VendorSlugController
-        public: true
-        arguments:
-            - '@sylius.generator.slug'

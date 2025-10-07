@@ -1,91 +1,98 @@
 {
     "name": "odiseoteam/sylius-vendor-plugin",
     "type": "sylius-plugin",
+    "description": "Vendor plugin for Sylius. Add Vendor (Brand) to your products",
     "keywords": [
         "sylius",
         "sylius-plugin",
         "sylius-vendor",
-        "sylius-brand"
+        "sylius-brand",
+        "marketplace"
     ],
-    "description": "Vendor plugin for Sylius. Add Vendor (Brand) to your products",
     "license": "MIT",
     "require": {
-        "php": "^8.1",
-        "sylius/sylius": "^1.12",
-        "symfony/webpack-encore-bundle": "^1.15"
+        "php": "^8.2",
+        "sylius/sylius": "^2.0"
     },
     "require-dev": {
-        "behat/behat": "^3.6.1",
-        "behat/mink-selenium2-driver": "^1.4",
-        "dbrekelmans/bdi": "^1.1",
-        "dmore/behat-chrome-extension": "^1.3",
-        "dmore/chrome-mink-driver": "^2.7",
-        "friends-of-behat/mink": "^1.8",
-        "friends-of-behat/mink-browserkit-driver": "^1.4",
-        "friends-of-behat/mink-debug-extension": "^2.0.0",
-        "friends-of-behat/mink-extension": "^2.4",
+        "behat/behat": "^3.16",
+        "dbrekelmans/bdi": "^1.4",
+        "dmore/behat-chrome-extension": "^1.4",
+        "dmore/chrome-mink-driver": "^2.9",
+        "friends-of-behat/mink": "^1.11",
+        "friends-of-behat/mink-browserkit-driver": "^1.6",
+        "friends-of-behat/mink-debug-extension": "^2.1",
+        "friends-of-behat/mink-extension": "^2.7",
         "friends-of-behat/page-object-extension": "^0.3",
-        "friends-of-behat/suite-settings-extension": "^1.0",
-        "friends-of-behat/symfony-extension": "^2.1",
-        "friends-of-behat/variadic-extension": "^1.3",
-        "phpspec/phpspec": "^7.2",
-        "phpstan/extension-installer": "^1.0",
-        "phpstan/phpstan": "^1.8.1",
-        "phpstan/phpstan-doctrine": "1.3.69",
-        "phpstan/phpstan-strict-rules": "^1.3.0",
-        "phpstan/phpstan-webmozart-assert": "^1.2.0",
+        "friends-of-behat/suite-settings-extension": "^1.1",
+        "friends-of-behat/symfony-extension": "^2.6",
+        "friends-of-behat/variadic-extension": "^1.6",
+        "nyholm/psr7": "^1.8",
+        "phpspec/phpspec": "^7.5",
+        "phpstan/phpstan": "^1.12",
+        "phpstan/phpstan-doctrine": "^1.3",
+        "phpstan/phpstan-webmozart-assert": "^1.2",
         "phpunit/phpunit": "^10.5",
-        "polishsymfonycommunity/symfony-mocker-container": "^1.0",
         "robertfausk/behat-panther-extension": "^1.1",
-        "sylius-labs/coding-standard": "^4.2",
-        "sylius-labs/suite-tags-extension": "^0.2",
-        "symfony/browser-kit": "^5.4 || ^6.4",
-        "symfony/debug-bundle": "^5.4 || ^6.4",
-        "symfony/dotenv": "^5.4 || ^6.4",
-        "symfony/flex": "^2.4",
-        "symfony/intl": "^5.4 || ^6.4",
-        "symfony/web-profiler-bundle": "^5.4 || ^6.4",
-        "vimeo/psalm": "5.24.0"
-    },
-    "conflict": {
-        "symfony/framework-bundle": "6.2.8"
+        "sylius-labs/coding-standard": "^4.4",
+        "sylius-labs/suite-tags-extension": "~0.2",
+        "sylius/sylius-rector": "^2.0",
+        "sylius/test-application": "^2.0.0@alpha",
+        "symfony/browser-kit": "^6.4 || ^7.1",
+        "symfony/debug-bundle": "^6.4 || ^7.1",
+        "symfony/dotenv": "^6.4 || ^7.1",
+        "symfony/http-client": "^6.4 || ^7.1",
+        "symfony/intl": "^6.4 || ^7.1",
+        "symfony/runtime": "^6.4 || ^7.1",
+        "symfony/web-profiler-bundle": "^6.4 || ^7.1",
+        "symfony/webpack-encore-bundle": "^2.2"
     },
     "suggest": {
-        "stefandoorn/sitemap-plugin": "Adds vendors to the Sylius sitemap plugin"
+        "stefandoorn/sitemap-plugin": "^2.2"
     },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": false,
+            "php-http/discovery": false,
             "phpstan/extension-installer": true,
-            "symfony/flex": true
+            "symfony/flex": true,
+            "symfony/runtime": true
         }
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
+        },
         "symfony": {
-            "require": "^5.4 || ^6.4"
-        }
+            "require": "^6.4"
+        },
+        "public-dir": "vendor/sylius/test-application/public"
     },
     "autoload": {
         "psr-4": {
-            "Odiseo\\SyliusVendorPlugin\\": "src/",
-            "Tests\\Odiseo\\SyliusVendorPlugin\\": "tests/"
+            "Odiseo\\SyliusVendorPlugin\\": "src/"
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/Application/Kernel.php"
-        ]
+        "psr-4": {
+            "Tests\\Odiseo\\SyliusVendorPlugin\\": ["tests/", "tests/TestApplication/src/"]
+        }
     },
     "scripts": {
-        "post-install-cmd": [
-            "php bin/create_node_symlink.php"
+        "database-reset": [
+            "vendor/bin/console doctrine:database:drop --force --if-exists",
+            "vendor/bin/console doctrine:database:create",
+            "vendor/bin/console doctrine:migration:migrate -n",
+            "vendor/bin/console sylius:fixtures:load -n"
         ],
-        "post-update-cmd": [
-            "php bin/create_node_symlink.php"
+        "frontend-clear": [
+            "cd vendor/sylius/test-application && yarn install && yarn build",
+            "vendor/bin/console assets:install"
         ],
-        "post-create-project-cmd": [
-            "php bin/create_node_symlink.php"
+        "test-app-init": [
+            "@database-reset",
+            "@frontend-clear"
         ]
     }
 }

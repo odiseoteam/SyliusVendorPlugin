@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <!-- Setup contexts -->
+        <service id="odiseo_vendor.behat.context.setup.vendor" class="Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Setup\VendorContext">
+            <argument type="service" id="sylius.behat.shared_storage" />
+            <argument type="service" id="odiseo_vendor.factory.vendor" />
+            <argument type="service" id="odiseo_vendor.uploader.vendor_logo" />
+            <argument type="service" id="odiseo_vendor.repository.vendor" />
+            <argument type="service" id="sylius.repository.product" />
+            <argument type="service" id="sylius.factory.product" />
+            <tag name="fob.context_service" />
+        </service>
+
+        <!-- Transform contexts -->
+        <service id="odiseo_vendor.behat.context.transform.vendor" class="Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Transform\VendorContext">
+            <argument type="service" id="odiseo_vendor.repository.vendor" />
+            <tag name="fob.context_service" />
+        </service>
+
+        <!-- UI Admin contexts -->
+        <service id="odiseo_vendor.behat.context.ui.admin.managing_vendors" class="Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Ui\Admin\ManagingVendorsContext">
+            <argument type="service" id="sylius.behat.current_page_resolver" />
+            <argument type="service" id="odiseo_vendor.behat.page.admin.vendor.index" />
+            <argument type="service" id="odiseo_vendor.behat.page.admin.vendor.create" />
+            <argument type="service" id="odiseo_vendor.behat.page.admin.vendor.update" />
+            <tag name="fob.context_service" />
+        </service>
+
+        <!-- UI Shop contexts -->
+        <service id="odiseo_vendor.behat.context.ui.shop.vendor" class="Tests\Odiseo\SyliusVendorPlugin\Behat\Context\Ui\Shop\VendorContext">
+            <argument type="service" id="odiseo_vendor.behat.page.shop.vendor.index" />
+            <argument type="service" id="odiseo_vendor.behat.page.shop.vendor.show" />
+            <tag name="fob.context_service" />
+        </service>
+    </services>
+</container>

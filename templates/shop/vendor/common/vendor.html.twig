@@ -1,0 +1,12 @@
+<div {{ sylius_test_html_attribute('vendor', '%s'|format(vendor.slug)) }} >
+    <a class="link-reset" href="{{ path('odiseo_vendor_shop_vendor_show', {'slug': vendor.slug}) }}">
+        <div class="mb-4">
+            <div class="overflow-auto bg-light rounded-3">
+                <img src="{{ vendor.logoName|imagine_filter('odiseo_vendor_logo') }}" alt="{{ vendor.name }}" class="img-fluid">
+            </div>
+        </div>
+        <div class="h6 text-break">
+            {{ vendor.name }}
+        </div>
+    </a>
+</div>

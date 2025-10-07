@@ -1,0 +1,24 @@
+services:
+    odiseo_vendor.fixture.example_factory.product:
+        class: Odiseo\SyliusVendorPlugin\Fixture\Factory\ProductExampleFactory
+        decorates: 'sylius.fixture.example_factory.product'
+        arguments:
+            - '@odiseo_vendor.fixture.example_factory.product.inner'
+            - '@odiseo_vendor.repository.vendor'
+
+    odiseo_vendor.fixture.vendor:
+        class: Odiseo\SyliusVendorPlugin\Fixture\VendorFixture
+        arguments:
+            - '@odiseo_vendor.manager.vendor'
+            - '@odiseo_vendor.fixture.example_factory.vendor'
+        tags:
+            - { name: sylius_fixtures.fixture }
+
+    odiseo_vendor.fixture.example_factory.vendor:
+        class: Odiseo\SyliusVendorPlugin\Fixture\Factory\VendorExampleFactory
+        arguments:
+            - '@odiseo_vendor.factory.vendor'
+            - '@odiseo_vendor.uploader.vendor_logo'
+            - '@sylius.repository.channel'
+            - '@sylius.repository.locale'
+            - '@file_locator'

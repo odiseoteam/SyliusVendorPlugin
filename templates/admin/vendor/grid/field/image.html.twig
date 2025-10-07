@@ -1,0 +1,5 @@
+{% if data %}
+    <div class="thumbnail-box-image">
+        <img src="{{ data|imagine_filter('odiseo_vendor_logo') }}" alt="{{ data }}" class="img-fluid" />
+    </div>
+{% endif %}

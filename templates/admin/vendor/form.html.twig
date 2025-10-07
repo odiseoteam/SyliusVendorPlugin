@@ -1,0 +1,15 @@
+{% form_theme form '@OdiseoSyliusVendorPlugin/admin/vendor/form_theme.html.twig' %}
+
+<div class="container-xl" {{ attributes }}>
+    {{ form_start(form, {'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate', 'id': form.vars.id}}) }}
+        <div class="row">
+            {% if hookable_metadata.configuration.method is defined %}
+                <input type="hidden" name="_method" value="{{ hookable_metadata.configuration.method }}" />
+            {% endif %}
+            {{ form_errors(form) }}
+            {{ form_widget(form._token) }}
+
+            {% hook 'form' with { form } %}
+        </div>
+    {{ form_end(form, {render_rest: false}) }}
+</div>
