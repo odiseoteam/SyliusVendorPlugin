@@ -10,7 +10,7 @@
         <img src="https://img.shields.io/packagist/v/odiseoteam/sylius-vendor-plugin.svg" />
     </a>
     <a href="https://github.com/odiseoteam/SyliusVendorPlugin/actions" title="Build Status" target="_blank">
-        <img src="https://img.shields.io/github/actions/workflow/status/odiseoteam/SyliusVendorPlugin/build.yml" />
+        <img src="https://img.shields.io/github/actions/workflow/status/odiseoteam/SyliusVendorPlugin/build.yaml" />
     </a>
     <a href="https://scrutinizer-ci.com/g/odiseoteam/SyliusVendorPlugin/" title="Scrutinizer" target="_blank">
         <img src="https://img.shields.io/scrutinizer/g/odiseoteam/SyliusVendorPlugin.svg" />
@@ -36,13 +36,11 @@
 
 * Vendors by Channel: You can specify what vendors will be enabled for different stores.
 * Vendors with translations: Vendor's information is translatable.
-* Templates: This plugin has shop views for list and show vendors.
-* Multi Emails: Vendors can have a primary and also additionals emails.
+* Multi Emails: Vendors can have a primary and also additional emails.
 * Ready for Headless: Full Rest API.
-* Sitemap: All shop pages are connected with the [Sitemap Plugin](https://github.com/stefandoorn/sitemap-plugin).
 * Easy to extend: This plugin follows the best practices to make it fully extensible.
 
-Support Sylius version 1.9+.
+Support Sylius version 2.
 
 #### Premium features!
 

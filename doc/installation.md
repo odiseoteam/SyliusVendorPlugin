@@ -17,22 +17,22 @@ return [
 3. Import the plugin configurations
 
 ```yml
-# config/packages/_sylius.yaml
+# config/packages/odiseo_sylius_vendor_plugin.yaml
 imports:
-    # ...
-    - { resource: "@OdiseoSyliusVendorPlugin/Resources/config/config.yaml" }
+    - { resource: "@OdiseoSyliusVendorPlugin/config/config.yaml" }
 ```
 
 4. Add the shop and admin routes
 
 ```yml
-# config/routes.yaml
+# config/routes/odiseo_sylius_vendor_plugin.yaml
 odiseo_sylius_vendor_admin:
     resource: "@OdiseoSyliusVendorPlugin/config/routes/admin.yaml"
+    prefix: /admin
 
 odiseo_sylius_vendor_shop:
     resource: "@OdiseoSyliusVendorPlugin/config/routes/shop.yaml"
-    prefix: /{_locale}
+    prefix: /{_locale}/vendors
     requirements:
         _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
 ```
@@ -63,7 +63,8 @@ class Product extends BaseProduct implements VendorAwareInterface
 <?php
 // src/Repository/ProductRepository.php
 
-// ...
+namespace App\Repository;
+
 use Odiseo\SyliusVendorPlugin\Repository\ProductRepositoryInterface;
 use Odiseo\SyliusVendorPlugin\Repository\ProductRepositoryTrait;
 use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository as BaseProductRepository;
@@ -71,7 +72,7 @@ use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository as BaseProductReposi
 class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
 {
     use ProductRepositoryTrait;
-
+    
     // ...
 }
 ```
@@ -86,21 +87,8 @@ sylius_product:
                 repository: App\Repository\ProductRepository
 ```
 
-6. Add the vendor select box to the product form edit page. So, you need to run `mkdir -p templates/bundles/SyliusAdminBundle/Product/Tab` then `cp vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/views/Product/Tab/_details.html.twig templates/bundles/SyliusAdminBundle/Product/Tab/_details.html.twig` and then add the form widget
-
-```twig
-{# ... #}
-{{ form_row(form.enabled) }}
-{{ form_row(form.vendor) }}
-{# ... #}
-```
-
-7. Create logo folder: run `mkdir public/media/vendor-logo -p` and insert a .gitkeep file in that folder
-
-8. Finish the installation updating the database schema and installing assets
+6. Finish the installation updating the database schema
 
 ```
 php bin/console doctrine:migrations:migrate
-php bin/console sylius:theme:assets:install
-php bin/console cache:clear
 ```
