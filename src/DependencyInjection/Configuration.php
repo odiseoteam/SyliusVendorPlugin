@@ -13,7 +13,15 @@ final class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('odiseo_sylius_vendor_plugin');
 
-        $treeBuilder->getRootNode();
+        $rootNode = $treeBuilder->getRootNode();
+
+        $rootNode
+            ->children()
+                ->booleanNode('vendor_nullable')
+                    ->defaultFalse()
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }

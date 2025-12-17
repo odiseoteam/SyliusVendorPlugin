@@ -18,7 +18,12 @@ final class OdiseoSyliusVendorExtension extends Extension implements PrependExte
 
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $this->processConfiguration($this->getConfiguration([], $container), $configs);
+        $configuration = $this->getConfiguration([], $container);
+        $config = $this->processConfiguration($configuration, $configs);
+        $container->setParameter(
+            'odiseo_sylius_vendor_plugin.vendor_nullable',
+            $config['vendor_nullable']
+        );
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 

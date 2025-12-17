@@ -16,12 +16,7 @@ final class ProductTypeExtension extends AbstractTypeExtension
     {
         $builder->add('vendor', VendorChoiceType::class, [
             'label' => 'odiseo_sylius_vendor_plugin.form.product.select_vendor',
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'odiseo_sylius_vendor_plugin.product.vendor.not_blank',
-                    'groups' => ['sylius'],
-                ]),
-            ],
+            'constraints' => [],
         ]);
     }
 

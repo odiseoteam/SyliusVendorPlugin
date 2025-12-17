@@ -23,17 +23,20 @@ final class VendorAwareListener implements EventSubscriber
     private string $vendorClass;
     private string $productClass;
     private string $channelClass;
+    private bool $vendorNullable = false;
 
     public function __construct(
         RegistryInterface $resourceMetadataRegistry,
         string $vendorClass,
         string $productClass,
-        string $channelClass
+        string $channelClass,
+        bool $vendorNullable = false
     ) {
         $this->resourceMetadataRegistry = $resourceMetadataRegistry;
         $this->vendorClass = $vendorClass;
         $this->productClass = $productClass;
         $this->channelClass = $channelClass;
+        $this->vendorNullable = $vendorNullable;
     }
 
     public function getSubscribedEvents(): array
@@ -94,7 +97,7 @@ final class VendorAwareListener implements EventSubscriber
                     [
                         'name' => $joinColumn,
                         'referencedColumnName' => 'id',
-                        'nullable' => false
+                        'nullable' => $this->vendorNullable,
                     ]
                 ]
             ]);
