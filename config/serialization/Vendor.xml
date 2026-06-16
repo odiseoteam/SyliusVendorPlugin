@@ -36,7 +36,7 @@
             <group>odiseo_vendor:shop:vendor:index</group>
             <group>odiseo_vendor:shop:vendor:show</group>
         </attribute>
-        <attribute name="logoName">
+        <attribute name="logoPath">
             <group>odiseo_vendor:admin:vendor:index</group>
             <group>odiseo_vendor:admin:vendor:show</group>
             <group>odiseo_vendor:admin:vendor:create</group>

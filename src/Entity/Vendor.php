@@ -33,7 +33,7 @@ class Vendor implements VendorInterface
 
     protected ?File $logoFile = null;
 
-    protected ?string $logoName = null;
+    protected ?string $logoPath = null;
 
     protected ?int $position = null;
 
@@ -119,14 +119,14 @@ class Vendor implements VendorInterface
         return $this->logoFile;
     }
 
-    public function setLogoName(?string $logoName): void
+    public function setLogoPath(?string $logoPath): void
     {
-        $this->logoName = $logoName;
+        $this->logoPath = $logoPath;
     }
 
-    public function getLogoName(): ?string
+    public function getLogoPath(): ?string
     {
-        return $this->logoName;
+        return $this->logoPath;
     }
 
     public function getPosition(): ?int

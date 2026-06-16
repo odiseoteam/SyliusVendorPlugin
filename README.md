@@ -40,7 +40,7 @@
 * Ready for Headless: Full Rest API.
 * Easy to extend: This plugin follows the best practices to make it fully extensible.
 
-Support Sylius version 2.
+Supports Sylius 2.0, 2.1 and 2.2.
 
 #### Premium features!
 

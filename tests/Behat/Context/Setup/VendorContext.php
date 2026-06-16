@@ -69,6 +69,17 @@ final class VendorContext implements Context
     }
 
     /**
+     * @Given there is a disabled vendor with :name name
+     */
+    public function thereIsADisabledVendorWithName(string $name): void
+    {
+        $vendor = $this->createVendor($name);
+        $vendor->disable();
+
+        $this->saveVendor($vendor);
+    }
+
+    /**
      * @Given the store has( also) :quantity vendors
      */
     public function theStoreHasVendors(int $quantity): void

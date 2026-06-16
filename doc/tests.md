@@ -1,6 +1,6 @@
 ## Test the plugin
 
-We are using PHPStan, Psalm, Behat, PHPSpec and PHPUnit to test this plugin.
+We are using PHPStan, Behat and PHPUnit to test this plugin.
 
 ### How to run the tests
 
@@ -25,12 +25,6 @@ To be able to setup a plugin's database, remember to configure you database cred
 
     ```bash
     $ vendor/bin/phpunit
-    ```
-
-  - PHPSpec
-
-    ```bash
-    $ vendor/bin/phpspec run
     ```
 
   - Behat (non-JS scenarios)
@@ -63,12 +57,6 @@ To be able to setup a plugin's database, remember to configure you database cred
 
   - Static Analysis
 
-    - Psalm
-
-      ```bash
-      $ vendor/bin/psalm
-      ```
-
     - PHPStan
 
       ```bash
@@ -78,11 +66,7 @@ To be able to setup a plugin's database, remember to configure you database cred
   - Coding Standard
 
     ```bash
-    $ vendor/bin/phpcs
-    ```
-
-    ```bash
-    $ vendor/bin/ecs check src
+    $ vendor/bin/ecs check
     ```
 
 ### Opening Sylius with this plugin

@@ -3,7 +3,7 @@
 <div class="col-12 mb-4">
     <div class="d-flex align-items-center gap-4">
         <div class="p-2 bg-light border rounded" style="max-width: 140px;">
-            <img src="{{ vendor.logoName|imagine_filter('odiseo_vendor_logo') }}" alt="{{ vendor.name }}" class="img-fluid rounded">
+            <img src="{{ vendor.logoPath|imagine_filter('odiseo_vendor_logo') }}" alt="{{ vendor.name }}" class="img-fluid rounded">
         </div>
         <div>
             <h1 class="h3 mb-1" {{ sylius_test_html_attribute('vendor-name') }}>{{ vendor.name }}</h1>

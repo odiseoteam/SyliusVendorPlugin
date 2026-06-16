@@ -57,8 +57,8 @@ final class VendorTest extends TestCase
         $this->vendor->setLogoFile($file);
         $this->assertSame($file, $this->vendor->getLogoFile());
 
-        $this->vendor->setLogoName('logo.png');
-        $this->assertEquals('logo.png', $this->vendor->getLogoName());
+        $this->vendor->setLogoPath('logo.png');
+        $this->assertEquals('logo.png', $this->vendor->getLogoPath());
     }
 
     public function testItManagesChannels(): void

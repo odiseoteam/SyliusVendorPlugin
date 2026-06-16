@@ -71,7 +71,7 @@ final class VendorType extends AbstractResourceType
                 $vendor = $form->getData();
 
                 if (!$vendor instanceof VendorInterface || null === $vendor->getId()) {
-                    return array_merge($this->validationGroups, ['odiseo_logo_create']);
+                    return array_merge($this->validationGroups, ['odiseo_vendor_logo_create']);
                 }
 
                 return $this->validationGroups;

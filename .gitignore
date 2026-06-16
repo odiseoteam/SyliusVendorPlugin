@@ -12,7 +12,6 @@
 
 /.phpunit.result.cache
 /behat.yml
-/phpspec.yml
 /phpunit.xml
 /compose.override.yml
 .phpunit.result.cache

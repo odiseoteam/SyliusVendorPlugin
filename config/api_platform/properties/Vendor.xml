@@ -9,7 +9,7 @@
     <property resource="%odiseo_vendor.model.vendor.class%" name="slug" identifier="true" required="true"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="name" required="true"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="email" required="true"/>
-    <property resource="%odiseo_vendor.model.vendor.class%" name="logoName" required="true"/>
+    <property resource="%odiseo_vendor.model.vendor.class%" name="logoPath" required="true"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="enabled" readable="true" writable="true"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="translations" readable="true" writable="true">
         <openapiContext>
