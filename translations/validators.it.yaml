@@ -1,0 +1,28 @@
+odiseo_vendor:
+    vendor:
+        slug:
+            unique: Esiste già un venditore con questo slug.
+            not_blank: Lo slug non può essere vuoto.
+            min_length: Lo slug deve contenere almeno {{ limit }} caratteri.
+            max_length: Lo slug non può superare {{ limit }} caratteri.
+        name:
+            unique: Esiste già un venditore con questo nome.
+            not_blank: Il nome non può essere vuoto.
+            min_length: Il nome deve contenere almeno {{ limit }} caratteri.
+            max_length: Il nome non può superare {{ limit }} caratteri.
+        email:
+            invalid: Questa email non è valida.
+            unique: Questa email è già in uso.
+            not_blank: L'email non può essere vuota.
+            min_length: L'email deve contenere almeno {{ limit }} caratteri.
+            max_length: L'email non può superare {{ limit }} caratteri.
+        logo_file:
+            not_blank: Il logo non può essere vuoto.
+            invalid_mime_type: 'Il logo deve essere un''immagine valida (JPEG, PNG o WebP).'
+            max_size: 'Il logo è troppo grande ({{ size }} {{ suffix }}). La dimensione massima consentita è {{ limit }} {{ suffix }}.'
+    vendor_translation:
+        description:
+            not_blank: La descrizione non può essere vuota.
+    product:
+        vendor:
+            not_blank: Seleziona un venditore.

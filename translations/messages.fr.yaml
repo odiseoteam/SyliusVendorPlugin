@@ -20,3 +20,4 @@ odiseo_vendor:
             logo: Logo
             channels: Channels
             extra_emails: Extra emails
+            add_email: Ajouter un email

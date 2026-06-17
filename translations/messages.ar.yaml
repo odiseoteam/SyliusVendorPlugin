@@ -1,0 +1,23 @@
+odiseo_vendor:
+    ui:
+        vendor: المورّد
+        vendors: المورّدون
+        edit_vendor: تعديل المورّد
+        new_vendor: مورّد جديد
+        profile: الملف الشخصي
+        manage_vendors: إدارة المورّدين
+    menu:
+        admin:
+            vendors: المورّدون
+    form:
+        product:
+            select_vendor: اختر المورّد
+        vendor:
+            slug: المعرّف
+            email: البريد الإلكتروني
+            translations: الترجمات
+            description: الوصف
+            logo: الشعار
+            channels: القنوات
+            extra_emails: رسائل بريد إضافية
+            add_email: إضافة بريد إلكتروني

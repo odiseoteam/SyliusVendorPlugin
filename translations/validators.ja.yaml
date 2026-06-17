@@ -1,0 +1,28 @@
+odiseo_vendor:
+    vendor:
+        slug:
+            unique: このスラッグのベンダーは既に存在します。
+            not_blank: スラッグは空にできません。
+            min_length: スラッグは{{ limit }}文字以上で入力してください。
+            max_length: スラッグは{{ limit }}文字以内で入力してください。
+        name:
+            unique: この名前のベンダーは既に存在します。
+            not_blank: 名前は空にできません。
+            min_length: 名前は{{ limit }}文字以上で入力してください。
+            max_length: 名前は{{ limit }}文字以内で入力してください。
+        email:
+            invalid: このメールアドレスは無効です。
+            unique: このメールアドレスは既に使用されています。
+            not_blank: メールアドレスは空にできません。
+            min_length: メールアドレスは{{ limit }}文字以上で入力してください。
+            max_length: メールアドレスは{{ limit }}文字以内で入力してください。
+        logo_file:
+            not_blank: ロゴは空にできません。
+            invalid_mime_type: 'ロゴは有効な画像（JPEG、PNG、または WebP）である必要があります。'
+            max_size: 'ロゴが大きすぎます（{{ size }} {{ suffix }}）。許可される最大サイズは {{ limit }} {{ suffix }} です。'
+    vendor_translation:
+        description:
+            not_blank: 説明は空にできません。
+    product:
+        vendor:
+            not_blank: ベンダーを選択してください。

@@ -76,6 +76,18 @@
             <group>odiseo_vendor:shop:vendor:index</group>
             <group>odiseo_vendor:shop:vendor:show</group>
         </attribute>
+        <attribute name="extraEmails">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+        </attribute>
+        <attribute name="position">
+            <group>odiseo_vendor:admin:vendor:index</group>
+            <group>odiseo_vendor:admin:vendor:show</group>
+            <group>odiseo_vendor:admin:vendor:create</group>
+            <group>odiseo_vendor:admin:vendor:update</group>
+        </attribute>
         <attribute name="createdAt">
             <group>odiseo_vendor:admin:vendor:index</group>
             <group>odiseo_vendor:admin:vendor:show</group>

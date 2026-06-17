@@ -1,0 +1,23 @@
+odiseo_vendor:
+    ui:
+        vendor: Satıcı
+        vendors: Satıcılar
+        edit_vendor: Satıcıyı düzenle
+        new_vendor: Yeni satıcı
+        profile: Profil
+        manage_vendors: Satıcıları yönet
+    menu:
+        admin:
+            vendors: Satıcılar
+    form:
+        product:
+            select_vendor: Satıcı seç
+        vendor:
+            slug: Slug
+            email: E-posta
+            translations: Çeviriler
+            description: Açıklama
+            logo: Logo
+            channels: Kanallar
+            extra_emails: Ek e-postalar
+            add_email: E-posta ekle

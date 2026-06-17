@@ -1,0 +1,8 @@
+services:
+    odiseo_vendor.api.processor.vendor_logo_upload:
+        class: Odiseo\SyliusVendorPlugin\Api\Processor\VendorLogoUploadProcessor
+        arguments:
+            - '@api_platform.doctrine.orm.state.persist_processor'
+            - '@odiseo_vendor.repository.vendor'
+            - '@odiseo_vendor.uploader.vendor_logo'
+            - '@api_platform.validator'

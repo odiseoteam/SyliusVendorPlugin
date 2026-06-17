@@ -1,0 +1,23 @@
+odiseo_vendor:
+    ui:
+        vendor: ベンダー
+        vendors: ベンダー
+        edit_vendor: ベンダーを編集
+        new_vendor: 新規ベンダー
+        profile: プロフィール
+        manage_vendors: ベンダー管理
+    menu:
+        admin:
+            vendors: ベンダー
+    form:
+        product:
+            select_vendor: ベンダーを選択
+        vendor:
+            slug: スラッグ
+            email: メールアドレス
+            translations: 翻訳
+            description: 説明
+            logo: ロゴ
+            channels: チャネル
+            extra_emails: 追加のメールアドレス
+            add_email: メールアドレスを追加

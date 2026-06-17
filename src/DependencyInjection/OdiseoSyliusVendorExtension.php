@@ -26,6 +26,20 @@ final class OdiseoSyliusVendorExtension extends AbstractResourceExtension implem
     public function prepend(ContainerBuilder $container): void
     {
         $this->prependDoctrineMigrations($container);
+        $this->prependApiPlatformMapping($container);
+    }
+
+    private function prependApiPlatformMapping(ContainerBuilder $container): void
+    {
+        if (!$container->hasExtension('api_platform')) {
+            return;
+        }
+
+        $container->prependExtensionConfig('api_platform', [
+            'mapping' => [
+                'paths' => [__DIR__ . '/../../config/api_platform'],
+            ],
+        ]);
     }
 
     protected function getMigrationsNamespace(): string

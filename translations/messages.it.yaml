@@ -1,0 +1,23 @@
+odiseo_vendor:
+    ui:
+        vendor: Venditore
+        vendors: Venditori
+        edit_vendor: Modifica venditore
+        new_vendor: Nuovo venditore
+        profile: Profilo
+        manage_vendors: Gestisci venditori
+    menu:
+        admin:
+            vendors: Venditori
+    form:
+        product:
+            select_vendor: Seleziona venditore
+        vendor:
+            slug: Slug
+            email: Email
+            translations: Traduzioni
+            description: Descrizione
+            logo: Logo
+            channels: Canali
+            extra_emails: Email aggiuntive
+            add_email: Aggiungi email

@@ -1,0 +1,28 @@
+odiseo_vendor:
+    vendor:
+        slug:
+            unique: 已存在使用此别名的供应商。
+            not_blank: 别名不能为空。
+            min_length: 别名至少需要 {{ limit }} 个字符。
+            max_length: 别名不能超过 {{ limit }} 个字符。
+        name:
+            unique: 已存在使用此名称的供应商。
+            not_blank: 名称不能为空。
+            min_length: 名称至少需要 {{ limit }} 个字符。
+            max_length: 名称不能超过 {{ limit }} 个字符。
+        email:
+            invalid: 此电子邮件无效。
+            unique: 此电子邮件已被使用。
+            not_blank: 电子邮件不能为空。
+            min_length: 电子邮件至少需要 {{ limit }} 个字符。
+            max_length: 电子邮件不能超过 {{ limit }} 个字符。
+        logo_file:
+            not_blank: 标志不能为空。
+            invalid_mime_type: '标志必须是有效的图片（JPEG、PNG 或 WebP）。'
+            max_size: '标志太大（{{ size }} {{ suffix }}）。允许的最大大小为 {{ limit }} {{ suffix }}。'
+    vendor_translation:
+        description:
+            not_blank: 描述不能为空。
+    product:
+        vendor:
+            not_blank: 请选择一个供应商。

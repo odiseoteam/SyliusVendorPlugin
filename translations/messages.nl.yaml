@@ -1,0 +1,23 @@
+odiseo_vendor:
+    ui:
+        vendor: Leverancier
+        vendors: Leveranciers
+        edit_vendor: Leverancier bewerken
+        new_vendor: Nieuwe leverancier
+        profile: Profiel
+        manage_vendors: Leveranciers beheren
+    menu:
+        admin:
+            vendors: Leveranciers
+    form:
+        product:
+            select_vendor: Selecteer leverancier
+        vendor:
+            slug: Slug
+            email: E-mail
+            translations: Vertalingen
+            description: Beschrijving
+            logo: Logo
+            channels: Kanalen
+            extra_emails: Extra e-mails
+            add_email: E-mail toevoegen

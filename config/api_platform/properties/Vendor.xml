@@ -29,6 +29,8 @@
     </property>
     <property resource="%odiseo_vendor.model.vendor.class%" name="products" required="false"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="channels" required="false"/>
+    <property resource="%odiseo_vendor.model.vendor.class%" name="extraEmails" readable="true" writable="true" required="false"/>
+    <property resource="%odiseo_vendor.model.vendor.class%" name="position" readable="true" writable="true" required="false"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="createdAt" writable="false"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="updatedAt" writable="false"/>
 </properties>

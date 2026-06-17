@@ -39,6 +39,20 @@ jobs:
                     - sylius: "~2.0.0"
                       symfony: "^7.4"
 
+                include:
+                    # Cover the lowest supported PHP version (composer requires ^8.2).
+                    - php: "8.2"
+                      symfony: "^6.4"
+                      sylius: "~2.2.0"
+                      database: "mysql:8.4"
+                      node: "22.x"
+                    # Cover the newest PHP version.
+                    - php: "8.4"
+                      symfony: "^7.4"
+                      sylius: "~2.2.0"
+                      database: "mysql:8.4"
+                      node: "22.x"
+
         env:
             APP_ENV: test
 
