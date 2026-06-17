@@ -35,6 +35,7 @@
         "robertfausk/behat-panther-extension": "^1.1",
         "sylius-labs/coding-standard": "^4.4",
         "sylius-labs/suite-tags-extension": "~0.2",
+        "stefandoorn/sitemap-plugin": "^3.0",
         "sylius/sylius-rector": "^2.0",
         "sylius/test-application": "^2.0.0@alpha",
         "symfony/browser-kit": "^6.4 || ^7.4",
@@ -47,7 +48,7 @@
         "symfony/webpack-encore-bundle": "^2.2"
     },
     "suggest": {
-        "stefandoorn/sitemap-plugin": "^2.2"
+        "stefandoorn/sitemap-plugin": "^3.0"
     },
     "config": {
         "sort-packages": true,
