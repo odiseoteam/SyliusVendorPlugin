@@ -3,32 +3,19 @@
         <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/sylius-vendor-plugin.png" alt="Sylius Vendor Plugin" />
     </a>
     <br />
-    <a href="https://packagist.org/packages/odiseoteam/sylius-vendor-plugin" title="License" target="_blank">
-        <img src="https://img.shields.io/packagist/l/odiseoteam/sylius-vendor-plugin.svg" />
-    </a>
-    <a href="https://packagist.org/packages/odiseoteam/sylius-vendor-plugin" title="Version" target="_blank">
-        <img src="https://img.shields.io/packagist/v/odiseoteam/sylius-vendor-plugin.svg" />
-    </a>
-    <a href="https://github.com/odiseoteam/SyliusVendorPlugin/actions" title="Build Status" target="_blank">
-        <img src="https://img.shields.io/github/actions/workflow/status/odiseoteam/SyliusVendorPlugin/build.yaml" />
-    </a>
-    <a href="https://scrutinizer-ci.com/g/odiseoteam/SyliusVendorPlugin/" title="Scrutinizer" target="_blank">
-        <img src="https://img.shields.io/scrutinizer/g/odiseoteam/SyliusVendorPlugin.svg" />
-    </a>
-    <a href="https://packagist.org/packages/odiseoteam/sylius-vendor-plugin" title="Total Downloads" target="_blank">
-        <img src="https://poser.pugx.org/odiseoteam/sylius-vendor-plugin/downloads" />
-    </a>
-    <a href="https://sylius-devs.slack.com" title="Slack" target="_blank">
-        <img src="https://img.shields.io/badge/community%20chat-slack-FF1493.svg" />
-    </a>
-    <a href="https://odiseo.io/contact-us" title="Support" target="_blank">
-        <img src="https://img.shields.io/badge/support-contact%20author-blue" />
-    </a>
 </p>
 
-<h1 align="center">Sylius Vendor Plugin</h1>
+[![License](https://poser.pugx.org/odiseoteam/sylius-vendor-plugin/license)](https://packagist.org/packages/odiseoteam/sylius-vendor-plugin)
+[![Latest Stable Version](https://poser.pugx.org/odiseoteam/sylius-vendor-plugin/v)](https://packagist.org/packages/odiseoteam/sylius-vendor-plugin)
+[![PHP Version Require](https://poser.pugx.org/odiseoteam/sylius-vendor-plugin/require/php)](https://packagist.org/packages/odiseoteam/sylius-vendor-plugin)
+[![Build](https://github.com/odiseoteam/SyliusVendorPlugin/actions/workflows/build.yaml/badge.svg)](https://github.com/odiseoteam/SyliusVendorPlugin/actions/workflows/build.yaml)
+[![Total Downloads](https://poser.pugx.org/odiseoteam/sylius-vendor-plugin/downloads)](https://packagist.org/packages/odiseoteam/sylius-vendor-plugin)
+[![Community Chat](https://img.shields.io/badge/community%20chat-slack-FF1493.svg)](https://sylius-devs.slack.com)
+[![Support](https://img.shields.io/badge/support-contact%20author-blue)](https://odiseo.io/contact-us)
 
-<p align="center">A Sylius plugin that adds vendors (brands) to your store. A vendor is an entity that owns products and is fully manageable from the admin panel.</p>
+# Sylius Vendor Plugin
+
+A Sylius plugin that adds vendors (brands) to your store. A vendor is an entity that owns products and is fully manageable from the admin panel.
 
 ## Features
 
