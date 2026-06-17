@@ -1,86 +1,70 @@
-## Test the plugin
+# Tests
 
-We are using PHPStan, Behat and PHPUnit to test this plugin.
+The plugin is tested with **PHPUnit** (unit and functional), **Behat** (UI), **PHPStan** (level max)
+and **ECS** (coding standard). A ready-to-use Sylius application lives in `tests/TestApplication`.
 
-### How to run the tests
+## Docker (recommended)
 
-From the plugin root directory, run the following commands:
+A Docker environment is provided through the `Makefile`:
 
-    ```bash
-    $ (cd tests/Application && yarn install)
-    $ (cd tests/Application && yarn build)
-    $ (cd tests/Application && APP_ENV=test bin/console assets:install public)
+```bash
+make init            # Bootstrap containers + composer install + frontend build
+make up / make down  # Start / stop the containers
+make php-shell       # Open a shell in the PHP container
+make database-init   # Create the database and run migrations
+make load-fixtures   # Load Sylius fixtures
+```
 
-    $ (cd tests/Application && APP_ENV=test bin/console doctrine:database:create)
-    $ (cd tests/Application && APP_ENV=test bin/console doctrine:schema:create)
-    ```
+Then run the test tools:
 
-To be able to setup a plugin's database, remember to configure you database credentials in `tests/Application/.env` and `tests/Application/.env.test`.
+```bash
+make phpunit         # PHPUnit
+make behat           # Behat (non-JS scenarios)
+make phpstan         # PHPStan
+make ecs             # Coding standard
+```
 
-## Usage
+## Running the tools directly
 
-### Running plugin tests
+If you have PHP and the dependencies available, you can run everything without Docker:
 
-  - PHPUnit
+```bash
+# PHPUnit — available suites: unit, functional, integration, non-unit, all
+vendor/bin/phpunit --testsuite unit
+vendor/bin/phpunit --testsuite non-unit
+vendor/bin/phpunit                       # everything
 
-    ```bash
-    $ vendor/bin/phpunit
-    ```
+# Static analysis & coding standard
+vendor/bin/phpstan analyse -c phpstan.neon -l max src/
+vendor/bin/ecs check src tests           # add --fix to autofix
 
-  - Behat (non-JS scenarios)
+# Container linting & composer
+vendor/bin/console lint:container
+composer validate --strict
+```
 
-    ```bash
-    $ vendor/bin/behat --strict --tags="~@javascript"
-    ```
+Database credentials for the test application are configured in `tests/TestApplication/.env` (dev)
+and `tests/TestApplication/.env.test` (test).
 
-  - Behat (JS scenarios)
+## Behat
 
-    1. [Install Symfony CLI command](https://symfony.com/download).
+Non-JavaScript scenarios:
 
-    2. Start Headless Chrome:
+```bash
+vendor/bin/behat --strict --tags="~@javascript&&~@mink:chromedriver"
+```
 
-      ```bash
-      $ google-chrome-stable --enable-automation --disable-background-networking --no-default-browser-check --no-first-run --disable-popup-blocking --disable-default-apps --allow-insecure-localhost --disable-translate --disable-extensions --no-sandbox --enable-features=Metal --headless --remote-debugging-port=9222 --window-size=2880,1800 --proxy-server='direct://' --proxy-bypass-list='*' http://127.0.0.1
-      ```
+JavaScript scenarios require headless Chrome and a running server:
 
-    3. Install SSL certificates (only once needed) and run test application's webserver on `127.0.0.1:8080`:
+```bash
+# Start headless Chrome (port 9222) and the test server (port 8080)
+APP_ENV=test symfony server:start --port=8080 --daemon
 
-      ```bash
-      $ symfony server:ca:install APP_ENV=test symfony server:start --port=8080 --dir=tests/Application/public --daemon
-      ```
+vendor/bin/behat --strict --tags="@javascript,@mink:chromedriver"
+```
 
-    4. Run Behat:
+## Continuous integration
 
-      ```bash
-      $ vendor/bin/behat --strict --tags="@javascript"
-      ```
-
-  - Static Analysis
-
-    - PHPStan
-
-      ```bash
-      $ vendor/bin/phpstan analyse -c phpstan.neon -l max src/
-      ```
-
-  - Coding Standard
-
-    ```bash
-    $ vendor/bin/ecs check
-    ```
-
-### Opening Sylius with this plugin
-
-- Using `test` environment:
-
-    ```bash
-    $ (cd tests/Application && APP_ENV=test bin/console sylius:fixtures:load vendor)
-    $ (cd tests/Application && APP_ENV=test symfony server:start --document-root=public -d)
-    ```
-
-- Using `dev` environment:
-
-    ```bash
-    $ (cd tests/Application && APP_ENV=dev bin/console sylius:fixtures:load vendor)
-    $ (cd tests/Application && APP_ENV=dev symfony server:start --document-root=public -d)
-    ```
+Every push and pull request runs the full suite on GitHub Actions across a matrix of Sylius
+(2.0 / 2.1 / 2.2), Symfony (6.4 / 7.4) and PHP (8.2 / 8.3 / 8.4) versions. See
+[`.github/workflows/build.yaml`](https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/.github/workflows/build.yaml).

@@ -1,8 +1,12 @@
-## Installation
+# Installation
 
-1. Run `composer require odiseoteam/sylius-vendor-plugin --no-scripts`
+## 1. Require the plugin
 
-2. Enable the plugin in bundles.php
+```bash
+composer require odiseoteam/sylius-vendor-plugin
+```
+
+## 2. Enable the plugin
 
 ```php
 <?php
@@ -14,17 +18,17 @@ return [
 ];
 ```
 
-3. Import the plugin configurations
+## 3. Import the plugin configuration
 
-```yml
+```yaml
 # config/packages/odiseo_sylius_vendor_plugin.yaml
 imports:
     - { resource: "@OdiseoSyliusVendorPlugin/config/config.yaml" }
 ```
 
-4. Add the shop and admin routes
+## 4. Import the routes
 
-```yml
+```yaml
 # config/routes/odiseo_sylius_vendor_plugin.yaml
 odiseo_sylius_vendor_admin:
     resource: "@OdiseoSyliusVendorPlugin/config/routes/admin.yaml"
@@ -32,18 +36,28 @@ odiseo_sylius_vendor_admin:
 
 odiseo_sylius_vendor_shop:
     resource: "@OdiseoSyliusVendorPlugin/config/routes/shop.yaml"
-    prefix: /{_locale}/vendors
+    prefix: /{_locale}
     requirements:
         _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
 ```
 
-5. Include traits and override the models
+> The shop routes already include the `/vendors` prefix internally, so you only need to add the
+> `/{_locale}` prefix here. The final shop URLs will be `/{_locale}/vendors` and
+> `/{_locale}/vendors/{slug}`.
+
+## 5. Make your `Product` vendor-aware
+
+To associate products with vendors, make the `Product` entity implement `VendorAwareInterface` and
+use `VendorTrait`:
 
 ```php
 <?php
 // src/Entity/Product/Product.php
 
-// ...
+declare(strict_types=1);
+
+namespace App\Entity\Product;
+
 use Doctrine\ORM\Mapping as ORM;
 use Odiseo\SyliusVendorPlugin\Entity\VendorAwareInterface;
 use Odiseo\SyliusVendorPlugin\Entity\VendorTrait;
@@ -54,14 +68,16 @@ use Sylius\Component\Core\Model\Product as BaseProduct;
 class Product extends BaseProduct implements VendorAwareInterface
 {
     use VendorTrait;
-
-    // ...
 }
 ```
+
+Add the shop query helper to your product repository:
 
 ```php
 <?php
 // src/Repository/ProductRepository.php
+
+declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -72,23 +88,31 @@ use Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository as BaseProductReposi
 class ProductRepository extends BaseProductRepository implements ProductRepositoryInterface
 {
     use ProductRepositoryTrait;
-    
-    // ...
 }
 ```
 
-```yml
+Register the overridden classes:
+
+```yaml
 # config/packages/_sylius.yaml
 sylius_product:
     resources:
         product:
             classes:
-                model: App\Entity\Product
+                model: App\Entity\Product\Product
                 repository: App\Repository\ProductRepository
 ```
 
-6. Finish the installation updating the database schema
+## 6. Update the database
 
-```
+```bash
 php bin/console doctrine:migrations:migrate
 ```
+
+## What you get out of the box
+
+- The **REST API** is registered automatically — no extra `api_platform` configuration is required.
+  See the [API documentation](api.md).
+- The **vendor logo** is stored in `public/media/vendor-logo/` through a Gaufrette filesystem and is
+  ready to be rendered with the `odiseo_vendor_logo` Liip Imagine filter.
+- The admin **Vendors** menu entry is added automatically.
