@@ -1,0 +1,28 @@
+odiseo_vendor:
+    vendor:
+        slug:
+            unique: Er bestaat al een leverancier met deze slug.
+            not_blank: Slug mag niet leeg zijn.
+            min_length: Slug moet minstens {{ limit }} tekens lang zijn.
+            max_length: Slug mag niet langer zijn dan {{ limit }} tekens.
+        name:
+            unique: Er bestaat al een leverancier met deze naam.
+            not_blank: Naam mag niet leeg zijn.
+            min_length: Naam moet minstens {{ limit }} tekens lang zijn.
+            max_length: Naam mag niet langer zijn dan {{ limit }} tekens.
+        email:
+            invalid: Dit e-mailadres is ongeldig.
+            unique: Dit e-mailadres is al in gebruik.
+            not_blank: E-mail mag niet leeg zijn.
+            min_length: E-mail moet minstens {{ limit }} tekens lang zijn.
+            max_length: E-mail mag niet langer zijn dan {{ limit }} tekens.
+        logo_file:
+            not_blank: Logo mag niet leeg zijn.
+            invalid_mime_type: 'Het logo moet een geldige afbeelding zijn (JPEG, PNG of WebP).'
+            max_size: 'Het logo is te groot ({{ size }} {{ suffix }}). De maximaal toegestane grootte is {{ limit }} {{ suffix }}.'
+    vendor_translation:
+        description:
+            not_blank: Beschrijving mag niet leeg zijn.
+    product:
+        vendor:
+            not_blank: Selecteer een leverancier.

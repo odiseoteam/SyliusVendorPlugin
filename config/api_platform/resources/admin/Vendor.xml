@@ -101,6 +101,30 @@
                 class="ApiPlatform\Metadata\Delete"
                 uriTemplate="/admin/vendors/{slug}"
             />
+
+            <operation
+                name="odiseo_vendor_api_admin_vendor_logo_post"
+                class="ApiPlatform\Metadata\Post"
+                uriTemplate="/admin/vendors/{slug}/logo"
+                processor="odiseo_vendor.api.processor.vendor_logo_upload"
+                deserialize="false"
+            >
+                <uriVariables>
+                    <uriVariable parameterName="slug" fromClass="%odiseo_vendor.model.vendor.class%" />
+                </uriVariables>
+                <inputFormats>
+                    <format name="multipart">multipart/form-data</format>
+                </inputFormats>
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>odiseo_vendor:admin:vendor:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+            </operation>
         </operations>
     </resource>
 </resources>

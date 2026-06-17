@@ -1,0 +1,23 @@
+odiseo_vendor:
+    ui:
+        vendor: Fornecedor
+        vendors: Fornecedores
+        edit_vendor: Editar fornecedor
+        new_vendor: Novo fornecedor
+        profile: Perfil
+        manage_vendors: Gerenciar fornecedores
+    menu:
+        admin:
+            vendors: Fornecedores
+    form:
+        product:
+            select_vendor: Selecionar fornecedor
+        vendor:
+            slug: Slug
+            email: E-mail
+            translations: Traduções
+            description: Descrição
+            logo: Logo
+            channels: Canais
+            extra_emails: E-mails adicionais
+            add_email: Adicionar e-mail

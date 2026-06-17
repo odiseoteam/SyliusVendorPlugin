@@ -1,0 +1,28 @@
+odiseo_vendor:
+    vendor:
+        slug:
+            unique: يوجد بالفعل مورّد بهذا المعرّف.
+            not_blank: لا يمكن أن يكون المعرّف فارغًا.
+            min_length: يجب أن يتكوّن المعرّف من {{ limit }} حرفًا على الأقل.
+            max_length: لا يمكن أن يتجاوز المعرّف {{ limit }} حرفًا.
+        name:
+            unique: يوجد بالفعل مورّد بهذا الاسم.
+            not_blank: لا يمكن أن يكون الاسم فارغًا.
+            min_length: يجب أن يتكوّن الاسم من {{ limit }} حرفًا على الأقل.
+            max_length: لا يمكن أن يتجاوز الاسم {{ limit }} حرفًا.
+        email:
+            invalid: هذا البريد الإلكتروني غير صالح.
+            unique: هذا البريد الإلكتروني مُستخدَم بالفعل.
+            not_blank: لا يمكن أن يكون البريد الإلكتروني فارغًا.
+            min_length: يجب أن يتكوّن البريد الإلكتروني من {{ limit }} حرفًا على الأقل.
+            max_length: لا يمكن أن يتجاوز البريد الإلكتروني {{ limit }} حرفًا.
+        logo_file:
+            not_blank: لا يمكن أن يكون الشعار فارغًا.
+            invalid_mime_type: 'يجب أن يكون الشعار صورة صالحة (JPEG أو PNG أو WebP).'
+            max_size: 'حجم الشعار كبير جدًا ({{ size }} {{ suffix }}). الحد الأقصى المسموح به هو {{ limit }} {{ suffix }}.'
+    vendor_translation:
+        description:
+            not_blank: لا يمكن أن يكون الوصف فارغًا.
+    product:
+        vendor:
+            not_blank: الرجاء اختيار مورّد.

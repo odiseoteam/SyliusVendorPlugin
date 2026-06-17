@@ -18,6 +18,8 @@ odiseo_vendor:
             max_length: Email can not be longer than {{ limit }} characters.
         logo_file:
             not_blank: Logo cannot be blank.
+            invalid_mime_type: 'The logo must be a valid image (JPEG, PNG or WebP).'
+            max_size: 'The logo is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.'
     vendor_translation:
         description:
             not_blank: Description cannot be blank.

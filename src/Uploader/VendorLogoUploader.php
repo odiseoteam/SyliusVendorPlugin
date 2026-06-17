@@ -24,17 +24,17 @@ final class VendorLogoUploader implements VendorLogoUploaderInterface
         /** @var File $file */
         $file = $vendor->getLogoFile();
 
-        if (null !== $vendor->getLogoName() && $this->has($vendor->getLogoName())) {
-            $this->remove($vendor->getLogoName());
+        if (null !== $vendor->getLogoPath() && $this->has($vendor->getLogoPath())) {
+            $this->remove($vendor->getLogoPath());
         }
 
         do {
             $path = $this->name($file);
         } while ($this->isAdBlockingProne($path) || $this->filesystem->has($path));
 
-        $vendor->setLogoName($path);
+        $vendor->setLogoPath($path);
 
-        if ($vendor->getLogoName() === null) {
+        if ($vendor->getLogoPath() === null) {
             return;
         }
 
@@ -43,7 +43,7 @@ final class VendorLogoUploader implements VendorLogoUploaderInterface
         }
 
         $this->filesystem->write(
-            $vendor->getLogoName(),
+            $vendor->getLogoPath(),
             (string) file_get_contents($file->getPathname()),
             true,
         );

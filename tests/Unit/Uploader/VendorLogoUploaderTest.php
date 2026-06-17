@@ -35,7 +35,7 @@ final class VendorLogoUploaderTest extends TestCase
             ->method('write');
 
         $this->uploader->upload($vendor);
-        $this->assertNull($vendor->getLogoName());
+        $this->assertNull($vendor->getLogoPath());
     }
 
     public function testItCanUploadLogo(): void
@@ -59,10 +59,64 @@ final class VendorLogoUploaderTest extends TestCase
 
         $this->uploader->upload($vendor);
 
-        // Verify that a logo name was set
-        $this->assertNotNull($vendor->getLogoName());
+        // Verify that a logo path was set
+        $this->assertNotNull($vendor->getLogoPath());
 
         // Clean up
         unlink($tmpFile);
+    }
+
+    public function testItRemovesThePreviousLogoBeforeUploadingANewOne(): void
+    {
+        $tmpFile = tempnam(sys_get_temp_dir(), 'test_logo');
+        file_put_contents($tmpFile, 'new content');
+
+        $vendor = new Vendor();
+        $vendor->setLogoPath('old-logo.png');
+        $vendor->setLogoFile(new File($tmpFile));
+
+        $this->filesystem->method('has')
+            ->willReturnCallback(static fn (string $path): bool => 'old-logo.png' === $path);
+
+        $this->filesystem->expects($this->once())
+            ->method('delete')
+            ->with('old-logo.png')
+            ->willReturn(true);
+
+        $this->filesystem->expects($this->once())
+            ->method('write');
+
+        $this->uploader->upload($vendor);
+
+        $this->assertNotNull($vendor->getLogoPath());
+        $this->assertNotSame('old-logo.png', $vendor->getLogoPath());
+
+        unlink($tmpFile);
+    }
+
+    public function testItRemovesAnExistingFile(): void
+    {
+        $this->filesystem->method('has')
+            ->with('logo.png')
+            ->willReturn(true);
+
+        $this->filesystem->expects($this->once())
+            ->method('delete')
+            ->with('logo.png')
+            ->willReturn(true);
+
+        $this->assertTrue($this->uploader->remove('logo.png'));
+    }
+
+    public function testItDoesNotRemoveAMissingFile(): void
+    {
+        $this->filesystem->method('has')
+            ->with('logo.png')
+            ->willReturn(false);
+
+        $this->filesystem->expects($this->never())
+            ->method('delete');
+
+        $this->assertFalse($this->uploader->remove('logo.png'));
     }
 }

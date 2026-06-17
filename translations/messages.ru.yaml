@@ -1,0 +1,23 @@
+odiseo_vendor:
+    ui:
+        vendor: Поставщик
+        vendors: Поставщики
+        edit_vendor: Редактировать поставщика
+        new_vendor: Новый поставщик
+        profile: Профиль
+        manage_vendors: Управление поставщиками
+    menu:
+        admin:
+            vendors: Поставщики
+    form:
+        product:
+            select_vendor: Выберите поставщика
+        vendor:
+            slug: Slug
+            email: Email
+            translations: Переводы
+            description: Описание
+            logo: Логотип
+            channels: Каналы
+            extra_emails: Дополнительные email
+            add_email: Добавить email

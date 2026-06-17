@@ -27,7 +27,7 @@
         {% endfor %}
     </div>
 
-    {% set attributes = sylius_test_form_attribute('add-extraEmail')|sylius_merge_recursive({ label: 'sylius.ui.add_image'|trans, attr: { class: 'btn btn-outline-primary '}}) %}
+    {% set attributes = sylius_test_form_attribute('add-extraEmail')|sylius_merge_recursive({ label: 'odiseo_vendor.form.vendor.add_email'|trans, attr: { class: 'btn btn-outline-primary '}}) %}
 
     <div class="d-grid gap-2">
         {{ form_widget(extraEmails.vars.button_add, attributes) }}

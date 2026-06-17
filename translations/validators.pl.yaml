@@ -1,0 +1,28 @@
+odiseo_vendor:
+    vendor:
+        slug:
+            unique: Istnieje już sprzedawca z tym slugiem.
+            not_blank: Slug nie może być pusty.
+            min_length: Slug musi mieć co najmniej {{ limit }} znaków.
+            max_length: Slug nie może być dłuższy niż {{ limit }} znaków.
+        name:
+            unique: Istnieje już sprzedawca o tej nazwie.
+            not_blank: Nazwa nie może być pusta.
+            min_length: Nazwa musi mieć co najmniej {{ limit }} znaków.
+            max_length: Nazwa nie może być dłuższa niż {{ limit }} znaków.
+        email:
+            invalid: Ten adres e-mail jest nieprawidłowy.
+            unique: Ten adres e-mail jest już używany.
+            not_blank: E-mail nie może być pusty.
+            min_length: E-mail musi mieć co najmniej {{ limit }} znaków.
+            max_length: E-mail nie może być dłuższy niż {{ limit }} znaków.
+        logo_file:
+            not_blank: Logo nie może być puste.
+            invalid_mime_type: 'Logo musi być prawidłowym obrazem (JPEG, PNG lub WebP).'
+            max_size: 'Logo jest za duże ({{ size }} {{ suffix }}). Maksymalny dozwolony rozmiar to {{ limit }} {{ suffix }}.'
+    vendor_translation:
+        description:
+            not_blank: Opis nie może być pusty.
+    product:
+        vendor:
+            not_blank: Wybierz sprzedawcę.

@@ -1,0 +1,28 @@
+odiseo_vendor:
+    vendor:
+        slug:
+            unique: Bu slug ile bir satıcı zaten mevcut.
+            not_blank: Slug boş olamaz.
+            min_length: Slug en az {{ limit }} karakter olmalıdır.
+            max_length: Slug en fazla {{ limit }} karakter olabilir.
+        name:
+            unique: Bu isimle bir satıcı zaten mevcut.
+            not_blank: İsim boş olamaz.
+            min_length: İsim en az {{ limit }} karakter olmalıdır.
+            max_length: İsim en fazla {{ limit }} karakter olabilir.
+        email:
+            invalid: Bu e-posta geçersiz.
+            unique: Bu e-posta zaten kullanılıyor.
+            not_blank: E-posta boş olamaz.
+            min_length: E-posta en az {{ limit }} karakter olmalıdır.
+            max_length: E-posta en fazla {{ limit }} karakter olabilir.
+        logo_file:
+            not_blank: Logo boş olamaz.
+            invalid_mime_type: 'Logo geçerli bir görsel olmalıdır (JPEG, PNG veya WebP).'
+            max_size: 'Logo çok büyük ({{ size }} {{ suffix }}). İzin verilen maksimum boyut {{ limit }} {{ suffix }}.'
+    vendor_translation:
+        description:
+            not_blank: Açıklama boş olamaz.
+    product:
+        vendor:
+            not_blank: Lütfen bir satıcı seçin.

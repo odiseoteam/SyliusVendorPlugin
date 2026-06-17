@@ -39,8 +39,16 @@
 * Multi Emails: Vendors can have a primary and also additional emails.
 * Ready for Headless: Full Rest API.
 * Easy to extend: This plugin follows the best practices to make it fully extensible.
+* Translated UI: ships with 13 languages out of the box.
 
-Support Sylius version 2.
+Supports Sylius 2.0, 2.1 and 2.2.
+
+#### Translations
+
+The admin and shop UI strings are translated into: English, Spanish, French, German, Italian,
+Portuguese (Brazil), Dutch, Polish, Russian, Japanese, Simplified Chinese, Turkish and Arabic.
+Translations for locales other than English/Spanish are community-maintained — contributions and
+corrections are welcome via pull request.
 
 #### Premium features!
 
@@ -64,6 +72,7 @@ You can see this plugin in action in our Sylius Demo application.
 
 - [Installation](doc/installation.md)
 - [Usage](doc/usage.md)
+- [API](doc/api.md)
 - [Fixtures](doc/fixtures.md)
 - [Sitemap](doc/sitemap.md)
 - [Customization](doc/customization.md)

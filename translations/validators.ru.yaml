@@ -1,0 +1,28 @@
+odiseo_vendor:
+    vendor:
+        slug:
+            unique: Поставщик с таким slug уже существует.
+            not_blank: Slug не может быть пустым.
+            min_length: Slug должен содержать не менее {{ limit }} символов.
+            max_length: Slug не может быть длиннее {{ limit }} символов.
+        name:
+            unique: Поставщик с таким именем уже существует.
+            not_blank: Имя не может быть пустым.
+            min_length: Имя должно содержать не менее {{ limit }} символов.
+            max_length: Имя не может быть длиннее {{ limit }} символов.
+        email:
+            invalid: Этот email недействителен.
+            unique: Этот email уже используется.
+            not_blank: Email не может быть пустым.
+            min_length: Email должен содержать не менее {{ limit }} символов.
+            max_length: Email не может быть длиннее {{ limit }} символов.
+        logo_file:
+            not_blank: Логотип не может быть пустым.
+            invalid_mime_type: 'Логотип должен быть корректным изображением (JPEG, PNG или WebP).'
+            max_size: 'Логотип слишком большой ({{ size }} {{ suffix }}). Максимально допустимый размер — {{ limit }} {{ suffix }}.'
+    vendor_translation:
+        description:
+            not_blank: Описание не может быть пустым.
+    product:
+        vendor:
+            not_blank: Пожалуйста, выберите поставщика.

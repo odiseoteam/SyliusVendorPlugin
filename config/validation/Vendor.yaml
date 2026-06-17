@@ -51,6 +51,15 @@ Odiseo\SyliusVendorPlugin\Entity\Vendor:
             - NotBlank:
                 message: 'odiseo_vendor.vendor.logo_file.not_blank'
                 groups: ['odiseo_vendor_logo_create']
+            - Image:
+                mimeTypes:
+                    - 'image/jpeg'
+                    - 'image/png'
+                    - 'image/webp'
+                mimeTypesMessage: 'odiseo_vendor.vendor.logo_file.invalid_mime_type'
+                maxSize: '2M'
+                maxSizeMessage: 'odiseo_vendor.vendor.logo_file.max_size'
+                groups: ['odiseo']
         translations:
             - Valid: ~
         extraEmails:

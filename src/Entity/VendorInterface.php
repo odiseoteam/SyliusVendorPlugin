@@ -35,9 +35,9 @@ interface VendorInterface extends
 
     public function getLogoFile(): ?File;
 
-    public function setLogoName(?string $logoName): void;
+    public function setLogoPath(?string $logoPath): void;
 
-    public function getLogoName(): ?string;
+    public function getLogoPath(): ?string;
 
     public function getDescription(): ?string;
 

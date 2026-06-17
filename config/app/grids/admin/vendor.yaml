@@ -11,7 +11,7 @@ sylius_grid:
                 logo:
                     type: twig
                     label: sylius.ui.image
-                    path: logoName
+                    path: logoPath
                     options:
                         template: "@OdiseoSyliusVendorPlugin/admin/vendor/grid/field/image.html.twig"
                 name:

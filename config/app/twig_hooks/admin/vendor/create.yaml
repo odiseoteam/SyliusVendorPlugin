@@ -26,9 +26,6 @@ sylius_twig_hooks:
             profile:
                 template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/side_navigation/profile.html.twig'
                 priority: 100
-            media:
-                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/side_navigation/media.html.twig'
-                priority: 0
 
         'odiseo_vendor.admin.vendor.create.content.form.sections':
             general:
@@ -39,9 +36,6 @@ sylius_twig_hooks:
             profile:
                 template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/profile.html.twig'
                 priority: 100
-            media:
-                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/media.html.twig'
-                priority: 0
 
         'odiseo_vendor.admin.vendor.create.content.form.sections.general':
             default:
@@ -55,6 +49,9 @@ sylius_twig_hooks:
             email:
                 template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/general/email.html.twig'
                 priority: 200
+            extraEmails:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/profile/extraEmails.html.twig'
+                priority: 150
             enabled:
                 template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/general/enabled.html.twig'
                 priority: 100
@@ -62,19 +59,14 @@ sylius_twig_hooks:
                 template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/general/channels.html.twig'
 
         'odiseo_vendor.admin.vendor.create.content.form.sections.profile':
+            logo:
+                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/media/logo.html.twig'
+                priority: 200
             translations:
                 template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/profile/translations.html.twig'
                 priority: 100
-            extraEmails:
-                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/profile/extraEmails.html.twig'
-                priority: 0
 
         'odiseo_vendor.admin.vendor.create.content.form.sections.profile.translations':
             name:
                 template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/profile/translations/description.html.twig'
-                priority: 0
-
-        'odiseo_vendor.admin.vendor.create.content.form.sections.media':
-            logo:
-                template: '@OdiseoSyliusVendorPlugin/admin/vendor/form/sections/media/logo.html.twig'
                 priority: 0

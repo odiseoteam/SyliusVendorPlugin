@@ -9,7 +9,7 @@
     <property resource="%odiseo_vendor.model.vendor.class%" name="slug" identifier="true" required="true"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="name" required="true"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="email" required="true"/>
-    <property resource="%odiseo_vendor.model.vendor.class%" name="logoName" required="true"/>
+    <property resource="%odiseo_vendor.model.vendor.class%" name="logoPath" required="true"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="enabled" readable="true" writable="true"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="translations" readable="true" writable="true">
         <openapiContext>
@@ -29,6 +29,8 @@
     </property>
     <property resource="%odiseo_vendor.model.vendor.class%" name="products" required="false"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="channels" required="false"/>
+    <property resource="%odiseo_vendor.model.vendor.class%" name="extraEmails" readable="true" writable="true" required="false"/>
+    <property resource="%odiseo_vendor.model.vendor.class%" name="position" readable="true" writable="true" required="false"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="createdAt" writable="false"/>
     <property resource="%odiseo_vendor.model.vendor.class%" name="updatedAt" writable="false"/>
 </properties>
