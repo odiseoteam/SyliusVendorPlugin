@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.1] - 2026-07-20
+
+### Fixed
+- Migrations no longer fail on PostgreSQL. The three existing migrations hardcoded MySQL-only DDL
+  (`AUTO_INCREMENT`, `ENGINE = InnoDB`, backtick-quoted collations, `CHANGE` column syntax), which
+  made the plugin uninstallable on Postgres — Sylius 2.x's other officially supported database.
+  Each MySQL migration now has a PostgreSQL sibling (following the same paired-migration pattern
+  used by `sylius/sylius` core), gated via `Sylius\Bundle\CoreBundle\Doctrine\Migrations\AbstractMigration`
+  / `AbstractPostgreSQLMigration` so the right one runs automatically depending on the connected
+  platform.
+
 ## [2.1.0] - 2026-06-17
 
 ### Added
@@ -45,6 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 See the [GitHub releases](https://github.com/odiseoteam/SyliusVendorPlugin/releases) for the history
 of previous versions.
 
-[Unreleased]: https://github.com/odiseoteam/SyliusVendorPlugin/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/odiseoteam/SyliusVendorPlugin/compare/v2.1.1...HEAD
+[2.1.1]: https://github.com/odiseoteam/SyliusVendorPlugin/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/odiseoteam/SyliusVendorPlugin/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/odiseoteam/SyliusVendorPlugin/releases/tag/v2.0.0
