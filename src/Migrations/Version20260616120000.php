@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Odiseo\SyliusVendorPlugin\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
+use Sylius\Bundle\CoreBundle\Doctrine\Migrations\AbstractMigration;
 
 final class Version20260616120000 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Rename odiseo_vendor.logo_name column to logo_path.';
+        return 'Rename odiseo_vendor.logo_name column to logo_path (MySQL).';
     }
 
     public function up(Schema $schema): void

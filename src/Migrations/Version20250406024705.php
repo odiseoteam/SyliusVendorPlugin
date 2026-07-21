@@ -5,16 +5,13 @@ declare(strict_types=1);
 namespace Odiseo\SyliusVendorPlugin\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
+use Sylius\Bundle\CoreBundle\Doctrine\Migrations\AbstractMigration;
 
-/**
- * Auto-generated Migration: Please modify to your needs!
- */
 final class Version20250406024705 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Rename odiseo_vendor_channels join table to odiseo_vendors_channels (MySQL).';
     }
 
     public function up(Schema $schema): void

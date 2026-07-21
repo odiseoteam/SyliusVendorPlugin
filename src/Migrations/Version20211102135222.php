@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Odiseo\SyliusVendorPlugin\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
+use Sylius\Bundle\CoreBundle\Doctrine\Migrations\AbstractMigration;
 
 final class Version20211102135222 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Create vendor tables (MySQL).';
     }
 
     public function up(Schema $schema): void
