@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.1.1] - 2026-07-20
+## [2.2.0] - 2026-07-22
 
 ### Fixed
 - Migrations no longer fail on PostgreSQL. The three existing migrations hardcoded MySQL-only DDL
@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   used by `sylius/sylius` core), gated via `Sylius\Bundle\CoreBundle\Doctrine\Migrations\AbstractMigration`
   / `AbstractPostgreSQLMigration` so the right one runs automatically depending on the connected
   platform.
+- `sylius_product.vendor_id` is now nullable. The baseline migrations added it as `NOT NULL`
+  with no backfill, so `doctrine:migrations:migrate` failed on any store that already had
+  products at migration time (including a plain `sylius:install -s default` demo). See
+  [UPGRADE.md](UPGRADE.md) for details.
 
 ## [2.1.0] - 2026-06-17
 
@@ -56,7 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 See the [GitHub releases](https://github.com/odiseoteam/SyliusVendorPlugin/releases) for the history
 of previous versions.
 
-[Unreleased]: https://github.com/odiseoteam/SyliusVendorPlugin/compare/v2.1.1...HEAD
-[2.1.1]: https://github.com/odiseoteam/SyliusVendorPlugin/compare/v2.1.0...v2.1.1
+[Unreleased]: https://github.com/odiseoteam/SyliusVendorPlugin/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/odiseoteam/SyliusVendorPlugin/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/odiseoteam/SyliusVendorPlugin/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/odiseoteam/SyliusVendorPlugin/releases/tag/v2.0.0
