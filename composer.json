@@ -32,7 +32,7 @@
         "phpstan/phpstan-doctrine": "^1.3",
         "phpstan/phpstan-webmozart-assert": "^1.2",
         "phpunit/phpunit": "^10.5",
-        "robertfausk/behat-panther-extension": "^1.1",
+        "robertfausk/behat-panther-extension": "^2.0",
         "sylius-labs/coding-standard": "^4.4",
         "sylius-labs/suite-tags-extension": "~0.2",
         "stefandoorn/sitemap-plugin": "^3.0",
