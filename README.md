@@ -67,7 +67,7 @@ corrections are very welcome via pull request.
 ## Premium features
 
 Do you want advanced features? Take a look at our
-[Multi Vendor Marketplace Plugin](https://odiseo.io/plugins-and-bundles/premium/sylius-mvm-plugin),
+[Multi Vendor Marketplace Plugin](https://odiseo.io/en/products/sylius-marketplace-plugin),
 which turns your Sylius store into a marketplace like Amazon, Etsy or eBay.
 
 ## Screenshots
@@ -81,8 +81,8 @@ which turns your Sylius store into a marketplace like Amazon, Etsy or eBay.
 
 You can see this plugin in action in our Sylius demo application.
 
-- Frontend: [sylius-demo.odiseo.com.ar](https://sylius-demo.odiseo.com.ar)
-- Administration: [sylius-demo.odiseo.com.ar/admin](https://sylius-demo.odiseo.com.ar/admin) with `odiseo: odiseo` credentials.
+- Frontend: https://marketplace-demo.odiseo.io/
+- Administration: https://marketplace-demo.odiseo.io/admin with `odiseo: odiseo` credentials.
 
 ## Contributing
 
