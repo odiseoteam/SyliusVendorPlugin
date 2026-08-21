@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://odiseo.io/" target="_blank" title="Odiseo">
+    <a href="https://odiseo.io/en?utm_source=github&utm_medium=readme&utm_campaign=sylius-vendor-plugin" target="_blank" title="Odiseo">
         <img src="https://github.com/odiseoteam/SyliusVendorPlugin/blob/master/sylius-vendor-plugin.png" alt="Sylius Vendor Plugin" />
     </a>
     <br />
@@ -11,7 +11,6 @@
 [![Build](https://github.com/odiseoteam/SyliusVendorPlugin/actions/workflows/build.yaml/badge.svg)](https://github.com/odiseoteam/SyliusVendorPlugin/actions/workflows/build.yaml)
 [![Total Downloads](https://poser.pugx.org/odiseoteam/sylius-vendor-plugin/downloads)](https://packagist.org/packages/odiseoteam/sylius-vendor-plugin)
 [![Community Chat](https://img.shields.io/badge/community%20chat-slack-FF1493.svg)](https://sylius-devs.slack.com)
-[![Support](https://img.shields.io/badge/support-contact%20author-blue)](https://odiseo.io/contact-us)
 
 # Sylius Vendor Plugin
 
@@ -67,7 +66,7 @@ corrections are very welcome via pull request.
 ## Premium features
 
 Do you want advanced features? Take a look at our
-[Multi Vendor Marketplace Plugin](https://odiseo.io/en/products/sylius-marketplace-plugin),
+[Multi Vendor Marketplace Plugin](https://odiseo.io/en/products/sylius-marketplace-plugin?utm_source=github&utm_medium=readme&utm_campaign=sylius-vendor-plugin),
 which turns your Sylius store into a marketplace like Amazon, Etsy or eBay.
 
 ## Screenshots
@@ -95,5 +94,4 @@ This plugin is released under the [MIT license](LICENSE).
 
 ## Credits
 
-This plugin is maintained by [Odiseo](https://odiseo.io). Want us to help you with this plugin or any
-Sylius project? Contact us at [team@odiseo.com.ar](mailto:team@odiseo.com.ar).
+This plugin is maintained by [Odiseo](https://odiseo.io/en?utm_source=github&utm_medium=readme&utm_campaign=sylius-vendor-plugin). Want us to help you with this plugin or any Sylius project? [Get in touch](https://odiseo.io/en/contact-us?utm_source=github&utm_medium=readme&utm_campaign=sylius-vendor-plugin).
